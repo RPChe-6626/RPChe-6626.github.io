@@ -4,11 +4,11 @@
 <head>
   <meta charset="utf-8" />
    
-  <meta name="keywords" content="生活,旅行,思考,代码,博客" />
+  <meta name="keywords" content="OI" />
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Tag: 技术 |  RPChe-6626
+    Tag: 算法研究 |  RPChe-6626&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -36,7 +36,7 @@
   <article class="articles">
     
     
-    <h1 class="page-type-title">#&nbsp技术</h1>
+    <h1 class="page-type-title">#&nbsp算法研究</h1>
     
     
   
@@ -47,20 +47,20 @@
   
   <div class="archives-wrap">
     <div class="archive-year-wrap">
-      <a href="/archives/2019" class="archive-year">2019</a>
+      <a href="/archives/2020" class="archive-year">2020</a>
     </div>
     <div class="archives">
       
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
-      <a href="/2019/12/03/Ayer%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/" class="archive-article-date">
-  <time datetime="2019-12-03T05:26:02.000Z" itemprop="datePublished">12/03</time>
+      <a href="/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  <time datetime="2020-01-18T16:00:00.000Z" itemprop="datePublished">01/19</time>
 </a>
        
 <h2 itemprop="name">
-  <a class="archive-article-title" href="/2019/12/03/Ayer%E4%B8%AD%E6%96%87%E8%AF%B4%E6%98%8E/"
-    >Ayer中文说明</a
+  <a class="archive-article-title" href="/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"
+    >模拟退火学习笔记</a
   >
 </h2>
   
@@ -69,7 +69,7 @@
     
     
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%80%E6%9C%AF/" rel="tag">技术</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/" rel="tag">算法研究</a></li></ul>
 
     
   </div>
@@ -88,7 +88,7 @@
     <ul class="list-inline">
       <li>
         &copy;
-        2015-2020
+        2020
         RPChe-6626
       </li>
       <li>
@@ -113,8 +113,6 @@
       <li>
         <!-- cnzz统计 -->
         
-        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
-        
       </li>
     </ul>
   </div>
@@ -130,7 +128,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="RPChe-6626"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="RPChe-6626&#39;s blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -152,15 +150,11 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+      <a class="nav-item-link" href="/about">关于我</a>
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="http://shenyu-vip.lofter.com" target="_blank" rel="noopener">摄影</a>
-    </li>
-    
-    <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" href="/author">笔者</a>
     </li>
     
   </ul>
@@ -234,11 +228,11 @@
 <script>
   try {
     var typed = new Typed("#subtitle", {
-    strings: ['面朝大海，春暖花开','愿你一生努力，一生被爱','想要的都拥有，得不到的都释怀'],
+    strings: ['两年OI一场空，string不打见祖宗','Ich liebe dich.','May the force be with you.'],
     startDelay: 0,
-    typeSpeed: 200,
+    typeSpeed: 125,
     loop: true,
-    backSpeed: 100,
+    backSpeed: 75,
     showCursor: true
     });
   } catch (err) {
@@ -251,7 +245,7 @@
 
 <script>
   var ayerConfig = {
-    mathjax: false
+    mathjax: true
   }
 </script>
 
@@ -371,6 +365,25 @@
 </script>
 
 
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.6/unpacked/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
