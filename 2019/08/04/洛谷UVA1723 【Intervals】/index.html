@@ -25,6 +25,7 @@
 
   
 
+<link rel="alternate" href="/atom.xml" title="RPChe-6626's blog" type="application/atom+xml">
 </head>
 
 </html>
@@ -102,7 +103,7 @@
 
       
       <p>首先看完题目，就可以发现这是一道<del>贪心</del>差分约束的裸题。</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KXhGT.png" alt=""></p>
+<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXhGT.png" alt=""></p>
 <a id="more"></a>
 <h3 id="那么，差分约束乃何许物也？"><a href="#那么，差分约束乃何许物也？" class="headerlink" title="那么，差分约束乃何许物也？"></a>那么，差分约束乃何许物也？</h3><p>差分约束系统是一种特殊的N元一次不等式组，它包含N个变量X1~XN以及M个约束条件，每个约束条件都是由两个变量作差构成的，形如Xi-Xj&lt;=Ck，Ck是常数，1〈=i，j&lt;=N,1&lt;=k&lt;=M。我们要解决的问题是：求一组解X1=a1，X2=a2…Xn=aN，使所有约束条件都得到满足。</p>
 <p>差分约束系统的每个约束条件Xi-Xj&lt;=ck可以变形为Xi&lt;=Xj+ck。这与单源最短路算法中的三角形不等式dis[y]&lt;=dis[x]+z非常相似。因此，可以把每个变量Xi看作有向图中的一个节点i，对于每个约束条件Xi-Xj&lt;=ck,看作从节点j向节点i连一条长度为ck的有向边。（以上摘自信息学奥赛一本通.提高篇）这样就可以愉快的跑单源最短路算法了。</p>
@@ -151,7 +152,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/" alt="微信分享二维码">
+      <img src="/images/loading.png" data-original="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -169,19 +170,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/" class="article-nav-link">
+      <a href="/2019/10/28/%E6%B4%9B%E8%B0%B7P5603%20%E3%80%90%E5%B0%8FC%E4%B8%8E%E6%A1%8C%E6%B8%B8%E3%80%91/" class="article-nav-link">
         <strong class="article-nav-caption">previous</strong>
         <div class="article-nav-title">
           
-            洛谷UVA515 【King】
+            洛谷P5603 【小C与桌游】
           
         </div>
       </a>
     
     
-      <a href="/2019/07/17/%E5%85%B3%E4%BA%8E%E4%BF%9D%E7%95%99%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%B4%E5%B0%AC%E4%B9%8B%E4%BA%8B/" class="article-nav-link">
+      <a href="/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/" class="article-nav-link">
         <strong class="article-nav-caption">next</strong>
-        <div class="article-nav-title">关于保留字的一些尴尬之事</div>
+        <div class="article-nav-title">洛谷UVA515 【King】</div>
       </a>
     
   </nav>
@@ -294,7 +295,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="RPChe-6626&#39;s blog"></a>
+    <a href="/"><img src="/images/loading.png" data-original="/images/ayer-side.svg" alt="RPChe-6626&#39;s blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -361,13 +362,13 @@
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="/images/loading.png" data-original="/images/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="/images/loading.png" data-original="/images/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -582,6 +583,22 @@
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
   </div>
-</body>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
 
 </html>

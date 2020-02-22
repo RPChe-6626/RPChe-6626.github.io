@@ -25,6 +25,7 @@
 
   
 
+<link rel="alternate" href="/atom.xml" title="RPChe-6626's blog" type="application/atom+xml">
 </head>
 
 </html>
@@ -101,8 +102,8 @@
       
 
       
-      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2019-12-■■，在某资本主义屑校的第二次<del>期末模拟考</del>扫荡结束后，与笔者同监狱的狱友cxy在狱中研究<del>做选择题</del>反扫荡的<del>玄学</del>方式。终于，在当天稍晚他怀着满腔的激动<del>与革命热血</del>找到了我们，宣布他发现了这个方法，找到了这个世界的bug——这就是本文的主题，zxy定律。</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KR7b4.png" alt=""></p>
+      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2019-12-■■，在某资本主义屑校的第二次<del>期末模拟考</del>扫荡结束后，与笔者同监狱的狱友zxy在狱中研究<del>做选择题</del>反扫荡的<del>玄学</del>方式。终于，在当天稍晚他怀着满腔的激动<del>与革命热血</del>找到了我们，宣布他发现了这个方法，找到了这个世界的bug——这就是本文的主题，zxy定律。</p>
+<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KR7b4.png" alt=""></p>
 <a id="more"></a>
 <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>设想你在某一次考试中遇到了一道不会做的选择题，你百思不得其解，你会怎么办呢？你可能会<del>根据自己的经验</del>瞎蒙一个（标准操作），也可能会根据某个玄学方法来得出答案。比如只在B，C两项里面选（我们班主任给出的烂眼秘方），或者统计一下前面的选项，哪个少选哪个（某知名不靠谱人士）。但是现在我们找到了一个新方法，它虽然<del>带有一定的玄学的因素</del>，但它普遍适用于各科的各种选择题，并且正确率基本可以达到90%<del>只要你脸不黑的话</del>。因为它是由zxy偶然发现的，所以我们将其称为zxy’s law（zxy定律）。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>在一道大题中，假设有n个选择题，你已经做出了其中的m道，选A记为1，B记为2，C记为3，D记为4，设第i道的题号为$a_i$（从1号记起），计分为$b_i$，那么我们可以据此得出m个坐标：</p>
@@ -112,7 +113,7 @@
 <p>根据这m个坐标我们可以得出一个m-1次函数：$l:y=\sum_{i=1}^m{c_i*x^{i-1}}$（设$c_i$为第i项的系数）。</p>
 <p>然后我们把你不会的题目的题号作为自变量x往这个函数里面代入，得出相应的y，我们再把y四舍五入对4取模后加一，($y=(\operatorname{round}y \bmod 4+4)\bmod 4+1$)得出的结果如果是1则答案为A，是2则答案为B，是3则答案为C，是4则答案为D。</p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><p>这有一道题（某资本主义屑校期末练习）：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
 <p>假设你已经做了第1，2，3，5题（从1记起），那么我们可以得到4个坐标：</p>
 <ul>
 <li>$(1,1)，(2,2)，(3,3)，(5,3)$</li>
@@ -122,7 +123,7 @@
 <p>解它，我们可以得到它的解是：$(a,b,c,d)=(-\dfrac{1}{12},\dfrac{1}{2},\dfrac{1}{12},\dfrac{1}{2})$</p>
 <p>据此，我们可以得到一个3次函数：$l:y=-\dfrac{1}{12}x^3+\dfrac{1}{2}x^2+\dfrac{1}{12}x+\dfrac{1}{2}$</p>
 <p>它的图像是这样的：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
 <p>我们再把$x=4$代入这个函数，得$y=\dfrac{7}{2}$。把y四舍五入后得4，连取模都不用，答案也就是D，是正确的。</p>
 <h3 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h3><p><del>我鸽了</del></p>
 <h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h2><p><del>实践是检验真理的唯一标准</del></p>
@@ -167,7 +168,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2020/01/23/zxy%E2%80%98s-law/" alt="微信分享二维码">
+      <img src="/images/loading.png" data-original="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2020/01/23/zxy%E2%80%98s-law/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -310,7 +311,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/ayer-side.svg" alt="RPChe-6626&#39;s blog"></a>
+    <a href="/"><img src="/images/loading.png" data-original="/images/ayer-side.svg" alt="RPChe-6626&#39;s blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -377,13 +378,13 @@
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="/images/loading.png" data-original="/images/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="/images/loading.png" data-original="/images/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -598,6 +599,22 @@
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
   </div>
-</body>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
 
 </html>

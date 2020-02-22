@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>RPChe-6626&#39;s blog</title>
+  <icon>https://www.gravatar.com/avatar/086eee41c000f36a571b2465dfa38e8e</icon>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://rpche-6626.github.io/"/>
+  <updated>2020-02-22T05:43:52.523Z</updated>
+  <id>https://rpche-6626.github.io/</id>
+  
+  <author>
+    <name>RPChe-6626</name>
+    <email>3420302325@qq.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>洛谷P4970 【全村最好的嘤嘤刀】</title>
+    <link href="https://rpche-6626.github.io/2020/02/02/%E6%B4%9B%E8%B0%B7P4970-%E3%80%90%E5%85%A8%E6%9D%91%E6%9C%80%E5%A5%BD%E7%9A%84%E5%98%A4%E5%98%A4%E5%88%80%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2020/02/02/%E6%B4%9B%E8%B0%B7P4970-%E3%80%90%E5%85%A8%E6%9D%91%E6%9C%80%E5%A5%BD%E7%9A%84%E5%98%A4%E5%98%A4%E5%88%80%E3%80%91/</id>
+    <published>2020-02-01T16:00:00.000Z</published>
+    <updated>2020-02-22T05:43:52.523Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;del&gt;某在新年扩充中沉船的舰长终于成功AC了此题。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KL5kV.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+      <category term="题解" scheme="https://RPChe-6626.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>zxy&#39;s law</title>
+    <link href="https://rpche-6626.github.io/2020/01/23/zxy%E2%80%98s-law/"/>
+    <id>https://rpche-6626.github.io/2020/01/23/zxy%E2%80%98s-law/</id>
+    <published>2020-01-22T16:00:00.000Z</published>
+    <updated>2020-02-22T10:20:38.511Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;2019-12-■■，在某资本主义屑校的第二次&lt;del&gt;期末模拟考&lt;/del&gt;扫荡结束后，与笔者同监狱的狱友zxy在狱中研究&lt;del&gt;做选择题&lt;/del&gt;反扫荡的&lt;del&gt;玄学&lt;/del&gt;方式。终于，在当天稍晚他怀着满腔的激动&lt;del&gt;与革命热血&lt;/del&gt;找到了我们，宣布他发现了这个方法，找到了这个世界的bug——这就是本文的主题，zxy定律。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KR7b4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="灌水区" scheme="https://RPChe-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
+    
+    
+      <category term="玄学" scheme="https://RPChe-6626.github.io/tags/%E7%8E%84%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模拟退火学习笔记</title>
+    <link href="https://rpche-6626.github.io/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://rpche-6626.github.io/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2020-01-18T16:00:00.000Z</published>
+    <updated>2020-02-22T03:39:33.925Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;2020-01-14，异常中学OI冬令营（水）的第一天，先是花式splay了一个上午，&lt;del&gt;下午忘了干了啥，&lt;/del&gt;后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KXbZR.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+      <category term="算法研究" scheme="https://RPChe-6626.github.io/tags/%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洛谷P2286 【[HNOI2004]宠物收养场】</title>
+    <link href="https://rpche-6626.github.io/2019/12/11/%E6%B4%9B%E8%B0%B7P2286-%E3%80%90[HNOI2004]%E5%AE%A0%E7%89%A9%E6%94%B6%E5%85%BB%E5%9C%BA%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2019/12/11/%E6%B4%9B%E8%B0%B7P2286-%E3%80%90[HNOI2004]%E5%AE%A0%E7%89%A9%E6%94%B6%E5%85%BB%E5%9C%BA%E3%80%91/</id>
+    <published>2019-12-10T16:00:00.000Z</published>
+    <updated>2020-02-22T03:20:26.543Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;此题思路还是很简单的，考虑到同一时间呆在收养所中的，要么全是宠物，要么全是领养者，因此我们只需要用平衡树来维护一下，求一下前驱和后继就行。这里我们就用treap来实现，因为码量小&lt;del&gt;而且我不会splay&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KL0TP.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+      <category term="题解" scheme="https://RPChe-6626.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>声援某社会主义媒体的不懈斗争</title>
+    <link href="https://rpche-6626.github.io/2019/11/21/%E5%A3%B0%E6%8F%B4%E6%9F%90%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E5%AA%92%E4%BD%93%E7%9A%84%E4%B8%8D%E6%87%88%E6%96%97%E4%BA%89/"/>
+    <id>https://rpche-6626.github.io/2019/11/21/%E5%A3%B0%E6%8F%B4%E6%9F%90%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E5%AA%92%E4%BD%93%E7%9A%84%E4%B8%8D%E6%87%88%E6%96%97%E4%BA%89/</id>
+    <published>2019-11-20T16:00:00.000Z</published>
+    <updated>2020-02-22T03:41:00.045Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本博客第一篇文章&lt;del&gt;竟然是反云力文章&lt;/del&gt;。&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;太好了，我也要没书读了。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KjpsH.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="灌水区" scheme="https://RPChe-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
+    
+    
+      <category term="反云力" scheme="https://RPChe-6626.github.io/tags/%E5%8F%8D%E4%BA%91%E5%8A%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洛谷P1823 【[COI2007] Patrik 音乐会的等待】</title>
+    <link href="https://rpche-6626.github.io/2019/11/13/%E6%B4%9B%E8%B0%B7P1823%20%E3%80%90[COI2007]%20Patrik%20%E9%9F%B3%E4%B9%90%E4%BC%9A%E7%9A%84%E7%AD%89%E5%BE%85%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2019/11/13/%E6%B4%9B%E8%B0%B7P1823%20%E3%80%90[COI2007]%20Patrik%20%E9%9F%B3%E4%B9%90%E4%BC%9A%E7%9A%84%E7%AD%89%E5%BE%85%E3%80%91/</id>
+    <published>2019-11-12T16:00:00.000Z</published>
+    <updated>2020-02-22T03:18:05.673Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看了题解，发现大佬们大多用了单调栈+pair维护或单调栈+二分查找的方式，但是，此题可以用&lt;/p&gt;
+&lt;h2 id=&quot;两个单调栈&quot;&gt;&lt;a href=&quot;#两个单调栈&quot; class=&quot;headerlink&quot; title=&quot;两个单调栈&quot;&gt;&lt;/a&gt;两个单调栈&lt;/h2&gt;&lt;p&gt;来求解。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KLAiT.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+      <category term="题解" scheme="https://RPChe-6626.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洛谷P5603 【小C与桌游】</title>
+    <link href="https://rpche-6626.github.io/2019/10/28/%E6%B4%9B%E8%B0%B7P5603%20%E3%80%90%E5%B0%8FC%E4%B8%8E%E6%A1%8C%E6%B8%B8%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2019/10/28/%E6%B4%9B%E8%B0%B7P5603%20%E3%80%90%E5%B0%8FC%E4%B8%8E%E6%A1%8C%E6%B8%B8%E3%80%91/</id>
+    <published>2019-10-27T16:00:00.000Z</published>
+    <updated>2020-02-22T03:36:57.173Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先读完题，我们就可以知道此题一定与拓扑排序有关。要求的分别是“最优方式能得到”和“最优方式只失去”的答案。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KXNVI.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+      <category term="题解" scheme="https://RPChe-6626.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洛谷UVA1723 【Intervals】</title>
+    <link href="https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/</id>
+    <published>2019-08-03T16:00:00.000Z</published>
+    <updated>2020-02-22T03:38:36.654Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先看完题目，就可以发现这是一道&lt;del&gt;贪心&lt;/del&gt;差分约束的裸题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KXhGT.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+      <category term="题解" scheme="https://RPChe-6626.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>洛谷UVA515 【King】</title>
+    <link href="https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/</id>
+    <published>2019-08-03T16:00:00.000Z</published>
+    <updated>2020-02-22T04:01:21.501Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先，这是一道差分约束题，如果要看差分约束的定义和一些基础知识可以去另一篇题解——&lt;a href=&quot;https://www.luogu.org/blog/Darth-Che/solution-uva1723&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;UVA1723 Intervals&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KXsMQ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+      <category term="题解" scheme="https://RPChe-6626.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于保留字的一些尴尬之事</title>
+    <link href="https://rpche-6626.github.io/2019/07/17/%E5%85%B3%E4%BA%8E%E4%BF%9D%E7%95%99%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%B4%E5%B0%AC%E4%B9%8B%E4%BA%8B/"/>
+    <id>https://rpche-6626.github.io/2019/07/17/%E5%85%B3%E4%BA%8E%E4%BF%9D%E7%95%99%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%B4%E5%B0%AC%E4%B9%8B%E4%BA%8B/</id>
+    <published>2019-07-16T16:00:00.000Z</published>
+    <updated>2020-02-22T03:16:35.001Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2019MZ夏令营刚结束，不出意料我炸在了最后一天的考试上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/loading.png&quot; data-original=&quot;https://s2.ax1x.com/2020/02/22/3KL9Ln.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="总结" scheme="https://RPChe-6626.github.io/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="灌水区" scheme="https://RPChe-6626.github.io/tags/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
+    
+  </entry>
+  
+</feed>
