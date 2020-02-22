@@ -100,7 +100,7 @@
 
       
       <p><del>某在新年扩充中沉船的舰长终于成功AC了此题。</del></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jljj9r4f.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KL5kV.png" alt=""></p>
 <a id="more"></a>
 <hr>
 <p>首先一看题目，跟嘤嘤嘤和飞鱼丸有关，那必须做。再读一读题，好像是一道很水的线段树，我们只需同时维护两个元素：区间最大值和其具体位置，再引入一个优先级即可。维护这两个元素很简单，这里不再赘述，而关于优先级，我们只需把绯狱丸所在的位置加上一个极大值，并打上标记，这样就可以保证先取到绯狱丸。每次取到区间最大值的时候，我们再检查一下它带不带标记，如果带则减去这个最大值再累加输出，否则直接累加输出就可以了。</p>
@@ -568,22 +568,6 @@
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

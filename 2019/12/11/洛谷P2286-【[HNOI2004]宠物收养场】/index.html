@@ -100,7 +100,7 @@
 
       
       <p>此题思路还是很简单的，考虑到同一时间呆在收养所中的，要么全是宠物，要么全是领养者，因此我们只需要用平衡树来维护一下，求一下前驱和后继就行。这里我们就用treap来实现，因为码量小<del>而且我不会splay</del>。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/c4h0sl6i.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KL0TP.png" alt=""></p>
 <a id="more"></a>
 <p>但是，我发现其他题解在处理数据时写得都很长，大多都分了4类讨论。但实际上，如果我们使用一个栈来维护，代码会简短不少。</p>
 <p>刚开始声明一个栈，如果栈为空或栈顶元素跟当前元素种类相同，就直接把当前元素入栈并插入平衡树。</p>
@@ -571,22 +571,6 @@
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

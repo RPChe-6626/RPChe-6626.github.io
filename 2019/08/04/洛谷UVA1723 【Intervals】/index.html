@@ -102,7 +102,7 @@
 
       
       <p>首先看完题目，就可以发现这是一道<del>贪心</del>差分约束的裸题。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/f0m36h7e.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXhGT.png" alt=""></p>
 <a id="more"></a>
 <h3 id="那么，差分约束乃何许物也？"><a href="#那么，差分约束乃何许物也？" class="headerlink" title="那么，差分约束乃何许物也？"></a>那么，差分约束乃何许物也？</h3><p>差分约束系统是一种特殊的N元一次不等式组，它包含N个变量X1~XN以及M个约束条件，每个约束条件都是由两个变量作差构成的，形如Xi-Xj&lt;=Ck，Ck是常数，1〈=i，j&lt;=N,1&lt;=k&lt;=M。我们要解决的问题是：求一组解X1=a1，X2=a2…Xn=aN，使所有约束条件都得到满足。</p>
 <p>差分约束系统的每个约束条件Xi-Xj&lt;=ck可以变形为Xi&lt;=Xj+ck。这与单源最短路算法中的三角形不等式dis[y]&lt;=dis[x]+z非常相似。因此，可以把每个变量Xi看作有向图中的一个节点i，对于每个约束条件Xi-Xj&lt;=ck,看作从节点j向节点i连一条长度为ck的有向边。（以上摘自信息学奥赛一本通.提高篇）这样就可以愉快的跑单源最短路算法了。</p>
@@ -578,22 +578,6 @@
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
