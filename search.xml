@@ -4,11 +4,11 @@
     <title>洛谷P4970 【全村最好的嘤嘤刀】</title>
     <url>/2020/02/02/%E6%B4%9B%E8%B0%B7P4970-%E3%80%90%E5%85%A8%E6%9D%91%E6%9C%80%E5%A5%BD%E7%9A%84%E5%98%A4%E5%98%A4%E5%88%80%E3%80%91/</url>
     <content><![CDATA[<p><del>某在新年扩充中沉船的舰长终于成功AC了此题。</del></p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KL5kV.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KL5kV.png" alt=""></p>
 <a id="more"></a>
 <hr>
 <p>首先一看题目，跟嘤嘤嘤和飞鱼丸有关，那必须做。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3MeLGD.jpg" alt="嘤嘤刀"></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3MeLGD.jpg" alt="嘤嘤刀"></p>
 <p>再读一读题，好像是一道很水的线段树，我们只需同时维护两个元素：区间最大值和其具体位置，再引入一个优先级即可。维护这两个元素很简单，这里不再赘述，而关于优先级，我们只需把绯狱丸所在的位置加上一个极大值，并打上标记，这样就可以保证先取到绯狱丸。每次取到区间最大值的时候，我们再检查一下它带不带标记，如果带则减去这个最大值再累加输出，否则直接累加输出就可以了。</p>
 <p>需要注意的是题目给的计算顺序（从右开始），和数据类型必须声明成int，然后我们就可以得到这样一份代码——</p>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 5000005</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(register int i=a;i&lt;=b;i++)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=-f;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">'0'</span>&lt;=ch&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>) x=-x,<span class="built_in">putchar</span>(<span class="string">'-'</span>);</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">9</span>) write(x/<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,m,a[maxn],maxx[maxn],ans,tag[maxn],pos[maxn],vis[maxn];</span><br><span class="line"><span class="keyword">int</span> res,position;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ADD</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tag[k]==-inf) tag[k]=v;</span><br><span class="line">	<span class="keyword">else</span> tag[k]+=v;</span><br><span class="line">	maxx[k]+=v;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> mid)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(tag[k]==-inf) <span class="keyword">return</span>;</span><br><span class="line">	ADD(k*<span class="number">2</span>,tag[k]);</span><br><span class="line">	ADD(k*<span class="number">2</span>+<span class="number">1</span>,tag[k]);</span><br><span class="line">	tag[k]=-inf;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	tag[k]=-inf;</span><br><span class="line">	<span class="keyword">if</span>(l==r) &#123;</span><br><span class="line">		maxx[k]=a[l];</span><br><span class="line">		pos[k]=l;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	build(k*<span class="number">2</span>,l,mid);</span><br><span class="line">	build(k*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r);</span><br><span class="line">	<span class="keyword">if</span>(maxx[k*<span class="number">2</span>]&lt;=maxx[k*<span class="number">2</span>+<span class="number">1</span>]) &#123;</span><br><span class="line">		maxx[k]=maxx[k*<span class="number">2</span>+<span class="number">1</span>];</span><br><span class="line">		pos[k]=pos[k*<span class="number">2</span>+<span class="number">1</span>];</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		maxx[k]=maxx[k*<span class="number">2</span>];</span><br><span class="line">		pos[k]=pos[k*<span class="number">2</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y,<span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=l&amp;&amp;r&lt;=y) &#123;</span><br><span class="line">		ADD(k,v);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	pushdown(k,l,r,mid);</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid) add(k*<span class="number">2</span>,l,mid,x,y,v);</span><br><span class="line">	<span class="keyword">if</span>(y&gt;mid) add(k*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r,x,y,v);</span><br><span class="line">	<span class="keyword">if</span>(maxx[k*<span class="number">2</span>]&lt;=maxx[k*<span class="number">2</span>+<span class="number">1</span>]) &#123;</span><br><span class="line">		maxx[k]=maxx[k*<span class="number">2</span>+<span class="number">1</span>];</span><br><span class="line">		pos[k]=pos[k*<span class="number">2</span>+<span class="number">1</span>];</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		maxx[k]=maxx[k*<span class="number">2</span>];</span><br><span class="line">		pos[k]=pos[k*<span class="number">2</span>];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> k,<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;=l&amp;&amp;r&lt;=y) &#123;</span><br><span class="line">		<span class="keyword">if</span>(res&lt;maxx[k]) &#123;</span><br><span class="line">			res=maxx[k];</span><br><span class="line">			position=pos[k];</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(res==maxx[k]&amp;&amp;position&lt;pos[k]) position=pos[k]; </span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	pushdown(k,l,r,mid);<span class="comment">//注意基础操作（窝因此句忘打而调试1小时）</span></span><br><span class="line">	<span class="keyword">if</span>(x&lt;=mid) query(k*<span class="number">2</span>,l,mid,x,y);</span><br><span class="line">	<span class="keyword">if</span>(y&gt;mid) query(k*<span class="number">2</span>+<span class="number">1</span>,mid+<span class="number">1</span>,r,x,y);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	n=read(),m=read();</span><br><span class="line">	rep(i,<span class="number">1</span>,n) a[i]=read();</span><br><span class="line">	build(<span class="number">1</span>,<span class="number">1</span>,n);</span><br><span class="line">	rep(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="keyword">int</span> t=read();</span><br><span class="line">		<span class="keyword">if</span>(t==<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> x=read(),v=read();</span><br><span class="line">			res=<span class="number">0</span>;</span><br><span class="line">			position=<span class="number">0</span>;</span><br><span class="line">			query(<span class="number">1</span>,<span class="number">1</span>,n,x,x);</span><br><span class="line">			<span class="keyword">if</span>(!vis[x])</span><br><span class="line">			add(<span class="number">1</span>,<span class="number">1</span>,n,x,x,<span class="number">-2</span>*res+v+inf);</span><br><span class="line">			<span class="keyword">else</span> add(<span class="number">1</span>,<span class="number">1</span>,n,x,x,<span class="number">-2</span>*(res-inf)+v+inf);</span><br><span class="line">			vis[x]=<span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(t==<span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> l=read(),r=read();</span><br><span class="line">			res=<span class="number">0</span>;</span><br><span class="line">			position=<span class="number">0</span>;</span><br><span class="line">			query(<span class="number">1</span>,<span class="number">1</span>,n,l,r);</span><br><span class="line">			<span class="keyword">if</span>(vis[position]) &#123;</span><br><span class="line">				ans+=res-inf;</span><br><span class="line">				write(res-inf),<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">				add(<span class="number">1</span>,<span class="number">1</span>,n,position,position,-res);</span><br><span class="line">				vis[position]=<span class="number">0</span>;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				ans+=res,write(res),<span class="built_in">putchar</span>(<span class="string">'\n'</span>);</span><br><span class="line">				add(<span class="number">1</span>,<span class="number">1</span>,n,position,position,-res);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">int</span> l=read(),r=read(),v=read();</span><br><span class="line">			add(<span class="number">1</span>,<span class="number">1</span>,n,l,r,v);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(ans&lt;<span class="number">1e4</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"QAQ"</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(ans&lt;=<span class="number">1e7</span>) <span class="built_in">cout</span>&lt;&lt;<span class="string">"Sakura"</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">cout</span>&lt;&lt;<span class="string">"ice"</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -30,7 +30,7 @@
     <title>zxy&#39;s law</title>
     <url>/2020/01/23/zxy%E2%80%98s-law/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2019-12-■■，在某资本主义屑校的第二次<del>期末模拟考</del>扫荡结束后，与笔者同监狱的狱友zxy在狱中研究<del>做选择题</del>反扫荡的<del>玄学</del>方式。终于，在当天稍晚他怀着满腔的激动<del>与革命热血</del>找到了我们，宣布他发现了这个方法，找到了这个世界的bug——这就是本文的主题，zxy定律。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KR7b4.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KR7b4.png" alt=""></p>
 <a id="more"></a>
 <h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>设想你在某一次考试中遇到了一道不会做的选择题，你百思不得其解，你会怎么办呢？你可能会<del>根据自己的经验</del>瞎蒙一个（标准操作），也可能会根据某个玄学方法来得出答案。比如只在B，C两项里面选（我们班主任给出的烂眼秘方），或者统计一下前面的选项，哪个少选哪个（某知名不靠谱人士）。但是现在我们找到了一个新方法，它虽然<del>带有一定的玄学的因素</del>，但它普遍适用于各科的各种选择题，并且正确率基本可以达到90%<del>只要你脸不黑的话</del>。因为它是由zxy偶然发现的，所以我们将其称为zxy’s law（zxy定律）。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>在一道大题中，假设有n个选择题，你已经做出了其中的m道，选A记为1，B记为2，C记为3，D记为4，设第i道的题号为$a_i$（从1号记起），计分为$b_i$，那么我们可以据此得出m个坐标：</p>
@@ -40,7 +40,7 @@
 <p>根据这m个坐标我们可以得出一个m-1次函数：$l:y=\sum_{i=1}^m{c_i*x^{i-1}}$（设$c_i$为第i项的系数）。</p>
 <p>然后我们把你不会的题目的题号作为自变量x往这个函数里面代入，得出相应的y，我们再把y四舍五入对4取模后加一，($y=(\operatorname{round}y \bmod 4+4)\bmod 4+1$)得出的结果如果是1则答案为A，是2则答案为B，是3则答案为C，是4则答案为D。</p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><p>这有一道题（某资本主义屑校期末练习）：</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
 <p>假设你已经做了第1，2，3，5题（从1记起），那么我们可以得到4个坐标：</p>
 <ul>
 <li>$(1,1)，(2,2)，(3,3)，(5,3)$</li>
@@ -50,7 +50,7 @@
 <p>解它，我们可以得到它的解是：$(a,b,c,d)=(-\dfrac{1}{12},\dfrac{1}{2},\dfrac{1}{12},\dfrac{1}{2})$</p>
 <p>据此，我们可以得到一个3次函数：$l:y=-\dfrac{1}{12}x^3+\dfrac{1}{2}x^2+\dfrac{1}{12}x+\dfrac{1}{2}$</p>
 <p>它的图像是这样的：</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
 <p>我们再把$x=4$代入这个函数，得$y=\dfrac{7}{2}$。把y四舍五入后得4，连取模都不用，答案也就是D，是正确的。</p>
 <h3 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h3><p><del>我鸽了</del></p>
 <h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h2><p><del>实践是检验真理的唯一标准</del></p>
@@ -69,12 +69,12 @@
     <title>模拟退火学习笔记</title>
     <url>/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2020-01-14，异常中学OI冬令营（水）的第一天，先是花式splay了一个上午，<del>下午忘了干了啥，</del>后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXbZR.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXbZR.png" alt=""></p>
 <a id="more"></a>
 <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><del>在实际生活中，</del>我们常常会遇到求函数最值的问题，那怎么办呢？我们当然可以选择爬山算法，即每次在当前最优解的附近选择一个解，如果它优于最优解，就接受它，否则不接受它，并调小选择范围，寻找下一个解。在某些情况下，它是适用的，比如下图</p>
-<p><img src="/images/loading.png" data-original="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1579625299001&amp;di=b4cff93bc388cc504063f0aadcfb1133&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.xjishu.com%2Fimg%2Fzl%2F2020%2F1%2F7%2F3556419215.gif" alt=""></p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1579625299001&amp;di=b4cff93bc388cc504063f0aadcfb1133&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.xjishu.com%2Fimg%2Fzl%2F2020%2F1%2F7%2F3556419215.gif" alt=""></p>
 <p>但这个算法的劣势非常明显——它会被局限在一个局部最优解上，无法取得全局最优解，比如下图这个函数。</p>
-<p><img src="/images/loading.png" data-original="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2994024717,1924808617&amp;fm=26&amp;gp=0.jpg" alt=""></p>
+<p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2994024717,1924808617&amp;fm=26&amp;gp=0.jpg" alt=""></p>
 <p>这时，我们就可以使用一个玄学算法——模拟退火。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
 <p>模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&yacute;在1985年也独立发明此演算法。模拟退火算法是解决<a href="https://baike.baidu.com/item/TSP/2905216" target="_blank" rel="noopener">TSP问题</a>的有效方法之一。</p>
@@ -84,7 +84,7 @@
 <p>——摘自百度百科<del>（当然你也可以不看）</del></p>
 <p>简单的说，模拟退火就是在一种一定范围内求多峰函数最值的算法。它在模拟温度降低的同时得出新解，温度越高，解的变化量越大，随着温度的逐渐降低，解的变化量也渐渐变小，并越发集中在最优解附近。最后温度达到了我们设置的最低温，对应到物理学上也就是结晶了，这时，我们可以认为当前我们取得的解就是最优解，<del>当然也可能不是，</del>整个算法也就终止了。</p>
 <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>我们先引入几个参数：当前最优解E0，新解E，解变动量ΔE（<strong>E与E0的差</strong>），上一个被接受的解E1，初温T0，末温Tk，当前温度T，温度变动量Δ，再引用一张非常经典的图——</p>
-<p><img src="/images/loading.png" data-original="https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif" alt=""></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif" alt=""></p>
 <p>这张图非常好的展现了模拟退火的运行过程，从T0开始，每次乘上Δ得到T，如果T小于Tk则终止降温。T0我一般设置在1000~5000左右，Δ则是一个略小于1的常数，而Tk一般设置在1^-8到1^-15之间。</p>
 <p>在降温的同时，我们在E1（不是最优解E0）的基础上扰动产生新解E，需要注意的是扰动大小随温度的降低而变小，因为在温度高的时候，解的变化量非常大，这时的任务是在全局范围中找到最优解的大致位置，随着温度的降低，解渐渐稳定，这时的任务是确定最优解的准确位置。</p>
 <p>但每次得出新解以后，我们以什么原则，或者说什么概率来接受它呢？</p>
@@ -144,7 +144,7 @@
     <title>洛谷P2286 【[HNOI2004]宠物收养场】</title>
     <url>/2019/12/11/%E6%B4%9B%E8%B0%B7P2286-%E3%80%90%5BHNOI2004%5D%E5%AE%A0%E7%89%A9%E6%94%B6%E5%85%BB%E5%9C%BA%E3%80%91/</url>
     <content><![CDATA[<p>此题思路还是很简单的，考虑到同一时间呆在收养所中的，要么全是宠物，要么全是领养者，因此我们只需要用平衡树来维护一下，求一下前驱和后继就行。这里我们就用treap来实现，因为码量小<del>而且我不会splay</del>。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KL0TP.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KL0TP.png" alt=""></p>
 <a id="more"></a>
 <p>但是，我发现其他题解在处理数据时写得都很长，大多都分了4类讨论。但实际上，如果我们使用一个栈来维护，代码会简短不少。</p>
 <p>刚开始声明一个栈，如果栈为空或栈顶元素跟当前元素种类相同，就直接把当前元素入栈并插入平衡树。</p>
@@ -163,7 +163,7 @@
     <url>/2019/11/21/%E5%A3%B0%E6%8F%B4%E6%9F%90%E7%A4%BE%E4%BC%9A%E4%B8%BB%E4%B9%89%E5%AA%92%E4%BD%93%E7%9A%84%E4%B8%8D%E6%87%88%E6%96%97%E4%BA%89/</url>
     <content><![CDATA[<p>本博客第一篇文章<del>竟然是反云力文章</del>。</p>
 <p><del>太好了，我也要没书读了。</del></p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KjpsH.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KjpsH.png" alt=""></p>
 <a id="more"></a>
 <hr>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>   前两天偶然阅读到了某社会主义良心媒体对于一资本主义屑校反动本质的无情揭露，引起了我作为此资本主义屑校一学子 <del>（同监狱一狱友）</del> 的深刻反思——为什么之前我一直被蒙蔽着双眼？</p>
@@ -202,7 +202,7 @@
     <url>/2019/11/13/%E6%B4%9B%E8%B0%B7P1823%20%E3%80%90%5BCOI2007%5D%20Patrik%20%E9%9F%B3%E4%B9%90%E4%BC%9A%E7%9A%84%E7%AD%89%E5%BE%85%E3%80%91/</url>
     <content><![CDATA[<p>看了题解，发现大佬们大多用了单调栈+pair维护或单调栈+二分查找的方式，但是，此题可以用</p>
 <h2 id="两个单调栈"><a href="#两个单调栈" class="headerlink" title="两个单调栈"></a>两个单调栈</h2><p>来求解。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KLAiT.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KLAiT.png" alt=""></p>
 <a id="more"></a>
 <hr>
 <p>首先，读完题，我们发现此题要找一个人左右两边第一个比他大的数，那么自然想到单调栈。第一次我只维护了一个单调栈，结果样例都过不了。考虑到题目说的是的左右两边，我就又加了一个单调栈。</p>
@@ -223,7 +223,7 @@
     <title>洛谷P5603 【小C与桌游】</title>
     <url>/2019/10/28/%E6%B4%9B%E8%B0%B7P5603%20%E3%80%90%E5%B0%8FC%E4%B8%8E%E6%A1%8C%E6%B8%B8%E3%80%91/</url>
     <content><![CDATA[<p>首先读完题，我们就可以知道此题一定与拓扑排序有关。要求的分别是“最优方式能得到”和“最优方式只失去”的答案。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXNVI.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXNVI.png" alt=""></p>
 <a id="more"></a>
 <p>对于“最优方式能得到”问题，只用每次选最小值就可以了，因为尽量要保证升序，用一个小根堆维护就行。</p>
 <p>而对于“最优方式只失去”问题，每次如果有小于当前最大值的点，我们就去走，因为这样是不影响答案的。而如果没有，我们就去走当前最大的点。</p>
@@ -245,7 +245,7 @@
     <title>洛谷UVA1723 【Intervals】</title>
     <url>/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/</url>
     <content><![CDATA[<p>首先看完题目，就可以发现这是一道<del>贪心</del>差分约束的裸题。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXhGT.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXhGT.png" alt=""></p>
 <a id="more"></a>
 <h3 id="那么，差分约束乃何许物也？"><a href="#那么，差分约束乃何许物也？" class="headerlink" title="那么，差分约束乃何许物也？"></a>那么，差分约束乃何许物也？</h3><p>差分约束系统是一种特殊的N元一次不等式组，它包含N个变量X1~XN以及M个约束条件，每个约束条件都是由两个变量作差构成的，形如Xi-Xj&lt;=Ck，Ck是常数，1〈=i，j&lt;=N,1&lt;=k&lt;=M。我们要解决的问题是：求一组解X1=a1，X2=a2…Xn=aN，使所有约束条件都得到满足。</p>
 <p>差分约束系统的每个约束条件Xi-Xj&lt;=ck可以变形为Xi&lt;=Xj+ck。这与单源最短路算法中的三角形不等式dis[y]&lt;=dis[x]+z非常相似。因此，可以把每个变量Xi看作有向图中的一个节点i，对于每个约束条件Xi-Xj&lt;=ck,看作从节点j向节点i连一条长度为ck的有向边。（以上摘自信息学奥赛一本通.提高篇）这样就可以愉快的跑单源最短路算法了。</p>
@@ -268,7 +268,7 @@
     <title>洛谷UVA515 【King】</title>
     <url>/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/</url>
     <content><![CDATA[<p>首先，这是一道差分约束题，如果要看差分约束的定义和一些基础知识可以去另一篇题解——<a href="https://www.luogu.org/blog/Darth-Che/solution-uva1723" target="_blank" rel="noopener">UVA1723 Intervals</a></p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXsMQ.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXsMQ.png" alt=""></p>
 <a id="more"></a>
 <p>这道题几乎是一道差分约束的裸题，但是它只问有没有解，于是难度系数又降低了一点（不知道有没有其它神奇解法）。</p>
 <p>唯一的麻烦之处就在于——如何保证图的联通。由于没有隐藏条件，这里要用一个叫超级源点的东西。所谓超级源点，其实就是用另一个点把图中所有点都连起来，边权为0（建从这个点到其它点的有向边）。这样就可以在不影响结果的前提下使整个图联通。</p>
@@ -285,7 +285,7 @@
     <title>关于保留字的一些尴尬之事</title>
     <url>/2019/07/17/%E5%85%B3%E4%BA%8E%E4%BF%9D%E7%95%99%E5%AD%97%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%B4%E5%B0%AC%E4%B9%8B%E4%BA%8B/</url>
     <content><![CDATA[<p>2019MZ夏令营刚结束，不出意料我炸在了最后一天的考试上。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KL9Ln.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KL9Ln.png" alt=""></p>
 <a id="more"></a>
 <p>除了被假装成初三的高一大佬吊打，在这次的考试上还发生了一些尴尬之事——<br>最后一题因为保留字而编译错误（开了一个end变量）。</p>
 <p>这是继2018冬令营考试爆炸后再一次因为保留字而编译错误（当时开了一个hash数组），坑逼的是dev-cpp竟然查不出来错。</p>

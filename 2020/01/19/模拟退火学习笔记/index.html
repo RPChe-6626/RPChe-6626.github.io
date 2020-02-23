@@ -103,12 +103,12 @@
 
       
       <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2020-01-14，异常中学OI冬令营（水）的第一天，先是花式splay了一个上午，<del>下午忘了干了啥，</del>后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXbZR.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXbZR.png" alt=""></p>
 <a id="more"></a>
 <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><del>在实际生活中，</del>我们常常会遇到求函数最值的问题，那怎么办呢？我们当然可以选择爬山算法，即每次在当前最优解的附近选择一个解，如果它优于最优解，就接受它，否则不接受它，并调小选择范围，寻找下一个解。在某些情况下，它是适用的，比如下图</p>
-<p><img src="/images/loading.png" data-original="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1579625299001&amp;di=b4cff93bc388cc504063f0aadcfb1133&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.xjishu.com%2Fimg%2Fzl%2F2020%2F1%2F7%2F3556419215.gif" alt=""></p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1579625299001&amp;di=b4cff93bc388cc504063f0aadcfb1133&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.xjishu.com%2Fimg%2Fzl%2F2020%2F1%2F7%2F3556419215.gif" alt=""></p>
 <p>但这个算法的劣势非常明显——它会被局限在一个局部最优解上，无法取得全局最优解，比如下图这个函数。</p>
-<p><img src="/images/loading.png" data-original="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2994024717,1924808617&amp;fm=26&amp;gp=0.jpg" alt=""></p>
+<p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2994024717,1924808617&amp;fm=26&amp;gp=0.jpg" alt=""></p>
 <p>这时，我们就可以使用一个玄学算法——模拟退火。</p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
 <p>模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&yacute;在1985年也独立发明此演算法。模拟退火算法是解决<a href="https://baike.baidu.com/item/TSP/2905216" target="_blank" rel="noopener">TSP问题</a>的有效方法之一。</p>
@@ -118,7 +118,7 @@
 <p>——摘自百度百科<del>（当然你也可以不看）</del></p>
 <p>简单的说，模拟退火就是在一种一定范围内求多峰函数最值的算法。它在模拟温度降低的同时得出新解，温度越高，解的变化量越大，随着温度的逐渐降低，解的变化量也渐渐变小，并越发集中在最优解附近。最后温度达到了我们设置的最低温，对应到物理学上也就是结晶了，这时，我们可以认为当前我们取得的解就是最优解，<del>当然也可能不是，</del>整个算法也就终止了。</p>
 <h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>我们先引入几个参数：当前最优解E0，新解E，解变动量ΔE（<strong>E与E0的差</strong>），上一个被接受的解E1，初温T0，末温Tk，当前温度T，温度变动量Δ，再引用一张非常经典的图——</p>
-<p><img src="/images/loading.png" data-original="https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif" alt=""></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif" alt=""></p>
 <p>这张图非常好的展现了模拟退火的运行过程，从T0开始，每次乘上Δ得到T，如果T小于Tk则终止降温。T0我一般设置在1000~5000左右，Δ则是一个略小于1的常数，而Tk一般设置在1^-8到1^-15之间。</p>
 <p>在降温的同时，我们在E1（不是最优解E0）的基础上扰动产生新解E，需要注意的是扰动大小随温度的降低而变小，因为在温度高的时候，解的变化量非常大，这时的任务是在全局范围中找到最优解的大致位置，随着温度的降低，解渐渐稳定，这时的任务是确定最优解的准确位置。</p>
 <p>但每次得出新解以后，我们以什么原则，或者说什么概率来接受它呢？</p>
@@ -651,6 +651,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+</body>
 
 </html>

@@ -103,7 +103,7 @@
 
       
       <p>首先看完题目，就可以发现这是一道<del>贪心</del>差分约束的裸题。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXhGT.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXhGT.png" alt=""></p>
 <a id="more"></a>
 <h3 id="那么，差分约束乃何许物也？"><a href="#那么，差分约束乃何许物也？" class="headerlink" title="那么，差分约束乃何许物也？"></a>那么，差分约束乃何许物也？</h3><p>差分约束系统是一种特殊的N元一次不等式组，它包含N个变量X1~XN以及M个约束条件，每个约束条件都是由两个变量作差构成的，形如Xi-Xj&lt;=Ck，Ck是常数，1〈=i，j&lt;=N,1&lt;=k&lt;=M。我们要解决的问题是：求一组解X1=a1，X2=a2…Xn=aN，使所有约束条件都得到满足。</p>
 <p>差分约束系统的每个约束条件Xi-Xj&lt;=ck可以变形为Xi&lt;=Xj+ck。这与单源最短路算法中的三角形不等式dis[y]&lt;=dis[x]+z非常相似。因此，可以把每个变量Xi看作有向图中的一个节点i，对于每个约束条件Xi-Xj&lt;=ck,看作从节点j向节点i连一条长度为ck的有向边。（以上摘自信息学奥赛一本通.提高篇）这样就可以愉快的跑单源最短路算法了。</p>
@@ -599,6 +599,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+</body>
 
 </html>

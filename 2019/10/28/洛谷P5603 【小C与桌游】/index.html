@@ -101,7 +101,7 @@
 
       
       <p>首先读完题，我们就可以知道此题一定与拓扑排序有关。要求的分别是“最优方式能得到”和“最优方式只失去”的答案。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXNVI.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXNVI.png" alt=""></p>
 <a id="more"></a>
 <p>对于“最优方式能得到”问题，只用每次选最小值就可以了，因为尽量要保证升序，用一个小根堆维护就行。</p>
 <p>而对于“最优方式只失去”问题，每次如果有小于当前最大值的点，我们就去走，因为这样是不影响答案的。而如果没有，我们就去走当前最大的点。</p>
@@ -596,6 +596,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+</body>
 
 </html>

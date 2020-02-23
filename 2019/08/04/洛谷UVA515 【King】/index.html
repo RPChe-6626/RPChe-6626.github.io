@@ -101,7 +101,7 @@
 
       
       <p>首先，这是一道差分约束题，如果要看差分约束的定义和一些基础知识可以去另一篇题解——<a href="https://www.luogu.org/blog/Darth-Che/solution-uva1723" target="_blank" rel="noopener">UVA1723 Intervals</a></p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KXsMQ.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXsMQ.png" alt=""></p>
 <a id="more"></a>
 <p>这道题几乎是一道差分约束的裸题，但是它只问有没有解，于是难度系数又降低了一点（不知道有没有其它神奇解法）。</p>
 <p>唯一的麻烦之处就在于——如何保证图的联通。由于没有隐藏条件，这里要用一个叫超级源点的东西。所谓超级源点，其实就是用另一个点把图中所有点都连起来，边权为0（建从这个点到其它点的有向边）。这样就可以在不影响结果的前提下使整个图联通。</p>
@@ -591,6 +591,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+</body>
 
 </html>

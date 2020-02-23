@@ -101,7 +101,7 @@
 
       
       <p>此题思路还是很简单的，考虑到同一时间呆在收养所中的，要么全是宠物，要么全是领养者，因此我们只需要用平衡树来维护一下，求一下前驱和后继就行。这里我们就用treap来实现，因为码量小<del>而且我不会splay</del>。</p>
-<p><img src="/images/loading.png" data-original="https://s2.ax1x.com/2020/02/22/3KL0TP.png" alt=""></p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KL0TP.png" alt=""></p>
 <a id="more"></a>
 <p>但是，我发现其他题解在处理数据时写得都很长，大多都分了4类讨论。但实际上，如果我们使用一个栈来维护，代码会简短不少。</p>
 <p>刚开始声明一个栈，如果栈为空或栈顶元素跟当前元素种类相同，就直接把当前元素入栈并插入平衡树。</p>
@@ -592,6 +592,6 @@
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+</body>
 
 </html>
