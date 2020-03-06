@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">855字</span>
+            <span class="post-count">853字</span>
         </span>
     </span>
 
@@ -108,7 +108,7 @@
 <p>于是我们先跑一遍manacher算法，得到了以每个点为对称轴的回文串的最大半径，即下文的$lr$数组。然后我们再读一读题，题目要求的是最长的双回文串，也就是找到两个不同的回文串，使得它们相交，内含或相切，且这两个回文串的对称轴的距离尽量的长。</p>
 <p>那怎么找到这两个回文串呢？</p>
 <p>大佬就直接用$O(n)$递推了，然而我可能是数据结构学傻了，就把它当作了一个RMQ问题。</p>
-<p>我们可以这样考虑：枚举每个回文串，寻找左端点在这个回文串的范围内，且对称轴距尽量靠右，也就是距当前回文串对称轴尽量远的回文串，即$maxx=\max (ans,\max\limits^{r_i}_{j=l_i}{mid_j})$。（$l_i$和$r_i$分别是当前回文串的左、右端点，$j$是在这个回文串范围内的左端点，$mid$是对应的对称轴）然后我们再用maxx减去当前回文串的对称轴，因为之前跑manacher算法时添加过‘#’，所以就得到了这个双回文串的长度。然后再更新答案即可。</p>
+<p>我们可以这样考虑：枚举每个回文串，寻找左端点在这个回文串的范围内，且对称轴距尽量靠右，也就是距当前回文串对称轴尽量远的回文串，即 $maxx=\max\limits^{r_i}_{j=l_i}{mid_j}$ 。（$l_i$和$r_i$分别是当前回文串的左、右端点，$j$是在这个回文串范围内的左端点，$mid$是对应的对称轴）然后我们再用maxx减去当前回文串的对称轴，因为之前跑manacher算法时添加过‘#’，所以就得到了这个双回文串的长度。然后再更新答案即可。</p>
 <p>这样我们就考虑了相交和内含的情况。因为‘#’的存在，这样还同时解决了相切的情况。</p>
 <p>于是这个问题就被转化为了一个RMQ问题。有很多算法可供选择，这里就窝就用线段树了，因为本人写的比较熟。</p>
 <p>这样就可以达到如下的代码——</p>
@@ -578,6 +578,22 @@
 
 <script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!-- script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
