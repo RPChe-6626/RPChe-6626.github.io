@@ -40,16 +40,16 @@
   </entry>
   
   <entry>
-    <title>洛谷P3426 【[POI2005]SZA-Template】</title>
-    <link href="https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3426%20%E3%80%90[POI2005]SZA-Template%E3%80%91/"/>
-    <id>https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3426%20%E3%80%90[POI2005]SZA-Template%E3%80%91/</id>
+    <title>洛谷P3435 【[POI2006]OKR-Periods of Words】</title>
+    <link href="https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3435%20%E3%80%90[POI2006]OKR-Periods%20of%20Words%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3435%20%E3%80%90[POI2006]OKR-Periods%20of%20Words%E3%80%91/</id>
     <published>2020-07-30T16:00:00.000Z</published>
     <updated>2020-07-30T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;翻了一下题解，发现大佬们都选择使用了kmp算法来做这道题，然而这里还有一种解法，使用&lt;del&gt;非常冷门的&lt;/del&gt;exkmp算法。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2020/08/16/dV36Z6.jpg&quot; style=&quot;zoom:200%;&quot; /&gt;&lt;/p&gt;
+      &lt;p&gt;让窝来贡献一个$O(n\log n)$算法。&lt;del&gt;讲解很详细哦。&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2020/08/16/dV8dTf.jpg&quot; style=&quot;zoom:200%;&quot; /&gt;&lt;/p&gt;
     
     </summary>
     
@@ -62,16 +62,16 @@
   </entry>
   
   <entry>
-    <title>洛谷P3435 【[POI2006]OKR-Periods of Words】</title>
-    <link href="https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3435%20%E3%80%90[POI2006]OKR-Periods%20of%20Words%E3%80%91/"/>
-    <id>https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3435%20%E3%80%90[POI2006]OKR-Periods%20of%20Words%E3%80%91/</id>
+    <title>洛谷P3426 【[POI2005]SZA-Template】</title>
+    <link href="https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3426%20%E3%80%90[POI2005]SZA-Template%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2020/07/31/%E6%B4%9B%E8%B0%B7P3426%20%E3%80%90[POI2005]SZA-Template%E3%80%91/</id>
     <published>2020-07-30T16:00:00.000Z</published>
     <updated>2020-07-30T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;让窝来贡献一个$O(n\log n)$算法。&lt;del&gt;讲解很详细哦。&lt;/del&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2020/08/16/dV8dTf.jpg&quot; style=&quot;zoom:200%;&quot; /&gt;&lt;/p&gt;
+      &lt;p&gt;翻了一下题解，发现大佬们都选择使用了kmp算法来做这道题，然而这里还有一种解法，使用&lt;del&gt;非常冷门的&lt;/del&gt;exkmp算法。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://s1.ax1x.com/2020/08/16/dV36Z6.jpg&quot; style=&quot;zoom:200%;&quot; /&gt;&lt;/p&gt;
     
     </summary>
     
