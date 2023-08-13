@@ -8,7 +8,7 @@
    
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    zxy&#39;s law |  RPChe-6626&#39;s blog
+    常用 Hexo 指令 |  RPChe-6626&#39;s blog
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content">
       <section class="outer">
-  <article id="post-zxy‘s-law" class="article article-type-post" itemscope
+  <article id="post-常用 Hexo 指令" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  zxy&#39;s law
+  常用 Hexo 指令
 </h1>
   
 
@@ -51,12 +51,12 @@
 
     
     <div class="article-meta">
-      <a href="/2020/01/23/zxy%E2%80%98s-law/" class="article-date">
-  <time datetime="2020-01-22T16:00:00.000Z" itemprop="datePublished">2020-01-23</time>
+      <a href="/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/" class="article-date">
+  <time datetime="2023-08-12T16:00:00.000Z" itemprop="datePublished">2023-08-13</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/">灌水区</a>
+    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/">操作指南</a>
   </div>
 
       
@@ -66,7 +66,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">962字</span>
+            <span class="post-count">71字</span>
         </span>
     </span>
 
@@ -75,7 +75,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3分钟</span>
+            <span class="post-count">1分钟</span>
         </span>
     </span>
 </div>
@@ -86,8 +86,6 @@
 
     
     
-    <div class="tocbot"></div>
-
 
 
 
@@ -102,34 +100,15 @@
       
 
       
-      <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2019-12-■■，在某资本主义屑校的第二次<del>期末模拟考</del>扫荡结束后，与笔者同监狱的狱友zxy在狱中研究<del>做选择题</del>反扫荡的<del>玄学</del>方式。终于，在当天稍晚他怀着满腔的激动<del>与革命热血</del>找到了我们，宣布他发现了这个方法，找到了这个世界的bug——这就是本文的主题，zxy定律。</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KR7b4.png" alt=""></p>
-<a id="more"></a>
-<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>设想你在某一次考试中遇到了一道不会做的选择题，你百思不得其解，你会怎么办呢？你可能会<del>根据自己的经验</del>瞎蒙一个（标准操作），也可能会根据某个玄学方法来得出答案。比如只在B，C两项里面选（我们班主任给出的烂眼秘方），或者统计一下前面的选项，哪个少选哪个（某知名不靠谱人士）。但是现在我们找到了一个新方法，它虽然<del>带有一定的玄学的因素</del>，但它普遍适用于各科的各种选择题，并且正确率基本可以达到90%<del>只要你脸不黑的话</del>。因为它是由zxy偶然发现的，所以我们将其称为zxy’s law（zxy定律）。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>在一道大题中，假设有n个选择题，你已经做出了其中的m道，选A记为1，B记为2，C记为3，D记为4，设第i道的题号为$a_i$（从1号记起），计分为$b_i$，那么我们可以据此得出m个坐标：</p>
-<ul>
-<li>$(a_1,b_1),(a_2,b_2),……，(a_m,b_m)$</li>
+      <ul>
+<li><p>本地运行博客。</p>
+<p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
+<p>用于将博客在本地端口中部署运行。支持实时预览。</p>
+</li>
+<li><p>更新博客。</p>
+<p>命令：<code>hexo clean</code> 意义不清楚。 <code>hexo g</code> 生成本地文件。<code>hexo d</code> 上传博客。</p>
+</li>
 </ul>
-<p>根据这m个坐标我们可以得出一个m-1次函数：$l:y=\sum_{i=1}^m{c_i*x^{i-1}}$（设$c_i$为第i项的系数）。</p>
-<p>然后我们把你不会的题目的题号作为自变量x往这个函数里面代入，得出相应的y，我们再把y四舍五入对4取模后加一，($y=(\operatorname{round}y \bmod 4+4)\bmod 4+1$)得出的结果如果是1则答案为A，是2则答案为B，是3则答案为C，是4则答案为D。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><p>这有一道题（某资本主义屑校期末练习）：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
-<p>假设你已经做了第1，2，3，5题（从1记起），那么我们可以得到4个坐标：</p>
-<ul>
-<li>$(1,1)，(2,2)，(3,3)，(5,3)$</li>
-</ul>
-<p>我们把这4个坐标代入3次函数的一般形式：  $y=ax^3+bx^2+cx+d$</p>
-<p>可以得到这样一个方程组：$\begin{cases}<br>a+b+c+d=1\\<br>8a+4b+2c+d=2\\<br>27a+9b+3c+d=3\\<br>125a+25b+5c+d=3\\<br>\end{cases}$</p>
-<p>解它，我们可以得到它的解是：$(a,b,c,d)=(-\dfrac{1}{12},\dfrac{1}{2},\dfrac{1}{12},\dfrac{1}{2})$</p>
-<p>据此，我们可以得到一个3次函数：$l:y=-\dfrac{1}{12}x^3+\dfrac{1}{2}x^2+\dfrac{1}{12}x+\dfrac{1}{2}$</p>
-<p>它的图像是这样的：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>我们再把$x=4$代入这个函数，得$y=\dfrac{7}{2}$。把y四舍五入后得4，连取模都不用，答案也就是D，是正确的。</p>
-<h3 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h3><p><del>我鸽了</del></p>
-<h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h2><p><del>实践是检验真理的唯一标准</del></p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>但是这个方法也有缺点，比如当选择题太过分散的时候，我们会得到一次函数或无法得到函数，当选择题太过集中的时候，我们又会得到一个十多次函数（当然你也可以取样）。但是如果你要用此方法，还有一个重要前提——你是真的闲。在你花时间解一个一元多次方程组的时候，说不定其他人都可以想出正解了（语文除外），所以还是尽力想正解吧（还是语文除外）。</p>
-<p>但我还是不得不说一句：</p>
-<h3 id="玄学出奇迹！"><a href="#玄学出奇迹！" class="headerlink" title="玄学出奇迹！"></a>玄学出奇迹！</h3><p><del>（毕竟有人用这种方法做出的题比他自己用心做的对的还多）</del></p>
 
       
       <!-- reward -->
@@ -195,15 +174,13 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2020/01/23/zxy%E2%80%98s-law/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%8E%84%E5%AD%A6/" rel="tag">玄学</a></li></ul>
-
 
     </footer>
 
@@ -213,19 +190,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/" class="article-nav-link">
-        <strong class="article-nav-caption">previous</strong>
-        <div class="article-nav-title">
-          
-            通过 SSH 拉取 GitHub 上的代码
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+      <a href="/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/" class="article-nav-link">
         <strong class="article-nav-caption">next</strong>
-        <div class="article-nav-title">模拟退火学习笔记</div>
+        <div class="article-nav-title">维护日志</div>
       </a>
     
   </nav>
