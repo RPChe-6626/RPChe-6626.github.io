@@ -283,16 +283,16 @@
   </entry>
   
   <entry>
-    <title>洛谷UVA515 【King】</title>
-    <link href="https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/"/>
-    <id>https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/</id>
+    <title>洛谷UVA1723 【Intervals】</title>
+    <link href="https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/</id>
     <published>2019-08-03T16:00:00.000Z</published>
     <updated>2019-08-03T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;首先，这是一道差分约束题，如果要看差分约束的定义和一些基础知识可以去另一篇题解——&lt;a href=&quot;https://www.luogu.org/blog/Darth-Che/solution-uva1723&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;UVA1723 Intervals&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/22/3KXsMQ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;首先看完题目，就可以发现这是一道&lt;del&gt;贪心&lt;/del&gt;差分约束的裸题。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/22/3KXhGT.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -305,16 +305,16 @@
   </entry>
   
   <entry>
-    <title>洛谷UVA1723 【Intervals】</title>
-    <link href="https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/"/>
-    <id>https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA1723%20%E3%80%90Intervals%E3%80%91/</id>
+    <title>洛谷UVA515 【King】</title>
+    <link href="https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2019/08/04/%E6%B4%9B%E8%B0%B7UVA515%20%E3%80%90King%E3%80%91/</id>
     <published>2019-08-03T16:00:00.000Z</published>
     <updated>2019-08-03T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;首先看完题目，就可以发现这是一道&lt;del&gt;贪心&lt;/del&gt;差分约束的裸题。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/22/3KXhGT.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;首先，这是一道差分约束题，如果要看差分约束的定义和一些基础知识可以去另一篇题解——&lt;a href=&quot;https://www.luogu.org/blog/Darth-Che/solution-uva1723&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;UVA1723 Intervals&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/22/3KXsMQ.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
