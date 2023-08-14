@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>RPChe&#39;s blog</title>
+  <title>RPChe_&#39;s Blog</title>
   <icon>https://www.gravatar.com/avatar/086eee41c000f36a571b2465dfa38e8e</icon>
   
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://rpche-6626.github.io/</id>
   
   <author>
-    <name>RPChe</name>
+    <name>RPChe_</name>
     <email>3420302325@qq.com</email>
   </author>
   
