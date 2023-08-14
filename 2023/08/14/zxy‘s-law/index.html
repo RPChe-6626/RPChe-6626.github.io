@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>关于这个博客 |  RPChe_&#39;s Blog</title>
+      <title>ZXY&#39;s Law |  RPChe_&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,8 +56,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-zxy‘s-law"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -67,19 +67,77 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  关于这个博客
+  ZXY&#39;s Law
 </h1>
  
 
       
     </header>
-       
+     
+    <div class="article-meta">
+      <a href="/2023/08/14/zxy%E2%80%98s-law/" class="article-date">
+  <time datetime="2023-08-13T16:00:00.000Z" itemprop="datePublished">2023-08-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/">灌水区</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">490</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">2 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-  <p>步入大学的学习以后，我日益感到去维护一个这样的博客是极有必要的。自退役以来，我便不再使用洛谷博客，或是类似的 OI 博客。而无论是 CSDN 博客还是博客园，它们都难以符合我的要求。因此，我索性重启了以前搭建过的一个采用 hexo 加 GitHub 方式的项目，也就是这个博客。</p>
-<p>我采用的主题是 <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank" rel="noopener">ayer</a> ，而本项目则托管在 <a href="https://github.com/RPChe-6626/RPChe-6626.github.io" target="_blank" rel="noopener">这个库</a> 里。</p>
-<p>而至于笔者，本人现在是上海交通大学电子信息与电气工程学院的一名本科生，曾是一名 OIer 。</p>
-<p>联系方式：邮箱：3420302325@qq.com 。洛谷 ID ：91736 。</p>
+  <p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+<a id="more"></a>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+</li>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+</li>
+</ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
  
       <!-- reward -->
       
@@ -144,7 +202,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/about/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -153,6 +211,16 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+    
+      <a href="/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">关于数论</div>
+      </a>
+    
+  </nav>
+
    
 <!-- valine评论 -->
 <div id="vcomments-box">
@@ -204,6 +272,15 @@
  
    
   
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -342,6 +419,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

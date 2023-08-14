@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2023-08-12T16:00:00.000Z</updated>
+  <updated>2023-08-13T16:00:00.000Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ZXY&#39;s Law</title>
+    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
+    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
+    <published>2023-08-13T16:00:00.000Z</published>
+    <updated>2023-08-13T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="灌水区" scheme="https://RPChe-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>关于数论</title>
+    <link href="https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/"/>
+    <id>https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</id>
+    <published>2023-08-13T16:00:00.000Z</published>
+    <updated>2023-08-13T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;从基础谈起。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>维护日志</title>
@@ -42,15 +80,7 @@
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;本地运行博客。&lt;/p&gt;
-&lt;p&gt;命令：&lt;code&gt;hexo s -p localhost&lt;/code&gt; 。其中 &lt;code&gt;localhost&lt;/code&gt;
-        
-      
+      &lt;p&gt;这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 &lt;a href=&quot;https://hexo.io/zh-cn/docs/commands.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt; 查看。&lt;/p&gt;
     
     </summary>
     
@@ -80,28 +110,6 @@
   </entry>
   
   <entry>
-    <title>zxy&#39;s law</title>
-    <link href="https://rpche-6626.github.io/2020/01/23/zxy%E2%80%98s-law/"/>
-    <id>https://rpche-6626.github.io/2020/01/23/zxy%E2%80%98s-law/</id>
-    <published>2020-01-22T16:00:00.000Z</published>
-    <updated>2020-01-22T16:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;2019-12-■■，在某资本主义屑校的第二次&lt;del&gt;期末模拟考&lt;/del&gt;扫荡结束后，与笔者同监狱的狱友zxy在狱中研究&lt;del&gt;做选择题&lt;/del&gt;反扫荡的&lt;del&gt;玄学&lt;/del&gt;方式。终于，在当天稍晚他怀着满腔的激动&lt;del&gt;与革命热血&lt;/del&gt;找到了我们，宣布他发现了这个方法，找到了这个世界的bug——这就是本文的主题，zxy定律。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/22/3KR7b4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="灌水区" scheme="https://RPChe-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
-    
-    
-      <category term="玄学" scheme="https://RPChe-6626.github.io/tags/%E7%8E%84%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
     <title>模拟退火学习笔记</title>
     <link href="https://rpche-6626.github.io/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://rpche-6626.github.io/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
@@ -110,7 +118,8 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;2020-01-14，异常中学OI​冬令营（水）的第一天，先是花式​splay​了一个上午，&lt;del&gt;下午忘了干了啥，&lt;/del&gt;后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。&lt;/p&gt;
+      &lt;p&gt;首先需要说明的是这是一篇很久以前写的文章，当时的观念与现在有所不同，所以这篇文章的措辞并不严谨，而且对理论的分析也不够学术。但鉴于写作此篇时笔者水平较低，这些也是可以理解的。重要的是，在深入研究过模拟退火算法以后，我应该会重写此篇，因此，现在大家在阅读此篇时，应持保留态度。&lt;/p&gt;
+&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;2020-01-14，异常中学OI​冬令营（水）的第一天，先是花式​splay​了一个上午，&lt;del&gt;下午忘了干了啥，&lt;/del&gt;后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://s2.ax1x.com/2020/02/22/3KXbZR.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
@@ -118,8 +127,6 @@
     
       <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
-    
-      <category term="算法研究" scheme="https://RPChe-6626.github.io/tags/%E7%AE%97%E6%B3%95%E7%A0%94%E7%A9%B6/"/>
     
   </entry>
   

@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>关于这个博客 |  RPChe_&#39;s Blog</title>
+      <title>关于数论 |  RPChe_&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,8 +56,8 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="page-"
-  class="article article-type-page"
+  id="post-关于数论"
+  class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
@@ -67,19 +67,138 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  关于这个博客
+  关于数论
 </h1>
  
 
       
     </header>
-       
+     
+    <div class="article-meta">
+      <a href="/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/" class="article-date">
+  <time datetime="2023-08-13T16:00:00.000Z" itemprop="datePublished">2023-08-14</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
     <div class="article-entry" itemprop="articleBody">
        
-  <p>步入大学的学习以后，我日益感到去维护一个这样的博客是极有必要的。自退役以来，我便不再使用洛谷博客，或是类似的 OI 博客。而无论是 CSDN 博客还是博客园，它们都难以符合我的要求。因此，我索性重启了以前搭建过的一个采用 hexo 加 GitHub 方式的项目，也就是这个博客。</p>
-<p>我采用的主题是 <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank" rel="noopener">ayer</a> ，而本项目则托管在 <a href="https://github.com/RPChe-6626/RPChe-6626.github.io" target="_blank" rel="noopener">这个库</a> 里。</p>
-<p>而至于笔者，本人现在是上海交通大学电子信息与电气工程学院的一名本科生，曾是一名 OIer 。</p>
-<p>联系方式：邮箱：3420302325@qq.com 。洛谷 ID ：91736 。</p>
+  <p>从基础谈起。</p>
+<a id="more"></a>
+<h2 id="整除"><a href="#整除" class="headerlink" title="整除"></a>整除</h2><ul>
+<li>对于 $a=kb$ ，称 $b$ 整除 $a$ ，记作 $b\mid a$ 。</li>
+</ul>
+<h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><ul>
+<li>即当 $b\neq0$ 时， $\gcd(a,b)=\gcd(b,a\bmod b)$ 。</li>
+<li>记 $a\bmod b=r$ ，要证明这个定理，我们考虑去说明 $a$ 与 $b$ 的公因数集合和 $b$ 与 $r$ 的公因数集合是相同的。我们知道 $a=kb+r$ ，那么对于 $b$ 和 $r$ 的公因数 $d$ ，就有 $d\mid a$ ，即 $b$ 和 $r$ 的公因数必然是 $a$ 和 $b$ 的公因数。而我们又有 $a-kb=r$ ，那么，同理，$a$ 和 $b$ 的公因数也必然是 $b$ 和 $r$ 的公因数，则原式成立。</li>
+</ul>
+<h2 id="二元不定方程"><a href="#二元不定方程" class="headerlink" title="二元不定方程"></a>二元不定方程</h2><h3 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h3><ul>
+<li>用于得到不定方程 $ax+by=g$ 的某一组解，其中 $g=\gcd(a,b)$ 。</li>
+<li>具体的，我们考虑如何修改欧几里得算法。考虑递归的过程，不妨假定我们已经得到了方程 $by+rx=g$ 的解，其中 $r=a-kb$ 。那么就有 $by+(a-kb)\times x=g$ ，即 $ax+b(y-kx)=g$ ，这样我们也就得到了当前状态的解。</li>
+</ul>
+<h3 id="斐蜀定理"><a href="#斐蜀定理" class="headerlink" title="斐蜀定理"></a>斐蜀定理</h3><ul>
+<li>对于方程 $ax+by=m$ ，其有解的充要条件是 $\gcd(a,b)\mid m$ 。</li>
+<li>先证必要性。记 $g=\gcd(a,b)$ ，我们知道 $ax+by=kg$ 必然存在，即 $m=kg$ ，$g\mid m$ 。再证充分性。我们知道，若方程 $ax’+by’=g$ 有解 $\begin{cases}x’=x’_0\\y’=y’_0\end{cases}$ ，那么原方程就必然存在解 $\begin{cases}x_0=x’_0m/g\\y_0=y’_0m/g\end{cases}$ 。而由扩展欧几里得算法，我们可以断言，解 $\begin{cases}x’=x’_0\\y’=y’_0\end{cases}$ 必然存在，从而充分性得证。</li>
+</ul>
+<h3 id="二元不定方程解的结构"><a href="#二元不定方程解的结构" class="headerlink" title="二元不定方程解的结构"></a>二元不定方程解的结构</h3><ul>
+<li><p>对于方程 $ax+by=m$ ，若其存在一组整数解 $\begin{cases}x=x_0\\y=y_0\end{cases}$ ，则其所有整数解可以表示为 $\begin{cases}x=x_0+kb/g\\y=y_0-ka/g\end{cases}$ ，其中 $k\in\mathbb Z,g=\gcd(a,b)$ 。</p>
+</li>
+<li><p>我们从题设开始。考虑 $ax_0+by_0=m$ ，对于方程在 $\begin{cases}x=x_0\\y=y_0\end{cases}$ 之外的整数解 $\begin{cases}x=x_1\\y=y_1\end{cases}$ ，必然有 $\begin{cases}x_1=x_0+x’\\y_1=y_0+y’\end{cases}$ ，其中 $x’,y’\in\mathbb Z$ 。那么我们就有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    a(x_0+x')+b(y_0+y')&=m\\
+    ax_0+by_0+ax'+by'&=m\\
+    ax'+by'&=0\\
+    -ax'&=by'
+\end{aligned}</script><p>记 $g=\gcd(a,b),a’=\dfrac{-a}{g},b’=\dfrac{b}{g}$ ，那么就有：</p>
+<script type="math/tex; mode=display">
+a'x'=b'y'</script><p>其中 $a’\bot b’$ 。进一步，我们有：</p>
+<script type="math/tex; mode=display">
+a'x'=b'y'\Rightarrow a'x'\mid b'y'\Rightarrow a'\mid b'y' \Rightarrow a'\mid y'</script><p>类似的，也有 $b’\mid x’$ 。那么若记 $\dfrac {x’}{b’}=x’’$ ，$\dfrac {y’}{a’}=y’’$ ，就有：</p>
+<script type="math/tex; mode=display">
+a'b'x''=a'b'y''\Rightarrow x''=y''</script><p>再记 $x’’=y’’=k\in\mathbb Z$ ，那么可以发现，不同的 $k$ 和不同的解恰好一一对应，且有 $\begin{cases}x’=b’x’’=kb/g\\y’=a’y’’=-ka/g\end{cases}$ ，即 $\begin{cases}x_1=x_0+kb/g\\y_1=y_0-ka/g\end{cases}$ 。</p>
+</li>
+</ul>
+<h2 id="模意义下的整数系统"><a href="#模意义下的整数系统" class="headerlink" title="模意义下的整数系统"></a>模意义下的整数系统</h2><h3 id="同余"><a href="#同余" class="headerlink" title="同余"></a>同余</h3><ul>
+<li><p>取模运算 $\bmod$ ：对于 $a\bmod m=b$ ，其中 $m\neq0$ ，其满足 $a=km+b$ ，且 $0\le b&lt;m$ 。</p>
+<p>其运算优先级与乘除相同。</p>
+<p>取模运算存在一些非常基本且重要的性质，例如：</p>
+<ol>
+<li>$(a+ b)\bmod m=(a\bmod m+ b\bmod m)\bmod m$ 。</li>
+<li>$(a- b)\bmod m=(a\bmod m- b\bmod m)\bmod m$ 。</li>
+<li>$a\times b\bmod m=((a\bmod m)\times (b\bmod m))\bmod m$ 。</li>
+</ol>
+<p>是容易验证的。</p>
+</li>
+<li><p>同余：称 $a$ 和 $b$ 关于 $\bmod m$ 同余，当且仅当 $a\bmod m=b \bmod m$ ，记作 $a\equiv b \pmod m$ 。</p>
+</li>
+</ul>
+<h3 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h3><ul>
+<li><p>我们知道，在同余的框架下，一般意义的除法是做不了的。但是，我们考虑有理数集当中的除法，可以将其看作是乘法的逆运算。对于非 $0$ 有理数 $a$ ，必然存在 $a^{-1}\in \mathbb R$ 使得 $a^{-1}\times a=1$ 。我们试着把这个概念推广到整数系统中去。具体的，我们考虑在 $\bmod m$ 的意义下，对于 $a\in[0,m)$ ，是否存在 $a^{-1}\in [0,m)$ 使得 $a\times a^{-1}\equiv 1\pmod m$ 。我们把以上的 $a^{-1}$ 称为乘法逆元。</p>
+</li>
+<li><p>我们接着考虑模 $m$ 的整数系统中的 $a^{-1}$ 应该具有什么性质：</p>
+<ol>
+<li><p>$a=0$ 没有逆元。</p>
+</li>
+<li><p>$a^{-1}$ 至多存在一个。要证明这个命题，我们使用反证法。不妨假定 $\exist x_1,x_2\in [1,m),x_1\neq x_2,{\rm s.t.} a\times x_1\equiv a\times x_2\equiv 1\pmod m$ ，那么我们就有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    a\times x_1&\equiv a\times x_2\pmod m\\
+    a\times x_1^2&\equiv a\times x_1\times x_2\pmod m\\
+    x_1&\equiv x_2 \pmod m
+\end{aligned}</script><p>这与定义冲突，那么假设不成立，不可能存在多于 $1$ 个的逆元。</p>
+</li>
+<li><p>$a^{-1}$ 存在，当且仅当 $a\bot m$ 。记 $x=a^{-1}$ ，那么我们有 $a\times x\equiv 1\pmod m$ ，等价于 $ax+km=1$ ，其中 $k\in \mathbb Z$ 。那么由斐蜀定理，上述方程有解，当且仅当 $\gcd(a,m)\mid 1$ ，即 $a\bot m$ ，则原命题成立。</p>
+</li>
+</ol>
+</li>
+<li><p>那么我们该如何求取乘法逆元呢？第一种思路，是将同余式看作不定方程，再使用扩展欧几里得算法求解。而第二种，则是使用下面要提到的费马小定理。</p>
+</li>
+</ul>
+<h3 id="模意义下的整数系统中的分数"><a href="#模意义下的整数系统中的分数" class="headerlink" title="模意义下的整数系统中的分数"></a>模意义下的整数系统中的分数</h3><ul>
+<li>既然我们已经把有理数的除法概念推广到了模意义下的整数系统当中，那么进一步导出分数的概念就也是很自然的了。具体的，对于分数 $\dfrac ab$ ，我们希望在 $\bmod m$ 的整数系统中去找到一个对应的数，使其代数性质与 $\dfrac ab$ 相似。</li>
+<li>具体的，我们设这个数为 $x$ ，那么就是要使其满足 $x\times b\equiv a\pmod m$ 。若 $b\bot m$ ，即 $b^{-1}$ 存在，那么我们立即就可以知道，在这个系统中有且仅有一个 $x\equiv a\times b^{-1}\pmod m$ 满足条件。而若 $b\not\bot m$ ，此时上式就等价于 $bx+my=a$ ，其有解，当且仅当 $\gcd(b,m)=g\mid a$ ，且通解为 $x=x_0+km/g$ ，也就是说此时合法的 $x$ 的数目并不确定，甚至可以为 $0$ 。</li>
+</ul>
+<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><ul>
+<li><p>对于 $p\in \mathbb P$ ，$p\nmid a$ ，有 $a^{p-1}\equiv 1 \pmod p$ 。</p>
+</li>
+<li><p>要证明这个定理，我们考虑 $a,2a,3a,\dots ,(p-1)a$ 。首先，我们有这 $p-1$ 个数在 $\bmod p$ 意义下互不相同。因为假定存在 $x_1,x_2\in[1,p),x_1\neq x_2$ ，使得 $x_1a\equiv x_2a\pmod p$ ，而由 $a\bot p$ ，我们有 $x_1aa^{-1}\equiv x_2aa^{-1}\pmod p$ ，即 $x_1\equiv x_2\pmod p$ ，与假设不符，说明假设不成立。这样，我们就有：</p>
+<script type="math/tex; mode=display">
+\prod_{i=1}^{p-1}ia\equiv a^{p-1}i!\equiv i!\pmod p</script><p>而 $p$ 又与 $[1,p)$ 之中的每个数互素，说明：</p>
+<script type="math/tex; mode=display">
+a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
+</li>
+<li><p>应用费马小定理，我们就知道，当模数 $p$ 为素数，$p\nmid a$ 时，$a\times a^{p-2}\equiv 1\pmod p$ ，说明 $a^{-1}$ 就是 $a^{p-2}\bmod p$ 。</p>
+</li>
+</ul>
  
       <!-- reward -->
       
@@ -144,7 +263,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/about/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -153,6 +272,25 @@
   </div>
 
    
+  <nav class="article-nav">
+    
+      <a href="/2023/08/14/zxy%E2%80%98s-law/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            ZXY&#39;s Law
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">维护日志</div>
+      </a>
+    
+  </nav>
+
    
 <!-- valine评论 -->
 <div id="vcomments-box">
@@ -204,6 +342,15 @@
  
    
   
+   
+    <script src="https://cdn.staticfile.org/twikoo/1.4.18/twikoo.all.min.js"></script>
+    <div id="twikoo" class="twikoo"></div>
+    <script>
+        twikoo.init({
+            envId: ""
+        })
+    </script>
+ 
 </article>
 
 </section>
@@ -342,6 +489,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

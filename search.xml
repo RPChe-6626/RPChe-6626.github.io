@@ -1,6 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ZXY&#39;s Law</title>
+    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
+    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+<a id="more"></a>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+</li>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+</li>
+</ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+]]></content>
+      <categories>
+        <category>灌水区</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于数论</title>
+    <url>/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</url>
+    <content><![CDATA[<p>从基础谈起。</p>
+<a id="more"></a>
+<h2 id="整除"><a href="#整除" class="headerlink" title="整除"></a>整除</h2><ul>
+<li>对于 $a=kb$ ，称 $b$ 整除 $a$ ，记作 $b\mid a$ 。</li>
+</ul>
+<h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><ul>
+<li>即当 $b\neq0$ 时， $\gcd(a,b)=\gcd(b,a\bmod b)$ 。</li>
+<li>记 $a\bmod b=r$ ，要证明这个定理，我们考虑去说明 $a$ 与 $b$ 的公因数集合和 $b$ 与 $r$ 的公因数集合是相同的。我们知道 $a=kb+r$ ，那么对于 $b$ 和 $r$ 的公因数 $d$ ，就有 $d\mid a$ ，即 $b$ 和 $r$ 的公因数必然是 $a$ 和 $b$ 的公因数。而我们又有 $a-kb=r$ ，那么，同理，$a$ 和 $b$ 的公因数也必然是 $b$ 和 $r$ 的公因数，则原式成立。</li>
+</ul>
+<h2 id="二元不定方程"><a href="#二元不定方程" class="headerlink" title="二元不定方程"></a>二元不定方程</h2><h3 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h3><ul>
+<li>用于得到不定方程 $ax+by=g$ 的某一组解，其中 $g=\gcd(a,b)$ 。</li>
+<li>具体的，我们考虑如何修改欧几里得算法。考虑递归的过程，不妨假定我们已经得到了方程 $by+rx=g$ 的解，其中 $r=a-kb$ 。那么就有 $by+(a-kb)\times x=g$ ，即 $ax+b(y-kx)=g$ ，这样我们也就得到了当前状态的解。</li>
+</ul>
+<h3 id="斐蜀定理"><a href="#斐蜀定理" class="headerlink" title="斐蜀定理"></a>斐蜀定理</h3><ul>
+<li>对于方程 $ax+by=m$ ，其有解的充要条件是 $\gcd(a,b)\mid m$ 。</li>
+<li>先证必要性。记 $g=\gcd(a,b)$ ，我们知道 $ax+by=kg$ 必然存在，即 $m=kg$ ，$g\mid m$ 。再证充分性。我们知道，若方程 $ax’+by’=g$ 有解 $\begin{cases}x’=x’_0\\y’=y’_0\end{cases}$ ，那么原方程就必然存在解 $\begin{cases}x_0=x’_0m/g\\y_0=y’_0m/g\end{cases}$ 。而由扩展欧几里得算法，我们可以断言，解 $\begin{cases}x’=x’_0\\y’=y’_0\end{cases}$ 必然存在，从而充分性得证。</li>
+</ul>
+<h3 id="二元不定方程解的结构"><a href="#二元不定方程解的结构" class="headerlink" title="二元不定方程解的结构"></a>二元不定方程解的结构</h3><ul>
+<li><p>对于方程 $ax+by=m$ ，若其存在一组整数解 $\begin{cases}x=x_0\\y=y_0\end{cases}$ ，则其所有整数解可以表示为 $\begin{cases}x=x_0+kb/g\\y=y_0-ka/g\end{cases}$ ，其中 $k\in\mathbb Z,g=\gcd(a,b)$ 。</p>
+</li>
+<li><p>我们从题设开始。考虑 $ax_0+by_0=m$ ，对于方程在 $\begin{cases}x=x_0\\y=y_0\end{cases}$ 之外的整数解 $\begin{cases}x=x_1\\y=y_1\end{cases}$ ，必然有 $\begin{cases}x_1=x_0+x’\\y_1=y_0+y’\end{cases}$ ，其中 $x’,y’\in\mathbb Z$ 。那么我们就有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    a(x_0+x')+b(y_0+y')&=m\\
+    ax_0+by_0+ax'+by'&=m\\
+    ax'+by'&=0\\
+    -ax'&=by'
+\end{aligned}</script><p>记 $g=\gcd(a,b),a’=\dfrac{-a}{g},b’=\dfrac{b}{g}$ ，那么就有：</p>
+<script type="math/tex; mode=display">
+a'x'=b'y'</script><p>其中 $a’\bot b’$ 。进一步，我们有：</p>
+<script type="math/tex; mode=display">
+a'x'=b'y'\Rightarrow a'x'\mid b'y'\Rightarrow a'\mid b'y' \Rightarrow a'\mid y'</script><p>类似的，也有 $b’\mid x’$ 。那么若记 $\dfrac {x’}{b’}=x’’$ ，$\dfrac {y’}{a’}=y’’$ ，就有：</p>
+<script type="math/tex; mode=display">
+a'b'x''=a'b'y''\Rightarrow x''=y''</script><p>再记 $x’’=y’’=k\in\mathbb Z$ ，那么可以发现，不同的 $k$ 和不同的解恰好一一对应，且有 $\begin{cases}x’=b’x’’=kb/g\\y’=a’y’’=-ka/g\end{cases}$ ，即 $\begin{cases}x_1=x_0+kb/g\\y_1=y_0-ka/g\end{cases}$ 。</p>
+</li>
+</ul>
+<h2 id="模意义下的整数系统"><a href="#模意义下的整数系统" class="headerlink" title="模意义下的整数系统"></a>模意义下的整数系统</h2><h3 id="同余"><a href="#同余" class="headerlink" title="同余"></a>同余</h3><ul>
+<li><p>取模运算 $\bmod$ ：对于 $a\bmod m=b$ ，其中 $m\neq0$ ，其满足 $a=km+b$ ，且 $0\le b&lt;m$ 。</p>
+<p>其运算优先级与乘除相同。</p>
+<p>取模运算存在一些非常基本且重要的性质，例如：</p>
+<ol>
+<li>$(a+ b)\bmod m=(a\bmod m+ b\bmod m)\bmod m$ 。</li>
+<li>$(a- b)\bmod m=(a\bmod m- b\bmod m)\bmod m$ 。</li>
+<li>$a\times b\bmod m=((a\bmod m)\times (b\bmod m))\bmod m$ 。</li>
+</ol>
+<p>是容易验证的。</p>
+</li>
+<li><p>同余：称 $a$ 和 $b$ 关于 $\bmod m$ 同余，当且仅当 $a\bmod m=b \bmod m$ ，记作 $a\equiv b \pmod m$ 。</p>
+</li>
+</ul>
+<h3 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h3><ul>
+<li><p>我们知道，在同余的框架下，一般意义的除法是做不了的。但是，我们考虑有理数集当中的除法，可以将其看作是乘法的逆运算。对于非 $0$ 有理数 $a$ ，必然存在 $a^{-1}\in \mathbb R$ 使得 $a^{-1}\times a=1$ 。我们试着把这个概念推广到整数系统中去。具体的，我们考虑在 $\bmod m$ 的意义下，对于 $a\in[0,m)$ ，是否存在 $a^{-1}\in [0,m)$ 使得 $a\times a^{-1}\equiv 1\pmod m$ 。我们把以上的 $a^{-1}$ 称为乘法逆元。</p>
+</li>
+<li><p>我们接着考虑模 $m$ 的整数系统中的 $a^{-1}$ 应该具有什么性质：</p>
+<ol>
+<li><p>$a=0$ 没有逆元。</p>
+</li>
+<li><p>$a^{-1}$ 至多存在一个。要证明这个命题，我们使用反证法。不妨假定 $\exist x_1,x_2\in [1,m),x_1\neq x_2,{\rm s.t.} a\times x_1\equiv a\times x_2\equiv 1\pmod m$ ，那么我们就有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    a\times x_1&\equiv a\times x_2\pmod m\\
+    a\times x_1^2&\equiv a\times x_1\times x_2\pmod m\\
+    x_1&\equiv x_2 \pmod m
+\end{aligned}</script><p>这与定义冲突，那么假设不成立，不可能存在多于 $1$ 个的逆元。</p>
+</li>
+<li><p>$a^{-1}$ 存在，当且仅当 $a\bot m$ 。记 $x=a^{-1}$ ，那么我们有 $a\times x\equiv 1\pmod m$ ，等价于 $ax+km=1$ ，其中 $k\in \mathbb Z$ 。那么由斐蜀定理，上述方程有解，当且仅当 $\gcd(a,m)\mid 1$ ，即 $a\bot m$ ，则原命题成立。</p>
+</li>
+</ol>
+</li>
+<li><p>那么我们该如何求取乘法逆元呢？第一种思路，是将同余式看作不定方程，再使用扩展欧几里得算法求解。而第二种，则是使用下面要提到的费马小定理。</p>
+</li>
+</ul>
+<h3 id="模意义下的整数系统中的分数"><a href="#模意义下的整数系统中的分数" class="headerlink" title="模意义下的整数系统中的分数"></a>模意义下的整数系统中的分数</h3><ul>
+<li>既然我们已经把有理数的除法概念推广到了模意义下的整数系统当中，那么进一步导出分数的概念就也是很自然的了。具体的，对于分数 $\dfrac ab$ ，我们希望在 $\bmod m$ 的整数系统中去找到一个对应的数，使其代数性质与 $\dfrac ab$ 相似。</li>
+<li>具体的，我们设这个数为 $x$ ，那么就是要使其满足 $x\times b\equiv a\pmod m$ 。若 $b\bot m$ ，即 $b^{-1}$ 存在，那么我们立即就可以知道，在这个系统中有且仅有一个 $x\equiv a\times b^{-1}\pmod m$ 满足条件。而若 $b\not\bot m$ ，此时上式就等价于 $bx+my=a$ ，其有解，当且仅当 $\gcd(b,m)=g\mid a$ ，且通解为 $x=x_0+km/g$ ，也就是说此时合法的 $x$ 的数目并不确定，甚至可以为 $0$ 。</li>
+</ul>
+<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><ul>
+<li><p>对于 $p\in \mathbb P$ ，$p\nmid a$ ，有 $a^{p-1}\equiv 1 \pmod p$ 。</p>
+</li>
+<li><p>要证明这个定理，我们考虑 $a,2a,3a,\dots ,(p-1)a$ 。首先，我们有这 $p-1$ 个数在 $\bmod p$ 意义下互不相同。因为假定存在 $x_1,x_2\in[1,p),x_1\neq x_2$ ，使得 $x_1a\equiv x_2a\pmod p$ ，而由 $a\bot p$ ，我们有 $x_1aa^{-1}\equiv x_2aa^{-1}\pmod p$ ，即 $x_1\equiv x_2\pmod p$ ，与假设不符，说明假设不成立。这样，我们就有：</p>
+<script type="math/tex; mode=display">
+\prod_{i=1}^{p-1}ia\equiv a^{p-1}i!\equiv i!\pmod p</script><p>而 $p$ 又与 $[1,p)$ 之中的每个数互素，说明：</p>
+<script type="math/tex; mode=display">
+a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
+</li>
+<li><p>应用费马小定理，我们就知道，当模数 $p$ 为素数，$p\nmid a$ 时，$a\times a^{p-2}\equiv 1\pmod p$ ，说明 $a^{-1}$ 就是 $a^{p-2}\bmod p$ 。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
     <title>维护日志</title>
     <url>/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/</url>
     <content><![CDATA[<p>编撰以应对并记录可能出现的技术难处。</p>
@@ -8,14 +139,30 @@
 <h1 id="2023-8-13"><a href="#2023-8-13" class="headerlink" title="2023.8.13"></a>2023.8.13</h1><ul>
 <li>重启此博客。</li>
 <li>将从 GitHub 上拉取代码的方式从 HTTPS 换成 SSH ，以确保稳定性。</li>
-<li>删除遗留的大部分无价值文章，并启动维护日志与操作指南。</li>
+<li>删除遗留的大部分无价值文章。</li>
+<li>启动《维护日志》与《操作指南》。</li>
+</ul>
+<h1 id="2023-8-14"><a href="#2023-8-14" class="headerlink" title="2023.8.14"></a>2023.8.14</h1><ul>
+<li>继续重启事宜。</li>
+<li>更新博客主题为最新版，并删去次标题。</li>
+<li>修整侧边栏，删去标签以及作者栏。</li>
+<li>修复友链页面。</li>
+<li>重写关于页面。</li>
+<li>使用 hexo-generator-index-pin-top 插件替换 hexo-generator-index 以使文章支持置顶功能。</li>
+<li>置顶维护日志。</li>
+<li>为《常用 Hexo 指令》一文添加简述。</li>
+<li>为《模拟退火学习笔记》一文添加简述。</li>
+<li>重写《 ZXY’s Law 》一文。</li>
+<li>发布《关于数论》一文。</li>
 </ul>
 ]]></content>
   </entry>
   <entry>
     <title>常用 Hexo 指令</title>
     <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<ul>
+    <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
+<a id="more"></a>
+<ul>
 <li><p>本地运行博客。</p>
 <p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
 <p>用于将博客在本地端口中部署运行。支持实时预览。</p>
@@ -55,48 +202,10 @@
       </categories>
   </entry>
   <entry>
-    <title>zxy&#39;s law</title>
-    <url>/2020/01/23/zxy%E2%80%98s-law/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2019-12-■■，在某资本主义屑校的第二次<del>期末模拟考</del>扫荡结束后，与笔者同监狱的狱友zxy在狱中研究<del>做选择题</del>反扫荡的<del>玄学</del>方式。终于，在当天稍晚他怀着满腔的激动<del>与革命热血</del>找到了我们，宣布他发现了这个方法，找到了这个世界的bug——这就是本文的主题，zxy定律。</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KR7b4.png" alt=""></p>
-<a id="more"></a>
-<h1 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h1><p>设想你在某一次考试中遇到了一道不会做的选择题，你百思不得其解，你会怎么办呢？你可能会<del>根据自己的经验</del>瞎蒙一个（标准操作），也可能会根据某个玄学方法来得出答案。比如只在B，C两项里面选（我们班主任给出的烂眼秘方），或者统计一下前面的选项，哪个少选哪个（某知名不靠谱人士）。但是现在我们找到了一个新方法，它虽然<del>带有一定的玄学的因素</del>，但它普遍适用于各科的各种选择题，并且正确率基本可以达到90%<del>只要你脸不黑的话</del>。因为它是由zxy偶然发现的，所以我们将其称为zxy’s law（zxy定律）。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><p>在一道大题中，假设有n个选择题，你已经做出了其中的m道，选A记为1，B记为2，C记为3，D记为4，设第i道的题号为$a_i$（从1号记起），计分为$b_i$，那么我们可以据此得出m个坐标：</p>
-<ul>
-<li>$(a_1,b_1),(a_2,b_2),……，(a_m,b_m)$</li>
-</ul>
-<p>根据这m个坐标我们可以得出一个m-1次函数：$l:y=\sum_{i=1}^m{c_i*x^{i-1}}$（设$c_i$为第i项的系数）。</p>
-<p>然后我们把你不会的题目的题号作为自变量x往这个函数里面代入，得出相应的y，我们再把y四舍五入对4取模后加一，($y=(\operatorname{round}y \bmod 4+4)\bmod 4+1$)得出的结果如果是1则答案为A，是2则答案为B，是3则答案为C，是4则答案为D。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="例一"><a href="#例一" class="headerlink" title="例一"></a>例一</h3><p>这有一道题（某资本主义屑校期末练习）：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
-<p>假设你已经做了第1，2，3，5题（从1记起），那么我们可以得到4个坐标：</p>
-<ul>
-<li>$(1,1)，(2,2)，(3,3)，(5,3)$</li>
-</ul>
-<p>我们把这4个坐标代入3次函数的一般形式：  $y=ax^3+bx^2+cx+d$</p>
-<p>可以得到这样一个方程组：$\begin{cases}<br>a+b+c+d=1\\<br>8a+4b+2c+d=2\\<br>27a+9b+3c+d=3\\<br>125a+25b+5c+d=3\\<br>\end{cases}$</p>
-<p>解它，我们可以得到它的解是：$(a,b,c,d)=(-\dfrac{1}{12},\dfrac{1}{2},\dfrac{1}{12},\dfrac{1}{2})$</p>
-<p>据此，我们可以得到一个3次函数：$l:y=-\dfrac{1}{12}x^3+\dfrac{1}{2}x^2+\dfrac{1}{12}x+\dfrac{1}{2}$</p>
-<p>它的图像是这样的：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>我们再把$x=4$代入这个函数，得$y=\dfrac{7}{2}$。把y四舍五入后得4，连取模都不用，答案也就是D，是正确的。</p>
-<h3 id="例二"><a href="#例二" class="headerlink" title="例二"></a>例二</h3><p><del>我鸽了</del></p>
-<h2 id="正确性证明"><a href="#正确性证明" class="headerlink" title="正确性证明"></a>正确性证明</h2><p><del>实践是检验真理的唯一标准</del></p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>但是这个方法也有缺点，比如当选择题太过分散的时候，我们会得到一次函数或无法得到函数，当选择题太过集中的时候，我们又会得到一个十多次函数（当然你也可以取样）。但是如果你要用此方法，还有一个重要前提——你是真的闲。在你花时间解一个一元多次方程组的时候，说不定其他人都可以想出正解了（语文除外），所以还是尽力想正解吧（还是语文除外）。</p>
-<p>但我还是不得不说一句：</p>
-<h3 id="玄学出奇迹！"><a href="#玄学出奇迹！" class="headerlink" title="玄学出奇迹！"></a>玄学出奇迹！</h3><p><del>（毕竟有人用这种方法做出的题比他自己用心做的对的还多）</del></p>
-]]></content>
-      <categories>
-        <category>灌水区</category>
-      </categories>
-      <tags>
-        <tag>玄学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>模拟退火学习笔记</title>
     <url>/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2020-01-14，异常中学OI​冬令营（水）的第一天，先是花式​splay​了一个上午，<del>下午忘了干了啥，</del>后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。</p>
+    <content><![CDATA[<p>首先需要说明的是这是一篇很久以前写的文章，当时的观念与现在有所不同，所以这篇文章的措辞并不严谨，而且对理论的分析也不够学术。但鉴于写作此篇时笔者水平较低，这些也是可以理解的。重要的是，在深入研究过模拟退火算法以后，我应该会重写此篇，因此，现在大家在阅读此篇时，应持保留态度。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2020-01-14，异常中学OI​冬令营（水）的第一天，先是花式​splay​了一个上午，<del>下午忘了干了啥，</del>后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。</p>
 <p><img src="https://s2.ax1x.com/2020/02/22/3KXbZR.png" alt=""></p>
 <a id="more"></a>
 <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><del>在实际生活中，</del>我们常常会遇到求函数最值的问题，那怎么办呢？我们当然可以选择爬山算法，即每次在当前最优解的附近选择一个解，如果它优于最优解，就接受它，否则不接受它，并调小选择范围，寻找下一个解。在某些情况下，它是适用的，比如下图</p>
@@ -163,8 +272,5 @@
       <categories>
         <category>学术</category>
       </categories>
-      <tags>
-        <tag>算法研究</tag>
-      </tags>
   </entry>
 </search>
