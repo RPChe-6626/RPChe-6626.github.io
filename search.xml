@@ -28,10 +28,10 @@
 <li><p>若插入后不存在双红，直接结束。</p>
 </li>
 <li><p>若插入点父亲的兄弟为黑，按照下图修正，然后结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/kvriyjfd.png" alt="image-20240520171916132"></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/kvriyjfd.png" alt=""></p>
 </li>
 <li><p>若插入点父亲的兄弟为红，按照下图修正，并对插入点的祖父递归：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4xnmnmbc.png" alt="image-20240520172001781"></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4xnmnmbc.png" alt=""></p>
 </li>
 </ol>
 </li>
@@ -46,19 +46,19 @@
 <p>以上，在情况 3 中，若该结点颜色为黑，则删除过程破坏了红黑树的性质四，即删除位置对应的叶子结点的黑高度比其余叶子小一。此时需要执行修正操作，以保持性质四。具体的，假定当前结点颜色为黑，且子树内所有叶子的黑高度相等，比其余叶子小一，考虑：</p>
 <ol>
 <li><p>兄弟为黑且无红儿子，父亲为黑。按照下图调整，并向父亲递归：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/yt5bekdx.png" alt="image-20240520183025764"></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/yt5bekdx.png" alt=""></p>
 </li>
 <li><p>兄弟为黑且无红儿子，父亲为红。按照下图调整，并结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2xaen7be.png" alt="image-20240520183822926"></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2xaen7be.png" alt=""></p>
 </li>
 <li><p>兄弟为黑且同向儿子为红。按下图调整，并结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/iycih5x7.png" alt="image-20240520184534895"></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/iycih5x7.png" alt=""></p>
 </li>
 <li><p>兄弟为黑且异向儿子为红。按下图调整，并结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4zvkpj5w.png" alt="image-20240520185323740"></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4zvkpj5w.png" alt=""></p>
 </li>
 <li><p>兄弟为红。按下图调整，并转情况 2 到 4 。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/097z77g4.png" alt="image-20240520185432285"></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/097z77g4.png" alt=""></p>
 </li>
 </ol>
 </li>
@@ -72,6 +72,41 @@
 ]]></content>
       <categories>
         <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ZXY&#39;s Law</title>
+    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
+    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+<a id="more"></a>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+</li>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+</li>
+</ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+]]></content>
+      <categories>
+        <category>灌水区</category>
       </categories>
   </entry>
   <entry>
@@ -168,41 +203,6 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
 ]]></content>
       <categories>
         <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ZXY&#39;s Law</title>
-    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
-    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
-<a id="more"></a>
-<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
-<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
-<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
-<li>证明：<del>实践是检验真理的唯一标准。</del></li>
-</ul>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
-<li><p>考虑下题：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
-</li>
-<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
-<script type="math/tex; mode=display">
-(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
-<script type="math/tex; mode=display">
-g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
-<script type="math/tex; mode=display">
-f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>并且：</p>
-<script type="math/tex; mode=display">
-f(4)=\frac 72</script><p>亦即：</p>
-<script type="math/tex; mode=display">
-p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
-</li>
-</ul>
-<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
-]]></content>
-      <categories>
-        <category>灌水区</category>
       </categories>
   </entry>
   <entry>
