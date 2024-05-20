@@ -1,38 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ZXY&#39;s Law</title>
-    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
-    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+    <title>关于红黑树</title>
+    <url>/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <content><![CDATA[<p>鉴于我所可以找到的关于这个数据结构的资料都不够理想，我在这里做一个简要的总结。</p>
 <a id="more"></a>
-<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
-<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
-<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
-<li>证明：<del>实践是检验真理的唯一标准。</del></li>
-</ul>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
-<li><p>考虑下题：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+<h2 id="红黑树的性质"><a href="#红黑树的性质" class="headerlink" title="红黑树的性质"></a>红黑树的性质</h2><ul>
+<li><p>红黑树是一种自平衡的二叉搜索树，特点是每个节点额外存储了一个“颜色”信息，可以为红或黑。</p>
 </li>
-<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<li><p>我们对红黑树的结构提出一些要求。具体的，我们希望<sup><a href="#fn_1" id="reffn_1">1</a></sup>：</p>
+<ol>
+<li>根节点为黑。</li>
+<li>红结点的儿子必为黑。</li>
+<li>叶子结点为虚拟点，且颜色必为黑<sup><a href="#fn_2" id="reffn_2">2</a></sup>。</li>
+<li>任何叶子结点到根的路径上的黑结点个数相同，称作黑高度。</li>
+</ol>
+<p>对于包含 $n$ 个数据的红黑树，其一共有 $2n+1$ 个结点。记黑高度为 $k$ ，则显然红黑树中包含了一棵深度为 $k$ 的满二叉树，于是我们有：</p>
 <script type="math/tex; mode=display">
-(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
-<script type="math/tex; mode=display">
-g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
-<script type="math/tex; mode=display">
-f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>并且：</p>
-<script type="math/tex; mode=display">
-f(4)=\frac 72</script><p>亦即：</p>
-<script type="math/tex; mode=display">
-p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+2^k-1\le 2n+1\Longrightarrow k=O(\log n)</script><p>而红黑树的高度不超过 $2k$ ，因此红黑树的高度同为 $O(\log n)$ 。</p>
 </li>
 </ul>
-<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+<h2 id="红黑树的插入操作"><a href="#红黑树的插入操作" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h2><ul>
+<li><p>为了不影响黑高度，我们将数据作为红节点按照 BST 的一般方式插入。接下来，考虑：</p>
+<ol>
+<li><p>若插入点恰为根节点，则将颜色修正为黑，结束。</p>
+</li>
+<li><p>若插入后不存在双红，直接结束。</p>
+</li>
+<li><p>若插入点父亲的兄弟为黑，按照下图修正，然后结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520171916132.png" alt="image-20240520171916132"></p>
+</li>
+<li><p>若插入点父亲的兄弟为红，按照下图修正，并对插入点的祖父递归：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520172001781.png" alt="image-20240520172001781"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="红黑树的删除操作"><a href="#红黑树的删除操作" class="headerlink" title="红黑树的删除操作"></a>红黑树的删除操作</h2><ul>
+<li><p>先按照 BST 的一般方式删除目标数据。即先定位待删除结点，再考虑：</p>
+<ol>
+<li>若其仅有一个非虚拟儿子，则此儿子必为红，该节点必为黑。使用儿子替代该节点，并染黑即可。</li>
+<li>若其有两个非虚拟儿子，则定位该节点的后继，以后继的数据替代该节点，并删除后继。</li>
+<li>若其无虚拟儿子，则直接删除。</li>
+</ol>
+<p>以上，在情况 3 中，若该结点颜色为黑，则删除过程破坏了红黑树的性质四，即删除位置对应的叶子结点的黑高度比其余叶子小一。此时需要执行修正操作，以保持性质四。具体的，假定当前结点颜色为黑，且子树内所有叶子的黑高度相等，比其余叶子小一，考虑：</p>
+<ol>
+<li><p>兄弟为黑且无红儿子，父亲为黑。按照下图调整，并向父亲递归：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520183025764.png" alt="image-20240520183025764"></p>
+</li>
+<li><p>兄弟为黑且无红儿子，父亲为红。按照下图调整，并结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520183822926.png" alt="image-20240520183822926"></p>
+</li>
+<li><p>兄弟为黑且同向儿子为红。按下图调整，并结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520184534895.png" alt="image-20240520184534895"></p>
+</li>
+<li><p>兄弟为黑且异向儿子为红。按下图调整，并结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520185323740.png" alt="image-20240520185323740"></p>
+</li>
+<li><p>兄弟为红。按下图调整，并转情况 2 到 4 。</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520185432285.png" alt="image-20240520185432285"></p>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 不同的资料中对红黑树的要求可能存在些微不同。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 以下，请读者根据语境判断是否考虑虚拟结点。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
 ]]></content>
       <categories>
-        <category>灌水区</category>
+        <category>学术</category>
       </categories>
   </entry>
   <entry>
@@ -129,6 +168,41 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
 ]]></content>
       <categories>
         <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ZXY&#39;s Law</title>
+    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
+    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+<a id="more"></a>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+</li>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+</li>
+</ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+]]></content>
+      <categories>
+        <category>灌水区</category>
       </categories>
   </entry>
   <entry>

@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>通过 SSH 拉取 GitHub 上的代码 |  RPChe_&#39;s Blog</title>
+      <title>关于红黑树 |  RPChe_&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-通过-SSH-拉取-GitHub-上的代码"
+  id="post-关于红黑树"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  通过 SSH 拉取 GitHub 上的代码
+  关于红黑树
 </h1>
  
 
@@ -75,11 +75,11 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/" class="article-date">
-  <time datetime="2023-08-12T16:00:00.000Z" itemprop="datePublished">2023-08-13</time>
+      <a href="/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/" class="article-date">
+  <time datetime="2024-05-19T16:00:00.000Z" itemprop="datePublished">2024-05-20</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/">操作指南</a>
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>
   </div>
   
 <div class="word_count">
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">253</span>
+            <span class="post-count">738</span>
         </span>
     </span>
 
@@ -96,36 +96,87 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
+  <p>鉴于我所可以找到的关于这个数据结构的资料都不够理想，我在这里做一个简要的总结。</p>
 <a id="more"></a>
-<ul>
-<li><p>配置 SSH 。</p>
-<p>下载 Git 。打开 git-bash.exe ，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
-<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
+<h2 id="红黑树的性质"><a href="#红黑树的性质" class="headerlink" title="红黑树的性质"></a>红黑树的性质</h2><ul>
+<li><p>红黑树是一种自平衡的二叉搜索树，特点是每个节点额外存储了一个“颜色”信息，可以为红或黑。</p>
 </li>
-<li><p>将公钥添加到 GitHub 。</p>
-<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
-</li>
-<li><p>使用 SSH 替换 HTTPS 。</p>
-<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
-</li>
-<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
+<li><p>我们对红黑树的结构提出一些要求。具体的，我们希望<sup><a href="#fn_1" id="reffn_1">1</a></sup>：</p>
+<ol>
+<li>根节点为黑。</li>
+<li>红结点的儿子必为黑。</li>
+<li>叶子结点为虚拟点，且颜色必为黑<sup><a href="#fn_2" id="reffn_2">2</a></sup>。</li>
+<li>任何叶子结点到根的路径上的黑结点个数相同，称作黑高度。</li>
+</ol>
+<p>对于包含 $n$ 个数据的红黑树，其一共有 $2n+1$ 个结点。记黑高度为 $k$ ，则显然红黑树中包含了一棵深度为 $k$ 的满二叉树，于是我们有：</p>
+<script type="math/tex; mode=display">
+2^k-1\le 2n+1\Longrightarrow k=O(\log n)</script><p>而红黑树的高度不超过 $2k$ ，因此红黑树的高度同为 $O(\log n)$ 。</p>
 </li>
 </ul>
+<h2 id="红黑树的插入操作"><a href="#红黑树的插入操作" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h2><ul>
+<li><p>为了不影响黑高度，我们将数据作为红节点按照 BST 的一般方式插入。接下来，考虑：</p>
+<ol>
+<li><p>若插入点恰为根节点，则将颜色修正为黑，结束。</p>
+</li>
+<li><p>若插入后不存在双红，直接结束。</p>
+</li>
+<li><p>若插入点父亲的兄弟为黑，按照下图修正，然后结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520171916132.png" alt="image-20240520171916132"></p>
+</li>
+<li><p>若插入点父亲的兄弟为红，按照下图修正，并对插入点的祖父递归：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520172001781.png" alt="image-20240520172001781"></p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="红黑树的删除操作"><a href="#红黑树的删除操作" class="headerlink" title="红黑树的删除操作"></a>红黑树的删除操作</h2><ul>
+<li><p>先按照 BST 的一般方式删除目标数据。即先定位待删除结点，再考虑：</p>
+<ol>
+<li>若其仅有一个非虚拟儿子，则此儿子必为红，该节点必为黑。使用儿子替代该节点，并染黑即可。</li>
+<li>若其有两个非虚拟儿子，则定位该节点的后继，以后继的数据替代该节点，并删除后继。</li>
+<li>若其无虚拟儿子，则直接删除。</li>
+</ol>
+<p>以上，在情况 3 中，若该结点颜色为黑，则删除过程破坏了红黑树的性质四，即删除位置对应的叶子结点的黑高度比其余叶子小一。此时需要执行修正操作，以保持性质四。具体的，假定当前结点颜色为黑，且子树内所有叶子的黑高度相等，比其余叶子小一，考虑：</p>
+<ol>
+<li><p>兄弟为黑且无红儿子，父亲为黑。按照下图调整，并向父亲递归：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520183025764.png" alt="image-20240520183025764"></p>
+</li>
+<li><p>兄弟为黑且无红儿子，父亲为红。按照下图调整，并结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520183822926.png" alt="image-20240520183822926"></p>
+</li>
+<li><p>兄弟为黑且同向儿子为红。按下图调整，并结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520184534895.png" alt="image-20240520184534895"></p>
+</li>
+<li><p>兄弟为黑且异向儿子为红。按下图调整，并结束：</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520185323740.png" alt="image-20240520185323740"></p>
+</li>
+<li><p>兄弟为红。按下图调整，并转情况 2 到 4 。</p>
+<p><img src="C:\Users\cxy\AppData\Roaming\Typora\typora-user-images\image-20240520185432285.png" alt="image-20240520185432285"></p>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 不同的资料中对红黑树的要求可能存在些微不同。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 以下，请读者根据语境判断是否考虑虚拟结点。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
  
       <!-- reward -->
       
@@ -190,7 +241,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -201,19 +252,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            维护日志
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+      <a href="/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">模拟退火学习笔记</div>
+        <div class="article-nav-title">关于数论</div>
       </a>
     
   </nav>
