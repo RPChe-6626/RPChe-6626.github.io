@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>关于数论 |  RPChe_&#39;s Blog</title>
+      <title>关于机器学习 |  RPChe_&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-关于数论"
+  id="post-关于机器学习"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  关于数论
+  关于机器学习
 </h1>
  
 
@@ -75,8 +75,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/" class="article-date">
-  <time datetime="2023-08-13T16:00:00.000Z" itemprop="datePublished">2023-08-14</time>
+      <a href="/2025/02/25/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2025-02-24T16:00:00.000Z" itemprop="datePublished">2025-02-25</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.7k</span>
+            <span class="post-count">1.4k</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">7 分钟</span>
+            <span class="post-count">6 分钟</span>
         </span>
     </span>
 </div>
@@ -111,94 +111,98 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>从基础谈起。</p>
+  <p>实在找不到什么好的资料，于是就自己来写一个吧。</p>
+<p>本文将从基础开始介绍机器学习的算法。</p>
 <a id="more"></a>
-<h2 id="整除"><a href="#整除" class="headerlink" title="整除"></a>整除</h2><ul>
-<li>对于 $a=kb$ ，称 $b$ 整除 $a$ ，记作 $b\mid a$ 。</li>
-</ul>
-<h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><ul>
-<li>即当 $b\neq0$ 时， $\gcd(a,b)=\gcd(b,a\bmod b)$ 。</li>
-<li>记 $a\bmod b=r$ ，要证明这个定理，我们考虑去说明 $a$ 与 $b$ 的公因数集合和 $b$ 与 $r$ 的公因数集合是相同的。我们知道 $a=kb+r$ ，那么对于 $b$ 和 $r$ 的公因数 $d$ ，就有 $d\mid a$ ，即 $b$ 和 $r$ 的公因数必然是 $a$ 和 $b$ 的公因数。而我们又有 $a-kb=r$ ，那么，同理，$a$ 和 $b$ 的公因数也必然是 $b$ 和 $r$ 的公因数，则原式成立。</li>
-</ul>
-<h2 id="二元不定方程"><a href="#二元不定方程" class="headerlink" title="二元不定方程"></a>二元不定方程</h2><h3 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h3><ul>
-<li>用于得到不定方程 $ax+by=g$ 的某一组解，其中 $g=\gcd(a,b)$ 。</li>
-<li>具体的，我们考虑如何修改欧几里得算法。考虑递归的过程，不妨假定我们已经得到了方程 $by+rx=g$ 的解，其中 $r=a-kb$ 。那么就有 $by+(a-kb)\times x=g$ ，即 $ax+b(y-kx)=g$ ，这样我们也就得到了当前状态的解。</li>
-</ul>
-<h3 id="斐蜀定理"><a href="#斐蜀定理" class="headerlink" title="斐蜀定理"></a>斐蜀定理</h3><ul>
-<li>对于方程 $ax+by=m$ ，其有解的充要条件是 $\gcd(a,b)\mid m$ 。</li>
-<li>先证必要性。记 $g=\gcd(a,b)$ ，我们知道 $ax+by=kg$ 必然存在，即 $m=kg$ ，$g\mid m$ 。再证充分性。我们知道，若方程 $ax’+by’=g$ 有解 $\begin{cases}x’=x’_0\y’=y’_0\end{cases}$ ，那么原方程就必然存在解 $\begin{cases}x_0=x’_0m/g\y_0=y’_0m/g\end{cases}$ 。而由扩展欧几里得算法，我们可以断言，解 $\begin{cases}x’=x’_0\y’=y’_0\end{cases}$ 必然存在，从而充分性得证。</li>
-</ul>
-<h3 id="二元不定方程解的结构"><a href="#二元不定方程解的结构" class="headerlink" title="二元不定方程解的结构"></a>二元不定方程解的结构</h3><ul>
-<li><p>对于方程 $ax+by=m$ ，若其存在一组整数解 $\begin{cases}x=x_0\y=y_0\end{cases}$ ，则其所有整数解可以表示为 $\begin{cases}x=x_0+kb/g\y=y_0-ka/g\end{cases}$ ，其中 $k\in\mathbb Z,g=\gcd(a,b)$ 。</p>
-</li>
-<li><p>我们从题设开始。考虑 $ax_0+by_0=m$ ，对于方程在 $\begin{cases}x=x_0\y=y_0\end{cases}$ 之外的整数解 $\begin{cases}x=x_1\y=y_1\end{cases}$ ，必然有 $\begin{cases}x_1=x_0+x’\y_1=y_0+y’\end{cases}$ ，其中 $x’,y’\in\mathbb Z$ 。那么我们就有：</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-    a(x_0+x')+b(y_0+y')&=m\\
-    ax_0+by_0+ax'+by'&=m\\
-    ax'+by'&=0\\
-    -ax'&=by'
-\end{aligned}</script><p>记 $g=\gcd(a,b),a’=\dfrac{-a}{g},b’=\dfrac{b}{g}$ ，那么就有：</p>
+\newcommand {\bb}{\mathbb}
+\newcommand {\T}{^{\rm T}}
+\newcommand {\ss}{\mathcal}
+\newcommand {\al}{\alpha}
+\newcommand {\na}{\nabla}
+\newcommand {\ze}{\zeta}
+\newcommand {\ga}{\gamma}</script><h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><ul>
+<li>即 Support vector machine ，SVM 。我们从两类划分的问题谈起。</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>考虑以下问题：给定 $\bb R^d$ 中的 $n$ 个点 $x_1,\cdots,x_n$ ，以及它们的分类 $y_1,\cdots,y_n\in{-1，1}$ ，请找到一个最好的 $d$ 维超平面，划分开这两类点。</li>
+</ul>
+<h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><ul>
+<li>记目标超平面为 $P:w\T x+b=0$ 。考虑任意一点 $x\in\bb R^d$ ，容易推出其到 $P$ 的距离恰为<sup><a href="#fn_1" id="reffn_1">1</a></sup>：<script type="math/tex; mode=display">
+\frac{|w\T x+b|}{\|w\|}</script>其中范数取 $L_2$ 。不妨假设存在 $P$ 完全分开这两类点。我们希望 $P$ 是尽量 robust 的，因此令所有点到 $P$ 的最小距离最大，即：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{w,b}\min_{i\in [n]}&& \frac{y_i(w\T x_i+b)}{\|w\|}\\
+    &\text{s.t.} &&y_i(w\T x_i+b)>0&&\forall i\in[n]
+\end{align}</script>不妨令 $\min_{i\in[n]}y_i(w\T x_i+b)=1$ ，则：<script type="math/tex; mode=display">
+\begin{align}
+&\max_{w,b}&& \frac{1}{\|w\|}\\
+&\text{s.t.} && y_i(w\T x_i+b)\ge 1&&\forall i\in[n]\\
+\end{align}</script>显然取得最优解时，$\max_{i\in[n]}y_i(w\T x_i+b)=1$ 必然满足。进一步我们将其写作：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w\\
+&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
+\end{align}</script>这就是 SVM 的标准形式。对于使得约束取等的点，我们将其称作 support vector 。写出上述优化问题的 Lagrangian ，得到：<script type="math/tex; mode=display">
+\ss L(w,b,\al)=\frac 12w\T w+\sum_{i=1}^n \al_i(1-y_i(w\T x_i+b))</script>则原问题等价于：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&&\max_{\al}\ss L(w,b,\al)\\
+&\text{s.t.} &&\al\ge 0\\
+\end{align}</script>其 Lagrange dual 为：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{\al}\min_{w,b}&&\ss L(w,b,\al)\\
+    &\text{s.t.} &&\al\ge 0\\
+\end{align}</script>对偶问题与原问题取等时满足 KKT 条件，即：<sup><a href="#fn_2" id="reffn_2">2</a></sup><script type="math/tex; mode=display">
+\begin{cases}
+    \na \ss L(w,b,a)=0\\
+    \al_i (1-y_i(w\T x_i+b))=0&\forall i\in[n]
+\end{cases}</script>这样：<script type="math/tex; mode=display">
+w=\sum_{i=1}^n \al_i y_i x_i\\
+\sum_{i=1}^n \al_i y_i=0\\</script>带入 Lagrange dual ，并考虑对偶可行性与 Lagrange 条件得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_jx_i\T x_j\\
+&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
+&&&\al\ge 0\\
+\end{align}</script>从技术上解这个凸优化即可。而通过 KKT 条件和 support vector ，我们可以解出 $w$ 和 $b$ 。</li>
+</ul>
+<h2 id="Soft-SVM"><a href="#Soft-SVM" class="headerlink" title="Soft SVM"></a>Soft SVM</h2><ul>
+<li>以上的问题被称作 Hard SVM ，顾名思义，因为强制要求了超平面必须分离两类点。如果不强制要求分离，我们考虑引入分类错误的惩罚函数。具体的，Hard SVM 的形式为：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w\\
+&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
+\end{align}</script>我们加入一个惩罚函数<sup><a href="#fn_3" id="reffn_3">3</a></sup>，得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w+C\sum_{i=1}^n\max\{0,1-y_i(w\T x_i+b)\}\\
+\end{align}</script>重写得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b,\xi}&&\frac12w\T w+C\sum_{i=1}^n\xi_i\\
+    &\text{s.t.}&&y_i(w\T x_i+b)\ge 1-\xi_i&&\forall i\in[n]\\
+    &&&\xi\ge 0
+\end{align}</script>这就是带有 hinge loss 的 Soft SVM 。其处理方式和上述的 Hard SVM 基本相同，这里就不再演示了。</li>
+</ul>
+<h2 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h2><ul>
+<li><p>在很多情况下给定的点类不一定是适合用超平面划分的。一个好的思路是，我们可以通过选定某种特征映射，将 $\bb R^d$ 中的点映射到高维空间（也称特征空间）中去，然后在高维空间中做线性划分。这样做的好处是，高维空间中的超平面在原先的 $\bb R^d$ 中不一定是线性的，因此适应性会更好。具体的，考虑定义域为 $\bb R^d$ ，值域为某个希尔伯特空间的映射 $\phi$ ，则 dual SVM 的形式为：</p>
 <script type="math/tex; mode=display">
-a'x'=b'y'</script><p>其中 $a’\bot b’$ 。进一步，我们有：</p>
+\begin{align}
+    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_j\phi(x_i)\T \phi(x_j)\\
+&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
+&&&\al\ge 0\\
+\end{align}</script><p>而最终的分类模型为：</p>
 <script type="math/tex; mode=display">
-a'x'=b'y'\Rightarrow a'x'\mid b'y'\Rightarrow a'\mid b'y' \Rightarrow a'\mid y'</script><p>类似的，也有 $b’\mid x’$ 。那么若记 $\dfrac {x’}{b’}=x’’$ ，$\dfrac {y’}{a’}=y’’$ ，就有：</p>
-<script type="math/tex; mode=display">
-a'b'x''=a'b'y''\Rightarrow x''=y''</script><p>再记 $x’’=y’’=k\in\mathbb Z$ ，那么可以发现，不同的 $k$ 和不同的解恰好一一对应，且有 $\begin{cases}x’=b’x’’=kb/g\y’=a’y’’=-ka/g\end{cases}$ ，即 $\begin{cases}x_1=x_0+kb/g\y_1=y_0-ka/g\end{cases}$ 。</p>
+f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题是我们很难表示高维空间的向量。注意到我们实际上只关注向量的内积，实际上只需考虑如何快速求内积即可，这种技巧称作 Kernel Trick 。我们将计算特征映射的内积的函数称作核函数，记作 $K(x_i,x_j)$ 。一个简单的例子是多项式核函数，即，注意到低维的内积的幂等于高维中高次项构成的向量的内积。利用这种思路，可以构造出多项式核函数 $K(x_i,x_j)=(\zeta+\ga x_i\T x_j)^p$ ，其中 $\ze,\ga\in \bb R,p\in\bb N$ ，对应了 $\dbinom {d+p}{p}$ 维空间中的内积。<sup><a href="#fn_4" id="reffn_4">4</a></sup>核函数有很多种类，这里就不一一列举了。</p>
+<p>一个另外的问题是，给定一个函数，我们如何判定其可否用作核函数。一个简单的思路是，考虑内积的性质，我们只需验证对于任意的 $x_1,\cdots x_n$ ，核矩阵 $[K(x_i,x_j)]$ 都是半正定的即可，这里就不提供详细证明了。</p>
 </li>
 </ul>
-<h2 id="模意义下的整数系统"><a href="#模意义下的整数系统" class="headerlink" title="模意义下的整数系统"></a>模意义下的整数系统</h2><h3 id="同余"><a href="#同余" class="headerlink" title="同余"></a>同余</h3><ul>
-<li><p>取模运算 $\bmod$ ：对于 $a\bmod m=b$ ，其中 $m\neq0$ ，其满足 $a=km+b$ ，且 $0\le b&lt;m$ 。</p>
-<p>其运算优先级与乘除相同。</p>
-<p>取模运算存在一些非常基本且重要的性质，例如：</p>
-<ol>
-<li>$(a+ b)\bmod m=(a\bmod m+ b\bmod m)\bmod m$ 。</li>
-<li>$(a- b)\bmod m=(a\bmod m- b\bmod m)\bmod m$ 。</li>
-<li>$a\times b\bmod m=((a\bmod m)\times (b\bmod m))\bmod m$ 。</li>
-</ol>
-<p>是容易验证的。</p>
-</li>
-<li><p>同余：称 $a$ 和 $b$ 关于 $\bmod m$ 同余，当且仅当 $a\bmod m=b \bmod m$ ，记作 $a\equiv b \pmod m$ 。</p>
-</li>
-</ul>
-<h3 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h3><ul>
-<li><p>我们知道，在同余的框架下，一般意义的除法是做不了的。但是，我们考虑有理数集当中的除法，可以将其看作是乘法的逆运算。对于非 $0$ 有理数 $a$ ，必然存在 $a^{-1}\in \mathbb R$ 使得 $a^{-1}\times a=1$ 。我们试着把这个概念推广到整数系统中去。具体的，我们考虑在 $\bmod m$ 的意义下，对于 $a\in[0,m)$ ，是否存在 $a^{-1}\in [0,m)$ 使得 $a\times a^{-1}\equiv 1\pmod m$ 。我们把以上的 $a^{-1}$ 称为乘法逆元。</p>
-</li>
-<li><p>我们接着考虑模 $m$ 的整数系统中的 $a^{-1}$ 应该具有什么性质：</p>
-<ol>
-<li><p>$a=0$ 没有逆元。</p>
-</li>
-<li><p>$a^{-1}$ 至多存在一个。要证明这个命题，我们使用反证法。不妨假定存在 $x_1,x_2\in [1,m),x_1\neq x_2,{\rm s.t.} a\times x_1\equiv a\times x_2\equiv 1\pmod m$ ，那么我们就有：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    a\times x_1&\equiv a\times x_2\pmod m\\
-    a\times x_1^2&\equiv a\times x_1\times x_2\pmod m\\
-    x_1&\equiv x_2 \pmod m
-\end{aligned}</script><p>这与定义冲突，那么假设不成立，不可能存在多于 $1$ 个的逆元。</p>
-</li>
-<li><p>$a^{-1}$ 存在，当且仅当 $a\bot m$ 。记 $x=a^{-1}$ ，那么我们有 $a\times x\equiv 1\pmod m$ ，等价于 $ax+km=1$ ，其中 $k\in \mathbb Z$ 。那么由斐蜀定理，上述方程有解，当且仅当 $\gcd(a,m)\mid 1$ ，即 $a\bot m$ ，则原命题成立。</p>
-</li>
-</ol>
-</li>
-<li><p>那么我们该如何求取乘法逆元呢？第一种思路，是将同余式看作不定方程，再使用扩展欧几里得算法求解。而第二种，则是使用下面要提到的费马小定理。</p>
-</li>
-</ul>
-<h3 id="模意义下的整数系统中的分数"><a href="#模意义下的整数系统中的分数" class="headerlink" title="模意义下的整数系统中的分数"></a>模意义下的整数系统中的分数</h3><ul>
-<li>既然我们已经把有理数的除法概念推广到了模意义下的整数系统当中，那么进一步导出分数的概念就也是很自然的了。具体的，对于分数 $\dfrac ab$ ，我们希望在 $\bmod m$ 的整数系统中去找到一个对应的数，使其代数性质与 $\dfrac ab$ 相似。</li>
-<li>具体的，我们设这个数为 $x$ ，那么就是要使其满足 $x\times b\equiv a\pmod m$ 。若 $b\bot m$ ，即 $b^{-1}$ 存在，那么我们立即就可以知道，在这个系统中有且仅有一个 $x\equiv a\times b^{-1}\pmod m$ 满足条件。而若 $b\not\bot m$ ，此时上式就等价于 $bx+my=a$ ，其有解，当且仅当 $\gcd(b,m)=g\mid a$ ，且通解为 $x=x_0+km/g$ ，也就是说此时合法的 $x$ 的数目并不确定，甚至可以为 $0$ 。</li>
-</ul>
-<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><ul>
-<li><p>对于 $p\in \mathbb P$ ，$p\nmid a$ ，有 $a^{p-1}\equiv 1 \pmod p$ 。</p>
-</li>
-<li><p>要证明这个定理，我们考虑 $a,2a,3a,\dots ,(p-1)a$ 。首先，我们有这 $p-1$ 个数在 $\bmod p$ 意义下互不相同。因为假定存在 $x_1,x_2\in[1,p),x_1\neq x_2$ ，使得 $x_1a\equiv x_2a\pmod p$ ，而由 $a\bot p$ ，我们有 $x_1aa^{-1}\equiv x_2aa^{-1}\pmod p$ ，即 $x_1\equiv x_2\pmod p$ ，与假设不符，说明假设不成立。这样，我们就有：</p>
-<script type="math/tex; mode=display">
-\prod_{i=1}^{p-1}ia\equiv a^{p-1}i!\equiv i!\pmod p</script><p>而 $p$ 又与 $[1,p)$ 之中的每个数互素，说明：</p>
-<script type="math/tex; mode=display">
-a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
-</li>
-<li><p>应用费马小定理，我们就知道，当模数 $p$ 为素数，$p\nmid a$ 时，$a\times a^{p-2}\equiv 1\pmod p$ ，说明 $a^{-1}$ 就是 $a^{p-2}\bmod p$ 。</p>
-</li>
-</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 只需注意到 $w$ 为 $P$ 的法向量即可。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 由互补松弛性可以容易的导出哪些 $x_i$ 是 support vector 。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 即 hinge loss 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 括号里有 $d+1$ 个不同的项，再考虑组合得到的本质不同的项数即可。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
  
       <!-- reward -->
       
@@ -263,7 +267,7 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2025/02/25/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -274,19 +278,10 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
    
   <nav class="article-nav">
     
-      <a href="/2023/08/14/zxy%E2%80%98s-law/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            ZXY&#39;s Law
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/" class="article-nav-link">
+      <a href="/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">常用 Hexo 指令</div>
+        <div class="article-nav-title">关于红黑树</div>
       </a>
     
   </nav>
