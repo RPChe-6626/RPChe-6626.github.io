@@ -152,6 +152,18 @@ l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好�
 &\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
 \end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
 </ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
 <h1 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h1><ul>
 <li>我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。</li>
 </ul>
@@ -192,6 +204,9 @@ l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好�
 <p>特别的，Adam 在很多时候都是一个好的方法，建议的初始参数 <code>beta1 = 0.9</code> ，<code>beta2 = 0.999</code> ，<code>learning_rate = 1e-3, 5e-4, 1e-4</code> 。</p>
 </li>
 </ul>
+<blockquote id="fn_4">
+<sup>4</sup>. 这样的写法应该有更严格的推导。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
 <h2 id="基于二阶微分的优化"><a href="#基于二阶微分的优化" class="headerlink" title="基于二阶微分的优化"></a>基于二阶微分的优化</h2><ul>
 <li>基于二阶微分的优化也是有研究的，但是并不常用，因为计算 Hessian 矩阵以及矩阵求逆的复杂度开销太高了。这里就不详谈了。</li>
 </ul>
@@ -215,6 +230,15 @@ f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/acc029y8.png" style="zoom: 50%;" /></p>
 </li>
 </ul>
+<blockquote id="fn_6">
+<sup>6</sup>. 当然多次矩阵乘法与单个矩阵之间仍然是有区别的，这被称作 Multi Layer Linear Classifer 。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. 这里演示的神经网络是没有 bias term 的，但是一般的神经网络应该是要带上的。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_8">
+<sup>8</sup>. 神经网络不是一个凸优化。截止 2019 年，神经网络的收敛性以及类似性质的证明似乎还是 open problem 。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
 <h2 id="Neural-Network-和生物学神经网络的联系"><a href="#Neural-Network-和生物学神经网络的联系" class="headerlink" title="Neural Network 和生物学神经网络的联系"></a>Neural Network 和生物学神经网络的联系</h2><ul>
 <li><p>实际上，Neural Nerwork 和生物学神经网络并没有必然的联系，相对准确的说法是前者的发明受到了后者的启发。在这里我们就大致讲讲两者之间的相似性。</p>
 </li>
@@ -231,30 +255,6 @@ f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^
 <p>特别的，这里的神经网络是带有 bias term 的。</p>
 </li>
 </ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_4">
-<sup>4</sup>. 这样的写法应该有更严格的推导。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_5">
-<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_6">
-<sup>6</sup>. 当然多次矩阵乘法与单个矩阵之间仍然是有区别的，这被称作 Multi Layer Linear Classifer 。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_7">
-<sup>7</sup>. 这里演示的神经网络是没有 bias term 的，但是一般的神经网络应该是要带上的。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_8">
-<sup>8</sup>. 神经网络不是一个凸优化。截止 2019 年，神经网络的收敛性以及类似性质的证明似乎还是 open problem 。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
-</blockquote>
  
       <!-- reward -->
       
