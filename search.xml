@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>ZXY&#39;s Law</title>
-    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
-    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+    <title>维护日志</title>
+    <url>/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<p>编撰以应对并记录可能出现的技术难处。</p>
 <a id="more"></a>
-<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
-<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
-<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
-<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+<h2 id="2023-8-13"><a href="#2023-8-13" class="headerlink" title="2023.8.13"></a>2023.8.13</h2><ul>
+<li>重启此博客。</li>
+<li>将从 GitHub 上拉取代码的方式从 HTTPS 换成 SSH ，以确保稳定性。</li>
+<li>删除遗留的大部分无价值文章。</li>
+<li>启动《维护日志》与《操作指南》。</li>
 </ul>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
-<li><p>考虑下题：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
-</li>
-<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
-<script type="math/tex; mode=display">
-(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
-<script type="math/tex; mode=display">
-g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
-<script type="math/tex; mode=display">
-f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>并且：</p>
-<script type="math/tex; mode=display">
-f(4)=\frac 72</script><p>亦即：</p>
-<script type="math/tex; mode=display">
-p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
-</li>
+<h2 id="2023-8-14"><a href="#2023-8-14" class="headerlink" title="2023.8.14"></a>2023.8.14</h2><ul>
+<li>继续重启事宜。</li>
+<li>更新博客主题为最新版，并删去次标题。</li>
+<li>修整侧边栏，删去标签以及作者栏。</li>
+<li>修复友链页面。</li>
+<li>重写关于页面。</li>
+<li>使用 hexo-generator-index-pin-top 插件替换 hexo-generator-index 以使文章支持置顶功能。</li>
+<li>置顶维护日志。</li>
+<li>为《常用 Hexo 指令》一文添加简述。</li>
+<li>为《模拟退火学习笔记》一文添加简述。</li>
+<li>重写《 ZXY’s Law 》一文。</li>
+<li>发布《关于数论》一文。</li>
 </ul>
-<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+<h2 id="2024-5-20"><a href="#2024-5-20" class="headerlink" title="2024.5.20"></a>2024.5.20</h2><ul>
+<li>发布《关于红黑树》一文。</li>
+</ul>
 ]]></content>
-      <categories>
-        <category>灌水区</category>
-      </categories>
   </entry>
   <entry>
     <title>关于深度学习</title>
@@ -182,6 +176,46 @@ f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^
 <p>特别的，这里的神经网络是带有 bias term 的。</p>
 </li>
 </ul>
+<h1 id="反向传播"><a href="#反向传播" class="headerlink" title="反向传播"></a>反向传播</h1><ul>
+<li>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</li>
+</ul>
+<h2 id="问题背景-4"><a href="#问题背景-4" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
+</ul>
+<h2 id="算法描述-4"><a href="#算法描述-4" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
+<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
+<script type="math/tex; mode=display">
+f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
+<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
+<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
+<ol>
+<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
+<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
+<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
+</ol>
+<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
+</li>
+</ul>
+<blockquote id="fn_9">
+<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h2><ul>
+<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
+</li>
+<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
+</li>
+</ul>
+<h2 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h2><ul>
+<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
+<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
+</ul>
+<blockquote id="fn_10">
+<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -372,51 +406,38 @@ f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题�
       </categories>
   </entry>
   <entry>
-    <title>维护日志</title>
-    <url>/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/</url>
-    <content><![CDATA[<p>编撰以应对并记录可能出现的技术难处。</p>
+    <title>ZXY&#39;s Law</title>
+    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
+    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
 <a id="more"></a>
-<h2 id="2023-8-13"><a href="#2023-8-13" class="headerlink" title="2023.8.13"></a>2023.8.13</h2><ul>
-<li>重启此博客。</li>
-<li>将从 GitHub 上拉取代码的方式从 HTTPS 换成 SSH ，以确保稳定性。</li>
-<li>删除遗留的大部分无价值文章。</li>
-<li>启动《维护日志》与《操作指南》。</li>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
 </ul>
-<h2 id="2023-8-14"><a href="#2023-8-14" class="headerlink" title="2023.8.14"></a>2023.8.14</h2><ul>
-<li>继续重启事宜。</li>
-<li>更新博客主题为最新版，并删去次标题。</li>
-<li>修整侧边栏，删去标签以及作者栏。</li>
-<li>修复友链页面。</li>
-<li>重写关于页面。</li>
-<li>使用 hexo-generator-index-pin-top 插件替换 hexo-generator-index 以使文章支持置顶功能。</li>
-<li>置顶维护日志。</li>
-<li>为《常用 Hexo 指令》一文添加简述。</li>
-<li>为《模拟退火学习笔记》一文添加简述。</li>
-<li>重写《 ZXY’s Law 》一文。</li>
-<li>发布《关于数论》一文。</li>
-</ul>
-<h2 id="2024-5-20"><a href="#2024-5-20" class="headerlink" title="2024.5.20"></a>2024.5.20</h2><ul>
-<li>发布《关于红黑树》一文。</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>常用 Hexo 指令</title>
-    <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
-<a id="more"></a>
-<ul>
-<li><p>本地运行博客。</p>
-<p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
-<p>用于将博客在本地端口中部署运行。支持实时预览。</p>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
 </li>
-<li><p>更新博客。</p>
-<p>命令：<code>hexo clean</code> 意义不清楚。 <code>hexo g</code> 生成本地文件。<code>hexo d</code> 上传博客。</p>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
 </li>
 </ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
 ]]></content>
       <categories>
-        <category>操作指南</category>
+        <category>灌水区</category>
       </categories>
   </entry>
   <entry>
@@ -516,6 +537,50 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
       </categories>
   </entry>
   <entry>
+    <title>常用 Hexo 指令</title>
+    <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
+<a id="more"></a>
+<ul>
+<li><p>本地运行博客。</p>
+<p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
+<p>用于将博客在本地端口中部署运行。支持实时预览。</p>
+</li>
+<li><p>更新博客。</p>
+<p>命令：<code>hexo clean</code> 意义不清楚。 <code>hexo g</code> 生成本地文件。<code>hexo d</code> 上传博客。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>通过 SSH 拉取 GitHub 上的代码</title>
+    <url>/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
+<a id="more"></a>
+<ul>
+<li><p>配置 SSH 。</p>
+<p>下载 Git 。打开 git-bash.exe ，输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
+<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
+</li>
+<li><p>将公钥添加到 GitHub 。</p>
+<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
+</li>
+<li><p>使用 SSH 替换 HTTPS 。</p>
+<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
+</li>
+<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作指南</category>
+      </categories>
+  </entry>
+  <entry>
     <title>模拟退火学习笔记</title>
     <url>/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>首先需要说明的是这是一篇很久以前写的文章，当时的观念与现在有所不同，所以这篇文章的措辞并不严谨，而且对理论的分析也不够学术。但鉴于写作此篇时笔者水平较低，这些也是可以理解的。重要的是，在深入研究过模拟退火算法以后，我应该会重写此篇，因此，现在大家在阅读此篇时，应持保留态度。</p>
@@ -585,31 +650,6 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
 ]]></content>
       <categories>
         <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>通过 SSH 拉取 GitHub 上的代码</title>
-    <url>/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
-<a id="more"></a>
-<ul>
-<li><p>配置 SSH 。</p>
-<p>下载 Git 。打开 git-bash.exe ，输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
-<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
-</li>
-<li><p>将公钥添加到 GitHub 。</p>
-<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
-</li>
-<li><p>使用 SSH 替换 HTTPS 。</p>
-<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
-</li>
-<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作指南</category>
       </categories>
   </entry>
 </search>
