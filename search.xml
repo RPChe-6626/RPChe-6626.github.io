@@ -234,7 +234,7 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
 \newcommand {\al}{\alpha}
 \newcommand {\na}{\nabla}
 \newcommand {\ze}{\zeta}
-\newcommand {\ga}{\gamma}</script><p><a href="2023/08/14/关于数论">test</a></p>
+\newcommand {\ga}{\gamma}</script><p><a href="\2023\08\14\关于数论">test</a></p>
 <h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><ul>
 <li>即 Support vector machine ，SVM 。我们从两类划分的问题谈起。</li>
 </ul>
