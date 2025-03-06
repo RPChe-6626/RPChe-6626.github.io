@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">821</span>
+            <span class="post-count">808</span>
         </span>
     </span>
 
@@ -119,13 +119,10 @@
 \newcommand {\dv}{\backslash}
 \newcommand {\P}{\bb P}
 \newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="Linear-Classifier"><a href="#Linear-Classifier" class="headerlink" title="Linear Classifier"></a>Linear Classifier</h1><ul>
-<li>即使用超平面来划分数据。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
 <li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
 </ul>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
 <li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
 f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
 L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
@@ -233,9 +230,9 @@ l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好�
       </a>
     
     
-      <a href="/2025/03/06/DL/GD/" class="article-nav-link">
+      <a href="/2025/03/06/DL/NN/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">梯度下降法</div>
+        <div class="article-nav-title">神经网络</div>
       </a>
     
   </nav>

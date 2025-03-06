@@ -17,6 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>梯度下降法</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/GD/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/GD/</id>
+    <published>2025-03-05T16:00:00.000Z</published>
+    <updated>2025-03-05T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;即 Gradient Descent 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>反向传播</title>
     <link href="https://rpche-6626.github.io/2025/03/06/DL/BP/"/>
     <id>https://rpche-6626.github.io/2025/03/06/DL/BP/</id>
@@ -55,15 +74,15 @@
   </entry>
   
   <entry>
-    <title>梯度下降法</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/GD/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/GD/</id>
+    <title>神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
     <published>2025-03-05T16:00:00.000Z</published>
     <updated>2025-03-05T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;即 Gradient Descent 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。&lt;/p&gt;
+      &lt;p&gt;即 Neural Networks 。&lt;/p&gt;
     
     </summary>
     
@@ -83,25 +102,6 @@
     <summary type="html">
     
       &lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>神经网络</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
-    <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-05T16:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;即 Neural Networks 。&lt;/p&gt;
     
     </summary>
     
@@ -170,25 +170,6 @@
   </entry>
   
   <entry>
-    <title>关于数论</title>
-    <link href="https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/"/>
-    <id>https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</id>
-    <published>2023-08-13T16:00:00.000Z</published>
-    <updated>2023-08-13T16:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;从基础谈起。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>ZXY&#39;s Law</title>
     <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
     <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
@@ -208,18 +189,20 @@
   </entry>
   
   <entry>
-    <title>维护日志</title>
-    <link href="https://rpche-6626.github.io/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/"/>
-    <id>https://rpche-6626.github.io/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/</id>
-    <published>2023-08-12T16:00:00.000Z</published>
-    <updated>2023-08-12T16:00:00.000Z</updated>
+    <title>关于数论</title>
+    <link href="https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/"/>
+    <id>https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</id>
+    <published>2023-08-13T16:00:00.000Z</published>
+    <updated>2023-08-13T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;编撰以应对并记录可能出现的技术难处。&lt;/p&gt;
+      &lt;p&gt;从基础谈起。&lt;/p&gt;
     
     </summary>
     
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
   </entry>
@@ -239,6 +222,23 @@
     
     
       <category term="操作指南" scheme="https://RPChe-6626.github.io/categories/%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>维护日志</title>
+    <link href="https://rpche-6626.github.io/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/"/>
+    <id>https://rpche-6626.github.io/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/</id>
+    <published>2023-08-12T16:00:00.000Z</published>
+    <updated>2023-08-12T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;编撰以应对并记录可能出现的技术难处。&lt;/p&gt;
+    
+    </summary>
+    
     
     
   </entry>
