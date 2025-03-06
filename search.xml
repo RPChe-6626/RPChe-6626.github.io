@@ -334,7 +334,7 @@ f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题�
   </entry>
   <entry>
     <title>关于红黑树</title>
-    <url>/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <url>/2024/05/20/Test/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<p>鉴于我所可以找到的关于这个数据结构的资料都不够理想，我在这里做一个简要的总结。</p>
 <a id="more"></a>
 <h2 id="红黑树的性质"><a href="#红黑树的性质" class="headerlink" title="红黑树的性质"></a>红黑树的性质</h2><ul>
@@ -538,25 +538,6 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
       </categories>
   </entry>
   <entry>
-    <title>常用 Hexo 指令</title>
-    <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
-<a id="more"></a>
-<ul>
-<li><p>本地运行博客。</p>
-<p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
-<p>用于将博客在本地端口中部署运行。支持实时预览。</p>
-</li>
-<li><p>更新博客。</p>
-<p>命令：<code>hexo clean</code> 意义不清楚。 <code>hexo g</code> 生成本地文件。<code>hexo d</code> 上传博客。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作指南</category>
-      </categories>
-  </entry>
-  <entry>
     <title>通过 SSH 拉取 GitHub 上的代码</title>
     <url>/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
     <content><![CDATA[<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
@@ -574,6 +555,25 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
 <p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
 </li>
 <li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>常用 Hexo 指令</title>
+    <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
+<a id="more"></a>
+<ul>
+<li><p>本地运行博客。</p>
+<p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
+<p>用于将博客在本地端口中部署运行。支持实时预览。</p>
+</li>
+<li><p>更新博客。</p>
+<p>命令：<code>hexo clean</code> 意义不清楚。 <code>hexo g</code> 生成本地文件。<code>hexo d</code> 上传博客。</p>
 </li>
 </ul>
 ]]></content>
