@@ -112,7 +112,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p>这应该是目前最强大的处理图像识别问题的工具。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0ov8ymqi.png" alt=""></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png" alt=""></p>
 <a id="more"></a>
 <script type="math/tex; mode=display">
 \newcommand {\be}{\beta}
@@ -145,7 +145,7 @@
 </li>
 </ul>
 <h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
-<li><p>通过 Convolutional Layer 、Pooling Layer 以及 Fully Connected Layer ，我们就可以搭建出完整的 CNN 模型了。下图展示了经典的 Lecun 搭建的 CNN 模型 LeNet-5 ：</p>
+<li><p>通过 Convolutional Layer 、Pooling Layer 以及 Fully Connected Layer ，我们就可以搭建出完整的 CNN 模型了。下图展示了经典的 Lecun 搭建的 CNN 模型 LeNet-5<sup><a href="#fn_7" id="reffn_7">7</a></sup> ：</p>
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/uhuzac2o.png" alt=""></p>
 <p>但有一个棘手的问题是，随着网络的深度不断加深，使其收敛变得非常困难。<sup><a href="#fn_3" id="reffn_3">3</a></sup>相对比较近的工作提出了一个技巧，即所谓的 Batch Normalization 。不妨想想深度网络难以收敛的潜在原因：我们的优化方式是基于梯度的，那么对于单一变量，其偏导等价于固定其余所有变量的取值，然后选择这个变量下降最快的方向。在迭代的过程当中，所有变量会同时更新，导致不同层的变量之间的变动缺乏联系。从而为了避免损失函数的剧烈震荡，学习率就必须足够小，导致了收敛速度慢。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
 <p>具体的，为了辅助收敛，我们希望神经网络中的每一层所接受的分布<sup><a href="#fn_5" id="reffn_5">5</a></sup>满足比较好的性质，因此针对每一个 channel ，我们要求训练集上所有数据的 feature map 的分布满足期望为 0 且方差为 1 。下图是对 Fully Connected Layer 做 Batch Normalization 的演示：</p>
@@ -166,6 +166,9 @@
 </blockquote>
 <blockquote id="fn_6">
 <sup>6</sup>. Justin 说可能会导致一些问题。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. Lynette<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
 </blockquote>
  
       <!-- reward -->
@@ -242,19 +245,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2025/03/06/DL/GD/" class="article-nav-link">
+      <a href="/2025/03/06/DL/KNN/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            梯度下降法
+            K-近邻与交叉验证
           
         </div>
       </a>
     
     
-      <a href="/2025/03/06/DL/KNN/" class="article-nav-link">
+      <a href="/2025/03/06/DL/GD/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">K-近邻与交叉验证</div>
+        <div class="article-nav-title">梯度下降法</div>
       </a>
     
   </nav>
