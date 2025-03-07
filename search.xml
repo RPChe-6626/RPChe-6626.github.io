@@ -22,6 +22,9 @@
 <li><p><a href="\2025\03\06\DL\BP">反向传播</a></p>
 <p>介绍了 Computational Graph 上的 Back Propagation ，并简要讨论了对复杂网络求梯度的技巧。</p>
 </li>
+<li><p><a href="\2025\03\06\DL\CNN">卷积神经网络</a></p>
+<p>介绍了最主流的用于图像识别的 Convolutional Neural Network ，包括 Batch Normalization 。</p>
+</li>
 </ol>
 ]]></content>
       <categories>
@@ -56,6 +59,101 @@
 <li>发布《关于红黑树》一文。</li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>线性分类器</title>
+    <url>/2025/03/06/DL/LC/</url>
+    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
+f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
+l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
+l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
+\begin{align}
+&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
+\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>反向传播</title>
+    <url>/2025/03/06/DL/BP/</url>
+    <content><![CDATA[<p>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
+<script type="math/tex; mode=display">
+f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
+<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
+<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
+<ol>
+<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
+<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
+<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
+</ol>
+<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
+</li>
+</ul>
+<blockquote id="fn_9">
+<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h1><ul>
+<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
+</li>
+<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
+</li>
+</ul>
+<h1 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h1><ul>
+<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
+<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
+</ul>
+<blockquote id="fn_10">
+<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
   </entry>
   <entry>
     <title>梯度下降法</title>
@@ -117,52 +215,63 @@
       </categories>
   </entry>
   <entry>
-    <title>反向传播</title>
-    <url>/2025/03/06/DL/BP/</url>
-    <content><![CDATA[<p>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</p>
+    <title>卷积神经网络</title>
+    <url>/2025/03/06/DL/CNN/</url>
+    <content><![CDATA[<p>这应该是目前最强大的处理图像识别问题的工具。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0ov8ymqi.png" alt=""></p>
 <a id="more"></a>
 <script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
+\newcommand {\be}{\beta}
+\newcommand {\ga}{\gamma}
+\newcommand {\sig}{\sigma}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
 </ul>
 <h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
-<script type="math/tex; mode=display">
-f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
-<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
-<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
-<ol>
-<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
-<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
-<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
-</ol>
-<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
+<li><p>不妨先考虑一下 Fully Connected Neural Network 的缺点是什么。首先，FCNN 的计算复杂度太高了，每一次我们都要做全连接层的计算；其次，FCNN 将图像展平成了向量，这摧毁了图像的空间结构。而为了改进这两个问题，我们将要引入著名的 Convolutional Neural Network ，即 CNN 。</p>
+</li>
+<li><p>最经典的 CNN 主要包含了两个部分，分别被称作 Convolutional Layers（卷积层）与 Pooling Layers（池化层），在 CNN 的最后往往也会加入少量的 Fully Connected Layers（全连接层）。后来的研究为 CNN 引入了 Batch Normalization 这一技术，而其现在也已经成为了 CNN 的重要组成部分。</p>
 </li>
 </ul>
-<blockquote id="fn_9">
-<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+<h2 id="Convolutional-Layers"><a href="#Convolutional-Layers" class="headerlink" title="Convolutional Layers"></a>Convolutional Layers</h2><ul>
+<li><p>Convolutional Layers 的主要思路是，通过某种方式来保存图像的 2D 空间结构。举例而言，假设我们的输入是 3 channels 32*32 pixels 的图片，卷积层由 6 个 filter 构成，每个 filter 都是 3*5*5 的矩阵，单个 filter 用于给图片的所有 5*5 的部分采样，采用 $L_2$ 内积。特别的，我们要求每个 filter 的 channel 数目和原图像的 channel 数目一致，而 filter 的长宽大小则是可以调整的。那么通过每一个 filter 我们都可以对原图采样得到一个新的矩阵，称作 feature map 。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/6xfm970n.png" alt=""></p>
+<p>对所有的 6 个 filter 分别采样，我们就得到了 6 张 feature map ，这就是 Convolutional Layer 的输出。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gmzqf9va.png" alt=""></p>
+<p>特别的，我们也可以考虑所有的 28*28 个位置，每个位置都有一个 6 维向量，我们将其称作 feature vector 。而每个 filter 往往也会带有一个常数，我们将它们整体称作 bias vector 。在卷积层之后我们一般也会加入激活函数，例如 ReLU 。</p>
+<p>想想卷积层做了什么。在 FCNN 中，我们可以认为 hidden layer 是在学习 template ，即图像的模板；而在 CNN 中，convolutional layer 的工作更像是学习 feature ，即图像的特征。这样，我们就将学习对象从整体变成了局部。</p>
+<p>Convolutional layer 还有一些技术细节。首先，可以发现每一层 convolutional layer 都会导致图像的尺寸减小，这限制了网络的深度。而解决方案则是做 padding ，一般来说是在网络的四周补 0 。最常见的操作是 same padding ，即使得 padding 以后得到的 feature map 和输入量具备相同的尺寸<sup><a href="#fn_1" id="reffn_1">1</a></sup>。另一个细节则是，通过连续的 Convolutional layer ，feature map 中的每一个点都对应了原先的一个较大的部分，即保存了这个局部的特征。如果我们希望尽快建立 feature vector 对于全局的印象，或者快速缩减 feature map 的大小，可以考虑引入 stride ，即每次都间隔一定步数再做取样。方便起见，我们一般会设置 stride 的大小使其恰好可以覆盖全图。将输入量的边长<sup><a href="#fn_2" id="reffn_2">2</a></sup>记作 W ，Filter 的边长记作 K ，Padding 大小记作 P ，Stride 大小记作 S ，那么输出的 feature map 的边长就是 (W - K + 2P) / S + 1 。</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 这里的尺寸是不管 channel 的。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
 </blockquote>
-<h1 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h1><ul>
-<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
-</li>
-<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
 </li>
 </ul>
-<h1 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h1><ul>
-<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
-<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
+<h2 id="Pooling-Layers"><a href="#Pooling-Layers" class="headerlink" title="Pooling Layers"></a>Pooling Layers</h2><ul>
+<li><p>Pooling Layers 的主要作用是快速对输入量做下采样（down sample），即降低输入量的大小。比方说 64*224*224 的输入量通过 pooling layer ，就被 down sample 到了 64*112*112 。Pooling Layer 有两个参数 Kernel Size 和 Stride ，还有用于采样的 Pooling function ，一般是取 max 或者取 mean 。具体的，Pooling Layer 会使用 Pooling function 对输入量的每一个 feature map 的边长为 Kernel Size 的部分做步长为 Stride 的采样。一般来说我们会设置 Kernel Size = Stride ，即将 feature map 切分为多个边长恰为 Kernel Size 的小块。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/d904ysd7.png" alt=""></p>
+</li>
 </ul>
-<blockquote id="fn_10">
-<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+<h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
+<li><p>通过 Convolutional Layer 、Pooling Layer 以及 Fully Connected Layer ，我们就可以搭建出完整的 CNN 模型了。下图展示了经典的 Lecun 搭建的 CNN 模型 LeNet-5 ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/uhuzac2o.png" alt=""></p>
+<p>但有一个棘手的问题是，随着网络的深度不断加深，使其收敛变得非常困难。<sup><a href="#fn_3" id="reffn_3">3</a></sup>相对比较近的工作提出了一个技巧，即所谓的 Batch Normalization 。不妨想想深度网络难以收敛的潜在原因：我们的优化方式是基于梯度的，那么对于单一变量，其偏导等价于固定其余所有变量的取值，然后选择这个变量下降最快的方向。在迭代的过程当中，所有变量会同时更新，导致不同层的变量之间的变动缺乏联系。从而为了避免损失函数的剧烈震荡，学习率就必须足够小，导致了收敛速度慢。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
+<p>具体的，为了辅助收敛，我们希望神经网络中的每一层所接受的分布<sup><a href="#fn_5" id="reffn_5">5</a></sup>满足比较好的性质，因此针对每一个 channel ，我们要求训练集上所有数据的 feature map 的分布满足期望为 0 且方差为 1 。下图是对 Fully Connected Layer 做 Batch Normalization 的演示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xg1mupi2.png" alt=""></p>
+<p>但是显然实际上 feature map 的分布不一定是满足这个要求的，所以我们还要对于每一个 channel 加入两个可学习的参数 $\ga$ 和 $\be$ ，分别为 feature map 的常数因子和常数偏置。反映到上图的例子上就是引入 $\ga<em>j,\be_j,j\in [D]$ ，使得最后的结果 $y</em>{i,j}=\ga<em>j\hat x</em>{i,j}+\be_j$ 。</p>
+<p>但是 Batch Normalization 还有一个很大的问题，就是其导致网络的预测与输入的 Batch 相关，这显然是很荒唐的。我们的解决方案是，在训练完成后固定期望 $\mu_j$ 和方差 $\sig_j^2$ 。至于它们的取值，要么就在训练的时候维护历史指数均值，要么就直接取最后几轮训练的结果的均值。</p>
+<p>但这样做了以后又会引入一个问题，就是我们的模型在预训练阶段和预测阶段所做的事情其实是不一样的，而我们期待训练和预测时模型的动作应该是相同的。<sup><a href="#fn_6" id="reffn_6">6</a></sup>对此，我们考虑更换 Normalization 的方式。可选的方案是 Layer Normalization（对每层内部做 Normalization）或 Instance Normalization（对每个 feature map 做 Normalization）。</p>
+</li>
+</ul>
+<blockquote id="fn_3">
+<sup>3</sup>. Lecun 在 1998 年发表了这个模型，而当时其实还没有遇到这个问题，因为其时的网络还是很浅的。我们在下篇会讲 CNN 的发展，那时再详谈这个问题。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 这只是一个直观上的解释。截止到 2019 年，Batch Normalization 的有效性的理论保证似乎还是 Open Problem 。因此以下对 Batch Normalization 的描述其实也都仅是直观上的。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 这里的分布是指训练集上的 feature map 的分布。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. Justin 说可能会导致一些问题。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
 </blockquote>
 ]]></content>
       <categories>
@@ -170,9 +279,9 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
       </categories>
   </entry>
   <entry>
-    <title>线性分类器</title>
-    <url>/2025/03/06/DL/LC/</url>
-    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
+    <title>K-近邻与交叉验证</title>
+    <url>/2025/03/06/DL/KNN/</url>
+    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
 <a id="more"></a>
 <script type="math/tex; mode=display">
 \newcommand {\bb}{\mathbb}
@@ -180,32 +289,22 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
 \newcommand {\dv}{\backslash}
 \newcommand {\P}{\bb P}
 \newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
+<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
 <li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
 </ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
-f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
-l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
-l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
-\begin{align}
-&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
-\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
+<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
 </ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_5">
-<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
-</blockquote>
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
+<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
+<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -262,38 +361,6 @@ f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^
 <p>严格地说，我们可以将图像分类问题视作函数拟合问题。即，我们希望通过某种方式来拟合一个函数 $f:\bb R^D\to\bb R$ ，而后者则表示了所有图像的分类结果。我们可以证明，不低于两层的神经网络是具备 Universal Approximation 性质的。证明的思路其实比较简单，就是通过 ReLU 函数来构造基本单元，再用基本单元来做任意精度的拟合。以 $f:\bb R\to\bb R$ 为例，Proof Sketch 如下图所示：</p>
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0grtq8dq.png" alt=""></p>
 <p>特别的，这里的神经网络是带有 bias term 的。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>K-近邻与交叉验证</title>
-    <url>/2025/03/06/DL/KNN/</url>
-    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
-<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
-<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
-</ul>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
-<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
-<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
 </li>
 </ul>
 ]]></content>
