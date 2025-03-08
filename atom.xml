@@ -94,25 +94,6 @@
   </entry>
   
   <entry>
-    <title>K-近邻与交叉验证</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/KNN/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/KNN/</id>
-    <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-05T16:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>神经网络</title>
     <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
     <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
@@ -141,6 +122,25 @@
     <summary type="html">
     
       &lt;p&gt;即 Linear Classifier ，使用超平面来划分数据。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>K-近邻与交叉验证</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/KNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/KNN/</id>
+    <published>2025-03-05T16:00:00.000Z</published>
+    <updated>2025-03-05T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。&lt;/p&gt;
     
     </summary>
     
