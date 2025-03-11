@@ -13,7 +13,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>反向传播 |  RPChe_&#39;s Blog</title>
+      <title>如何训练神经网络 |  RPChe_&#39;s Blog</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -56,7 +56,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-DL/BP"
+  id="post-DL/train"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -67,7 +67,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  反向传播
+  如何训练神经网络
 </h1>
  
 
@@ -75,8 +75,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2025/03/06/DL/BP/" class="article-date">
-  <time datetime="2025-03-05T16:00:00.000Z" itemprop="datePublished">2025-03-06</time>
+      <a href="/2025/03/11/DL/train/" class="article-date">
+  <time datetime="2025-03-10T16:00:00.000Z" itemprop="datePublished">2025-03-11</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>
@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">2.1k</span>
         </span>
     </span>
 
@@ -96,7 +96,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">3 分钟</span>
+            <span class="post-count">7 分钟</span>
         </span>
     </span>
 </div>
@@ -111,51 +111,100 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</p>
+  <p>简要介绍了训练神经网络的技术细节。</p>
 <a id="more"></a>
 <script type="math/tex; mode=display">
 \newcommand {\bb}{\mathbb}
 \newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
+\newcommand {\al}{\alpha}
+\newcommand {\V}{\operatorname V}</script><h1 id="开始训练前"><a href="#开始训练前" class="headerlink" title="开始训练前"></a>开始训练前</h1><ul>
+<li>本节将会介绍激活函数的选择、对训练数据的处理、参量的初始化以及正则化的选择。</li>
 </ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
-<script type="math/tex; mode=display">
-f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
-<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
-<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><ul>
+<li><p>激活函数是一个非线性函数，其作用是改变网络层的输出，避免网络的表达能力减弱，以区别 Linear Classifier ；另一方面，激活函数也可以视作对神经元的所谓 firing rate 的模拟。</p>
+<p>激活函数的选择是多样的，一般有以下几种：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/s8i409eh.png" alt=""></p>
+<p>我们对以上的几种激活函数做一个简要的评论。</p>
 <ol>
-<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
-<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
-<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
+<li><p>Sigmoid 。这是最早的选择之一。Sigmoid 有很多坏处，主要是：</p>
+<ol>
+<li>Sigmoid 在偏离 0 的位置会导致梯度消失，这使得模型迭代缓慢，很难收敛。</li>
+<li>Sigmoid 不是 0 centered 。更确切的说，Sigmoid 是恒正的。这同样会给模型的迭代造成问题。具体的，我们考虑 sigmoid 的下一层网络，不妨假设这是一个全连接层。考虑与某一个 hidden unit 有关的所有参数，由于经过了 Sigmoid ，它们的 local gradient 一定全是正的。而与这些参量有关的 upstream gradient 是一个标量，因此这些参量关于损失函数的 gradient 一定是同号的。假设一共有 $d$ 个这样的参量，那么在优化空间 $\bb R^d$ 中我们只能向两个象限移动，而象限总数是 $2^d$ ，这很容易使得优化时要做阶梯状的蠕动，导致迭代缓慢。</li>
+<li><code>exp</code> 算得很慢。</li>
 </ol>
-<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
+<p>其实最主要的问题是第一点，其余两点相比之下影响很小。对于第二点，实际上训练的时候我们是会取一个 mini batch ，然后计算它们的梯度的均值的，这实际上会有很大的改善。</p>
+</li>
+<li><p>tanh 。这其实是对 Sigmoid 的改进。但是它还是会导致梯度消失。</p>
+</li>
+<li><p>ReLU 。这其实是一个很现代的选择。它的最大优点是解决了梯度消失问题，从而使得模型的收敛速度比 Sigmoid 快了非常多。但 ReLU 仍然不是 0 centered ，而且在负数上没有梯度。这会导致另一个问题，称作 Dead ReLU ，即如果当前的参量远离数据点，使得所有输出全是负的，那梯度就永远不会传播了。<sup><a href="#fn_1" id="reffn_1">1</a></sup>但实践中其实人们一般不用担心这种问题，因为它很少出现。</p>
+</li>
+<li><p>Leaky ReLU 。这是对 ReLU 的改进，主要目标是避免 dead ReLU 出现。这样做会引入一个超参数，我们也可以选择去学习它，这样就得到了 PReLU 。</p>
+</li>
+<li><p>ELU 。还是对 ReLU 的改进，可以保证输出是 0 centered 。如果给 ELU 乘一个特定的系数 $\la$ ，并且固定特定的 $\al$ ，就得到了 SELU 。理论上 SELU 具备 Self-Normalizing 性质，即使不用 Batch Normalization 也可以训练深度网络，但是我们无意详谈。<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+</li>
+</ol>
+<p>总体来说，激活函数的选择其实没什么大的区别。Justin 建议用 ReLU 就行，还有别用 Sigmoid 和 tanh 。</p>
 </li>
 </ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 可能的解决方案是，给输出加上一个小正数。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 参见 Klambauer et al, Self-Normalizing Neural Network, ICLR 2017 上的 91 页证明。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><ul>
+<li>一般来说，给定数据点，常见的预处理方式是减去其均值再归一化其方差，或者也可以做 PCA 和 Whitening 。这样搞的好处，我猜测是有助于改善精度问题。比方说考虑用通过原点的超平面划分数据，在减去均值之前，分类结果可能对参量的微小变动很敏感；而减去均值之后，数据点会离原点更近，从而对参量的微小变动不那么敏感。<sup><a href="#fn_3" id="reffn_3">3</a></sup></li>
+<li>图像预处理的方案有对每个像素点减去均值，或者对每个 channel 减去均值再归一化方差。 </li>
+</ul>
+<blockquote id="fn_3">
+<sup>3</sup>. 没看出来有什么别的道理，所以不详谈了。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="参量初始化"><a href="#参量初始化" class="headerlink" title="参量初始化"></a>参量初始化</h2><ul>
+<li><p>现在考虑如何初始化神经网络中的参数矩阵。具体而言，理想的初始化应该可以保证通畅的梯度传播。一个不错的办法是直接给矩阵填入采样自高斯分布的小随机数，但是对于深层网络来说，这样会出问题。具体的，我们以全连接层为例，考虑计算其输出的方差，得到：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/upg81nfu.png" alt=""></p>
+<p>假设激活函数是 tanh ，其在 0 附近表现为单位函数。如果 $D<em>{in}\cdot \V[x_i]&lt;1$ ，那么随着深度的推进，方差会趋于 $0$ ，每一层的输出也会趋 $0$ ，导致反向传播的梯度也趋 $0$ ；如果 $D</em>{in}\cdot \V[x<em>i]&gt;1$ ，那么方差会发散，输出会进入 tanh 的 saturated regime ，梯度又会趋 $0$ 。所以我们希望 $D</em>{in}\cdot \V[x_i]=1$ ，这样便使得方差保持定值。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
+<p>然而如果使用 ReLU 作为激活函数，这样操作还是会导致方差趋于 0 。大致原因是 ReLU 每次都强制一般的输出变成 0 ，所以减小了方差。相应的解决方案则是令 $D_{in}\cdot \V[x_i]=2$ 。<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
+<p>如果我们考虑 Residual Block ，会发现以上的操作又失效了。这时的解决方案是，对于 Residual Block 的第一层，采用 MSRA Initialization ；而对于第二层，直接初始化为 0 。<sup><a href="#fn_6" id="reffn_6">6</a></sup><sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
+</li>
+</ul>
+<blockquote id="fn_4">
+<sup>4</sup>. 称为 Xavier Initialization 。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 称为 MSRA Initialization 。可以想象我们通过这种方式抵消了 ReLU 导致的方差缩减。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. 阻断了层之间的方差传递，直接令 Residual Path 传递相同的方差。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. 如何初始化参数矩阵这个问题其实有很多研究，Justin 列出了其中的一部分。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><ul>
+<li>正则化的目的是避免过拟合。之前我们已经介绍过了 $L_2$ 初始化，其旨在让模型在优化损失函数之外再做点别的事，比如使得参数分布更均匀。下面我们会介绍一些别的 Regularization 。</li>
+</ul>
+<h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><ul>
+<li><p>Dropout 主要用于全连接层。其思想是，每一次由当前层向后更新时，我们都以固定概率（例如 0.5）随机丢弃一些节点，如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/lhheu4rf.png" alt=""></p>
+<p>除开引入随机性从而避免过拟合之外，这样做还有一个好处，就是使得模型在丢弃一部分节点后仍然可以分类。这样做有利于强制不同的节点辨认图片的某些特征，而非整体，从而提高了 Robustness 。<sup><a href="#fn_8" id="reffn_8">8</a></sup>而训练完成以后，为了去除随机性，我们希望对所有情况做平均，而这是很难办到的。一个折衷的方法是，我们考虑每一个神经元受上一层的贡献，发现就是全连接时的贡献再乘上不丢弃的概率，于是我们直接按照这个观察进行计算。<sup><a href="#fn_9" id="reffn_9">9</a></sup></p>
+<p>另一方面，我们也可以将 Dropout 看成某种集成学习，即我们同时训练了很多共享参数，但结构不同的模型，最后再做平均。</p>
+</li>
+</ul>
+<blockquote id="fn_8">
+<sup>8</sup>. Justin 的 slides 里还有一些很直观的图例。为了控制篇幅，这里没有放。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
 <blockquote id="fn_9">
-<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+<sup>9</sup>. 这样做是无法计算真实的平均值的，但是实践中的表现已经足够好了。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
 </blockquote>
-<h1 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h1><ul>
-<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
-</li>
-<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
-</li>
+<h3 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h3><ul>
+<li>Batch Normalization 也可以视作 Regularization。这是因为我们的计算结果和 mini batch 的取法是有关的，自然引入了随机性。</li>
+<li>特别的，Dropout 一般只用于全连接层，而后来的 CNN 基本很少用全连接层了。这时采取的 regularization 一般就是 Batch Normalization 。</li>
 </ul>
-<h1 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h1><ul>
-<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
-<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
+<h3 id="Data-Augmentation"><a href="#Data-Augmentation" class="headerlink" title="Data Augmentation"></a>Data Augmentation</h3><ul>
+<li>我们也可以考虑对训练集做随机变化来增强数据集，也就引入了随机性。常用的方式包括随机裁剪、改变尺寸，随机去掉图片的一部分（Cutout）、或者将不同的图片混在一块（Mixup）。</li>
 </ul>
-<blockquote id="fn_10">
-<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
-</blockquote>
+<h3 id="其它方式"><a href="#其它方式" class="headerlink" title="其它方式"></a>其它方式</h3><ul>
+<li>Fractional Max Pooling（做随机大小的 pooling）、Stochastic Depth（随机跳过一些 Layer 或者 Block）、Drop Connect ，之类的。方式很多，也就各凭本事了。推荐的方式包括 Batch Normalization 、Data Augmentation 、Cutout 和 Mixup 。</li>
+</ul>
  
       <!-- reward -->
       
@@ -220,7 +269,7 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2025/03/06/DL/BP/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2025/03/11/DL/train/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -231,19 +280,10 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
    
   <nav class="article-nav">
     
-      <a href="/2025/03/07/DL/devCNN/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            卷积神经网络的发展
-          
-        </div>
-      </a>
     
-    
-      <a href="/2025/03/06/DL/KNN/" class="article-nav-link">
+      <a href="/2025/03/07/DL/CNN/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">K-近邻与交叉验证</div>
+        <div class="article-nav-title">卷积神经网络</div>
       </a>
     
   </nav>
