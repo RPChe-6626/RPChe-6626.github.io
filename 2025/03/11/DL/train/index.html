@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2k</span>
+            <span class="post-count">2.1k</span>
         </span>
     </span>
 
@@ -162,7 +162,7 @@
 <h2 id="参量初始化"><a href="#参量初始化" class="headerlink" title="参量初始化"></a>参量初始化</h2><ul>
 <li><p>现在考虑如何初始化神经网络中的参数矩阵。具体而言，理想的初始化应该可以保证通畅的梯度传播。一个不错的办法是直接给矩阵填入采样自高斯分布的小随机数，但是对于深层网络来说，这样会出问题。具体的，我们以全连接层为例，考虑计算其输出的方差，得到：</p>
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/upg81nfu.png" alt=""></p>
-<p>假设激活函数是 tanh ，其在 0 附近表现为单位函数。如果 $ D\cdot V[x_i]<1 $ ，那么随着深度的推进，方差会趋于 0 ，每一层的输出也会趋 0 ，导致反向传播的梯度也趋 0 ；如果 $ D\cdot V[x_i]>1 $ ，那么方差会发散，</p>
+<p>假设激活函数是 tanh ，其在 0 附近表现为单位函数。如果 $ D\cdot V[x_i]<1 $ ，那么随着深度的推进，方差会趋于 0 ，每一层的输出也会趋 0 ，导致反向传播的梯度也趋 0 ；如果 $ D\cdot V[x_i]>1 $ ，那么方差会发散，输出会进入 tanh 的 saturated regime ，梯度又会趋 $0$ 。所以我们希望 $D\cdot \V[x_i]=1$ ，这样便使得方差保持定值。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
 <p>然而如果使用 ReLU 作为激活函数，这样操作还是会导致方差趋于 0 。大致原因是 ReLU 每次都强制一半的输出变成 0 ，所以减小了方差。相应的解决方案则是令 $D\cdot \V[x_i]=2$ 。<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
 <p>如果我们考虑 Residual Block ，会发现以上的操作又失效了。这时的解决方案是，对于 Residual Block 的第一层，采用 MSRA Initialization ；而对于第二层，直接初始化为 0 。<sup><a href="#fn_6" id="reffn_6">6</a></sup><sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
 </li>
@@ -203,7 +203,7 @@
 <li>我们也可以考虑对训练集做随机变化来增强数据集，也就引入了随机性。常用的方式包括随机裁剪、改变尺寸，随机去掉图片的一部分（Cutout）、或者将不同的图片混在一块（Mixup）。</li>
 </ul>
 <h3 id="其它方式"><a href="#其它方式" class="headerlink" title="其它方式"></a>其它方式</h3><ul>
-<li>Fractional Max Pooling（做随机大小的 pooling）、Stochastic Depth（随机跳过一些 Layer 或者 Block）、Drop Connect ，之类的。方式很多，也就各凭本事了。推荐的方式包括 Batch Normalization 、Data Augmentation 、Cutout 和 Mixup 。</li>
+<li>Fractional Max Pooling（做随机大小的 pooling）、Stochastic Depth（随机跳过一些 Layer 或者 Block）、Drop Connect（随机去掉全连接层往后贡献的转移边），之类的，选择很多。推荐的方式包括 Batch Normalization 、Data Augmentation 、Cutout 和 Mixup 。</li>
 </ul>
 <h1 id="训练中"><a href="#训练中" class="headerlink" title="训练中"></a>训练中</h1><h1 id="训练后"><a href="#训练后" class="headerlink" title="训练后"></a>训练后</h1> 
       <!-- reward -->
