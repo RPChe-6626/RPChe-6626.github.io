@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.1k</span>
+            <span class="post-count">2k</span>
         </span>
     </span>
 
@@ -117,7 +117,7 @@
 \newcommand {\bb}{\mathbb}
 \newcommand {\la}{\lambda}
 \newcommand {\al}{\alpha}
-\newcommand {\V}{\operatorname V}</script><h1 id="开始训练前"><a href="#开始训练前" class="headerlink" title="开始训练前"></a>开始训练前</h1><ul>
+\newcommand {\V}{\operatorname V}</script><h1 id="训练前"><a href="#训练前" class="headerlink" title="训练前"></a>训练前</h1><ul>
 <li>本节将会介绍激活函数的选择、对训练数据的处理、参量的初始化以及正则化的选择。</li>
 </ul>
 <h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><ul>
@@ -162,8 +162,8 @@
 <h2 id="参量初始化"><a href="#参量初始化" class="headerlink" title="参量初始化"></a>参量初始化</h2><ul>
 <li><p>现在考虑如何初始化神经网络中的参数矩阵。具体而言，理想的初始化应该可以保证通畅的梯度传播。一个不错的办法是直接给矩阵填入采样自高斯分布的小随机数，但是对于深层网络来说，这样会出问题。具体的，我们以全连接层为例，考虑计算其输出的方差，得到：</p>
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/upg81nfu.png" alt=""></p>
-<p>假设激活函数是 tanh ，其在 0 附近表现为单位函数。如果 $D<em>{in}\cdot \V[x_i]&lt;1$ ，那么随着深度的推进，方差会趋于 $0$ ，每一层的输出也会趋 $0$ ，导致反向传播的梯度也趋 $0$ ；如果 $D</em>{in}\cdot \V[x<em>i]&gt;1$ ，那么方差会发散，输出会进入 tanh 的 saturated regime ，梯度又会趋 $0$ 。所以我们希望 $D</em>{in}\cdot \V[x_i]=1$ ，这样便使得方差保持定值。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
-<p>然而如果使用 ReLU 作为激活函数，这样操作还是会导致方差趋于 0 。大致原因是 ReLU 每次都强制一般的输出变成 0 ，所以减小了方差。相应的解决方案则是令 $D_{in}\cdot \V[x_i]=2$ 。<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
+<p>假设激活函数是 tanh ，其在 0 附近表现为单位函数。如果 $ D\cdot V[x_i]<1 $ ，那么随着深度的推进，方差会趋于 0 ，每一层的输出也会趋 0 ，导致反向传播的梯度也趋 0 ；如果 $ D\cdot V[x_i]>1 $ ，那么方差会发散，</p>
+<p>然而如果使用 ReLU 作为激活函数，这样操作还是会导致方差趋于 0 。大致原因是 ReLU 每次都强制一半的输出变成 0 ，所以减小了方差。相应的解决方案则是令 $D\cdot \V[x_i]=2$ 。<sup><a href="#fn_5" id="reffn_5">5</a></sup></p>
 <p>如果我们考虑 Residual Block ，会发现以上的操作又失效了。这时的解决方案是，对于 Residual Block 的第一层，采用 MSRA Initialization ；而对于第二层，直接初始化为 0 。<sup><a href="#fn_6" id="reffn_6">6</a></sup><sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
 </li>
 </ul>
@@ -205,7 +205,7 @@
 <h3 id="其它方式"><a href="#其它方式" class="headerlink" title="其它方式"></a>其它方式</h3><ul>
 <li>Fractional Max Pooling（做随机大小的 pooling）、Stochastic Depth（随机跳过一些 Layer 或者 Block）、Drop Connect ，之类的。方式很多，也就各凭本事了。推荐的方式包括 Batch Normalization 、Data Augmentation 、Cutout 和 Mixup 。</li>
 </ul>
- 
+<h1 id="训练中"><a href="#训练中" class="headerlink" title="训练中"></a>训练中</h1><h1 id="训练后"><a href="#训练后" class="headerlink" title="训练后"></a>训练后</h1> 
       <!-- reward -->
       
     </div>
@@ -281,9 +281,9 @@
   <nav class="article-nav">
     
     
-      <a href="/2025/03/07/DL/devCNN/" class="article-nav-link">
+      <a href="/2025/03/07/DL/CNN/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">卷积神经网络的发展</div>
+        <div class="article-nav-title">卷积神经网络</div>
       </a>
     
   </nav>
