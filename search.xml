@@ -101,7 +101,7 @@
 <li><p>ELU 。还是对 ReLU 的改进，可以保证输出是 0 centered 。如果给 ELU 乘一个特定的系数 $\la$ ，并且固定特定的 $\al$ ，就得到了 SELU 。理论上 SELU 具备 Self-Normalizing 性质，即使不用 Batch Normalization 也可以训练深度网络，但是我们无意详谈。<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
 </li>
 </ol>
-<p>总体来说，激活函数的选择其实没什么大的区别。Justin 建议用 ReLU 就行，还有别用 Sigmoid 和 tanh 。</p>
+<p>总体来说，激活函数的选择其实没什么大的区别。Justin 建议用 ReLU 就行，还有别用 Sigmoid 和 tanh 。<sup><a href="#fn_11" id="reffn_11">11</a></sup></p>
 </li>
 </ul>
 <blockquote id="fn_1">
@@ -109,6 +109,9 @@
 </blockquote>
 <blockquote id="fn_2">
 <sup>2</sup>. 参见 Klambauer et al, Self-Normalizing Neural Network, ICLR 2017 上的 91 页证明。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_11">
+<sup>11</sup>. 特别的，激活函数一般都是单调的。一个看法是非单调函数可能会导致信息的损失，这是我们所不希望的。<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
 </blockquote>
 <h2 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h2><ul>
 <li>一般来说，给定数据点，常见的预处理方式是减去其均值再归一化其方差，或者也可以做 PCA 和 Whitening 。这样搞的好处，我猜测是有助于改善精度问题。比方说考虑用通过原点的超平面划分数据，在减去均值之前，分类结果可能对参量的微小变动很敏感；而减去均值之后，数据点会离原点更近，从而对参量的微小变动不那么敏感。<sup><a href="#fn_3" id="reffn_3">3</a></sup></li>
@@ -163,7 +166,76 @@
 <h3 id="其它方式"><a href="#其它方式" class="headerlink" title="其它方式"></a>其它方式</h3><ul>
 <li>Fractional Max Pooling（做随机大小的 pooling）、Stochastic Depth（随机跳过一些 Layer 或者 Block）、Drop Connect（随机去掉全连接层往后贡献的转移边），之类的，选择很多。推荐的方式包括 Batch Normalization 、Data Augmentation 、Cutout 和 Mixup 。</li>
 </ul>
-<h1 id="训练中"><a href="#训练中" class="headerlink" title="训练中"></a>训练中</h1><h1 id="训练后"><a href="#训练后" class="headerlink" title="训练后"></a>训练后</h1>]]></content>
+<h1 id="训练中"><a href="#训练中" class="headerlink" title="训练中"></a>训练中</h1><h2 id="学习率的设置"><a href="#学习率的设置" class="headerlink" title="学习率的设置"></a>学习率的设置</h2><ul>
+<li>一般的选择是将学习率设置为常数，在很多时候这都是一个很好的选择。另外也可以考虑设置变化的学习率，比方说每过 30 个 epoch 就将学习率减小到原先的 0.1 ，称作 Step learning rate 。<sup><a href="#fn_10" id="reffn_10">10</a></sup>另一个常见的选择是 Cosine learning rate ，按照：<script type="math/tex; mode=display">
+\al_t=\frac12\al_0 (1+\cos (t\pi/T))</script>这是 CV 领域较为传统的选择。而 NLP 方向则一般会倾向于线性的学习率：<script type="math/tex; mode=display">
+\al_t=\al_0 (1-t/T)</script>另外还有一些比较小众的选择，例如 Inverse root learning rate ：<sup><a href="#fn_12" id="reffn_12">12</a></sup><sup><a href="#fn_15" id="reffn_15">15</a></sup><script type="math/tex; mode=display">
+\al_t=\al_0/\sqrt t</script></li>
+</ul>
+<blockquote id="fn_10">
+<sup>10</sup>. ResNet 的训练就用到了这样的技巧。epoch 指固定次数的迭代，比方说 300 次。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_12">
+<sup>12</sup>. 被用于 Vaswanl et al, Attention is all you need, NeurIPS 2017 。<a href="#reffn_12" title="Jump back to footnote [12] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_15">
+<sup>15</sup>. 一般来说，我们希望变动量与参数大小（$L_2$ 范数之类的）的比值在 0.001 左右。<a href="#reffn_15" title="Jump back to footnote [15] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="如何看待学习曲线"><a href="#如何看待学习曲线" class="headerlink" title="如何看待学习曲线"></a>如何看待学习曲线</h2><ul>
+<li>我们最关注的学习曲线一般是损失函数曲线（作散点图并求均值）以及训练集和验证集上的正确率。我们一般会考虑在损失函数不再有明显下降时减小学习率。而如果在训练集上正确率提升时验证正确率下降，说明产生过拟合，我们可能会考虑选择验证正确率最高处的参量，或者调整正则化、引入更多数据。如果两个正确率离得很近，说明模型还是欠拟合，我们可能会考虑急需训练，或者增大参数量。总体来说，两个正确率都应该增长，并带有一定差距。</li>
+</ul>
+<h2 id="如何选择超参数"><a href="#如何选择超参数" class="headerlink" title="如何选择超参数"></a>如何选择超参数</h2><ul>
+<li>一般的选择是作 Grid Search ，即为每个超参数选择一些值<sup><a href="#fn_13" id="reffn_13">13</a></sup>，然后尝试所有组合，选出最好的一个。这样做的坏处是，假设我们做了 $n$ 次尝试，那么单一超参数上的采样是 $\log n$ 级别的。一个相对更好的方式是，我们为每个超参数选定一个区间，然后随机尝试 $n$ 次，每个超参数均独立随机采样。这样就可以让单一超参数的采样增大到 $n$ 级别。</li>
+<li><p>理论上我们也可以对超参数做优化，例如做 Gradient Descent 之类的，但是这样的计算开销太大了。这方面其实也有一些研究，但我们无意深入。</p>
+</li>
+<li><p>最后我们将给出一个选择超参数的范式。<sup><a href="#fn_14" id="reffn_14">14</a></sup></p>
+<ol>
+<li>关闭正则化，使用采样自小方差高斯分布的参量进行单次计算，查看输出是否符合预期，从而避免网路写挂。</li>
+<li>关闭正则化，使用小训练集训练模型，并过拟合。其旨在通过快速调整找到较好的网络结构、学习率以及参量初始化的设置。</li>
+<li>使用上一步的网络结构，打开正则化，使用所有训练数据，找到合适的学习率，使得前 100 步迭代内损失函数有显著下降。</li>
+<li>在上一步的基础上找到大致的超参数区间，然后训练 1 到 5 个 epoch 。</li>
+<li>调整参数区间，延长训练。</li>
+<li>查看学习曲线。</li>
+<li>回到第五步。</li>
+</ol>
+</li>
+</ul>
+<blockquote id="fn_13">
+<sup>13</sup>. 一般是 $\log$ linear 的。<a href="#reffn_13" title="Jump back to footnote [13] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_14">
+<sup>14</sup>. 特别的，我们可以使用 Cross Validation 来并行训练模型。数据可视化则推荐 Tensor Board 。<a href="#reffn_14" title="Jump back to footnote [14] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="训练后"><a href="#训练后" class="headerlink" title="训练后"></a>训练后</h1><ul>
+<li>我们可能会希望对训练后的模型做一些调整或整合，本节将简要介绍。</li>
+</ul>
+<h2 id="模型集成"><a href="#模型集成" class="headerlink" title="模型集成"></a>模型集成</h2><ul>
+<li>训练多个模型，然后将它们的概率分布取均值，或者使用投票法之类的。</li>
+<li>或者也可以截取模型训练过程中的快照来集成。为此，我们可能会考虑使用周期性的学习率，并在低点保存模型。</li>
+<li>或者取训练过程中的参量的指数均值之类的。<sup><a href="#fn_16" id="reffn_16">16</a></sup></li>
+</ul>
+<blockquote id="fn_16">
+<sup>16</sup>. 类似于 <code>x_test = 0.995 * x_test + 0.005 * x</code> 。其中 <code>x</code> 是参量。称作 Polyak Averaging 。<a href="#reffn_16" title="Jump back to footnote [16] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="迁移学习"><a href="#迁移学习" class="headerlink" title="迁移学习"></a>迁移学习</h2><ul>
+<li><p>迁移学习是一个相当重要的思想，即将大数据集上已有的模型迁移到小数据集上。一个典型的例子是，使用 ImageNet 上训练完成的模型，例如 VGG 16 ，去除最后的全连接层，迁移到 Caltech101 上，并冻结所有参数，就可以取得比单独训练的模型好得多的成果。<sup><a href="#fn_17" id="reffn_17">17</a></sup>而这样的现象是相当广泛的。<sup><a href="#fn_18" id="reffn_18">18</a></sup></p>
+<p>一般的，我们可以考虑将大数据集上训练完成的模型的参数冻结、去除最后的全连接层，用作图像特征提取器。然后我们再使用 SVM 来划分不同的类别。这样的方式一般适用于与大数据集具备相似度的小数据集<sup><a href="#fn_19" id="reffn_19">19</a></sup>，例如 ImageNet 与 Caltech101 。</p>
+<p>另一个方式则被称作 Fine-Tuning 。类似的，我们去除训练完成的模型的最后的全连接层，然后添加适用于新数据集的全连接层。具体的，我们可以考虑先用 feature extractor 的方式训练一个 Linear Classifier ，然后再将 Linear Classifier 连接到模型上形成最后的全连接层，再做整体的训练。而且 Fine-Tuning 时一般需要减小学习率。有时我们也会考虑冻结模型的浅层参数以节省计算资源。这样的方式一般要求新数据集不能太小，同时冻结的层数是与数据集的相似度有关的。</p>
+</li>
+</ul>
+<blockquote id="fn_17">
+<sup>17</sup>. 当然，一般在 ImageNet 上表现更好的模型迁移以后也会更好。需要指出的是，迁移是一个好的选择，但不一定是必要的。在新数据集上单独训练可能也能取得不错的成果，但是一般而言耗时会更长。另一方面，预训练非常耗时，相比之下扩大数据集可能是更有效的选择。<a href="#reffn_17" title="Jump back to footnote [17] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_18">
+<sup>18</sup>. 可以广泛的迁移到其它模型、其它问题当中。<a href="#reffn_18" title="Jump back to footnote [18] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_19">
+<sup>19</sup>. 如果相似度不高，可以考虑把中间层的结果拿来当特征向量跑 Linear Classifier 试试。<a href="#reffn_19" title="Jump back to footnote [19] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="分布式训练"><a href="#分布式训练" class="headerlink" title="分布式训练"></a>分布式训练</h2><ul>
+<li>先别管这个。哥们也没几张卡。</li>
+</ul>
+]]></content>
       <categories>
         <category>学术</category>
       </categories>
@@ -352,38 +424,6 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
       </categories>
   </entry>
   <entry>
-    <title>K-近邻与交叉验证</title>
-    <url>/2025/03/06/DL/KNN/</url>
-    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
-<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
-<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
-</ul>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
-<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
-<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
     <title>梯度下降法</title>
     <url>/2025/03/06/DL/GD/</url>
     <content><![CDATA[<p>即 Gradient Descent 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。</p>
@@ -443,6 +483,80 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
       </categories>
   </entry>
   <entry>
+    <title>线性分类器</title>
+    <url>/2025/03/06/DL/LC/</url>
+    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
+f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
+l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
+l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
+\begin{align}
+&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
+\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>K-近邻与交叉验证</title>
+    <url>/2025/03/06/DL/KNN/</url>
+    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
+<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
+<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
+</ul>
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
+<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
+<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
     <title>神经网络</title>
     <url>/2025/03/06/DL/NN/</url>
     <content><![CDATA[<p>即 Neural Networks 。</p>
@@ -495,48 +609,6 @@ f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^
 <p>特别的，这里的神经网络是带有 bias term 的。</p>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>线性分类器</title>
-    <url>/2025/03/06/DL/LC/</url>
-    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
-f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
-l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
-l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
-\begin{align}
-&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
-\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_5">
-<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
-</blockquote>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -727,41 +799,6 @@ f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题�
       </categories>
   </entry>
   <entry>
-    <title>ZXY&#39;s Law</title>
-    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
-    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
-<a id="more"></a>
-<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
-<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
-<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
-<li>证明：<del>实践是检验真理的唯一标准。</del></li>
-</ul>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
-<li><p>考虑下题：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
-</li>
-<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
-<script type="math/tex; mode=display">
-(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
-<script type="math/tex; mode=display">
-g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
-<script type="math/tex; mode=display">
-f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>并且：</p>
-<script type="math/tex; mode=display">
-f(4)=\frac 72</script><p>亦即：</p>
-<script type="math/tex; mode=display">
-p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
-</li>
-</ul>
-<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
-]]></content>
-      <categories>
-        <category>灌水区</category>
-      </categories>
-  </entry>
-  <entry>
     <title>关于数论</title>
     <url>/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</url>
     <content><![CDATA[<p>从基础谈起。</p>
@@ -855,6 +892,41 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
 ]]></content>
       <categories>
         <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>ZXY&#39;s Law</title>
+    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
+    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+<a id="more"></a>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+</li>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+</li>
+</ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+]]></content>
+      <categories>
+        <category>灌水区</category>
       </categories>
   </entry>
   <entry>
