@@ -261,8 +261,8 @@
 </blockquote>
 <h2 id="迁移学习"><a href="#迁移学习" class="headerlink" title="迁移学习"></a>迁移学习</h2><ul>
 <li><p>迁移学习是一个相当重要的思想，即将大数据集上已有的模型迁移到小数据集上。一个典型的例子是，使用 ImageNet 上训练完成的模型，例如 VGG 16 ，去除最后的全连接层，迁移到 Caltech101 上，并冻结所有参数，就可以取得比单独训练的模型好得多的成果。<sup><a href="#fn_17" id="reffn_17">17</a></sup>而这样的现象是相当广泛的。<sup><a href="#fn_18" id="reffn_18">18</a></sup></p>
-<p>一般的，我们可以考虑将大数据集上训练完成的模型的参数冻结、去除最后的全连接层，用作图像特征提取器。然后我们再使用 SVM 来划分不同的类别。这样的方式一般适用于与大数据集具备相似度的小数据集<sup><a href="#fn_19" id="reffn_19">19</a></sup>，例如 ImageNet 与 Caltech101 。</p>
-<p>另一个方式则被称作 Fine-Tuning 。类似的，我们去除训练完成的模型的最后的全连接层，然后添加适用于新数据集的全连接层。具体的，我们可以考虑先用 feature extractor 的方式训练一个 Linear Classifier ，然后再将 Linear Classifier 连接到模型上形成最后的全连接层，再做整体的训练。而且 Fine-Tuning 时一般需要减小学习率。有时我们也会考虑冻结模型的浅层参数以节省计算资源。这样的方式一般要求新数据集不能太小，同时冻结的层数是与数据集的相似度有关的。</p>
+<p>一般的，我们可以考虑将大数据集上训练完成的模型的参数冻结、去除最后的全连接层，用作图像特征提取器。然后我们再使用 SVM 来划分不同的类别。这样的方式一般适用于与大数据集具备较高相似度的小数据集<sup><a href="#fn_19" id="reffn_19">19</a></sup>，例如 ImageNet 与 Caltech101 。</p>
+<p>另一个方式则被称作 Fine-Tuning ，即，我们去除训练完成的模型的最后的全连接层，然后添加适用于新数据集的全连接层。具体的，我们可以考虑先用 feature extractor 训练一个 Linear Classifier ，然后将其连接到模型上形成最后的全连接层，再做整体的训练。特别的，使用 Fine-Tuning 时一般需要减小学习率，有时我们也会考虑冻结模型的浅层参数以节省计算资源。Fine-Tuning 一般要求新数据集不能太小，同时冻结的层数也是与数据集的相似度有关的。</p>
 </li>
 </ul>
 <blockquote id="fn_17">
@@ -800,21 +800,6 @@
     
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
