@@ -87,7 +87,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">307</span>
+            <span class="post-count">370</span>
         </span>
     </span>
 
@@ -137,7 +137,13 @@
 <p>梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。 </p>
 </li>
 <li><p><a href="\2025\03\11\DL\train">如何训练神经网络</a></p>
-<p>简要介绍了训练神经网络的技术细节。</p>
+<p>简要介绍了训练神经网络的技术细节，并引入了 Transfer Learning 这一思想。</p>
+</li>
+<li><p><a href="\2025\03\18\DL\RNN">循环神经网络</a></p>
+<p>引入了 Image captioning 、Machine Translation 等问题，并简要介绍了 Recurrent Neural Network 。</p>
+</li>
+<li><p><a href="\2025\03\18\DL\ATT">注意力机制</a></p>
+<p>引入了 Attention 这一概念，简要介绍了 RNN with Attention 以及最主流的 Transformer 。</p>
 </li>
 </ol>
  
@@ -672,6 +678,21 @@
     
 
   </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

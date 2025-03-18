@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-03-10T16:00:00.000Z</updated>
+  <updated>2025-03-17T16:00:00.000Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -15,6 +15,44 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>注意力机制</title>
+    <link href="https://rpche-6626.github.io/2025/03/18/DL/ATT/"/>
+    <id>https://rpche-6626.github.io/2025/03/18/DL/ATT/</id>
+    <published>2025-03-17T16:00:00.000Z</published>
+    <updated>2025-03-17T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Attention Is All You Need.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>循环神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/18/DL/RNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/18/DL/RNN/</id>
+    <published>2025-03-17T16:00:00.000Z</published>
+    <updated>2025-03-17T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我本来还以为 RNN 会更厉害一点来着。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>如何训练神经网络</title>
@@ -36,16 +74,15 @@
   </entry>
   
   <entry>
-    <title>卷积神经网络</title>
-    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNN/"/>
-    <id>https://rpche-6626.github.io/2025/03/07/DL/CNN/</id>
+    <title>卷积神经网络的发展</title>
+    <link href="https://rpche-6626.github.io/2025/03/07/DL/devCNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/07/DL/devCNN/</id>
     <published>2025-03-06T16:00:00.000Z</published>
     <updated>2025-03-06T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;这应该是目前最强大的处理图像识别问题的工具。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+      &lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。&lt;/p&gt;
     
     </summary>
     
@@ -56,15 +93,16 @@
   </entry>
   
   <entry>
-    <title>卷积神经网络的发展</title>
-    <link href="https://rpche-6626.github.io/2025/03/07/DL/devCNN/"/>
-    <id>https://rpche-6626.github.io/2025/03/07/DL/devCNN/</id>
+    <title>卷积神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/07/DL/CNN/</id>
     <published>2025-03-06T16:00:00.000Z</published>
     <updated>2025-03-06T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。&lt;/p&gt;
+      &lt;p&gt;这应该是目前最强大的处理图像识别问题的工具。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
     
     </summary>
     
@@ -228,25 +266,6 @@
   </entry>
   
   <entry>
-    <title>ZXY&#39;s Law</title>
-    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
-    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
-    <published>2023-08-13T16:00:00.000Z</published>
-    <updated>2023-08-13T16:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="灌水区" scheme="https://RPChe-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>关于数论</title>
     <link href="https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/"/>
     <id>https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</id>
@@ -261,6 +280,25 @@
     
     
       <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ZXY&#39;s Law</title>
+    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
+    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
+    <published>2023-08-13T16:00:00.000Z</published>
+    <updated>2023-08-13T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="灌水区" scheme="https://RPChe-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
     
     
   </entry>
