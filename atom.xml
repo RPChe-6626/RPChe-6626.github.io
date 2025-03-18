@@ -17,25 +17,6 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>循环神经网络</title>
-    <link href="https://rpche-6626.github.io/2025/03/18/DL/RNN/"/>
-    <id>https://rpche-6626.github.io/2025/03/18/DL/RNN/</id>
-    <published>2025-03-17T16:00:00.000Z</published>
-    <updated>2025-03-17T16:00:00.000Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;我本来还以为 RNN 会更厉害一点来着。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>注意力机制</title>
     <link href="https://rpche-6626.github.io/2025/03/18/DL/ATT/"/>
     <id>https://rpche-6626.github.io/2025/03/18/DL/ATT/</id>
@@ -55,6 +36,25 @@
   </entry>
   
   <entry>
+    <title>循环神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/18/DL/RNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/18/DL/RNN/</id>
+    <published>2025-03-17T16:00:00.000Z</published>
+    <updated>2025-03-17T16:00:00.000Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;我本来还以为 RNN 会更厉害一点来着。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="学术" scheme="https://RPChe-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>如何训练神经网络</title>
     <link href="https://rpche-6626.github.io/2025/03/11/DL/train/"/>
     <id>https://rpche-6626.github.io/2025/03/11/DL/train/</id>
@@ -63,7 +63,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;简要介绍了训练神经网络的技术细节。&lt;/p&gt;
+      &lt;p&gt;简要介绍了训练神经网络的技术细节，并引入了 Transfer Learning 这一思想。&lt;/p&gt;
     
     </summary>
     
@@ -132,15 +132,15 @@
   </entry>
   
   <entry>
-    <title>线性分类器</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/LC/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/LC/</id>
+    <title>神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
     <published>2025-03-05T16:00:00.000Z</published>
     <updated>2025-03-05T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;即 Linear Classifier ，使用超平面来划分数据。&lt;/p&gt;
+      &lt;p&gt;即 Neural Networks 。&lt;/p&gt;
     
     </summary>
     
@@ -170,15 +170,15 @@
   </entry>
   
   <entry>
-    <title>神经网络</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
+    <title>K-近邻与交叉验证</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/KNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/KNN/</id>
     <published>2025-03-05T16:00:00.000Z</published>
     <updated>2025-03-05T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;即 Neural Networks 。&lt;/p&gt;
+      &lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。&lt;/p&gt;
     
     </summary>
     
@@ -189,15 +189,15 @@
   </entry>
   
   <entry>
-    <title>K-近邻与交叉验证</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/KNN/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/KNN/</id>
+    <title>线性分类器</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/LC/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/LC/</id>
     <published>2025-03-05T16:00:00.000Z</published>
     <updated>2025-03-05T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。&lt;/p&gt;
+      &lt;p&gt;即 Linear Classifier ，使用超平面来划分数据。&lt;/p&gt;
     
     </summary>
     
@@ -321,15 +321,15 @@
   </entry>
   
   <entry>
-    <title>通过 SSH 拉取 GitHub 上的代码</title>
-    <link href="https://rpche-6626.github.io/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
-    <id>https://rpche-6626.github.io/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</id>
+    <title>常用 Hexo 指令</title>
+    <link href="https://rpche-6626.github.io/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/"/>
+    <id>https://rpche-6626.github.io/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</id>
     <published>2023-08-12T16:00:00.000Z</published>
     <updated>2023-08-12T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。&lt;/p&gt;
+      &lt;p&gt;这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 &lt;a href=&quot;https://hexo.io/zh-cn/docs/commands.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt; 查看。&lt;/p&gt;
     
     </summary>
     
@@ -340,15 +340,15 @@
   </entry>
   
   <entry>
-    <title>常用 Hexo 指令</title>
-    <link href="https://rpche-6626.github.io/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/"/>
-    <id>https://rpche-6626.github.io/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</id>
+    <title>通过 SSH 拉取 GitHub 上的代码</title>
+    <link href="https://rpche-6626.github.io/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/"/>
+    <id>https://rpche-6626.github.io/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</id>
     <published>2023-08-12T16:00:00.000Z</published>
     <updated>2023-08-12T16:00:00.000Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 &lt;a href=&quot;https://hexo.io/zh-cn/docs/commands.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;这里&lt;/a&gt; 查看。&lt;/p&gt;
+      &lt;p&gt;使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。&lt;/p&gt;
     
     </summary>
     
