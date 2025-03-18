@@ -154,19 +154,19 @@ y_t=W_{hy} h_t</script><p>下图展示了一个 many to many 的 RNN 的结构�
 <blockquote id="fn_6">
 <sup>6</sup>. 这看起来是一个非常简单的模型，但是你如果喂给它数据，它竟然真的能吐出像模像样的结果。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
 </blockquote>
-<h2 id="RNN-的反向传播"><a href="#RNN-的反向传播" class="headerlink" title="RNN 的反向传播"></a>RNN 的反向传播</h2><ul>
+<h1 id="RNN-的反向传播"><a href="#RNN-的反向传播" class="headerlink" title="RNN 的反向传播"></a>RNN 的反向传播</h1><ul>
 <li>RNN 的反向传播会多次经过自身<sup><a href="#fn_5" id="reffn_5">5</a></sup>，这在计算上没什么问题，但是由于显存大小有限，整个 RNN 的 Computational Graph 可能会存不下。所以我们需要采取一个折衷的办法，称作 Truncated Back Propagation through time ，即，我们选择一个块长 B ，每处理 B 步，我们就对这 B 步的结果做一次 Back Propagation ，并更新 Weight Matrix ，再使用更新的结构参与以后的处理。</li>
 </ul>
 <blockquote id="fn_5">
 <sup>5</sup>. 称作 Back Propagation through time 。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
 </blockquote>
-<h2 id="Hidden-Vector-的可解释性"><a href="#Hidden-Vector-的可解释性" class="headerlink" title="Hidden Vector 的可解释性"></a>Hidden Vector 的可解释性</h2><ul>
+<h1 id="Hidden-Vector-的可解释性"><a href="#Hidden-Vector-的可解释性" class="headerlink" title="Hidden Vector 的可解释性"></a>Hidden Vector 的可解释性</h1><ul>
 <li>现在我们考察 Hidden Vector 是否具备可解释性。不妨考虑 Hidden Vector 的每一维是不是捕捉到了某种信息。还是以 Language Modeling 为例，有研究<sup><a href="#fn_7" id="reffn_7">7</a></sup>使用 RNN 建模了某些语料库，跟踪了 Hidden Vector 的某些维度在预测输出时的活跃程度，发现这些维度捕捉了包括 <code>for</code> 循环、引用、换行符在内的某些有趣的信息。这说明 RNN 的 hidden state 的确概括了这些特征，学到了语料库中的某些特殊结构。</li>
 </ul>
 <blockquote id="fn_7">
 <sup>7</sup>. Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016.<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
 </blockquote>
-<h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><ul>
+<h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><ul>
 <li><p>Vanilla RNN 的梯度流其实有很大的问题。我们知道在 0 附近 $\tanh$ 表现为恒等映射，所以在反向传播的时候 hidden vector 的梯度会包含很多 $W_{hh}$ 的幂，这一点在处理长序列时尤为明显。所以 hidden vector 的梯度很容易爆炸或者消失。为此，我们考虑修改 RNN 的结构。一个经典的方式是使用所谓的 Long Short Term Memory 。其形式如下:</p>
 <script type="math/tex; mode=display">
 \begin{bmatrix}
@@ -196,7 +196,7 @@ h_t&= o\odot \tanh(c_t)
 <blockquote id="fn_8">
 <sup>8</sup>. 我不知道这个到底应该叫什么名字。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
 </blockquote>
-<h2 id="Muti-layer-RNN"><a href="#Muti-layer-RNN" class="headerlink" title="Muti-layer RNN"></a>Muti-layer RNN</h2><ul>
+<h1 id="Muti-layer-RNN"><a href="#Muti-layer-RNN" class="headerlink" title="Muti-layer RNN"></a>Muti-layer RNN</h1><ul>
 <li><p>当然我们也可以像 CNN 那样增加 RNN 的深度，大体结构如下图所示：</p>
 <p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ma5ivbhn.png" alt=""></p>
 <p>我们可以期待增加一定的层数，例如 3 到 5 层，会改善 RNN 的表现。但 RNN 一般不会像 CNN 那样搭建非常深的网络。<sup><a href="#fn_9" id="reffn_9">9</a></sup></p>
@@ -205,7 +205,7 @@ h_t&= o\odot \tanh(c_t)
 <blockquote id="fn_9">
 <sup>9</sup>. 不知道具体为什么。可能是因为算力限制或者效果不好吧。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
 </blockquote>
-<h2 id="RNN-的其它结构"><a href="#RNN-的其它结构" class="headerlink" title="RNN 的其它结构"></a>RNN 的其它结构</h2><ul>
+<h1 id="RNN-的其它结构"><a href="#RNN-的其它结构" class="headerlink" title="RNN 的其它结构"></a>RNN 的其它结构</h1><ul>
 <li>RNN 其实有很多其它结构，例如 Gated Recurrent Unit<sup><a href="#fn_10" id="reffn_10">10</a></sup> 之类的，此外还有自动生成 RNN 模型的研究<sup><a href="#fn_11" id="reffn_11">11</a></sup>。但大体看来它们似乎并没有得到显著优于 LSTM 的结果，所以我们也就不深入了。</li>
 </ul>
 <blockquote id="fn_10">
