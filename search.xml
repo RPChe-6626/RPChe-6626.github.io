@@ -1,43 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>关于深度学习</title>
-    <url>/2025/02/26/DL/%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>其实是对着 UMich EECS 498-007 / 598-005: Deep Learning for Computer Vision 写的，所以主题是 Computer Vision 。本文中会有配图，是从 Justin Johnson 的 slides 上蒯的。</p>
+    <title>ZXY&#39;s Law</title>
+    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
+    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
 <a id="more"></a>
-<p>由于篇幅的问题，本文被拆分成了多篇。本篇是全文的目录。</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
-<li><p><a href="\2025\03\06\DL\KNN">K-近邻与交叉验证</a></p>
-<p>最朴素的 KNN 。顺便把交叉验证也写了。</p>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
 </li>
-<li><p><a href="\2025\03\06\DL\LC">线性分类器</a></p>
-<p>即使用单个超平面来区分每个类别。损失函数采用了 Multi Class SVM 和 Soft Max &amp; Cross Entropy 。</p>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
 </li>
-<li><p><a href="\2025\03\06\DL\GD">梯度下降法</a></p>
-<p>讨论了用于训练模型的梯度下降算法，包括朴素的 Sochastic Gradient Descent ，以及衍生的 SGD with Momentum 、AdaGrad 、RMSProp 以及最主流的 Adam 。</p>
+</ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+]]></content>
+      <categories>
+        <category>灌水区</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于红黑树</title>
+    <url>/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
+    <content><![CDATA[<p>鉴于我所可以找到的关于这个数据结构的资料都不够理想，我在这里做一个简要的总结。</p>
+<a id="more"></a>
+<h2 id="红黑树的性质"><a href="#红黑树的性质" class="headerlink" title="红黑树的性质"></a>红黑树的性质</h2><ul>
+<li><p>红黑树是一种自平衡的二叉搜索树，特点是每个节点额外存储了一个“颜色”信息，可以为红或黑。</p>
 </li>
-<li><p><a href="\2025\03\06\DL\NN">神经网络</a></p>
-<p>介绍了朴素的 Fully Connected Neural Network ，采用的激活函数是 ReLU 。</p>
+<li><p>我们对红黑树的结构提出一些要求。具体的，我们希望<sup><a href="#fn_1" id="reffn_1">1</a></sup>：</p>
+<ol>
+<li>根节点为黑。</li>
+<li>红结点的儿子必为黑。</li>
+<li>叶子结点为虚拟点，且颜色必为黑<sup><a href="#fn_2" id="reffn_2">2</a></sup>。</li>
+<li>任何叶子结点到根的路径上的黑结点个数相同，称作黑高度。</li>
+</ol>
+<p>对于包含 $n$ 个数据的红黑树，其一共有 $2n+1$ 个结点。记黑高度为 $k$ ，则显然红黑树中包含了一棵深度为 $k$ 的满二叉树，于是我们有：</p>
+<script type="math/tex; mode=display">
+2^k-1\le 2n+1\Longrightarrow k=O(\log n)</script><p>而红黑树的高度不超过 $2k$ ，因此红黑树的高度同为 $O(\log n)$ 。</p>
 </li>
-<li><p><a href="\2025\03\06\DL\BP">反向传播</a></p>
-<p>介绍了 Computational Graph 上的 Back Propagation ，并简要讨论了对复杂网络求梯度的技巧。</p>
+</ul>
+<h2 id="红黑树的插入操作"><a href="#红黑树的插入操作" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h2><ul>
+<li><p>为了不影响黑高度，我们将数据作为红节点按照 BST 的一般方式插入。接下来，考虑：</p>
+<ol>
+<li><p>若插入点恰为根节点，则将颜色修正为黑，结束。</p>
 </li>
-<li><p><a href="\2025\03\07\DL\CNN">卷积神经网络</a></p>
-<p>介绍了最主流的用于图像识别的 Convolutional Neural Network ，包括 Batch Normalization 。</p>
+<li><p>若插入后不存在双红，直接结束。</p>
 </li>
-<li><p><a href="\2025\03\07\DL\devCNN">卷积神经网络的发展</a></p>
-<p>梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。 </p>
+<li><p>若插入点父亲的兄弟为黑，按照下图修正，然后结束：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/kvriyjfd.png" alt=""></p>
 </li>
-<li><p><a href="\2025\03\11\DL\train">如何训练神经网络</a></p>
-<p>简要介绍了训练神经网络的技术细节，并引入了 Transfer Learning 这一思想。</p>
-</li>
-<li><p><a href="\2025\03\18\DL\RNN">循环神经网络</a></p>
-<p>引入了 Image captioning 、Machine Translation 等问题，并简要介绍了 Recurrent Neural Network 。</p>
-</li>
-<li><p><a href="\2025\03\18\DL\ATT">注意力机制</a></p>
-<p>引入了 Attention 这一概念，简要介绍了 RNN with Attention 以及最主流的 Transformer 。</p>
+<li><p>若插入点父亲的兄弟为红，按照下图修正，并对插入点的祖父递归：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4xnmnmbc.png" alt=""></p>
 </li>
 </ol>
+</li>
+</ul>
+<h2 id="红黑树的删除操作"><a href="#红黑树的删除操作" class="headerlink" title="红黑树的删除操作"></a>红黑树的删除操作</h2><ul>
+<li><p>先按照 BST 的一般方式删除目标数据。即先定位待删除结点，再考虑：</p>
+<ol>
+<li>若其仅有一个非虚拟儿子，则此儿子必为红，该节点必为黑。使用儿子替代该节点，并染黑即可。</li>
+<li>若其有两个非虚拟儿子，则定位该节点的后继，以后继的数据替代该节点，并删除后继。</li>
+<li>若其无虚拟儿子，则直接删除。</li>
+</ol>
+<p>以上，在情况 3 中，若该结点颜色为黑，则删除过程破坏了红黑树的性质四，即删除位置对应的叶子结点的黑高度比其余叶子小一。此时需要执行修正操作，以保持性质四。具体的，假定当前结点颜色为黑，且子树内所有叶子的黑高度相等，比其余叶子小一，考虑：</p>
+<ol>
+<li><p>兄弟为黑且无红儿子，父亲为黑。按照下图调整，并向父亲递归：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/yt5bekdx.png" alt=""></p>
+</li>
+<li><p>兄弟为黑且无红儿子，父亲为红。按照下图调整，并结束：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2xaen7be.png" alt=""></p>
+</li>
+<li><p>兄弟为黑且同向儿子为红。按下图调整，并结束：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/iycih5x7.png" alt=""></p>
+</li>
+<li><p>兄弟为黑且异向儿子为红。按下图调整，并结束：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4zvkpj5w.png" alt=""></p>
+</li>
+<li><p>兄弟为红。按下图调整，并转情况 2 到 4 。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/097z77g4.png" alt=""></p>
+</li>
+</ol>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 不同的资料中对红黑树的要求可能存在些微不同。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 以下，请读者根据语境判断是否考虑虚拟结点。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -73,6 +139,218 @@
 ]]></content>
   </entry>
   <entry>
+    <title>常用 Hexo 指令</title>
+    <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
+<a id="more"></a>
+<ul>
+<li><p>本地运行博客。</p>
+<p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
+<p>用于将博客在本地端口中部署运行。支持实时预览。</p>
+</li>
+<li><p>更新博客。</p>
+<p>命令：<code>hexo clean</code> 意义不清楚。 <code>hexo g</code> 生成本地文件。<code>hexo d</code> 上传博客。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作指南</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>模拟退火学习笔记</title>
+    <url>/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>首先需要说明的是这是一篇很久以前写的文章，当时的观念与现在有所不同，所以这篇文章的措辞并不严谨，而且对理论的分析也不够学术。但鉴于写作此篇时笔者水平较低，这些也是可以理解的。重要的是，在深入研究过模拟退火算法以后，我应该会重写此篇，因此，现在大家在阅读此篇时，应持保留态度。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2020-01-14，异常中学OI​冬令营（水）的第一天，先是花式​splay​了一个上午，<del>下午忘了干了啥，</del>后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KXbZR.png" alt=""></p>
+<a id="more"></a>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><del>在实际生活中，</del>我们常常会遇到求函数最值的问题，那怎么办呢？我们当然可以选择爬山算法，即每次在当前最优解的附近选择一个解，如果它优于最优解，就接受它，否则不接受它，并调小选择范围，寻找下一个解。在某些情况下，它是适用的，比如下图</p>
+<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1579625299001&amp;di=b4cff93bc388cc504063f0aadcfb1133&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.xjishu.com%2Fimg%2Fzl%2F2020%2F1%2F7%2F3556419215.gif" alt=""></p>
+<p>但这个算法的劣势非常明显——它会被局限在一个局部最优解上，无法取得全局最优解，比如下图这个函数。</p>
+<p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2994024717,1924808617&amp;fm=26&amp;gp=0.jpg" alt=""></p>
+<p>这时，我们就可以使用一个玄学算法——模拟退火。</p>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
+<p>模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&yacute;在1985年也独立发明此演算法。模拟退火算法是解决<a href="https://baike.baidu.com/item/TSP/2905216" target="_blank" rel="noopener">TSP问题</a>的有效方法之一。</p>
+<p>模拟退火的出发点是基于物理中固体物质的退火过程与一般<a href="https://baike.baidu.com/item/组合优化/3314860" target="_blank" rel="noopener">组合优化问题</a>之间的相似性。模拟退火算法是一种通用的优化算法，其物理退火过程由加温过程、等温过程、冷却过程这三部分组成。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>模拟退火的原理也和金属<a href="https://baike.baidu.com/item/退火/1039313" target="_blank" rel="noopener">退火</a>的原理近似：将热力学的理论套用到统计学上，将搜寻空间内每一点想像成空气内的分子；分子的能量，就是它本身的动能；而搜寻空间内的每一点，也像空气分子一样带有“能量”，以表示该点对命题的合适程度。演算法先以搜寻空间内一个任意点作起始：每一步先选择一个“邻居”，然后再计算从现有位置到达“邻居”的概率。</p>
+</blockquote>
+<p>——摘自百度百科<del>（当然你也可以不看）</del></p>
+<p>简单的说，模拟退火就是在一种一定范围内求多峰函数最值的算法。它在模拟温度降低的同时得出新解，温度越高，解的变化量越大，随着温度的逐渐降低，解的变化量也渐渐变小，并越发集中在最优解附近。最后温度达到了我们设置的最低温，对应到物理学上也就是结晶了，这时，我们可以认为当前我们取得的解就是最优解，<del>当然也可能不是，</del>整个算法也就终止了。</p>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>我们先引入几个参数：当前最优解$E_0$，新解$E$，解变动量$ΔE$（<strong>$E$与$E_0$的差</strong>），上一个被接受的解$E_1$，初温$T_0$，末温$T_k$，当前温度$T$，温度变动量$Δ$，再引用一张非常经典的图——</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif" alt=""></p>
+<p>这张图非常好的展现了模拟退火的运行过程，从$T_0$开始，每次乘上$Δ$得到$T$，如果$T$小于$T_k$则终止降温。$T_0$我一般设置在$1000$~$5000$左右，$Δ$则是一个略小于1的常数，而$T_k$一般设置在$1^{-8}$到$1^{-15}$之间。</p>
+<p>在降温的同时，我们在$E_1$（不是最优解$E_0$）的基础上扰动产生新解$E$，需要注意的是扰动大小随温度的降低而变小，因为在温度高的时候，解的变化量非常大，这时的任务是在全局范围中找到最优解的大致位置，随着温度的降低，解渐渐稳定，这时的任务是确定最优解的准确位置。</p>
+<p>但每次得出新解以后，我们以什么原则，或者说什么概率来接受它呢？</p>
+<p>这时就要用到<a href="https://baike.baidu.com/item/Metropolis接受准则/14678977?fr=aladdin" target="_blank" rel="noopener">Metropolis准则</a>。简单说来，假设我们的目标是求最小值，如果$E$与$E_0$的差，也就是$ΔE$小于$0$，我们就接受当前解，因为它优于之前的最优解嘛。而如果$ΔE$大于$0$，也就是我们遇到了一个更劣的解，我们也要以一定的概率来接受它，因为我们要找的一个多峰函数的全局最小值，因此就不能局限于一个局部的凹函数。而这个概率是$\exp (-ΔE/T)$。</p>
+<p>我个人对于这个概率的理解是这样的：对于$ΔE$，如果它较大，即我们遇到了一个劣得多的解，那我们接受它的概率就相对较小，因为$-ΔE$较小嘛；而如果$ΔE$较小，即我们遇到了一个较劣的解，我们接受它的概率就较大，因为$-ΔE$较大。对于$T$，随着时间的增加，$T$变得越来越小，因此我们把$-ΔE$除以$T$，这样接受的概率就随着温度的降低而越来越小，因为$-ΔE$是一个负数嘛。而对于整个式子，当$T$较大的时候，我们会接受大部分的解，当$T$较小的时候，我们就只会接受$ΔE$较小的解。<del>关于Metropolis准则的具体证明，过于玄学，这里就不给出了。</del>当然你也可以自己试一下。如果选择接受$E$，则把$E_1$设置为$E$，然后降温并寻找下一个解。</p>
+<p>这里再引用一张<del>很糊的</del>图：</p>
+<p><img src="https://s2.ax1x.com/2020/03/03/348Hu6.png" alt=""></p>
+<p>到这里我们也就知道，模拟退火算法的速度和结果受参数（$T_0$，$T_k$，$Δ$还有随机数种子）的影响非常大，是一个玄学的算法，时间复杂度也是$O (玄学)$。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>接下来我们结合一道例题来讲一讲模拟退火的c++​代码实现。<a href="https://www.luogu.com.cn/problemnew/show/UVA10228" target="_blank" rel="noopener"><strong>UVA10228</strong> A Star not a Tree?</a> （这道题其实洛谷上也有）</p>
+<p>英文题面尽管跳过，大意是给定$n$个点，求其<a href="https://baike.baidu.com/item/托里拆利点/22667515?fromtitle=费马点&amp;fromid=3333221&amp;fr=aladdin" target="_blank" rel="noopener">费马点</a>（到这$n$个点的距离最小的点）到所有点的距离和。此题各部分的代码实现都很方便，其实就是一道模板题，代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(R int i=a;i&lt;=b;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> delta 0.996</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 50005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=-f;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">'0'</span>&lt;=ch&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">&#125;poi[maxn];</span><br><span class="line"><span class="keyword">int</span> T,n;</span><br><span class="line"><span class="keyword">double</span> ansx,ansy,ax,ay,ans,t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ax=<span class="number">0</span>,ay=<span class="number">0</span>;</span><br><span class="line">	ans=<span class="number">1e8</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calculate</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> res=<span class="number">0</span>;</span><br><span class="line">	rep(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="keyword">double</span> dx=x-poi[i].x,dy=y-poi[i].y;</span><br><span class="line">		res+=<span class="built_in">sqrt</span>(dx*dx+dy*dy);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">simulate_anneal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> x=ansx,y=ansy;</span><br><span class="line">	t=<span class="number">3000</span>;</span><br><span class="line">	<span class="keyword">while</span>(t&gt;<span class="number">1e-15</span>) &#123;</span><br><span class="line">		<span class="keyword">double</span> X=x+((rand()&lt;&lt;<span class="number">1</span>)-RAND_MAX)*t;</span><br><span class="line">		<span class="keyword">double</span> Y=y+((rand()&lt;&lt;<span class="number">1</span>)-RAND_MAX)*t;</span><br><span class="line">		<span class="keyword">double</span> now=calculate(X,Y);</span><br><span class="line">		<span class="keyword">double</span> Delta=now-ans;</span><br><span class="line">		<span class="keyword">if</span>(Delta&lt;<span class="number">0</span>) &#123;</span><br><span class="line">			ansx=X,ansy=Y;</span><br><span class="line">			x=X,y=Y;</span><br><span class="line">			ans=now;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&gt;rand()) x=X,y=Y;</span><br><span class="line">		t*=delta;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ansx=ax/n,ansy=ay/n;</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	srand(<span class="number">1e9</span>+<span class="number">7</span>);</span><br><span class="line">	T=read();</span><br><span class="line">	rep(i,<span class="number">1</span>,T) &#123;</span><br><span class="line">		n=read();</span><br><span class="line">		clear();</span><br><span class="line">		rep(j,<span class="number">1</span>,n) &#123;</span><br><span class="line">			poi[j].x=read(),poi[j].y=read();</span><br><span class="line">			ax+=poi[j].x,ay+=poi[j].y;</span><br><span class="line">		&#125;</span><br><span class="line">		work();</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;round(ans)&lt;&lt;<span class="string">'\n'</span>;</span><br><span class="line">		<span class="keyword">if</span>(i!=T) <span class="built_in">cout</span>&lt;&lt;<span class="string">'\n'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有几个注意点：坐标位置，温度和解变动量必须开成double​，一是为了确保精度，二是为了防止爆int。<del>还要注意输出换行，实在很坑。</del></p>
+<p>但是当你愉快的写玩此题并提交以后，可能会发现你并没有AC此题。记得之前说过的吗，我们得出不一定是最优解。这时候就涉及到一个麻烦的步骤——调参。通常有以下几种调参的方式：</p>
+<ol>
+<li>调大初温$T_0$。</li>
+<li>调小末温$T_k$。</li>
+<li>调大温度变动量$Δ$。</li>
+<li>选取一个新的随机数种子。</li>
+<li>多跑几遍模拟退火。</li>
+<li><del>开O2</del></li>
+</ol>
+<p>其中第一，二点对于运行时间的影响不大。而第三点则非常关键，一个微调都会使运行时间和结果发生巨大变化。第五点也是一个有用的方式，一般我们跑三到五遍模拟退火，如果时间充裕，你也可以适当多跑<del>一两百</del>几遍。而第四点就非常看脸了，你当然可以选择某个<del>恶臭的八位质数</del>，但就我个人而言，最有用的还是这句随机数种子：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">srand(time(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
+<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p>学完一个新算法以后，当然应该练习啦。其实模拟退火的主过程基本就是模板了，唯一的麻烦点是对calculate()函数和接受概率的修改，比如下题：<a href="https://www.luogu.com.cn/problemnew/show/P5544" target="_blank" rel="noopener">[JSOI2016]炸弹攻击1</a></p>
+<p>此题的calculate()函数倒是很简单，麻烦的是修改接受概率。</p>
+<p>题目要求的是最大值，那么$-ΔE$就成了一个正数，怎么修改呢？其实此时我们只需把这句话：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&gt;rand()) x=X,y=Y;</span><br></pre></td></tr></table></figure>
+<p>中的$&gt;$号改为$&lt;$号就可以了，如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&lt;rand()) x=X,y=Y;</span><br></pre></td></tr></table></figure>
+<p>而这样就很玄学了。之前我说错了，因为$-ΔE$成了一个正数，所以$\exp (-Delta/t)$必定是大于1的，也就是没有接受劣解的概率。而此题$ΔE$波动小，搜寻范围大，所以我们这样写就可以手动避免算法陷入劣解不能自拔。<del>但这样写的原因是我过了此题以后才想出来的。</del></p>
+<p>代码就略过了，实在很简单。</p>
+<hr>
+<p>模拟退火的应用不仅仅是求点坐标，还可以拿来求序列。其实过程也很简单，每次随机交换序列中的两个元素就可以了，而对于网格，看作是二维序列即可。下面有一道求序列的题目：<a href="https://www.luogu.com.cn/problemnew/show/P2538" target="_blank" rel="noopener">[SCOI2008]城堡</a></p>
+<p>读完题以后，你可能不知道此题和序列有何关系。但我们其实可以这样考虑：把所有没有城堡的城市抽象成一个序列，而序列的前$k$个城市，就是要修建城堡的城市。</p>
+<p>而关于calculate()函数，我们可以先用floyd​算法预处理出每个城市之间的距离，在这个函数中我们只需$n^2$扫描一次，求出所有城市中离最近城堡的距离的最大值就可以了。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(register int i=a;i&lt;=b;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 500</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> delta 0.996</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=-f;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">'0'</span>&lt;=ch&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>) x=-x,<span class="built_in">putchar</span>(<span class="string">'-'</span>);</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">9</span>) write(x/<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a,b,next,v;</span><br><span class="line">&#125;e[maxn];</span><br><span class="line"><span class="keyword">int</span> head[maxn],cnt,n,m,k,v[maxn],cas[maxn];</span><br><span class="line"><span class="keyword">int</span> dis[maxn][maxn],p[maxn],N,X[maxn],ans=<span class="number">1e8</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> x[])</span> </span>&#123;</span><br><span class="line">	rep(i,<span class="number">1</span>,k) cas[x[i]]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> res=-inf;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) &#123;</span><br><span class="line">		<span class="keyword">int</span> minn=inf;</span><br><span class="line">		rep(j,<span class="number">0</span>,n) <span class="keyword">if</span>(cas[j]) minn=min(minn,dis[i][j]);</span><br><span class="line">		res=max(res,minn);</span><br><span class="line">	&#125;</span><br><span class="line">	rep(i,<span class="number">1</span>,k) cas[x[i]]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">simulate_anneal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[maxn];</span><br><span class="line">	rep(i,<span class="number">1</span>,N) a[i]=p[i];</span><br><span class="line">	t=<span class="number">5000</span>;</span><br><span class="line">	<span class="keyword">while</span>(t&gt;<span class="number">1e-15</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> b[maxn];</span><br><span class="line">		rep(i,<span class="number">1</span>,N) b[i]=a[i];</span><br><span class="line">		<span class="keyword">int</span> x=rand()%N+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> y=rand()%N+<span class="number">1</span>;</span><br><span class="line">		swap(b[x],b[y]);</span><br><span class="line">		<span class="keyword">int</span> now=calculate(b);</span><br><span class="line">		<span class="keyword">double</span> Delta=now-ans;</span><br><span class="line">		<span class="keyword">if</span>(Delta&lt;<span class="number">0</span>) &#123;</span><br><span class="line">			ans=now;</span><br><span class="line">			rep(i,<span class="number">1</span>,N) p[i]=a[i]=b[i];</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&gt;rand()) &#123;</span><br><span class="line">			rep(i,<span class="number">1</span>,N) a[i]=b[i];</span><br><span class="line">		&#125;</span><br><span class="line">		t*=delta;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	srand(time(<span class="number">0</span>));</span><br><span class="line">	n=read(),m=read(),k=read();</span><br><span class="line">	n--;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) X[i]=read();</span><br><span class="line">	rep(i,<span class="number">0</span>,n) v[i]=read();</span><br><span class="line">	rep(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="keyword">int</span> a=read();</span><br><span class="line">		cas[a]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) <span class="keyword">if</span>(!cas[i]) p[++N]=i;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) rep(j,<span class="number">0</span>,n) dis[i][j]=inf;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) dis[i][X[i]]=dis[X[i]][i]=min(v[i],dis[i][X[i]]),dis[i][i]=<span class="number">0</span>;</span><br><span class="line">	rep(c,<span class="number">0</span>,n) rep(i,<span class="number">0</span>,n) rep(j,<span class="number">0</span>,n)</span><br><span class="line">	dis[i][j]=min(dis[i][j],dis[i][c]+dis[c][j]);</span><br><span class="line">	work();</span><br><span class="line">	write(ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>要做好调参的心理准备，我在三天之内调参交了<del>七页</del>。</p>
+<p>推荐几题：</p>
+<ol>
+<li><a href="https://www.luogu.com.cn/problemnew/show/P4035" target="_blank" rel="noopener">[JSOI2008]球形空间产生器</a></li>
+<li><a href="https://www.luogu.com.cn/problemnew/show/P4360" target="_blank" rel="noopener">[CEOI2004]锯木厂选址</a></li>
+<li><a href="https://www.luogu.com.cn/problemnew/show/P3936" target="_blank" rel="noopener">Coloring</a></li>
+</ol>
+<p><del>其他的习题自己找去吧。</del></p>
+<p>update 2020.3.3 加入了$\LaTeX$数学公式渲染，并添加了一张图。</p>
+<p>update 2020.5.1 修锅，感谢@M_sea 纠错。</p>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于数论</title>
+    <url>/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</url>
+    <content><![CDATA[<p>从基础谈起。</p>
+<a id="more"></a>
+<h2 id="整除"><a href="#整除" class="headerlink" title="整除"></a>整除</h2><ul>
+<li>对于 $a=kb$ ，称 $b$ 整除 $a$ ，记作 $b\mid a$ 。</li>
+</ul>
+<h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><ul>
+<li>即当 $b\neq0$ 时， $\gcd(a,b)=\gcd(b,a\bmod b)$ 。</li>
+<li>记 $a\bmod b=r$ ，要证明这个定理，我们考虑去说明 $a$ 与 $b$ 的公因数集合和 $b$ 与 $r$ 的公因数集合是相同的。我们知道 $a=kb+r$ ，那么对于 $b$ 和 $r$ 的公因数 $d$ ，就有 $d\mid a$ ，即 $b$ 和 $r$ 的公因数必然是 $a$ 和 $b$ 的公因数。而我们又有 $a-kb=r$ ，那么，同理，$a$ 和 $b$ 的公因数也必然是 $b$ 和 $r$ 的公因数，则原式成立。</li>
+</ul>
+<h2 id="二元不定方程"><a href="#二元不定方程" class="headerlink" title="二元不定方程"></a>二元不定方程</h2><h3 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h3><ul>
+<li>用于得到不定方程 $ax+by=g$ 的某一组解，其中 $g=\gcd(a,b)$ 。</li>
+<li>具体的，我们考虑如何修改欧几里得算法。考虑递归的过程，不妨假定我们已经得到了方程 $by+rx=g$ 的解，其中 $r=a-kb$ 。那么就有 $by+(a-kb)\times x=g$ ，即 $ax+b(y-kx)=g$ ，这样我们也就得到了当前状态的解。</li>
+</ul>
+<h3 id="斐蜀定理"><a href="#斐蜀定理" class="headerlink" title="斐蜀定理"></a>斐蜀定理</h3><ul>
+<li>对于方程 $ax+by=m$ ，其有解的充要条件是 $\gcd(a,b)\mid m$ 。</li>
+<li>先证必要性。记 $g=\gcd(a,b)$ ，我们知道 $ax+by=kg$ 必然存在，即 $m=kg$ ，$g\mid m$ 。再证充分性。我们知道，若方程 $ax’+by’=g$ 有解 $\begin{cases}x’=x’_0\y’=y’_0\end{cases}$ ，那么原方程就必然存在解 $\begin{cases}x_0=x’_0m/g\y_0=y’_0m/g\end{cases}$ 。而由扩展欧几里得算法，我们可以断言，解 $\begin{cases}x’=x’_0\y’=y’_0\end{cases}$ 必然存在，从而充分性得证。</li>
+</ul>
+<h3 id="二元不定方程解的结构"><a href="#二元不定方程解的结构" class="headerlink" title="二元不定方程解的结构"></a>二元不定方程解的结构</h3><ul>
+<li><p>对于方程 $ax+by=m$ ，若其存在一组整数解 $\begin{cases}x=x_0\y=y_0\end{cases}$ ，则其所有整数解可以表示为 $\begin{cases}x=x_0+kb/g\y=y_0-ka/g\end{cases}$ ，其中 $k\in\mathbb Z,g=\gcd(a,b)$ 。</p>
+</li>
+<li><p>我们从题设开始。考虑 $ax_0+by_0=m$ ，对于方程在 $\begin{cases}x=x_0\y=y_0\end{cases}$ 之外的整数解 $\begin{cases}x=x_1\y=y_1\end{cases}$ ，必然有 $\begin{cases}x_1=x_0+x’\y_1=y_0+y’\end{cases}$ ，其中 $x’,y’\in\mathbb Z$ 。那么我们就有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    a(x_0+x')+b(y_0+y')&=m\\
+    ax_0+by_0+ax'+by'&=m\\
+    ax'+by'&=0\\
+    -ax'&=by'
+\end{aligned}</script><p>记 $g=\gcd(a,b),a’=\dfrac{-a}{g},b’=\dfrac{b}{g}$ ，那么就有：</p>
+<script type="math/tex; mode=display">
+a'x'=b'y'</script><p>其中 $a’\bot b’$ 。进一步，我们有：</p>
+<script type="math/tex; mode=display">
+a'x'=b'y'\Rightarrow a'x'\mid b'y'\Rightarrow a'\mid b'y' \Rightarrow a'\mid y'</script><p>类似的，也有 $b’\mid x’$ 。那么若记 $\dfrac {x’}{b’}=x’’$ ，$\dfrac {y’}{a’}=y’’$ ，就有：</p>
+<script type="math/tex; mode=display">
+a'b'x''=a'b'y''\Rightarrow x''=y''</script><p>再记 $x’’=y’’=k\in\mathbb Z$ ，那么可以发现，不同的 $k$ 和不同的解恰好一一对应，且有 $\begin{cases}x’=b’x’’=kb/g\y’=a’y’’=-ka/g\end{cases}$ ，即 $\begin{cases}x_1=x_0+kb/g\y_1=y_0-ka/g\end{cases}$ 。</p>
+</li>
+</ul>
+<h2 id="模意义下的整数系统"><a href="#模意义下的整数系统" class="headerlink" title="模意义下的整数系统"></a>模意义下的整数系统</h2><h3 id="同余"><a href="#同余" class="headerlink" title="同余"></a>同余</h3><ul>
+<li><p>取模运算 $\bmod$ ：对于 $a\bmod m=b$ ，其中 $m\neq0$ ，其满足 $a=km+b$ ，且 $0\le b&lt;m$ 。</p>
+<p>其运算优先级与乘除相同。</p>
+<p>取模运算存在一些非常基本且重要的性质，例如：</p>
+<ol>
+<li>$(a+ b)\bmod m=(a\bmod m+ b\bmod m)\bmod m$ 。</li>
+<li>$(a- b)\bmod m=(a\bmod m- b\bmod m)\bmod m$ 。</li>
+<li>$a\times b\bmod m=((a\bmod m)\times (b\bmod m))\bmod m$ 。</li>
+</ol>
+<p>是容易验证的。</p>
+</li>
+<li><p>同余：称 $a$ 和 $b$ 关于 $\bmod m$ 同余，当且仅当 $a\bmod m=b \bmod m$ ，记作 $a\equiv b \pmod m$ 。</p>
+</li>
+</ul>
+<h3 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h3><ul>
+<li><p>我们知道，在同余的框架下，一般意义的除法是做不了的。但是，我们考虑有理数集当中的除法，可以将其看作是乘法的逆运算。对于非 $0$ 有理数 $a$ ，必然存在 $a^{-1}\in \mathbb R$ 使得 $a^{-1}\times a=1$ 。我们试着把这个概念推广到整数系统中去。具体的，我们考虑在 $\bmod m$ 的意义下，对于 $a\in[0,m)$ ，是否存在 $a^{-1}\in [0,m)$ 使得 $a\times a^{-1}\equiv 1\pmod m$ 。我们把以上的 $a^{-1}$ 称为乘法逆元。</p>
+</li>
+<li><p>我们接着考虑模 $m$ 的整数系统中的 $a^{-1}$ 应该具有什么性质：</p>
+<ol>
+<li><p>$a=0$ 没有逆元。</p>
+</li>
+<li><p>$a^{-1}$ 至多存在一个。要证明这个命题，我们使用反证法。不妨假定存在 $x_1,x_2\in [1,m),x_1\neq x_2,{\rm s.t.} a\times x_1\equiv a\times x_2\equiv 1\pmod m$ ，那么我们就有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+    a\times x_1&\equiv a\times x_2\pmod m\\
+    a\times x_1^2&\equiv a\times x_1\times x_2\pmod m\\
+    x_1&\equiv x_2 \pmod m
+\end{aligned}</script><p>这与定义冲突，那么假设不成立，不可能存在多于 $1$ 个的逆元。</p>
+</li>
+<li><p>$a^{-1}$ 存在，当且仅当 $a\bot m$ 。记 $x=a^{-1}$ ，那么我们有 $a\times x\equiv 1\pmod m$ ，等价于 $ax+km=1$ ，其中 $k\in \mathbb Z$ 。那么由斐蜀定理，上述方程有解，当且仅当 $\gcd(a,m)\mid 1$ ，即 $a\bot m$ ，则原命题成立。</p>
+</li>
+</ol>
+</li>
+<li><p>那么我们该如何求取乘法逆元呢？第一种思路，是将同余式看作不定方程，再使用扩展欧几里得算法求解。而第二种，则是使用下面要提到的费马小定理。</p>
+</li>
+</ul>
+<h3 id="模意义下的整数系统中的分数"><a href="#模意义下的整数系统中的分数" class="headerlink" title="模意义下的整数系统中的分数"></a>模意义下的整数系统中的分数</h3><ul>
+<li>既然我们已经把有理数的除法概念推广到了模意义下的整数系统当中，那么进一步导出分数的概念就也是很自然的了。具体的，对于分数 $\dfrac ab$ ，我们希望在 $\bmod m$ 的整数系统中去找到一个对应的数，使其代数性质与 $\dfrac ab$ 相似。</li>
+<li>具体的，我们设这个数为 $x$ ，那么就是要使其满足 $x\times b\equiv a\pmod m$ 。若 $b\bot m$ ，即 $b^{-1}$ 存在，那么我们立即就可以知道，在这个系统中有且仅有一个 $x\equiv a\times b^{-1}\pmod m$ 满足条件。而若 $b\not\bot m$ ，此时上式就等价于 $bx+my=a$ ，其有解，当且仅当 $\gcd(b,m)=g\mid a$ ，且通解为 $x=x_0+km/g$ ，也就是说此时合法的 $x$ 的数目并不确定，甚至可以为 $0$ 。</li>
+</ul>
+<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><ul>
+<li><p>对于 $p\in \mathbb P$ ，$p\nmid a$ ，有 $a^{p-1}\equiv 1 \pmod p$ 。</p>
+</li>
+<li><p>要证明这个定理，我们考虑 $a,2a,3a,\dots ,(p-1)a$ 。首先，我们有这 $p-1$ 个数在 $\bmod p$ 意义下互不相同。因为假定存在 $x_1,x_2\in[1,p),x_1\neq x_2$ ，使得 $x_1a\equiv x_2a\pmod p$ ，而由 $a\bot p$ ，我们有 $x_1aa^{-1}\equiv x_2aa^{-1}\pmod p$ ，即 $x_1\equiv x_2\pmod p$ ，与假设不符，说明假设不成立。这样，我们就有：</p>
+<script type="math/tex; mode=display">
+\prod_{i=1}^{p-1}ia\equiv a^{p-1}i!\equiv i!\pmod p</script><p>而 $p$ 又与 $[1,p)$ 之中的每个数互素，说明：</p>
+<script type="math/tex; mode=display">
+a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
+</li>
+<li><p>应用费马小定理，我们就知道，当模数 $p$ 为素数，$p\nmid a$ 时，$a\times a^{p-2}\equiv 1\pmod p$ ，说明 $a^{-1}$ 就是 $a^{p-2}\bmod p$ 。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>通过 SSH 拉取 GitHub 上的代码</title>
+    <url>/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
+<a id="more"></a>
+<ul>
+<li><p>配置 SSH 。</p>
+<p>下载 Git 。打开 git-bash.exe ，输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
+<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
+</li>
+<li><p>将公钥添加到 GitHub 。</p>
+<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
+</li>
+<li><p>使用 SSH 替换 HTTPS 。</p>
+<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
+</li>
+<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作指南</category>
+      </categories>
+  </entry>
+  <entry>
     <title>注意力机制</title>
     <url>/2025/03/18/DL/ATT/</url>
     <content><![CDATA[<p>Attention Is All You Need.</p>
@@ -88,6 +366,191 @@
 </li>
 </ul>
 <h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><p>* </p>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>K-近邻与交叉验证</title>
+    <url>/2025/03/06/DL/KNN/</url>
+    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
+<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
+<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
+</ul>
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
+<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
+<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>反向传播</title>
+    <url>/2025/03/06/DL/BP/</url>
+    <content><![CDATA[<p>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
+<script type="math/tex; mode=display">
+f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
+<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
+<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
+<ol>
+<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
+<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
+<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
+</ol>
+<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
+</li>
+</ul>
+<blockquote id="fn_9">
+<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h1><ul>
+<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
+</li>
+<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
+</li>
+</ul>
+<h1 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h1><ul>
+<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
+<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
+</ul>
+<blockquote id="fn_10">
+<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>神经网络</title>
+    <url>/2025/03/06/DL/NN/</url>
+    <content><![CDATA[<p>即 Neural Networks 。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>很多时候数据集都不是线性可分的。老的解决方案是，考虑将数据点通过某种方式映射到特征空间中去，使得特征空间中的数据点变得容易划分，例如 SVM 的 Kernel Trick 。特征提取方式是多样的，例如 Color Histogram 、Histogram of Oriented Gradients 或者 Bag of Words 。但一个更加 SOTA 的方式则是神经网络。</p>
+</li>
+<li><p>具体的，我们将从 Linear Classifer 改进得到 Neural Network 。考虑最简单的 Linear Classifer 的预测方式：<sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
+<script type="math/tex; mode=display">
+f(x)=Wx,x\in\bb R^D,W\in\bb R^{C\times D}</script><p>现在我们考虑加入另一个矩阵，得到：</p>
+<script type="math/tex; mode=display">
+f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^D</script><p>我们将这个模型称作一个两层的神经网络。如图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/hhgijynd.png" style="zoom: 50%;" /></p>
+<p>我们将 $\max(0, x)$ 这个函数称作神经网络的激活函数，更具体的，称作 ReLU（Rectified Linear Unit）。激活函数对于神经网络而言是相当重要的，因为，去掉激活函数以后，多层神经网络的表达能力实际上和一般的 Linear Classifier 没有本质区别。<sup><a href="#fn_6" id="reffn_6">6</a></sup>激活函数有很多不同的种类，ReLU 是最为常见的一种。</p>
+<p>我们将每一层的点称作神经元（Neuron），并将这样的神经网络称作全连接神经网络（Fully Connected Neural Network），这是因为输入层的每一个神经元都参与决定了下一层的所有神经元的值。下图展示了一个六层的神经网络，每一层的 hidden units（即中间层的神经元个数）都是相等的（一般都会这样安排），我们将 hidden units 的个数称作神经网络的宽度（width）：<sup><a href="#fn_8" id="reffn_8">8</a></sup></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/acc029y8.png" style="zoom: 50%;" /></p>
+</li>
+</ul>
+<blockquote id="fn_6">
+<sup>6</sup>. 当然多次矩阵乘法与单个矩阵之间仍然是有区别的，这被称作 Multi Layer Linear Classifer 。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. 这里演示的神经网络是没有 bias term 的，但是一般的神经网络应该是要带上的。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_8">
+<sup>8</sup>. 神经网络不是一个凸优化。截止 2019 年，神经网络的收敛性以及类似性质的证明似乎还是 open problem 。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Neural-Network-和生物学神经网络的联系"><a href="#Neural-Network-和生物学神经网络的联系" class="headerlink" title="Neural Network 和生物学神经网络的联系"></a>Neural Network 和生物学神经网络的联系</h1><ul>
+<li><p>实际上，Neural Nerwork 和生物学神经网络并没有必然的联系，相对准确的说法是前者的发明受到了后者的启发。在这里我们就大致讲讲两者之间的相似性。</p>
+</li>
+<li><p>我们可以想象，生物学神经网络是由大量神经元通过某种方式相互连接而形成的，其中每一个神经元通过轴突接受电信号，再通过树突发射电信号。我们假设发射出的电信号可以被表示为接受的电信号的线性组合再复合某个非线性函数（激活函数）的值，这样我们就可以仿照建立 Neural Network 。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jnej17pv.png" alt=""></p>
+<p>当然，我们建立的 Neural Network 相对于生物学神经网络是非常简化的。</p>
+</li>
+</ul>
+<h1 id="神经网络的表达能力"><a href="#神经网络的表达能力" class="headerlink" title="神经网络的表达能力"></a>神经网络的表达能力</h1><ul>
+<li><p>我们期待多层神经网络的表达能力要强于一般的 Linear Classifier 。不妨考虑神经网络的几何意义。先考虑单层神经网络，其实际上仍然是用了若干个超平面来划分类别。这几个超平面应该应该把整个空间划分为了若干块，然后通过 ReLU 函数，我们把所有点都集中到了其中的一块上。最后，我们在这一块空间上进行下一层神经网络的划分。因此，可以看出，由于激活函数的作用，深层神经网络的超平面对应到浅层的空间就不再是线性的了。浅层神经网络通过线性划分而扭曲了空间，从而增强了深层网络的表达能力。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gaq6ntwp.png" alt=""></p>
+<p>严格地说，我们可以将图像分类问题视作函数拟合问题。即，我们希望通过某种方式来拟合一个函数 $f:\bb R^D\to\bb R$ ，而后者则表示了所有图像的分类结果。我们可以证明，不低于两层的神经网络是具备 Universal Approximation 性质的。证明的思路其实比较简单，就是通过 ReLU 函数来构造基本单元，再用基本单元来做任意精度的拟合。以 $f:\bb R\to\bb R$ 为例，Proof Sketch 如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0grtq8dq.png" alt=""></p>
+<p>特别的，这里的神经网络是带有 bias term 的。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>线性分类器</title>
+    <url>/2025/03/06/DL/LC/</url>
+    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
+f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
+l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
+l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
+\begin{align}
+&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
+\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -199,6 +662,348 @@ h_t&= o\odot \tanh(c_t)
 <blockquote id="fn_11">
 <sup>11</sup>. Zoph and Le, Neural Architecture Search with Reinforcement Learning, ICLR 2017.<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
 </blockquote>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>梯度下降法</title>
+    <url>/2025/03/06/DL/GD/</url>
+    <content><![CDATA[<p>即 Gradient Descent 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>我们希望求解如下问题：<script type="math/tex; mode=display">
+\min_{W} L(W)</script>其中 $L(W)$ 在定义域内可微。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>假设我们已经得到了一个初始解 $x_0$ ， 那么一个简单的思路是，我们每次向 $x_0$ 处的负梯度方向移动。我们期待通过有限次的移动就可以抵达一个足够好的解，这就是最朴素的梯度下降算法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Vanilla gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    dw = compute_gradient(loss_func, data, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h1><ul>
+<li><p>即 Stochastic Gradient Descent 。在运行梯度下降法时，实践中的一个常见的问题是，我们的数据集往往很大，那么每一次计算损失函数的时间开销是不能接受的。因此我们往往会考虑使用蒙特卡洛方法，即选定一个 batch size（e.g. 32/64/128），每一次计算梯度时，我们都从数据集中随机取样出大小为 batch size 的样本集，然后再对样本集计算梯度。我们期待在梯度下降的过程中，样本集可以较好的反映出数据集的性质。这样的算法就被称作 SGD 。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="SGD-with-Momentum"><a href="#SGD-with-Momentum" class="headerlink" title="SGD with Momentum"></a>SGD with Momentum</h1><ul>
+<li><p>为了避免梯度的剧烈震荡/解停滞在鞍点/较大的噪声，我们可以考虑引入“速度”的概念来替代目前的“加速度”（即负梯度）。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent with momentum</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">v = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    v = rho * v + dw</span><br><span class="line">    w -= learning_rate * v</span><br></pre></td></tr></table></figure>
+<p>其中的超参数 <code>rho</code> 是衰减系数。SGD with Momentum 也有另一种实现，称作 Nesterov Momentum ，这里就不详谈了。</p>
+</li>
+</ul>
+<h1 id="AdaGrad"><a href="#AdaGrad" class="headerlink" title="AdaGrad"></a>AdaGrad</h1><ul>
+<li><p>即自适应梯度下降。类似的，我们希望避免梯度剧烈震荡的问题，因此考虑保存每一维上梯度的平方历史和，并在计算下一个解时为每一维除以对应的开根平方历史和。这样做的好处是，变化大的维度被限制，而变化小的维度则相对不被限制。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared += dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h1><ul>
+<li><p>AdaGrad 存在一个明显的问题，就是随着 <code>grad_squared</code>  的积累，到最后解就很难移动了。一个好的改进是 RMSProp（Root Mean Square Propagation），可以将其视作带有衰减系数的 AdaGrad 。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># RMSProp</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared = decay_rate * grad_squared + (<span class="number">1</span> - decay_rate) * dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h1><ul>
+<li><p>现在我们试着结合 Momentum 和 RMSProp 的优点，这样就得到了 Adam ：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive Moment Estimation</span></span><br><span class="line">moment1 = <span class="number">0</span></span><br><span class="line">moment2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">	minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    moment1 = beta1 * moment1 + (<span class="number">1</span> - beta1) * dw</span><br><span class="line">    moment2 = beta2 * moment2 + (<span class="number">1</span> - beta2) * dw**<span class="number">2</span></span><br><span class="line">    moment1_unbias = moment1 / (<span class="number">1</span> - beta1**t)</span><br><span class="line">    moment2_unbias = moment2 / (<span class="number">1</span> - beta2**t)</span><br><span class="line">    w -= learning_rate * moment1_unbias / (moment2_unbias.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
+<p>我们在上述的代码加入了计算 <code>moment1_unbias</code> 和 <code>moment2_unbias</code> ，这是为了避免在算法最开始更新 <code>w</code> 时除以一个极小的数，导致解剧烈变化。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
+<p>特别的，Adam 在很多时候都是一个好的方法，建议的初始参数 <code>beta1 = 0.9</code> ，<code>beta2 = 0.999</code> ，<code>learning_rate = 1e-3, 5e-4, 1e-4</code> 。</p>
+</li>
+</ul>
+<blockquote id="fn_4">
+<sup>4</sup>. 这样的写法应该有更严格的推导。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="基于二阶微分的优化"><a href="#基于二阶微分的优化" class="headerlink" title="基于二阶微分的优化"></a>基于二阶微分的优化</h1><ul>
+<li>基于二阶微分的优化也是有研究的，但是并不常用，因为计算 Hessian 矩阵以及矩阵求逆的复杂度开销太高了。这里就不详谈了。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于机器学习</title>
+    <url>/2025/02/25/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>实在找不到什么好的资料，于是就自己来写一个吧。</p>
+<p>本文将从基础开始介绍机器学习的算法。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\T}{^{\rm T}}
+\newcommand {\ss}{\mathcal}
+\newcommand {\al}{\alpha}
+\newcommand {\na}{\nabla}
+\newcommand {\ze}{\zeta}
+\newcommand {\ga}{\gamma}</script><h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><ul>
+<li>即 Support vector machine ，SVM 。我们从两类划分的问题谈起。</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>考虑以下问题：给定 $\bb R^d$ 中的 $n$ 个点 $x_1,\cdots,x_n$ ，以及它们的分类 $y_1,\cdots,y_n\in{-1，1}$ ，请找到一个最好的 $d$ 维超平面，划分开这两类点。</li>
+</ul>
+<h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><ul>
+<li>记目标超平面为 $P:w\T x+b=0$ 。考虑任意一点 $x\in\bb R^d$ ，容易推出其到 $P$ 的距离恰为<sup><a href="#fn_1" id="reffn_1">1</a></sup>：<script type="math/tex; mode=display">
+\frac{|w\T x+b|}{\|w\|}</script>其中范数取 $L_2$ 。不妨假设存在 $P$ 完全分开这两类点。我们希望 $P$ 是尽量 robust 的，因此令所有点到 $P$ 的最小距离最大，即：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{w,b}\min_{i\in [n]}&& \frac{y_i(w\T x_i+b)}{\|w\|}\\
+    &\text{s.t.} &&y_i(w\T x_i+b)>0&&\forall i\in[n]
+\end{align}</script>不妨令 $\min_{i\in[n]}y_i(w\T x_i+b)=1$ ，则：<script type="math/tex; mode=display">
+\begin{align}
+&\max_{w,b}&& \frac{1}{\|w\|}\\
+&\text{s.t.} && y_i(w\T x_i+b)\ge 1&&\forall i\in[n]\\
+\end{align}</script>显然取得最优解时，$\max_{i\in[n]}y_i(w\T x_i+b)=1$ 必然满足。进一步我们将其写作：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w\\
+&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
+\end{align}</script>这就是 SVM 的标准形式。对于使得约束取等的点，我们将其称作 support vector 。写出上述优化问题的 Lagrangian ，得到：<script type="math/tex; mode=display">
+\ss L(w,b,\al)=\frac 12w\T w+\sum_{i=1}^n \al_i(1-y_i(w\T x_i+b))</script>则原问题等价于：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}\max_{\al}&&\ss L(w,b,\al)\\
+&\text{s.t.} &&\al\ge 0\\
+\end{align}</script>其 Lagrange dual 为：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{\al}\min_{w,b}&&\ss L(w,b,\al)\\
+    &\text{s.t.} &&\al\ge 0\\
+\end{align}</script>对偶问题与原问题取等时满足 KKT 条件，即：<sup><a href="#fn_2" id="reffn_2">2</a></sup><script type="math/tex; mode=display">
+\begin{cases}
+    \na \ss L(w,b,a)=0\\
+    \al_i (1-y_i(w\T x_i+b))=0&\forall i\in[n]
+\end{cases}</script>这样：<script type="math/tex; mode=display">
+w=\sum_{i=1}^n \al_i y_i x_i\\
+\sum_{i=1}^n \al_i y_i=0\\</script>代入 Lagrange dual ，并考虑对偶可行性与 Lagrange 条件得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_jx_i\T x_j\\
+&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
+&&&\al\ge 0\\
+\end{align}</script>从技术上解这个凸优化即可。而通过 KKT 条件和 support vector ，我们可以解出 $w$ 和 $b$ 。</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 只需注意到 $w$ 为 $P$ 的法向量即可。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 由互补松弛性可以容易的导出哪些 $x_i$ 是 support vector 。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Soft-SVM"><a href="#Soft-SVM" class="headerlink" title="Soft SVM"></a>Soft SVM</h2><ul>
+<li>以上的问题被称作 Hard SVM ，顾名思义，因为强制要求了超平面必须分离两类点。如果不强制要求分离，我们考虑引入分类错误的惩罚函数。具体的，Hard SVM 的形式为：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w\\
+&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
+\end{align}</script>我们加入一个惩罚函数<sup><a href="#fn_3" id="reffn_3">3</a></sup>，得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w+C\sum_{i=1}^n\max\{0,1-y_i(w\T x_i+b)\}\\
+\end{align}</script>重写得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b,\xi}&&\frac12w\T w+C\sum_{i=1}^n\xi_i\\
+    &\text{s.t.}&&y_i(w\T x_i+b)\ge 1-\xi_i&&\forall i\in[n]\\
+    &&&\xi\ge 0
+\end{align}</script>这就是带有 hinge loss 的 Soft SVM 。其处理方式和上述的 Hard SVM 基本相同，这里就不再演示了。</li>
+</ul>
+<blockquote id="fn_3">
+<sup>3</sup>. 即 hinge loss 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h2><ul>
+<li><p>在很多情况下给定的点类不一定是适合用超平面划分的。一个好的思路是，我们可以通过选定某种特征映射，将 $\bb R^d$ 中的点映射到高维空间（也称特征空间）中去，然后在高维空间中做线性划分。这样做的好处是，高维空间中的超平面在原先的 $\bb R^d$ 中不一定是线性的，因此适应性会更好。具体的，考虑定义域为 $\bb R^d$ ，值域为某个希尔伯特空间的映射 $\phi$ ，则 dual SVM 的形式为：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_j\phi(x_i)\T \phi(x_j)\\
+&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
+&&&\al\ge 0\\
+\end{align}</script><p>而最终的分类模型为：</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题是我们很难表示高维空间的向量。注意到我们实际上只关注向量的内积，实际上只需考虑如何快速求内积即可，这种技巧称作 Kernel Trick 。我们将计算特征映射的内积的函数称作核函数，记作 $K(x_i,x_j)$ 。一个简单的例子是多项式核函数，即，注意到低维的内积的幂等于高维中高次项构成的向量的内积。利用这种思路，可以构造出多项式核函数 $K(x_i,x_j)=(\zeta+\ga x_i\T x_j)^p$ ，其中 $\ze,\ga\in \bb R,p\in\bb N$ ，对应了 $\dbinom {d+p}{p}$ 维空间中的内积。<sup><a href="#fn_4" id="reffn_4">4</a></sup>核函数有很多种类，这里就不一一列举了。</p>
+<p>一个另外的问题是，给定一个函数，我们如何判定其可否用作核函数。一个简单的思路是，考虑内积的性质，我们只需验证对于任意的 $x_1,\cdots x_n$ ，核矩阵 $[K(x_i,x_j)]$ 都是半正定的即可，这里就不提供详细证明了。</p>
+</li>
+</ul>
+<blockquote id="fn_4">
+<sup>4</sup>. 括号里有 $d+1$ 个不同的项，再考虑组合得到的本质不同的项数即可。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Multi-Class-SVM"><a href="#Multi-Class-SVM" class="headerlink" title="Multi Class SVM"></a>Multi Class SVM</h2><ul>
+<li>现在考虑进行多 $m$  个点类的划分。一般的，有以下的两种基本思路。</li>
+</ul>
+<h3 id="One-VS-All"><a href="#One-VS-All" class="headerlink" title="One VS All"></a>One VS All</h3><ul>
+<li>考虑用 $m$ 个超平面进行划分，第 $i$ 个超平面划分第 $i$ 类点以及其余所有的点，每一次划分采用标准的 SVM 方法。这样，我们将得到 $m$ 个决策函数。对于单个待决策的点，选择最优的决策函数对应的类即可。</li>
+<li>以上的处理方式是对于每个超平面单独优化。我们也可以考虑同时对总共的 $m$ 个超平面进行优化，此时我们的处理方式将和原先产生显著的区别。具体的，我们会考虑直接对 primal SVM 进行优化，采取诸如 SGD 的数值方法，这里就不细讲了。</li>
+</ul>
+<h3 id="One-VS-One"><a href="#One-VS-One" class="headerlink" title="One VS One"></a>One VS One</h3><ul>
+<li>考虑使用 $\dfrac{m(m-1)}{2}$ 个超平面进行所有点类的两两划分，每一次划分采用标准的 SVM 方法。这样，我们将得到 $\dfrac{m(m-1)}{2}$ 个超平面。对于单个待决策的点，我们采用投票的方式决定其类别，即，对于每个超平面选择较优的一类投票，再选择总票数最高的类。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>卷积神经网络的发展</title>
+    <url>/2025/03/07/DL/devCNN/</url>
+    <content><![CDATA[<p>本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。</p>
+<a id="more"></a>
+<h1 id="ImageNet"><a href="#ImageNet" class="headerlink" title="ImageNet"></a>ImageNet</h1><ul>
+<li><p>ImageNet Challenge（简称 ILSVRC）是图像识别领域的著名赛事，于 2010 年启动，后来在 2017 年被 CNN 终结了。ILSVRC 使用的数据集是 ImageNet 的子集，包括 1000 个类别、约 120 万张训练图像、5 万张验证图像与 10 万张测试图像，输入模型的图像格式均为 3 channels 224*224 pixels 。我们将介绍 ImageNet 历年最成功、最有代表性的 CNN 模型。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xbcmrb2q.png" alt=""></p>
+</li>
+</ul>
+<h1 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h1><ul>
+<li><p>在 2012 年以前的图像识别领域，CNN 尚且不是主流，直到当年 AlexNet 取得了重大突破。以下是 AlexNet 的结构：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/su98t1rd.png" alt=""></p>
+<p>如上图所示，AlexNet 由 5 个卷积层加上若干池化层再加上最后的三个全连接层构成。这个结构看起来比较奇怪，主要是因为受当时的算力限制，AlexNet 是在两块 GTX580 上分别训练的。此外 AlexNet 也用到了一些被后来被弃用的技术，例如 Local response normalization ，我们也不会再谈。</p>
+<p>衡量模型表现的重要因素，除开准确率之外，还有内存占用（memory）、参数量（params）以及浮点运算量（flop）。按照上篇中我们谈过的 CNN 的结构，这些指标都不难计算。下表给出了 AlexNet 的详细指标：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/37i022sy.png" alt=""></p>
+<p>下图是 AlexNet 各层开销的柱状图，并略去了开销极小的池化层：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/smc2q640.png" alt=""></p>
+<p>可以看到计算开销和空间开销主要来自卷积层，而参数量则主要来自全连接层。</p>
+</li>
+</ul>
+<h1 id="VGG-Net"><a href="#VGG-Net" class="headerlink" title="VGG Net"></a>VGG Net</h1><ul>
+<li><p>2013 年的 ZF Net 基本是一个大号的 AlexNet ，所以我们就略去不讲。而 2014 年则同时有两个模型取得了相近的优异表现，而且各自的实现思路有较大不同，其一是 VGG Net 。<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+<p>AlexNet 的一个缺点是超参数太多，这使得模型调参非常麻烦。而 VGG Net 的主要目标之一便是寻求一个更好的构建网络的范式。首先，注意到 5*5 卷积所达成的视野可以被两次 3*3 的卷积替代，并且后者的计算量与参数量更小，还提供了更多的非线性化，这暗示了单次大尺寸卷积的效果也许是不如多次小尺寸卷积的<sup><a href="#fn_1" id="reffn_1">1</a></sup>。所以，VGG Net 提供的解决方案是，只做 3*3 卷积。具体的，VGG Net 的思路是构造某种网络阶段，例如两次 3*3 stride 1 pad 1 的卷积再加上一次 2*2 stride 2 的 max pool ，通过堆叠网络阶段来搭建网络，并在每一层 pooling layer 后倍增 channel 数，如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/adw4ue39.png" alt=""></p>
+<p>同 AlexNet 比较 VGG Net 的各项指标：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xuq7n4iz.png" alt=""></p>
+<p>VGG Net 的算力消耗激增。实际上，VGG Net 也是我们所要介绍的算力开销最大的模型。</p>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 当然，单次 5*5 卷积和两次 3*3 卷积虽然达成了相同的视野，但每个点具体的权重肯定还是有区别的。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. VGG Net 仅由一个研究生和一位教师完成，相比之下，很多其它模型都是由大公司研发的。他们的成果令人震惊。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Google-Net"><a href="#Google-Net" class="headerlink" title="Google Net"></a>Google Net</h1><ul>
+<li><p>2014 年脱颖而出的另一模型则是 Google Net 。Google Net 与 VGG Net 有很多共同点，但特别之处是 Google Net 把重心放到了控制模型的算力开销上。Google Net 在模型的最初几层采取了激进的 down sample 策略以减少后续计算量。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qktm37ea.png" alt=""></p>
+<p>不同于 VGG Net ，Google Net 采用了复用网络模块的思路，即通过构造一个通用模块，再不断堆叠来搭建网络。Google Net 在网络模块中引入了平行分支，通过在不同的分支中同时做不同尺寸的卷积来避免引入卷积尺寸这一超参数。而为了控制卷积层的时间开销，Google Net 选择在卷积层之前加入 1*1 卷积层（称作 bottlenecks）来缩减 channel 的数目。 </p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gbc58luf.png" alt=""></p>
+<p>Google Net 的另一个创新是，通过 global average pooling 来替代原先模型最后巨大的全连接层，从而缩减参数量。具体的，Google Net 最后得到了 7*7*1024 的 tensor ，然后其通过 global average pooling 消除了 feature map ，只留下了一个 feature vector ，再使用单个全连接层来转换得到最后的 1000 个分类指标。</p>
+<p>Google Net 在中间加入了一些额外的输出分支，称作 Auxiliary Classifiers ，这看起来很奇怪。实际上 Auxiliary Classifiers 的用处并非预测，而是通过在中途注入梯度来加速模型收敛，而这种技巧在后来的模型中被弃用了。</p>
+</li>
+</ul>
+<h1 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h1><ul>
+<li><p>2015 年是非常重要的一年，这一年诞生了很多在深度神经网络中至关重要的技术，例如 Batch Normalization 和 Residual Block ，这使得我们可以搭建深度远超以往的神经网络，即 ResNet 。</p>
+</li>
+<li><p>搭建深度网络的主要阻碍之一，就是随着深度的增加，收敛也愈发困难，这个问题在 Google Net 上已经初露端倪。而通过我们先前介绍的 Batch Normalization ，即使不依靠 Auxiliary Classifiers ，Google Net 也可以较好的收敛，但这还不够好。不妨想想为什么深度网络的预测效果反而不如更浅的网络：理论上我们只需抽调出深度网络特定的几层，使其模仿浅网络就好了，而其余的层只需被设为恒等映射即可。所以我们猜测深度网络效果不好的原因可能是卷积层学习恒等映射的效果不好。要针对这一点改进，我们考虑对原先的网络模块（称作 plain block）加入一条直接传递当前结果的捷径，修改为如下的 Residual Block ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/g8qwtoyd.png" alt=""></p>
+<p>我们可以在 ResNet 中找到很多 VGG Net 和 Google Net 的影子，例如其采取了类似 VGG Net 的阶段化思想，并学习 Google Net 在最开始进行激进的 down sample 来降低后续开销，以及在最后安排 Global Average Pooling Layer 而非巨大的 Fully Connected Layer 。此外，在深层网络中，ResNet 采取了另一种设计来替代以上的 Residual Block（称作 Basic Block），即在单个 Block 内只做单次 3*3 卷积，而在之前之后分别插入 bottleneck 来控制 channel 的数目，以缩减计算开销，同时增加深度和非线性计算数，称作 bottleneck block 。</p>
+<p>以上的机制组合在一起，使得 ResNet 保持了每层较低的时间开销，以及更快的收敛速度，从而可以搭建深度远超以往的网络，实现跨越式的性能增长。而 ResNet 也确实横扫了 2015 年 CV 领域的各大竞赛，几乎终结了 ILSVRC 。</p>
+</li>
+</ul>
+<h1 id="后续改进"><a href="#后续改进" class="headerlink" title="后续改进"></a>后续改进</h1><ul>
+<li>后续的改进大部分都是基于 ResNet 的，例如 “Pre-Activation ResNet Block” 、ResNeXt 、Densely Connected Neural Network 。但实际上 ResNet 在准确性这方面的改进空间已经不大了，所以研究者开始把重心转移到别的方面，例如缩减算力开销（MobileNets），或是研究自动生成深度网络模型的模型。以后我们不会再详谈这些方面，而是把 ResNet 作为 Image Classification 的最终方案，然后介绍 CV 领域的其它问题。</li>
+<li>最后 Justin 给了一些建议，比如一般不要去试着搭建自己的网络，而是优先考虑已有的方案，因为一般院所的算力资源都是相当有限的。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>卷积神经网络</title>
+    <url>/2025/03/07/DL/CNN/</url>
+    <content><![CDATA[<p>这应该是目前最强大的处理图像识别问题的工具。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png" alt=""></p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\be}{\beta}
+\newcommand {\ga}{\gamma}
+\newcommand {\sig}{\sigma}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>不妨先考虑一下 Fully Connected Neural Network 的缺点是什么。首先，FCNN 的计算复杂度太高了，每一次我们都要做全连接层的计算；其次，FCNN 将图像展平成了向量，这摧毁了图像的空间结构。而为了改进这两个问题，我们将要引入著名的 Convolutional Neural Network ，即 CNN 。</p>
+</li>
+<li><p>最经典的 CNN 主要包含了两个部分，分别被称作 Convolutional Layers（卷积层）与 Pooling Layers（池化层），在 CNN 的最后往往也会加入少量的 Fully Connected Layers（全连接层）。后来的研究为 CNN 引入了 Batch Normalization 这一技术，而其现在也已经成为了 CNN 的重要组成部分。</p>
+</li>
+</ul>
+<h2 id="Convolutional-Layers"><a href="#Convolutional-Layers" class="headerlink" title="Convolutional Layers"></a>Convolutional Layers</h2><ul>
+<li><p>Convolutional Layers 的主要思路是，通过某种方式来保存图像的 2D 空间结构。举例而言，假设我们的输入是 3 channels 32*32 pixels 的图片，卷积层由 6 个 filter 构成，每个 filter 都是 3*5*5 的矩阵，单个 filter 用于给图片的所有 5*5 的部分采样，采用 $L_2$ 内积。特别的，我们要求每个 filter 的 channel 数目和原图像的 channel 数目一致，而 filter 的长宽大小则是可以调整的。那么通过每一个 filter 我们都可以对原图采样得到一个新的矩阵，称作 feature map 。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/6xfm970n.png" alt=""></p>
+<p>对所有的 6 个 filter 分别采样，我们就得到了 6 张 feature map ，这就是 Convolutional Layer 的输出。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gmzqf9va.png" alt=""></p>
+<p>特别的，我们也可以考虑所有的 28*28 个位置，每个位置都有一个 6 维向量，我们将其称作 feature vector 。而每个 filter 往往也会带有一个常数，我们将它们整体称作 bias vector 。在卷积层之后我们一般也会加入激活函数，例如 ReLU 。</p>
+<p>想想卷积层做了什么。在 FCNN 中，我们可以认为 hidden layer 是在学习 template ，即图像的模板；而在 CNN 中，convolutional layer 的工作更像是学习 feature ，即图像的特征。这样，我们就将学习对象从整体变成了局部。</p>
+<p>Convolutional layer 还有一些技术细节。首先，可以发现每一层 convolutional layer 都会导致图像的尺寸减小，这限制了网络的深度。而解决方案则是做 padding ，一般来说是在网络的四周补 0 。最常见的操作是 same padding ，即使得 padding 以后得到的 feature map 和输入量具备相同的尺寸<sup><a href="#fn_1" id="reffn_1">1</a></sup>。另一个细节则是，通过连续的 Convolutional layer ，feature map 中的每一个点都对应了原先的一个较大的部分，即保存了这个局部的特征。如果我们希望尽快建立 feature vector 对于全局的印象，或者快速缩减 feature map 的大小，可以考虑引入 stride ，即每次都间隔一定步数再做取样。方便起见，我们一般会设置 stride 的大小使其恰好可以覆盖全图。将输入量的边长<sup><a href="#fn_2" id="reffn_2">2</a></sup>记作 W ，Filter 的边长记作 K ，Padding 大小记作 P ，Stride 大小记作 S ，那么输出的 feature map 的边长就是 (W - K + 2P) / S + 1 。</p>
+<blockquote id="fn_1">
+<sup>1</sup>. 这里的尺寸是不管 channel 的。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+</li>
+</ul>
+<h2 id="Pooling-Layers"><a href="#Pooling-Layers" class="headerlink" title="Pooling Layers"></a>Pooling Layers</h2><ul>
+<li><p>Pooling Layers 的主要作用是快速对输入量做下采样（down sample），即降低输入量的大小。比方说 64*224*224 的输入量通过 pooling layer ，就被 down sample 到了 64*112*112 。Pooling Layer 有两个参数 Kernel Size 和 Stride ，还有用于采样的 Pooling function ，一般是取 max 或者取 mean 。具体的，Pooling Layer 会使用 Pooling function 对输入量的每一个 feature map 的边长为 Kernel Size 的部分做步长为 Stride 的采样。一般来说我们会设置 Kernel Size = Stride ，即将 feature map 切分为多个边长恰为 Kernel Size 的小块。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/d904ysd7.png" alt=""></p>
+</li>
+</ul>
+<h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
+<li><p>通过 Convolutional Layer 、Pooling Layer 以及 Fully Connected Layer ，我们就可以搭建出完整的 CNN 模型了。下图展示了经典的 Lecun 搭建的 CNN 模型 LeNet-5<sup><a href="#fn_7" id="reffn_7">7</a></sup> ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/uhuzac2o.png" alt=""></p>
+<p>但有一个棘手的问题是，随着网络的深度不断加深，使其收敛变得非常困难。<sup><a href="#fn_3" id="reffn_3">3</a></sup>相对比较近的工作提出了一个技巧，即所谓的 Batch Normalization 。不妨想想深度网络难以收敛的潜在原因：我们的优化方式是基于梯度的，那么对于单一变量，其偏导等价于固定其余所有变量的取值，然后选择这个变量下降最快的方向。在迭代的过程当中，所有变量会同时更新，导致不同层的变量之间的变动缺乏联系。从而为了避免损失函数的剧烈震荡，学习率就必须足够小，导致了收敛速度慢。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
+<p>具体的，为了辅助收敛，我们希望神经网络中的每一层所接受的分布<sup><a href="#fn_5" id="reffn_5">5</a></sup>满足比较好的性质，因此针对每一个 channel ，我们要求训练集上所有数据的 feature map 的分布满足期望为 0 且方差为 1 。下图是对 Fully Connected Layer 做 Batch Normalization 的演示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xg1mupi2.png" alt=""></p>
+<p>但是显然实际上 feature map 的分布不一定是满足这个要求的，所以我们还要对于每一个 channel 加入两个可学习的参数 $\ga$ 和 $\be$ ，分别为 feature map 的常数因子和常数偏置。反映到上图的例子上就是引入 $\ga<em>j,\be_j,j\in [D]$ ，使得最后的结果 $y</em>{i,j}=\ga<em>j\hat x</em>{i,j}+\be_j$ 。</p>
+<p>但是 Batch Normalization 还有一个很大的问题，就是其导致网络的预测与输入的 Batch 相关，这显然是很荒唐的。我们的解决方案是，在训练完成后固定期望 $\mu_j$ 和方差 $\sig_j^2$ 。至于它们的取值，要么就在训练的时候维护历史指数均值，要么就直接取最后几轮训练的结果的均值。</p>
+<p>但这样做了以后又会引入一个问题，就是我们的模型在预训练阶段和预测阶段所做的事情其实是不一样的，而我们期待训练和预测时模型的动作应该是相同的。<sup><a href="#fn_6" id="reffn_6">6</a></sup>对此，我们考虑更换 Normalization 的方式。可选的方案是 Layer Normalization（对每层内部做 Normalization）或 Instance Normalization（对每个 feature map 做 Normalization）。</p>
+</li>
+</ul>
+<blockquote id="fn_3">
+<sup>3</sup>. Lecun 在 1998 年发表了这个模型，而当时其实还没有遇到这个问题，因为其时的网络还是很浅的。我们在下篇会讲 CNN 的发展，那时再详谈这个问题。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 这只是一个直观上的解释。截止到 2019 年，Batch Normalization 的有效性的理论保证似乎还是 Open Problem 。因此以下对 Batch Normalization 的描述其实也都仅是直观上的。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_5">
+<sup>5</sup>. 这里的分布是指训练集上的 feature map 的分布。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. Justin 说可能会导致一些问题。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. Lynette<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>关于深度学习</title>
+    <url>/2025/02/26/DL/%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>其实是对着 UMich EECS 498-007 / 598-005: Deep Learning for Computer Vision 写的，所以主题是 Computer Vision 。本文中会有配图，是从 Justin Johnson 的 slides 上蒯的。</p>
+<a id="more"></a>
+<p>由于篇幅的问题，本文被拆分成了多篇。本篇是全文的目录。</p>
+<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+<li><p><a href="\2025\03\06\DL\KNN">K-近邻与交叉验证</a></p>
+<p>最朴素的 KNN 。顺便把交叉验证也写了。</p>
+</li>
+<li><p><a href="\2025\03\06\DL\LC">线性分类器</a></p>
+<p>即使用单个超平面来区分每个类别。损失函数采用了 Multi Class SVM 和 Soft Max &amp; Cross Entropy 。</p>
+</li>
+<li><p><a href="\2025\03\06\DL\GD">梯度下降法</a></p>
+<p>讨论了用于训练模型的梯度下降算法，包括朴素的 Sochastic Gradient Descent ，以及衍生的 SGD with Momentum 、AdaGrad 、RMSProp 以及最主流的 Adam 。</p>
+</li>
+<li><p><a href="\2025\03\06\DL\NN">神经网络</a></p>
+<p>介绍了朴素的 Fully Connected Neural Network ，采用的激活函数是 ReLU 。</p>
+</li>
+<li><p><a href="\2025\03\06\DL\BP">反向传播</a></p>
+<p>介绍了 Computational Graph 上的 Back Propagation ，并简要讨论了对复杂网络求梯度的技巧。</p>
+</li>
+<li><p><a href="\2025\03\07\DL\CNN">卷积神经网络</a></p>
+<p>介绍了最主流的用于图像识别的 Convolutional Neural Network ，包括 Batch Normalization 。</p>
+</li>
+<li><p><a href="\2025\03\07\DL\devCNN">卷积神经网络的发展</a></p>
+<p>梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。 </p>
+</li>
+<li><p><a href="\2025\03\11\DL\train">如何训练神经网络</a></p>
+<p>简要介绍了训练神经网络的技术细节，并引入了 Transfer Learning 这一思想。</p>
+</li>
+<li><p><a href="\2025\03\18\DL\RNN">循环神经网络</a></p>
+<p>引入了 Image captioning 、Machine Translation 等问题，并简要介绍了 Recurrent Neural Network 。</p>
+</li>
+<li><p><a href="\2025\03\18\DL\ATT">注意力机制</a></p>
+<p>引入了 Attention 这一概念，简要介绍了 RNN with Attention 以及最主流的 Transformer 。</p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -373,811 +1178,6 @@ h_t&= o\odot \tanh(c_t)
 <h2 id="分布式训练"><a href="#分布式训练" class="headerlink" title="分布式训练"></a>分布式训练</h2><ul>
 <li>先别管这个。哥们也没几张卡。</li>
 </ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>卷积神经网络</title>
-    <url>/2025/03/07/DL/CNN/</url>
-    <content><![CDATA[<p>这应该是目前最强大的处理图像识别问题的工具。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png" alt=""></p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\be}{\beta}
-\newcommand {\ga}{\gamma}
-\newcommand {\sig}{\sigma}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>不妨先考虑一下 Fully Connected Neural Network 的缺点是什么。首先，FCNN 的计算复杂度太高了，每一次我们都要做全连接层的计算；其次，FCNN 将图像展平成了向量，这摧毁了图像的空间结构。而为了改进这两个问题，我们将要引入著名的 Convolutional Neural Network ，即 CNN 。</p>
-</li>
-<li><p>最经典的 CNN 主要包含了两个部分，分别被称作 Convolutional Layers（卷积层）与 Pooling Layers（池化层），在 CNN 的最后往往也会加入少量的 Fully Connected Layers（全连接层）。后来的研究为 CNN 引入了 Batch Normalization 这一技术，而其现在也已经成为了 CNN 的重要组成部分。</p>
-</li>
-</ul>
-<h2 id="Convolutional-Layers"><a href="#Convolutional-Layers" class="headerlink" title="Convolutional Layers"></a>Convolutional Layers</h2><ul>
-<li><p>Convolutional Layers 的主要思路是，通过某种方式来保存图像的 2D 空间结构。举例而言，假设我们的输入是 3 channels 32*32 pixels 的图片，卷积层由 6 个 filter 构成，每个 filter 都是 3*5*5 的矩阵，单个 filter 用于给图片的所有 5*5 的部分采样，采用 $L_2$ 内积。特别的，我们要求每个 filter 的 channel 数目和原图像的 channel 数目一致，而 filter 的长宽大小则是可以调整的。那么通过每一个 filter 我们都可以对原图采样得到一个新的矩阵，称作 feature map 。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/6xfm970n.png" alt=""></p>
-<p>对所有的 6 个 filter 分别采样，我们就得到了 6 张 feature map ，这就是 Convolutional Layer 的输出。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gmzqf9va.png" alt=""></p>
-<p>特别的，我们也可以考虑所有的 28*28 个位置，每个位置都有一个 6 维向量，我们将其称作 feature vector 。而每个 filter 往往也会带有一个常数，我们将它们整体称作 bias vector 。在卷积层之后我们一般也会加入激活函数，例如 ReLU 。</p>
-<p>想想卷积层做了什么。在 FCNN 中，我们可以认为 hidden layer 是在学习 template ，即图像的模板；而在 CNN 中，convolutional layer 的工作更像是学习 feature ，即图像的特征。这样，我们就将学习对象从整体变成了局部。</p>
-<p>Convolutional layer 还有一些技术细节。首先，可以发现每一层 convolutional layer 都会导致图像的尺寸减小，这限制了网络的深度。而解决方案则是做 padding ，一般来说是在网络的四周补 0 。最常见的操作是 same padding ，即使得 padding 以后得到的 feature map 和输入量具备相同的尺寸<sup><a href="#fn_1" id="reffn_1">1</a></sup>。另一个细节则是，通过连续的 Convolutional layer ，feature map 中的每一个点都对应了原先的一个较大的部分，即保存了这个局部的特征。如果我们希望尽快建立 feature vector 对于全局的印象，或者快速缩减 feature map 的大小，可以考虑引入 stride ，即每次都间隔一定步数再做取样。方便起见，我们一般会设置 stride 的大小使其恰好可以覆盖全图。将输入量的边长<sup><a href="#fn_2" id="reffn_2">2</a></sup>记作 W ，Filter 的边长记作 K ，Padding 大小记作 P ，Stride 大小记作 S ，那么输出的 feature map 的边长就是 (W - K + 2P) / S + 1 。</p>
-<blockquote id="fn_1">
-<sup>1</sup>. 这里的尺寸是不管 channel 的。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-</li>
-</ul>
-<h2 id="Pooling-Layers"><a href="#Pooling-Layers" class="headerlink" title="Pooling Layers"></a>Pooling Layers</h2><ul>
-<li><p>Pooling Layers 的主要作用是快速对输入量做下采样（down sample），即降低输入量的大小。比方说 64*224*224 的输入量通过 pooling layer ，就被 down sample 到了 64*112*112 。Pooling Layer 有两个参数 Kernel Size 和 Stride ，还有用于采样的 Pooling function ，一般是取 max 或者取 mean 。具体的，Pooling Layer 会使用 Pooling function 对输入量的每一个 feature map 的边长为 Kernel Size 的部分做步长为 Stride 的采样。一般来说我们会设置 Kernel Size = Stride ，即将 feature map 切分为多个边长恰为 Kernel Size 的小块。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/d904ysd7.png" alt=""></p>
-</li>
-</ul>
-<h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
-<li><p>通过 Convolutional Layer 、Pooling Layer 以及 Fully Connected Layer ，我们就可以搭建出完整的 CNN 模型了。下图展示了经典的 Lecun 搭建的 CNN 模型 LeNet-5<sup><a href="#fn_7" id="reffn_7">7</a></sup> ：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/uhuzac2o.png" alt=""></p>
-<p>但有一个棘手的问题是，随着网络的深度不断加深，使其收敛变得非常困难。<sup><a href="#fn_3" id="reffn_3">3</a></sup>相对比较近的工作提出了一个技巧，即所谓的 Batch Normalization 。不妨想想深度网络难以收敛的潜在原因：我们的优化方式是基于梯度的，那么对于单一变量，其偏导等价于固定其余所有变量的取值，然后选择这个变量下降最快的方向。在迭代的过程当中，所有变量会同时更新，导致不同层的变量之间的变动缺乏联系。从而为了避免损失函数的剧烈震荡，学习率就必须足够小，导致了收敛速度慢。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
-<p>具体的，为了辅助收敛，我们希望神经网络中的每一层所接受的分布<sup><a href="#fn_5" id="reffn_5">5</a></sup>满足比较好的性质，因此针对每一个 channel ，我们要求训练集上所有数据的 feature map 的分布满足期望为 0 且方差为 1 。下图是对 Fully Connected Layer 做 Batch Normalization 的演示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xg1mupi2.png" alt=""></p>
-<p>但是显然实际上 feature map 的分布不一定是满足这个要求的，所以我们还要对于每一个 channel 加入两个可学习的参数 $\ga$ 和 $\be$ ，分别为 feature map 的常数因子和常数偏置。反映到上图的例子上就是引入 $\ga<em>j,\be_j,j\in [D]$ ，使得最后的结果 $y</em>{i,j}=\ga<em>j\hat x</em>{i,j}+\be_j$ 。</p>
-<p>但是 Batch Normalization 还有一个很大的问题，就是其导致网络的预测与输入的 Batch 相关，这显然是很荒唐的。我们的解决方案是，在训练完成后固定期望 $\mu_j$ 和方差 $\sig_j^2$ 。至于它们的取值，要么就在训练的时候维护历史指数均值，要么就直接取最后几轮训练的结果的均值。</p>
-<p>但这样做了以后又会引入一个问题，就是我们的模型在预训练阶段和预测阶段所做的事情其实是不一样的，而我们期待训练和预测时模型的动作应该是相同的。<sup><a href="#fn_6" id="reffn_6">6</a></sup>对此，我们考虑更换 Normalization 的方式。可选的方案是 Layer Normalization（对每层内部做 Normalization）或 Instance Normalization（对每个 feature map 做 Normalization）。</p>
-</li>
-</ul>
-<blockquote id="fn_3">
-<sup>3</sup>. Lecun 在 1998 年发表了这个模型，而当时其实还没有遇到这个问题，因为其时的网络还是很浅的。我们在下篇会讲 CNN 的发展，那时再详谈这个问题。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_4">
-<sup>4</sup>. 这只是一个直观上的解释。截止到 2019 年，Batch Normalization 的有效性的理论保证似乎还是 Open Problem 。因此以下对 Batch Normalization 的描述其实也都仅是直观上的。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_5">
-<sup>5</sup>. 这里的分布是指训练集上的 feature map 的分布。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_6">
-<sup>6</sup>. Justin 说可能会导致一些问题。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_7">
-<sup>7</sup>. Lynette<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>卷积神经网络的发展</title>
-    <url>/2025/03/07/DL/devCNN/</url>
-    <content><![CDATA[<p>本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。</p>
-<a id="more"></a>
-<h1 id="ImageNet"><a href="#ImageNet" class="headerlink" title="ImageNet"></a>ImageNet</h1><ul>
-<li><p>ImageNet Challenge（简称 ILSVRC）是图像识别领域的著名赛事，于 2010 年启动，后来在 2017 年被 CNN 终结了。ILSVRC 使用的数据集是 ImageNet 的子集，包括 1000 个类别、约 120 万张训练图像、5 万张验证图像与 10 万张测试图像，输入模型的图像格式均为 3 channels 224*224 pixels 。我们将介绍 ImageNet 历年最成功、最有代表性的 CNN 模型。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xbcmrb2q.png" alt=""></p>
-</li>
-</ul>
-<h1 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h1><ul>
-<li><p>在 2012 年以前的图像识别领域，CNN 尚且不是主流，直到当年 AlexNet 取得了重大突破。以下是 AlexNet 的结构：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/su98t1rd.png" alt=""></p>
-<p>如上图所示，AlexNet 由 5 个卷积层加上若干池化层再加上最后的三个全连接层构成。这个结构看起来比较奇怪，主要是因为受当时的算力限制，AlexNet 是在两块 GTX580 上分别训练的。此外 AlexNet 也用到了一些被后来被弃用的技术，例如 Local response normalization ，我们也不会再谈。</p>
-<p>衡量模型表现的重要因素，除开准确率之外，还有内存占用（memory）、参数量（params）以及浮点运算量（flop）。按照上篇中我们谈过的 CNN 的结构，这些指标都不难计算。下表给出了 AlexNet 的详细指标：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/37i022sy.png" alt=""></p>
-<p>下图是 AlexNet 各层开销的柱状图，并略去了开销极小的池化层：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/smc2q640.png" alt=""></p>
-<p>可以看到计算开销和空间开销主要来自卷积层，而参数量则主要来自全连接层。</p>
-</li>
-</ul>
-<h1 id="VGG-Net"><a href="#VGG-Net" class="headerlink" title="VGG Net"></a>VGG Net</h1><ul>
-<li><p>2013 年的 ZF Net 基本是一个大号的 AlexNet ，所以我们就略去不讲。而 2014 年则同时有两个模型取得了相近的优异表现，而且各自的实现思路有较大不同，其一是 VGG Net 。<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
-<p>AlexNet 的一个缺点是超参数太多，这使得模型调参非常麻烦。而 VGG Net 的主要目标之一便是寻求一个更好的构建网络的范式。首先，注意到 5*5 卷积所达成的视野可以被两次 3*3 的卷积替代，并且后者的计算量与参数量更小，还提供了更多的非线性化，这暗示了单次大尺寸卷积的效果也许是不如多次小尺寸卷积的<sup><a href="#fn_1" id="reffn_1">1</a></sup>。所以，VGG Net 提供的解决方案是，只做 3*3 卷积。具体的，VGG Net 的思路是构造某种网络阶段，例如两次 3*3 stride 1 pad 1 的卷积再加上一次 2*2 stride 2 的 max pool ，通过堆叠网络阶段来搭建网络，并在每一层 pooling layer 后倍增 channel 数，如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/adw4ue39.png" alt=""></p>
-<p>同 AlexNet 比较 VGG Net 的各项指标：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xuq7n4iz.png" alt=""></p>
-<p>VGG Net 的算力消耗激增。实际上，VGG Net 也是我们所要介绍的算力开销最大的模型。</p>
-</li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 当然，单次 5*5 卷积和两次 3*3 卷积虽然达成了相同的视野，但每个点具体的权重肯定还是有区别的。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. VGG Net 仅由一个研究生和一位教师完成，相比之下，很多其它模型都是由大公司研发的。他们的成果令人震惊。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="Google-Net"><a href="#Google-Net" class="headerlink" title="Google Net"></a>Google Net</h1><ul>
-<li><p>2014 年脱颖而出的另一模型则是 Google Net 。Google Net 与 VGG Net 有很多共同点，但特别之处是 Google Net 把重心放到了控制模型的算力开销上。Google Net 在模型的最初几层采取了激进的 down sample 策略以减少后续计算量。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qktm37ea.png" alt=""></p>
-<p>不同于 VGG Net ，Google Net 采用了复用网络模块的思路，即通过构造一个通用模块，再不断堆叠来搭建网络。Google Net 在网络模块中引入了平行分支，通过在不同的分支中同时做不同尺寸的卷积来避免引入卷积尺寸这一超参数。而为了控制卷积层的时间开销，Google Net 选择在卷积层之前加入 1*1 卷积层（称作 bottlenecks）来缩减 channel 的数目。 </p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gbc58luf.png" alt=""></p>
-<p>Google Net 的另一个创新是，通过 global average pooling 来替代原先模型最后巨大的全连接层，从而缩减参数量。具体的，Google Net 最后得到了 7*7*1024 的 tensor ，然后其通过 global average pooling 消除了 feature map ，只留下了一个 feature vector ，再使用单个全连接层来转换得到最后的 1000 个分类指标。</p>
-<p>Google Net 在中间加入了一些额外的输出分支，称作 Auxiliary Classifiers ，这看起来很奇怪。实际上 Auxiliary Classifiers 的用处并非预测，而是通过在中途注入梯度来加速模型收敛，而这种技巧在后来的模型中被弃用了。</p>
-</li>
-</ul>
-<h1 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h1><ul>
-<li><p>2015 年是非常重要的一年，这一年诞生了很多在深度神经网络中至关重要的技术，例如 Batch Normalization 和 Residual Block ，这使得我们可以搭建深度远超以往的神经网络，即 ResNet 。</p>
-</li>
-<li><p>搭建深度网络的主要阻碍之一，就是随着深度的增加，收敛也愈发困难，这个问题在 Google Net 上已经初露端倪。而通过我们先前介绍的 Batch Normalization ，即使不依靠 Auxiliary Classifiers ，Google Net 也可以较好的收敛，但这还不够好。不妨想想为什么深度网络的预测效果反而不如更浅的网络：理论上我们只需抽调出深度网络特定的几层，使其模仿浅网络就好了，而其余的层只需被设为恒等映射即可。所以我们猜测深度网络效果不好的原因可能是卷积层学习恒等映射的效果不好。要针对这一点改进，我们考虑对原先的网络模块（称作 plain block）加入一条直接传递当前结果的捷径，修改为如下的 Residual Block ：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/g8qwtoyd.png" alt=""></p>
-<p>我们可以在 ResNet 中找到很多 VGG Net 和 Google Net 的影子，例如其采取了类似 VGG Net 的阶段化思想，并学习 Google Net 在最开始进行激进的 down sample 来降低后续开销，以及在最后安排 Global Average Pooling Layer 而非巨大的 Fully Connected Layer 。此外，在深层网络中，ResNet 采取了另一种设计来替代以上的 Residual Block（称作 Basic Block），即在单个 Block 内只做单次 3*3 卷积，而在之前之后分别插入 bottleneck 来控制 channel 的数目，以缩减计算开销，同时增加深度和非线性计算数，称作 bottleneck block 。</p>
-<p>以上的机制组合在一起，使得 ResNet 保持了每层较低的时间开销，以及更快的收敛速度，从而可以搭建深度远超以往的网络，实现跨越式的性能增长。而 ResNet 也确实横扫了 2015 年 CV 领域的各大竞赛，几乎终结了 ILSVRC 。</p>
-</li>
-</ul>
-<h1 id="后续改进"><a href="#后续改进" class="headerlink" title="后续改进"></a>后续改进</h1><ul>
-<li>后续的改进大部分都是基于 ResNet 的，例如 “Pre-Activation ResNet Block” 、ResNeXt 、Densely Connected Neural Network 。但实际上 ResNet 在准确性这方面的改进空间已经不大了，所以研究者开始把重心转移到别的方面，例如缩减算力开销（MobileNets），或是研究自动生成深度网络模型的模型。以后我们不会再详谈这些方面，而是把 ResNet 作为 Image Classification 的最终方案，然后介绍 CV 领域的其它问题。</li>
-<li>最后 Justin 给了一些建议，比如一般不要去试着搭建自己的网络，而是优先考虑已有的方案，因为一般院所的算力资源都是相当有限的。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>反向传播</title>
-    <url>/2025/03/06/DL/BP/</url>
-    <content><![CDATA[<p>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
-<script type="math/tex; mode=display">
-f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
-<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
-<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
-<ol>
-<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
-<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
-<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
-</ol>
-<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
-</li>
-</ul>
-<blockquote id="fn_9">
-<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h1><ul>
-<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
-</li>
-<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
-</li>
-</ul>
-<h1 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h1><ul>
-<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
-<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
-</ul>
-<blockquote id="fn_10">
-<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>神经网络</title>
-    <url>/2025/03/06/DL/NN/</url>
-    <content><![CDATA[<p>即 Neural Networks 。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>很多时候数据集都不是线性可分的。老的解决方案是，考虑将数据点通过某种方式映射到特征空间中去，使得特征空间中的数据点变得容易划分，例如 SVM 的 Kernel Trick 。特征提取方式是多样的，例如 Color Histogram 、Histogram of Oriented Gradients 或者 Bag of Words 。但一个更加 SOTA 的方式则是神经网络。</p>
-</li>
-<li><p>具体的，我们将从 Linear Classifer 改进得到 Neural Network 。考虑最简单的 Linear Classifer 的预测方式：<sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
-<script type="math/tex; mode=display">
-f(x)=Wx,x\in\bb R^D,W\in\bb R^{C\times D}</script><p>现在我们考虑加入另一个矩阵，得到：</p>
-<script type="math/tex; mode=display">
-f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^D</script><p>我们将这个模型称作一个两层的神经网络。如图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/hhgijynd.png" style="zoom: 50%;" /></p>
-<p>我们将 $\max(0, x)$ 这个函数称作神经网络的激活函数，更具体的，称作 ReLU（Rectified Linear Unit）。激活函数对于神经网络而言是相当重要的，因为，去掉激活函数以后，多层神经网络的表达能力实际上和一般的 Linear Classifier 没有本质区别。<sup><a href="#fn_6" id="reffn_6">6</a></sup>激活函数有很多不同的种类，ReLU 是最为常见的一种。</p>
-<p>我们将每一层的点称作神经元（Neuron），并将这样的神经网络称作全连接神经网络（Fully Connected Neural Network），这是因为输入层的每一个神经元都参与决定了下一层的所有神经元的值。下图展示了一个六层的神经网络，每一层的 hidden units（即中间层的神经元个数）都是相等的（一般都会这样安排），我们将 hidden units 的个数称作神经网络的宽度（width）：<sup><a href="#fn_8" id="reffn_8">8</a></sup></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/acc029y8.png" style="zoom: 50%;" /></p>
-</li>
-</ul>
-<blockquote id="fn_6">
-<sup>6</sup>. 当然多次矩阵乘法与单个矩阵之间仍然是有区别的，这被称作 Multi Layer Linear Classifer 。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_7">
-<sup>7</sup>. 这里演示的神经网络是没有 bias term 的，但是一般的神经网络应该是要带上的。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_8">
-<sup>8</sup>. 神经网络不是一个凸优化。截止 2019 年，神经网络的收敛性以及类似性质的证明似乎还是 open problem 。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="Neural-Network-和生物学神经网络的联系"><a href="#Neural-Network-和生物学神经网络的联系" class="headerlink" title="Neural Network 和生物学神经网络的联系"></a>Neural Network 和生物学神经网络的联系</h1><ul>
-<li><p>实际上，Neural Nerwork 和生物学神经网络并没有必然的联系，相对准确的说法是前者的发明受到了后者的启发。在这里我们就大致讲讲两者之间的相似性。</p>
-</li>
-<li><p>我们可以想象，生物学神经网络是由大量神经元通过某种方式相互连接而形成的，其中每一个神经元通过轴突接受电信号，再通过树突发射电信号。我们假设发射出的电信号可以被表示为接受的电信号的线性组合再复合某个非线性函数（激活函数）的值，这样我们就可以仿照建立 Neural Network 。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jnej17pv.png" alt=""></p>
-<p>当然，我们建立的 Neural Network 相对于生物学神经网络是非常简化的。</p>
-</li>
-</ul>
-<h1 id="神经网络的表达能力"><a href="#神经网络的表达能力" class="headerlink" title="神经网络的表达能力"></a>神经网络的表达能力</h1><ul>
-<li><p>我们期待多层神经网络的表达能力要强于一般的 Linear Classifier 。不妨考虑神经网络的几何意义。先考虑单层神经网络，其实际上仍然是用了若干个超平面来划分类别。这几个超平面应该应该把整个空间划分为了若干块，然后通过 ReLU 函数，我们把所有点都集中到了其中的一块上。最后，我们在这一块空间上进行下一层神经网络的划分。因此，可以看出，由于激活函数的作用，深层神经网络的超平面对应到浅层的空间就不再是线性的了。浅层神经网络通过线性划分而扭曲了空间，从而增强了深层网络的表达能力。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gaq6ntwp.png" alt=""></p>
-<p>严格地说，我们可以将图像分类问题视作函数拟合问题。即，我们希望通过某种方式来拟合一个函数 $f:\bb R^D\to\bb R$ ，而后者则表示了所有图像的分类结果。我们可以证明，不低于两层的神经网络是具备 Universal Approximation 性质的。证明的思路其实比较简单，就是通过 ReLU 函数来构造基本单元，再用基本单元来做任意精度的拟合。以 $f:\bb R\to\bb R$ 为例，Proof Sketch 如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0grtq8dq.png" alt=""></p>
-<p>特别的，这里的神经网络是带有 bias term 的。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>梯度下降法</title>
-    <url>/2025/03/06/DL/GD/</url>
-    <content><![CDATA[<p>即 Gradient Descent 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>我们希望求解如下问题：<script type="math/tex; mode=display">
-\min_{W} L(W)</script>其中 $L(W)$ 在定义域内可微。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>假设我们已经得到了一个初始解 $x_0$ ， 那么一个简单的思路是，我们每次向 $x_0$ 处的负梯度方向移动。我们期待通过有限次的移动就可以抵达一个足够好的解，这就是最朴素的梯度下降算法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Vanilla gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    dw = compute_gradient(loss_func, data, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h1><ul>
-<li><p>即 Stochastic Gradient Descent 。在运行梯度下降法时，实践中的一个常见的问题是，我们的数据集往往很大，那么每一次计算损失函数的时间开销是不能接受的。因此我们往往会考虑使用蒙特卡洛方法，即选定一个 batch size（e.g. 32/64/128），每一次计算梯度时，我们都从数据集中随机取样出大小为 batch size 的样本集，然后再对样本集计算梯度。我们期待在梯度下降的过程中，样本集可以较好的反映出数据集的性质。这样的算法就被称作 SGD 。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="SGD-with-Momentum"><a href="#SGD-with-Momentum" class="headerlink" title="SGD with Momentum"></a>SGD with Momentum</h1><ul>
-<li><p>为了避免梯度的剧烈震荡/解停滞在鞍点/较大的噪声，我们可以考虑引入“速度”的概念来替代目前的“加速度”（即负梯度）。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent with momentum</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">v = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    v = rho * v + dw</span><br><span class="line">    w -= learning_rate * v</span><br></pre></td></tr></table></figure>
-<p>其中的超参数 <code>rho</code> 是衰减系数。SGD with Momentum 也有另一种实现，称作 Nesterov Momentum ，这里就不详谈了。</p>
-</li>
-</ul>
-<h1 id="AdaGrad"><a href="#AdaGrad" class="headerlink" title="AdaGrad"></a>AdaGrad</h1><ul>
-<li><p>即自适应梯度下降。类似的，我们希望避免梯度剧烈震荡的问题，因此考虑保存每一维上梯度的平方历史和，并在计算下一个解时为每一维除以对应的开根平方历史和。这样做的好处是，变化大的维度被限制，而变化小的维度则相对不被限制。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared += dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h1><ul>
-<li><p>AdaGrad 存在一个明显的问题，就是随着 <code>grad_squared</code>  的积累，到最后解就很难移动了。一个好的改进是 RMSProp（Root Mean Square Propagation），可以将其视作带有衰减系数的 AdaGrad 。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># RMSProp</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared = decay_rate * grad_squared + (<span class="number">1</span> - decay_rate) * dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h1><ul>
-<li><p>现在我们试着结合 Momentum 和 RMSProp 的优点，这样就得到了 Adam ：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive Moment Estimation</span></span><br><span class="line">moment1 = <span class="number">0</span></span><br><span class="line">moment2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">	minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    moment1 = beta1 * moment1 + (<span class="number">1</span> - beta1) * dw</span><br><span class="line">    moment2 = beta2 * moment2 + (<span class="number">1</span> - beta2) * dw**<span class="number">2</span></span><br><span class="line">    moment1_unbias = moment1 / (<span class="number">1</span> - beta1**t)</span><br><span class="line">    moment2_unbias = moment2 / (<span class="number">1</span> - beta2**t)</span><br><span class="line">    w -= learning_rate * moment1_unbias / (moment2_unbias.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
-<p>我们在上述的代码加入了计算 <code>moment1_unbias</code> 和 <code>moment2_unbias</code> ，这是为了避免在算法最开始更新 <code>w</code> 时除以一个极小的数，导致解剧烈变化。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
-<p>特别的，Adam 在很多时候都是一个好的方法，建议的初始参数 <code>beta1 = 0.9</code> ，<code>beta2 = 0.999</code> ，<code>learning_rate = 1e-3, 5e-4, 1e-4</code> 。</p>
-</li>
-</ul>
-<blockquote id="fn_4">
-<sup>4</sup>. 这样的写法应该有更严格的推导。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="基于二阶微分的优化"><a href="#基于二阶微分的优化" class="headerlink" title="基于二阶微分的优化"></a>基于二阶微分的优化</h1><ul>
-<li>基于二阶微分的优化也是有研究的，但是并不常用，因为计算 Hessian 矩阵以及矩阵求逆的复杂度开销太高了。这里就不详谈了。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>K-近邻与交叉验证</title>
-    <url>/2025/03/06/DL/KNN/</url>
-    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
-<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
-<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
-</ul>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
-<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
-<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>线性分类器</title>
-    <url>/2025/03/06/DL/LC/</url>
-    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
-f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
-l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
-l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
-\begin{align}
-&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
-\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_5">
-<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于机器学习</title>
-    <url>/2025/02/25/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>实在找不到什么好的资料，于是就自己来写一个吧。</p>
-<p>本文将从基础开始介绍机器学习的算法。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\T}{^{\rm T}}
-\newcommand {\ss}{\mathcal}
-\newcommand {\al}{\alpha}
-\newcommand {\na}{\nabla}
-\newcommand {\ze}{\zeta}
-\newcommand {\ga}{\gamma}</script><h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><ul>
-<li>即 Support vector machine ，SVM 。我们从两类划分的问题谈起。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
-<li>考虑以下问题：给定 $\bb R^d$ 中的 $n$ 个点 $x_1,\cdots,x_n$ ，以及它们的分类 $y_1,\cdots,y_n\in{-1，1}$ ，请找到一个最好的 $d$ 维超平面，划分开这两类点。</li>
-</ul>
-<h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><ul>
-<li>记目标超平面为 $P:w\T x+b=0$ 。考虑任意一点 $x\in\bb R^d$ ，容易推出其到 $P$ 的距离恰为<sup><a href="#fn_1" id="reffn_1">1</a></sup>：<script type="math/tex; mode=display">
-\frac{|w\T x+b|}{\|w\|}</script>其中范数取 $L_2$ 。不妨假设存在 $P$ 完全分开这两类点。我们希望 $P$ 是尽量 robust 的，因此令所有点到 $P$ 的最小距离最大，即：<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{w,b}\min_{i\in [n]}&& \frac{y_i(w\T x_i+b)}{\|w\|}\\
-    &\text{s.t.} &&y_i(w\T x_i+b)>0&&\forall i\in[n]
-\end{align}</script>不妨令 $\min_{i\in[n]}y_i(w\T x_i+b)=1$ ，则：<script type="math/tex; mode=display">
-\begin{align}
-&\max_{w,b}&& \frac{1}{\|w\|}\\
-&\text{s.t.} && y_i(w\T x_i+b)\ge 1&&\forall i\in[n]\\
-\end{align}</script>显然取得最优解时，$\max_{i\in[n]}y_i(w\T x_i+b)=1$ 必然满足。进一步我们将其写作：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}&& \frac12w\T w\\
-&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
-\end{align}</script>这就是 SVM 的标准形式。对于使得约束取等的点，我们将其称作 support vector 。写出上述优化问题的 Lagrangian ，得到：<script type="math/tex; mode=display">
-\ss L(w,b,\al)=\frac 12w\T w+\sum_{i=1}^n \al_i(1-y_i(w\T x_i+b))</script>则原问题等价于：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}\max_{\al}&&\ss L(w,b,\al)\\
-&\text{s.t.} &&\al\ge 0\\
-\end{align}</script>其 Lagrange dual 为：<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{\al}\min_{w,b}&&\ss L(w,b,\al)\\
-    &\text{s.t.} &&\al\ge 0\\
-\end{align}</script>对偶问题与原问题取等时满足 KKT 条件，即：<sup><a href="#fn_2" id="reffn_2">2</a></sup><script type="math/tex; mode=display">
-\begin{cases}
-    \na \ss L(w,b,a)=0\\
-    \al_i (1-y_i(w\T x_i+b))=0&\forall i\in[n]
-\end{cases}</script>这样：<script type="math/tex; mode=display">
-w=\sum_{i=1}^n \al_i y_i x_i\\
-\sum_{i=1}^n \al_i y_i=0\\</script>代入 Lagrange dual ，并考虑对偶可行性与 Lagrange 条件得到：<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_jx_i\T x_j\\
-&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
-&&&\al\ge 0\\
-\end{align}</script>从技术上解这个凸优化即可。而通过 KKT 条件和 support vector ，我们可以解出 $w$ 和 $b$ 。</li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 只需注意到 $w$ 为 $P$ 的法向量即可。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 由互补松弛性可以容易的导出哪些 $x_i$ 是 support vector 。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="Soft-SVM"><a href="#Soft-SVM" class="headerlink" title="Soft SVM"></a>Soft SVM</h2><ul>
-<li>以上的问题被称作 Hard SVM ，顾名思义，因为强制要求了超平面必须分离两类点。如果不强制要求分离，我们考虑引入分类错误的惩罚函数。具体的，Hard SVM 的形式为：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}&& \frac12w\T w\\
-&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
-\end{align}</script>我们加入一个惩罚函数<sup><a href="#fn_3" id="reffn_3">3</a></sup>，得到：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}&& \frac12w\T w+C\sum_{i=1}^n\max\{0,1-y_i(w\T x_i+b)\}\\
-\end{align}</script>重写得到：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b,\xi}&&\frac12w\T w+C\sum_{i=1}^n\xi_i\\
-    &\text{s.t.}&&y_i(w\T x_i+b)\ge 1-\xi_i&&\forall i\in[n]\\
-    &&&\xi\ge 0
-\end{align}</script>这就是带有 hinge loss 的 Soft SVM 。其处理方式和上述的 Hard SVM 基本相同，这里就不再演示了。</li>
-</ul>
-<blockquote id="fn_3">
-<sup>3</sup>. 即 hinge loss 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h2><ul>
-<li><p>在很多情况下给定的点类不一定是适合用超平面划分的。一个好的思路是，我们可以通过选定某种特征映射，将 $\bb R^d$ 中的点映射到高维空间（也称特征空间）中去，然后在高维空间中做线性划分。这样做的好处是，高维空间中的超平面在原先的 $\bb R^d$ 中不一定是线性的，因此适应性会更好。具体的，考虑定义域为 $\bb R^d$ ，值域为某个希尔伯特空间的映射 $\phi$ ，则 dual SVM 的形式为：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_j\phi(x_i)\T \phi(x_j)\\
-&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
-&&&\al\ge 0\\
-\end{align}</script><p>而最终的分类模型为：</p>
-<script type="math/tex; mode=display">
-f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题是我们很难表示高维空间的向量。注意到我们实际上只关注向量的内积，实际上只需考虑如何快速求内积即可，这种技巧称作 Kernel Trick 。我们将计算特征映射的内积的函数称作核函数，记作 $K(x_i,x_j)$ 。一个简单的例子是多项式核函数，即，注意到低维的内积的幂等于高维中高次项构成的向量的内积。利用这种思路，可以构造出多项式核函数 $K(x_i,x_j)=(\zeta+\ga x_i\T x_j)^p$ ，其中 $\ze,\ga\in \bb R,p\in\bb N$ ，对应了 $\dbinom {d+p}{p}$ 维空间中的内积。<sup><a href="#fn_4" id="reffn_4">4</a></sup>核函数有很多种类，这里就不一一列举了。</p>
-<p>一个另外的问题是，给定一个函数，我们如何判定其可否用作核函数。一个简单的思路是，考虑内积的性质，我们只需验证对于任意的 $x_1,\cdots x_n$ ，核矩阵 $[K(x_i,x_j)]$ 都是半正定的即可，这里就不提供详细证明了。</p>
-</li>
-</ul>
-<blockquote id="fn_4">
-<sup>4</sup>. 括号里有 $d+1$ 个不同的项，再考虑组合得到的本质不同的项数即可。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="Multi-Class-SVM"><a href="#Multi-Class-SVM" class="headerlink" title="Multi Class SVM"></a>Multi Class SVM</h2><ul>
-<li>现在考虑进行多 $m$  个点类的划分。一般的，有以下的两种基本思路。</li>
-</ul>
-<h3 id="One-VS-All"><a href="#One-VS-All" class="headerlink" title="One VS All"></a>One VS All</h3><ul>
-<li>考虑用 $m$ 个超平面进行划分，第 $i$ 个超平面划分第 $i$ 类点以及其余所有的点，每一次划分采用标准的 SVM 方法。这样，我们将得到 $m$ 个决策函数。对于单个待决策的点，选择最优的决策函数对应的类即可。</li>
-<li>以上的处理方式是对于每个超平面单独优化。我们也可以考虑同时对总共的 $m$ 个超平面进行优化，此时我们的处理方式将和原先产生显著的区别。具体的，我们会考虑直接对 primal SVM 进行优化，采取诸如 SGD 的数值方法，这里就不细讲了。</li>
-</ul>
-<h3 id="One-VS-One"><a href="#One-VS-One" class="headerlink" title="One VS One"></a>One VS One</h3><ul>
-<li>考虑使用 $\dfrac{m(m-1)}{2}$ 个超平面进行所有点类的两两划分，每一次划分采用标准的 SVM 方法。这样，我们将得到 $\dfrac{m(m-1)}{2}$ 个超平面。对于单个待决策的点，我们采用投票的方式决定其类别，即，对于每个超平面选择较优的一类投票，再选择总票数最高的类。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于红黑树</title>
-    <url>/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
-    <content><![CDATA[<p>鉴于我所可以找到的关于这个数据结构的资料都不够理想，我在这里做一个简要的总结。</p>
-<a id="more"></a>
-<h2 id="红黑树的性质"><a href="#红黑树的性质" class="headerlink" title="红黑树的性质"></a>红黑树的性质</h2><ul>
-<li><p>红黑树是一种自平衡的二叉搜索树，特点是每个节点额外存储了一个“颜色”信息，可以为红或黑。</p>
-</li>
-<li><p>我们对红黑树的结构提出一些要求。具体的，我们希望<sup><a href="#fn_1" id="reffn_1">1</a></sup>：</p>
-<ol>
-<li>根节点为黑。</li>
-<li>红结点的儿子必为黑。</li>
-<li>叶子结点为虚拟点，且颜色必为黑<sup><a href="#fn_2" id="reffn_2">2</a></sup>。</li>
-<li>任何叶子结点到根的路径上的黑结点个数相同，称作黑高度。</li>
-</ol>
-<p>对于包含 $n$ 个数据的红黑树，其一共有 $2n+1$ 个结点。记黑高度为 $k$ ，则显然红黑树中包含了一棵深度为 $k$ 的满二叉树，于是我们有：</p>
-<script type="math/tex; mode=display">
-2^k-1\le 2n+1\Longrightarrow k=O(\log n)</script><p>而红黑树的高度不超过 $2k$ ，因此红黑树的高度同为 $O(\log n)$ 。</p>
-</li>
-</ul>
-<h2 id="红黑树的插入操作"><a href="#红黑树的插入操作" class="headerlink" title="红黑树的插入操作"></a>红黑树的插入操作</h2><ul>
-<li><p>为了不影响黑高度，我们将数据作为红节点按照 BST 的一般方式插入。接下来，考虑：</p>
-<ol>
-<li><p>若插入点恰为根节点，则将颜色修正为黑，结束。</p>
-</li>
-<li><p>若插入后不存在双红，直接结束。</p>
-</li>
-<li><p>若插入点父亲的兄弟为黑，按照下图修正，然后结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/kvriyjfd.png" alt=""></p>
-</li>
-<li><p>若插入点父亲的兄弟为红，按照下图修正，并对插入点的祖父递归：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4xnmnmbc.png" alt=""></p>
-</li>
-</ol>
-</li>
-</ul>
-<h2 id="红黑树的删除操作"><a href="#红黑树的删除操作" class="headerlink" title="红黑树的删除操作"></a>红黑树的删除操作</h2><ul>
-<li><p>先按照 BST 的一般方式删除目标数据。即先定位待删除结点，再考虑：</p>
-<ol>
-<li>若其仅有一个非虚拟儿子，则此儿子必为红，该节点必为黑。使用儿子替代该节点，并染黑即可。</li>
-<li>若其有两个非虚拟儿子，则定位该节点的后继，以后继的数据替代该节点，并删除后继。</li>
-<li>若其无虚拟儿子，则直接删除。</li>
-</ol>
-<p>以上，在情况 3 中，若该结点颜色为黑，则删除过程破坏了红黑树的性质四，即删除位置对应的叶子结点的黑高度比其余叶子小一。此时需要执行修正操作，以保持性质四。具体的，假定当前结点颜色为黑，且子树内所有叶子的黑高度相等，比其余叶子小一，考虑：</p>
-<ol>
-<li><p>兄弟为黑且无红儿子，父亲为黑。按照下图调整，并向父亲递归：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/yt5bekdx.png" alt=""></p>
-</li>
-<li><p>兄弟为黑且无红儿子，父亲为红。按照下图调整，并结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2xaen7be.png" alt=""></p>
-</li>
-<li><p>兄弟为黑且同向儿子为红。按下图调整，并结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/iycih5x7.png" alt=""></p>
-</li>
-<li><p>兄弟为黑且异向儿子为红。按下图调整，并结束：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/4zvkpj5w.png" alt=""></p>
-</li>
-<li><p>兄弟为红。按下图调整，并转情况 2 到 4 。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/097z77g4.png" alt=""></p>
-</li>
-</ol>
-</li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 不同的资料中对红黑树的要求可能存在些微不同。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 以下，请读者根据语境判断是否考虑虚拟结点。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于数论</title>
-    <url>/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</url>
-    <content><![CDATA[<p>从基础谈起。</p>
-<a id="more"></a>
-<h2 id="整除"><a href="#整除" class="headerlink" title="整除"></a>整除</h2><ul>
-<li>对于 $a=kb$ ，称 $b$ 整除 $a$ ，记作 $b\mid a$ 。</li>
-</ul>
-<h2 id="欧几里得算法"><a href="#欧几里得算法" class="headerlink" title="欧几里得算法"></a>欧几里得算法</h2><ul>
-<li>即当 $b\neq0$ 时， $\gcd(a,b)=\gcd(b,a\bmod b)$ 。</li>
-<li>记 $a\bmod b=r$ ，要证明这个定理，我们考虑去说明 $a$ 与 $b$ 的公因数集合和 $b$ 与 $r$ 的公因数集合是相同的。我们知道 $a=kb+r$ ，那么对于 $b$ 和 $r$ 的公因数 $d$ ，就有 $d\mid a$ ，即 $b$ 和 $r$ 的公因数必然是 $a$ 和 $b$ 的公因数。而我们又有 $a-kb=r$ ，那么，同理，$a$ 和 $b$ 的公因数也必然是 $b$ 和 $r$ 的公因数，则原式成立。</li>
-</ul>
-<h2 id="二元不定方程"><a href="#二元不定方程" class="headerlink" title="二元不定方程"></a>二元不定方程</h2><h3 id="扩展欧几里得算法"><a href="#扩展欧几里得算法" class="headerlink" title="扩展欧几里得算法"></a>扩展欧几里得算法</h3><ul>
-<li>用于得到不定方程 $ax+by=g$ 的某一组解，其中 $g=\gcd(a,b)$ 。</li>
-<li>具体的，我们考虑如何修改欧几里得算法。考虑递归的过程，不妨假定我们已经得到了方程 $by+rx=g$ 的解，其中 $r=a-kb$ 。那么就有 $by+(a-kb)\times x=g$ ，即 $ax+b(y-kx)=g$ ，这样我们也就得到了当前状态的解。</li>
-</ul>
-<h3 id="斐蜀定理"><a href="#斐蜀定理" class="headerlink" title="斐蜀定理"></a>斐蜀定理</h3><ul>
-<li>对于方程 $ax+by=m$ ，其有解的充要条件是 $\gcd(a,b)\mid m$ 。</li>
-<li>先证必要性。记 $g=\gcd(a,b)$ ，我们知道 $ax+by=kg$ 必然存在，即 $m=kg$ ，$g\mid m$ 。再证充分性。我们知道，若方程 $ax’+by’=g$ 有解 $\begin{cases}x’=x’_0\y’=y’_0\end{cases}$ ，那么原方程就必然存在解 $\begin{cases}x_0=x’_0m/g\y_0=y’_0m/g\end{cases}$ 。而由扩展欧几里得算法，我们可以断言，解 $\begin{cases}x’=x’_0\y’=y’_0\end{cases}$ 必然存在，从而充分性得证。</li>
-</ul>
-<h3 id="二元不定方程解的结构"><a href="#二元不定方程解的结构" class="headerlink" title="二元不定方程解的结构"></a>二元不定方程解的结构</h3><ul>
-<li><p>对于方程 $ax+by=m$ ，若其存在一组整数解 $\begin{cases}x=x_0\y=y_0\end{cases}$ ，则其所有整数解可以表示为 $\begin{cases}x=x_0+kb/g\y=y_0-ka/g\end{cases}$ ，其中 $k\in\mathbb Z,g=\gcd(a,b)$ 。</p>
-</li>
-<li><p>我们从题设开始。考虑 $ax_0+by_0=m$ ，对于方程在 $\begin{cases}x=x_0\y=y_0\end{cases}$ 之外的整数解 $\begin{cases}x=x_1\y=y_1\end{cases}$ ，必然有 $\begin{cases}x_1=x_0+x’\y_1=y_0+y’\end{cases}$ ，其中 $x’,y’\in\mathbb Z$ 。那么我们就有：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    a(x_0+x')+b(y_0+y')&=m\\
-    ax_0+by_0+ax'+by'&=m\\
-    ax'+by'&=0\\
-    -ax'&=by'
-\end{aligned}</script><p>记 $g=\gcd(a,b),a’=\dfrac{-a}{g},b’=\dfrac{b}{g}$ ，那么就有：</p>
-<script type="math/tex; mode=display">
-a'x'=b'y'</script><p>其中 $a’\bot b’$ 。进一步，我们有：</p>
-<script type="math/tex; mode=display">
-a'x'=b'y'\Rightarrow a'x'\mid b'y'\Rightarrow a'\mid b'y' \Rightarrow a'\mid y'</script><p>类似的，也有 $b’\mid x’$ 。那么若记 $\dfrac {x’}{b’}=x’’$ ，$\dfrac {y’}{a’}=y’’$ ，就有：</p>
-<script type="math/tex; mode=display">
-a'b'x''=a'b'y''\Rightarrow x''=y''</script><p>再记 $x’’=y’’=k\in\mathbb Z$ ，那么可以发现，不同的 $k$ 和不同的解恰好一一对应，且有 $\begin{cases}x’=b’x’’=kb/g\y’=a’y’’=-ka/g\end{cases}$ ，即 $\begin{cases}x_1=x_0+kb/g\y_1=y_0-ka/g\end{cases}$ 。</p>
-</li>
-</ul>
-<h2 id="模意义下的整数系统"><a href="#模意义下的整数系统" class="headerlink" title="模意义下的整数系统"></a>模意义下的整数系统</h2><h3 id="同余"><a href="#同余" class="headerlink" title="同余"></a>同余</h3><ul>
-<li><p>取模运算 $\bmod$ ：对于 $a\bmod m=b$ ，其中 $m\neq0$ ，其满足 $a=km+b$ ，且 $0\le b&lt;m$ 。</p>
-<p>其运算优先级与乘除相同。</p>
-<p>取模运算存在一些非常基本且重要的性质，例如：</p>
-<ol>
-<li>$(a+ b)\bmod m=(a\bmod m+ b\bmod m)\bmod m$ 。</li>
-<li>$(a- b)\bmod m=(a\bmod m- b\bmod m)\bmod m$ 。</li>
-<li>$a\times b\bmod m=((a\bmod m)\times (b\bmod m))\bmod m$ 。</li>
-</ol>
-<p>是容易验证的。</p>
-</li>
-<li><p>同余：称 $a$ 和 $b$ 关于 $\bmod m$ 同余，当且仅当 $a\bmod m=b \bmod m$ ，记作 $a\equiv b \pmod m$ 。</p>
-</li>
-</ul>
-<h3 id="乘法逆元"><a href="#乘法逆元" class="headerlink" title="乘法逆元"></a>乘法逆元</h3><ul>
-<li><p>我们知道，在同余的框架下，一般意义的除法是做不了的。但是，我们考虑有理数集当中的除法，可以将其看作是乘法的逆运算。对于非 $0$ 有理数 $a$ ，必然存在 $a^{-1}\in \mathbb R$ 使得 $a^{-1}\times a=1$ 。我们试着把这个概念推广到整数系统中去。具体的，我们考虑在 $\bmod m$ 的意义下，对于 $a\in[0,m)$ ，是否存在 $a^{-1}\in [0,m)$ 使得 $a\times a^{-1}\equiv 1\pmod m$ 。我们把以上的 $a^{-1}$ 称为乘法逆元。</p>
-</li>
-<li><p>我们接着考虑模 $m$ 的整数系统中的 $a^{-1}$ 应该具有什么性质：</p>
-<ol>
-<li><p>$a=0$ 没有逆元。</p>
-</li>
-<li><p>$a^{-1}$ 至多存在一个。要证明这个命题，我们使用反证法。不妨假定存在 $x_1,x_2\in [1,m),x_1\neq x_2,{\rm s.t.} a\times x_1\equiv a\times x_2\equiv 1\pmod m$ ，那么我们就有：</p>
-<script type="math/tex; mode=display">
-\begin{aligned}
-    a\times x_1&\equiv a\times x_2\pmod m\\
-    a\times x_1^2&\equiv a\times x_1\times x_2\pmod m\\
-    x_1&\equiv x_2 \pmod m
-\end{aligned}</script><p>这与定义冲突，那么假设不成立，不可能存在多于 $1$ 个的逆元。</p>
-</li>
-<li><p>$a^{-1}$ 存在，当且仅当 $a\bot m$ 。记 $x=a^{-1}$ ，那么我们有 $a\times x\equiv 1\pmod m$ ，等价于 $ax+km=1$ ，其中 $k\in \mathbb Z$ 。那么由斐蜀定理，上述方程有解，当且仅当 $\gcd(a,m)\mid 1$ ，即 $a\bot m$ ，则原命题成立。</p>
-</li>
-</ol>
-</li>
-<li><p>那么我们该如何求取乘法逆元呢？第一种思路，是将同余式看作不定方程，再使用扩展欧几里得算法求解。而第二种，则是使用下面要提到的费马小定理。</p>
-</li>
-</ul>
-<h3 id="模意义下的整数系统中的分数"><a href="#模意义下的整数系统中的分数" class="headerlink" title="模意义下的整数系统中的分数"></a>模意义下的整数系统中的分数</h3><ul>
-<li>既然我们已经把有理数的除法概念推广到了模意义下的整数系统当中，那么进一步导出分数的概念就也是很自然的了。具体的，对于分数 $\dfrac ab$ ，我们希望在 $\bmod m$ 的整数系统中去找到一个对应的数，使其代数性质与 $\dfrac ab$ 相似。</li>
-<li>具体的，我们设这个数为 $x$ ，那么就是要使其满足 $x\times b\equiv a\pmod m$ 。若 $b\bot m$ ，即 $b^{-1}$ 存在，那么我们立即就可以知道，在这个系统中有且仅有一个 $x\equiv a\times b^{-1}\pmod m$ 满足条件。而若 $b\not\bot m$ ，此时上式就等价于 $bx+my=a$ ，其有解，当且仅当 $\gcd(b,m)=g\mid a$ ，且通解为 $x=x_0+km/g$ ，也就是说此时合法的 $x$ 的数目并不确定，甚至可以为 $0$ 。</li>
-</ul>
-<h2 id="费马小定理"><a href="#费马小定理" class="headerlink" title="费马小定理"></a>费马小定理</h2><ul>
-<li><p>对于 $p\in \mathbb P$ ，$p\nmid a$ ，有 $a^{p-1}\equiv 1 \pmod p$ 。</p>
-</li>
-<li><p>要证明这个定理，我们考虑 $a,2a,3a,\dots ,(p-1)a$ 。首先，我们有这 $p-1$ 个数在 $\bmod p$ 意义下互不相同。因为假定存在 $x_1,x_2\in[1,p),x_1\neq x_2$ ，使得 $x_1a\equiv x_2a\pmod p$ ，而由 $a\bot p$ ，我们有 $x_1aa^{-1}\equiv x_2aa^{-1}\pmod p$ ，即 $x_1\equiv x_2\pmod p$ ，与假设不符，说明假设不成立。这样，我们就有：</p>
-<script type="math/tex; mode=display">
-\prod_{i=1}^{p-1}ia\equiv a^{p-1}i!\equiv i!\pmod p</script><p>而 $p$ 又与 $[1,p)$ 之中的每个数互素，说明：</p>
-<script type="math/tex; mode=display">
-a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
-</li>
-<li><p>应用费马小定理，我们就知道，当模数 $p$ 为素数，$p\nmid a$ 时，$a\times a^{p-2}\equiv 1\pmod p$ ，说明 $a^{-1}$ 就是 $a^{p-2}\bmod p$ 。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>ZXY&#39;s Law</title>
-    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
-    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
-<a id="more"></a>
-<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
-<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
-<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
-<li>证明：<del>实践是检验真理的唯一标准。</del></li>
-</ul>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
-<li><p>考虑下题：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
-</li>
-<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
-<script type="math/tex; mode=display">
-(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
-<script type="math/tex; mode=display">
-g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
-<script type="math/tex; mode=display">
-f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>并且：</p>
-<script type="math/tex; mode=display">
-f(4)=\frac 72</script><p>亦即：</p>
-<script type="math/tex; mode=display">
-p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
-</li>
-</ul>
-<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
-]]></content>
-      <categories>
-        <category>灌水区</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>常用 Hexo 指令</title>
-    <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
-    <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
-<a id="more"></a>
-<ul>
-<li><p>本地运行博客。</p>
-<p>命令：<code>hexo s -p localhost</code> 。其中 <code>localhost</code> 是任意的本地端口。</p>
-<p>用于将博客在本地端口中部署运行。支持实时预览。</p>
-</li>
-<li><p>更新博客。</p>
-<p>命令：<code>hexo clean</code> 意义不清楚。 <code>hexo g</code> 生成本地文件。<code>hexo d</code> 上传博客。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作指南</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>通过 SSH 拉取 GitHub 上的代码</title>
-    <url>/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
-<a id="more"></a>
-<ul>
-<li><p>配置 SSH 。</p>
-<p>下载 Git 。打开 git-bash.exe ，输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
-<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
-</li>
-<li><p>将公钥添加到 GitHub 。</p>
-<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
-</li>
-<li><p>使用 SSH 替换 HTTPS 。</p>
-<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
-</li>
-<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作指南</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>模拟退火学习笔记</title>
-    <url>/2020/01/19/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>首先需要说明的是这是一篇很久以前写的文章，当时的观念与现在有所不同，所以这篇文章的措辞并不严谨，而且对理论的分析也不够学术。但鉴于写作此篇时笔者水平较低，这些也是可以理解的。重要的是，在深入研究过模拟退火算法以后，我应该会重写此篇，因此，现在大家在阅读此篇时，应持保留态度。</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>2020-01-14，异常中学OI​冬令营（水）的第一天，先是花式​splay​了一个上午，<del>下午忘了干了啥，</del>后在晚自习颓废过程中想到好像还可以搞一搞%您颓火（模拟退火），于是就有了这篇文章。</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KXbZR.png" alt=""></p>
-<a id="more"></a>
-<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><del>在实际生活中，</del>我们常常会遇到求函数最值的问题，那怎么办呢？我们当然可以选择爬山算法，即每次在当前最优解的附近选择一个解，如果它优于最优解，就接受它，否则不接受它，并调小选择范围，寻找下一个解。在某些情况下，它是适用的，比如下图</p>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1579625299001&amp;di=b4cff93bc388cc504063f0aadcfb1133&amp;imgtype=0&amp;src=http%3A%2F%2Fimg.xjishu.com%2Fimg%2Fzl%2F2020%2F1%2F7%2F3556419215.gif" alt=""></p>
-<p>但这个算法的劣势非常明显——它会被局限在一个局部最优解上，无法取得全局最优解，比如下图这个函数。</p>
-<p><img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2994024717,1924808617&amp;fm=26&amp;gp=0.jpg" alt=""></p>
-<p>这时，我们就可以使用一个玄学算法——模拟退火。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><blockquote>
-<p>模拟退火算法（Simulate Anneal，SA）是一种通用概率演算法，用来在一个大的搜寻空间内找寻命题的最优解。模拟退火是由S.Kirkpatrick, C.D.Gelatt和M.P.Vecchi在1983年所发明的。V.Čern&yacute;在1985年也独立发明此演算法。模拟退火算法是解决<a href="https://baike.baidu.com/item/TSP/2905216" target="_blank" rel="noopener">TSP问题</a>的有效方法之一。</p>
-<p>模拟退火的出发点是基于物理中固体物质的退火过程与一般<a href="https://baike.baidu.com/item/组合优化/3314860" target="_blank" rel="noopener">组合优化问题</a>之间的相似性。模拟退火算法是一种通用的优化算法，其物理退火过程由加温过程、等温过程、冷却过程这三部分组成。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>模拟退火的原理也和金属<a href="https://baike.baidu.com/item/退火/1039313" target="_blank" rel="noopener">退火</a>的原理近似：将热力学的理论套用到统计学上，将搜寻空间内每一点想像成空气内的分子；分子的能量，就是它本身的动能；而搜寻空间内的每一点，也像空气分子一样带有“能量”，以表示该点对命题的合适程度。演算法先以搜寻空间内一个任意点作起始：每一步先选择一个“邻居”，然后再计算从现有位置到达“邻居”的概率。</p>
-</blockquote>
-<p>——摘自百度百科<del>（当然你也可以不看）</del></p>
-<p>简单的说，模拟退火就是在一种一定范围内求多峰函数最值的算法。它在模拟温度降低的同时得出新解，温度越高，解的变化量越大，随着温度的逐渐降低，解的变化量也渐渐变小，并越发集中在最优解附近。最后温度达到了我们设置的最低温，对应到物理学上也就是结晶了，这时，我们可以认为当前我们取得的解就是最优解，<del>当然也可能不是，</del>整个算法也就终止了。</p>
-<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><p>我们先引入几个参数：当前最优解$E_0$，新解$E$，解变动量$ΔE$（<strong>$E$与$E_0$的差</strong>），上一个被接受的解$E_1$，初温$T_0$，末温$T_k$，当前温度$T$，温度变动量$Δ$，再引用一张非常经典的图——</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Hill_Climbing_with_Simulated_Annealing.gif" alt=""></p>
-<p>这张图非常好的展现了模拟退火的运行过程，从$T_0$开始，每次乘上$Δ$得到$T$，如果$T$小于$T_k$则终止降温。$T_0$我一般设置在$1000$~$5000$左右，$Δ$则是一个略小于1的常数，而$T_k$一般设置在$1^{-8}$到$1^{-15}$之间。</p>
-<p>在降温的同时，我们在$E_1$（不是最优解$E_0$）的基础上扰动产生新解$E$，需要注意的是扰动大小随温度的降低而变小，因为在温度高的时候，解的变化量非常大，这时的任务是在全局范围中找到最优解的大致位置，随着温度的降低，解渐渐稳定，这时的任务是确定最优解的准确位置。</p>
-<p>但每次得出新解以后，我们以什么原则，或者说什么概率来接受它呢？</p>
-<p>这时就要用到<a href="https://baike.baidu.com/item/Metropolis接受准则/14678977?fr=aladdin" target="_blank" rel="noopener">Metropolis准则</a>。简单说来，假设我们的目标是求最小值，如果$E$与$E_0$的差，也就是$ΔE$小于$0$，我们就接受当前解，因为它优于之前的最优解嘛。而如果$ΔE$大于$0$，也就是我们遇到了一个更劣的解，我们也要以一定的概率来接受它，因为我们要找的一个多峰函数的全局最小值，因此就不能局限于一个局部的凹函数。而这个概率是$\exp (-ΔE/T)$。</p>
-<p>我个人对于这个概率的理解是这样的：对于$ΔE$，如果它较大，即我们遇到了一个劣得多的解，那我们接受它的概率就相对较小，因为$-ΔE$较小嘛；而如果$ΔE$较小，即我们遇到了一个较劣的解，我们接受它的概率就较大，因为$-ΔE$较大。对于$T$，随着时间的增加，$T$变得越来越小，因此我们把$-ΔE$除以$T$，这样接受的概率就随着温度的降低而越来越小，因为$-ΔE$是一个负数嘛。而对于整个式子，当$T$较大的时候，我们会接受大部分的解，当$T$较小的时候，我们就只会接受$ΔE$较小的解。<del>关于Metropolis准则的具体证明，过于玄学，这里就不给出了。</del>当然你也可以自己试一下。如果选择接受$E$，则把$E_1$设置为$E$，然后降温并寻找下一个解。</p>
-<p>这里再引用一张<del>很糊的</del>图：</p>
-<p><img src="https://s2.ax1x.com/2020/03/03/348Hu6.png" alt=""></p>
-<p>到这里我们也就知道，模拟退火算法的速度和结果受参数（$T_0$，$T_k$，$Δ$还有随机数种子）的影响非常大，是一个玄学的算法，时间复杂度也是$O (玄学)$。</p>
-<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h3><p>接下来我们结合一道例题来讲一讲模拟退火的c++​代码实现。<a href="https://www.luogu.com.cn/problemnew/show/UVA10228" target="_blank" rel="noopener"><strong>UVA10228</strong> A Star not a Tree?</a> （这道题其实洛谷上也有）</p>
-<p>英文题面尽管跳过，大意是给定$n$个点，求其<a href="https://baike.baidu.com/item/托里拆利点/22667515?fromtitle=费马点&amp;fromid=3333221&amp;fr=aladdin" target="_blank" rel="noopener">费马点</a>（到这$n$个点的距离最小的点）到所有点的距离和。此题各部分的代码实现都很方便，其实就是一道模板题，代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> R register</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(R int i=a;i&lt;=b;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> delta 0.996</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 50005</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=<span class="number">0</span>,f=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=-f;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">'0'</span>&lt;=ch&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	<span class="keyword">double</span> x,y;</span><br><span class="line">&#125;poi[maxn];</span><br><span class="line"><span class="keyword">int</span> T,n;</span><br><span class="line"><span class="keyword">double</span> ansx,ansy,ax,ay,ans,t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ax=<span class="number">0</span>,ay=<span class="number">0</span>;</span><br><span class="line">	ans=<span class="number">1e8</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">calculate</span><span class="params">(<span class="keyword">double</span> x,<span class="keyword">double</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> res=<span class="number">0</span>;</span><br><span class="line">	rep(i,<span class="number">1</span>,n) &#123;</span><br><span class="line">		<span class="keyword">double</span> dx=x-poi[i].x,dy=y-poi[i].y;</span><br><span class="line">		res+=<span class="built_in">sqrt</span>(dx*dx+dy*dy);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">simulate_anneal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">double</span> x=ansx,y=ansy;</span><br><span class="line">	t=<span class="number">3000</span>;</span><br><span class="line">	<span class="keyword">while</span>(t&gt;<span class="number">1e-15</span>) &#123;</span><br><span class="line">		<span class="keyword">double</span> X=x+((rand()&lt;&lt;<span class="number">1</span>)-RAND_MAX)*t;</span><br><span class="line">		<span class="keyword">double</span> Y=y+((rand()&lt;&lt;<span class="number">1</span>)-RAND_MAX)*t;</span><br><span class="line">		<span class="keyword">double</span> now=calculate(X,Y);</span><br><span class="line">		<span class="keyword">double</span> Delta=now-ans;</span><br><span class="line">		<span class="keyword">if</span>(Delta&lt;<span class="number">0</span>) &#123;</span><br><span class="line">			ansx=X,ansy=Y;</span><br><span class="line">			x=X,y=Y;</span><br><span class="line">			ans=now;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&gt;rand()) x=X,y=Y;</span><br><span class="line">		t*=delta;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	ansx=ax/n,ansy=ay/n;</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	srand(<span class="number">1e9</span>+<span class="number">7</span>);</span><br><span class="line">	T=read();</span><br><span class="line">	rep(i,<span class="number">1</span>,T) &#123;</span><br><span class="line">		n=read();</span><br><span class="line">		clear();</span><br><span class="line">		rep(j,<span class="number">1</span>,n) &#123;</span><br><span class="line">			poi[j].x=read(),poi[j].y=read();</span><br><span class="line">			ax+=poi[j].x,ay+=poi[j].y;</span><br><span class="line">		&#125;</span><br><span class="line">		work();</span><br><span class="line">		<span class="built_in">cout</span>&lt;&lt;round(ans)&lt;&lt;<span class="string">'\n'</span>;</span><br><span class="line">		<span class="keyword">if</span>(i!=T) <span class="built_in">cout</span>&lt;&lt;<span class="string">'\n'</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>有几个注意点：坐标位置，温度和解变动量必须开成double​，一是为了确保精度，二是为了防止爆int。<del>还要注意输出换行，实在很坑。</del></p>
-<p>但是当你愉快的写玩此题并提交以后，可能会发现你并没有AC此题。记得之前说过的吗，我们得出不一定是最优解。这时候就涉及到一个麻烦的步骤——调参。通常有以下几种调参的方式：</p>
-<ol>
-<li>调大初温$T_0$。</li>
-<li>调小末温$T_k$。</li>
-<li>调大温度变动量$Δ$。</li>
-<li>选取一个新的随机数种子。</li>
-<li>多跑几遍模拟退火。</li>
-<li><del>开O2</del></li>
-</ol>
-<p>其中第一，二点对于运行时间的影响不大。而第三点则非常关键，一个微调都会使运行时间和结果发生巨大变化。第五点也是一个有用的方式，一般我们跑三到五遍模拟退火，如果时间充裕，你也可以适当多跑<del>一两百</del>几遍。而第四点就非常看脸了，你当然可以选择某个<del>恶臭的八位质数</del>，但就我个人而言，最有用的还是这句随机数种子：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">srand(time(<span class="number">0</span>));</span><br></pre></td></tr></table></figure>
-<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p>学完一个新算法以后，当然应该练习啦。其实模拟退火的主过程基本就是模板了，唯一的麻烦点是对calculate()函数和接受概率的修改，比如下题：<a href="https://www.luogu.com.cn/problemnew/show/P5544" target="_blank" rel="noopener">[JSOI2016]炸弹攻击1</a></p>
-<p>此题的calculate()函数倒是很简单，麻烦的是修改接受概率。</p>
-<p>题目要求的是最大值，那么$-ΔE$就成了一个正数，怎么修改呢？其实此时我们只需把这句话：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&gt;rand()) x=X,y=Y;</span><br></pre></td></tr></table></figure>
-<p>中的$&gt;$号改为$&lt;$号就可以了，如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&lt;rand()) x=X,y=Y;</span><br></pre></td></tr></table></figure>
-<p>而这样就很玄学了。之前我说错了，因为$-ΔE$成了一个正数，所以$\exp (-Delta/t)$必定是大于1的，也就是没有接受劣解的概率。而此题$ΔE$波动小，搜寻范围大，所以我们这样写就可以手动避免算法陷入劣解不能自拔。<del>但这样写的原因是我过了此题以后才想出来的。</del></p>
-<p>代码就略过了，实在很简单。</p>
-<hr>
-<p>模拟退火的应用不仅仅是求点坐标，还可以拿来求序列。其实过程也很简单，每次随机交换序列中的两个元素就可以了，而对于网格，看作是二维序列即可。下面有一道求序列的题目：<a href="https://www.luogu.com.cn/problemnew/show/P2538" target="_blank" rel="noopener">[SCOI2008]城堡</a></p>
-<p>读完题以后，你可能不知道此题和序列有何关系。但我们其实可以这样考虑：把所有没有城堡的城市抽象成一个序列，而序列的前$k$个城市，就是要修建城堡的城市。</p>
-<p>而关于calculate()函数，我们可以先用floyd​算法预处理出每个城市之间的距离，在这个函数中我们只需$n^2$扫描一次，求出所有城市中离最近城堡的距离的最大值就可以了。代码如下：</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(register int i=a;i&lt;=b;i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 500</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> inf 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> delta 0.996</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">read</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> f=<span class="number">1</span>,x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">char</span> ch=getchar();</span><br><span class="line">	<span class="keyword">while</span>(ch&lt;<span class="string">'0'</span>||ch&gt;<span class="string">'9'</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">'-'</span>) f=-f;ch=getchar();&#125;</span><br><span class="line">	<span class="keyword">while</span>(<span class="string">'0'</span>&lt;=ch&amp;&amp;ch&lt;=<span class="string">'9'</span>) x=(x&lt;&lt;<span class="number">3</span>)+(x&lt;&lt;<span class="number">1</span>)+ch-<span class="string">'0'</span>,ch=getchar();</span><br><span class="line">	<span class="keyword">return</span> x*f;</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span>) x=-x,<span class="built_in">putchar</span>(<span class="string">'-'</span>);</span><br><span class="line">	<span class="keyword">if</span>(x&gt;<span class="number">9</span>) write(x/<span class="number">10</span>);</span><br><span class="line">	<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">'0'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> a,b,next,v;</span><br><span class="line">&#125;e[maxn];</span><br><span class="line"><span class="keyword">int</span> head[maxn],cnt,n,m,k,v[maxn],cas[maxn];</span><br><span class="line"><span class="keyword">int</span> dis[maxn][maxn],p[maxn],N,X[maxn],ans=<span class="number">1e8</span>;</span><br><span class="line"><span class="keyword">double</span> t;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">calculate</span><span class="params">(<span class="keyword">int</span> x[])</span> </span>&#123;</span><br><span class="line">	rep(i,<span class="number">1</span>,k) cas[x[i]]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> res=-inf;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) &#123;</span><br><span class="line">		<span class="keyword">int</span> minn=inf;</span><br><span class="line">		rep(j,<span class="number">0</span>,n) <span class="keyword">if</span>(cas[j]) minn=min(minn,dis[i][j]);</span><br><span class="line">		res=max(res,minn);</span><br><span class="line">	&#125;</span><br><span class="line">	rep(i,<span class="number">1</span>,k) cas[x[i]]=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">simulate_anneal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a[maxn];</span><br><span class="line">	rep(i,<span class="number">1</span>,N) a[i]=p[i];</span><br><span class="line">	t=<span class="number">5000</span>;</span><br><span class="line">	<span class="keyword">while</span>(t&gt;<span class="number">1e-15</span>) &#123;</span><br><span class="line">		<span class="keyword">int</span> b[maxn];</span><br><span class="line">		rep(i,<span class="number">1</span>,N) b[i]=a[i];</span><br><span class="line">		<span class="keyword">int</span> x=rand()%N+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> y=rand()%N+<span class="number">1</span>;</span><br><span class="line">		swap(b[x],b[y]);</span><br><span class="line">		<span class="keyword">int</span> now=calculate(b);</span><br><span class="line">		<span class="keyword">double</span> Delta=now-ans;</span><br><span class="line">		<span class="keyword">if</span>(Delta&lt;<span class="number">0</span>) &#123;</span><br><span class="line">			ans=now;</span><br><span class="line">			rep(i,<span class="number">1</span>,N) p[i]=a[i]=b[i];</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">exp</span>(-Delta/t)*RAND_MAX&gt;rand()) &#123;</span><br><span class="line">			rep(i,<span class="number">1</span>,N) a[i]=b[i];</span><br><span class="line">		&#125;</span><br><span class="line">		t*=delta;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">	simulate_anneal();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	srand(time(<span class="number">0</span>));</span><br><span class="line">	n=read(),m=read(),k=read();</span><br><span class="line">	n--;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) X[i]=read();</span><br><span class="line">	rep(i,<span class="number">0</span>,n) v[i]=read();</span><br><span class="line">	rep(i,<span class="number">1</span>,m) &#123;</span><br><span class="line">		<span class="keyword">int</span> a=read();</span><br><span class="line">		cas[a]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) <span class="keyword">if</span>(!cas[i]) p[++N]=i;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) rep(j,<span class="number">0</span>,n) dis[i][j]=inf;</span><br><span class="line">	rep(i,<span class="number">0</span>,n) dis[i][X[i]]=dis[X[i]][i]=min(v[i],dis[i][X[i]]),dis[i][i]=<span class="number">0</span>;</span><br><span class="line">	rep(c,<span class="number">0</span>,n) rep(i,<span class="number">0</span>,n) rep(j,<span class="number">0</span>,n)</span><br><span class="line">	dis[i][j]=min(dis[i][j],dis[i][c]+dis[c][j]);</span><br><span class="line">	work();</span><br><span class="line">	write(ans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>要做好调参的心理准备，我在三天之内调参交了<del>七页</del>。</p>
-<p>推荐几题：</p>
-<ol>
-<li><a href="https://www.luogu.com.cn/problemnew/show/P4035" target="_blank" rel="noopener">[JSOI2008]球形空间产生器</a></li>
-<li><a href="https://www.luogu.com.cn/problemnew/show/P4360" target="_blank" rel="noopener">[CEOI2004]锯木厂选址</a></li>
-<li><a href="https://www.luogu.com.cn/problemnew/show/P3936" target="_blank" rel="noopener">Coloring</a></li>
-</ol>
-<p><del>其他的习题自己找去吧。</del></p>
-<p>update 2020.3.3 加入了$\LaTeX$数学公式渲染，并添加了一张图。</p>
-<p>update 2020.5.1 修锅，感谢@M_sea 纠错。</p>
 ]]></content>
       <categories>
         <category>学术</category>
