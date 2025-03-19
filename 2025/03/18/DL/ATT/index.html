@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="OI" />
+       
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>注意力机制 |  RPChe_&#39;s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-DL/ATT"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  注意力机制
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/03/18/DL/ATT/" class="article-date">
+  <time datetime="2025-03-17T16:00:00.000Z" itemprop="datePublished">2025-03-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>Attention Is All You Need.</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\T}{ ^{\rm T} }
+\newcommand {\sm}{ {\rm softmax} }
+\newcommand {\bb}{\mathbb}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li><p>我们将主要讨论处理有关序列问题的技术，包括但不限于</p>
+<ol>
+<li>one to many: Image Captioning.</li>
+<li>many to one: Video Classification.</li>
+<li>many to many: Machine Translation, Video per-frame Classification.</li>
+</ol>
+<p>而本节的主线将着重于 Machine Translation 。</p>
+</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li>本部分将介绍 Attention 在不同模型中的使用。</li>
+</ul>
+<h2 id="Attention-for-RNN-with-Machine-Translation"><a href="#Attention-for-RNN-with-Machine-Translation" class="headerlink" title="Attention for RNN with Machine Translation"></a>Attention for RNN with Machine Translation</h2><ul>
+<li><p>不妨先想想先前 RNN 是怎么处理 Machine Translation 的。考虑下图的模型：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/dolg01cg.png" alt=""></p>
+<p>我们使用了一个 encoder RNN ，将输入的内容压缩成了一个 hidden vector $h_t$ ，然后我们使用 $h_t$ 通过某种方式（例如一个前馈全连接神经网络）生成了 decoder 的初始状态 $s_0$ ，并保存 $h_t$ 作为 decoder 的 context 。接下来，我们使用新的 hidden vector $s_t$ 、context 和上一步的输出参与下一步的计算。<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+<p>这样设计会有一个问题，我们实际上将所有的信息都打包进了单个 context vector 当中。当输入的文段很长时，我们其实不能期待这样的一个向量可以表示全部的信息。为了提供更多的信息，我们试着不再用单个向量来表示所有上下文，这就引入了所谓的 Attention 。具体的，我们考虑设计一个 alignment function（$f_{att}$ ，可能是一个全连接网络），用以评估 $s_t$ 与先前的所有 $h_t$ 的关系，计算得到一个权重，表示为：</p>
+<script type="math/tex; mode=display">
+e_{t,i}=f_{att}(s_{t-1},h_i)</script><p>然后我们将所有 $e<em>{t,i}$ 通过 softmax<sup><a href="#fn_2" id="reffn_2">2</a></sup> 计算得到一个分布 $a</em>{t,i}$ ，做 $h<em>i$ 对于 $a</em>{t,i}$ 的加权和得到向量 $c_t$ ，并将其作为当前的 context ，参与下一步的计算。大体过程如下图所示：<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2mdwqcni.png" alt=""></p>
+<p>我们期待这样做可以提取出输入中显著影响下一步预测的组分，凸显输入的影响。作为例子，下图展示了机器翻译中每一步 attention 所计算出的分布：<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ygdhohq6.png" alt=""></p>
+<p>这的确展示了不同语言中词汇的对应关系。</p>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 这个模型和先前描述的模型其实有些区别。首先我们多保存了一个 context ，这可能是为了方便引入下文的 attention 的；另一方面，我们将上一步的输出作为了下一步的输入。理论上这些信息都是由 hidden vector 产生的，可以认为 hidden vector 应该在一定程度上包含了这些信息。我猜测输入这些看似多余的信息是为了为模型提供某种提示，补全丢失的信息。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 需要了解为什么 softmax 如此常用。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 一个细节是 $s_0$ 没有作为 $s_1$ 的输入。不知道这里为什么排除了 $s_0$ ，可能是忘画了。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 感觉像钻石剑。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Attention-for-CNN-with-Image-Captioning"><a href="#Attention-for-CNN-with-Image-Captioning" class="headerlink" title="Attention for CNN with Image Captioning"></a>Attention for CNN with Image Captioning</h2><ul>
+<li><p>你可能已经注意到 Attention 本身其实并不依赖于序列或者 RNN ，我们只是对代表不同组分的向量做加权和而已。所以 Attention 也可以被无痛迁移到做 Image Captioning 的 CNN 上。我们直接给出网络的结构：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/c5frjnbd.png" alt=""></p>
+<p>这是一个迁移学习的框架，我们组合了 CNN 和 RNN 用于 Image Captioning 。具体的，先在 Image Classification 上预训练出用于特征提取的 CNN ，我们期待最后 CNN 的每一个 feature vector 都表征了原图像的一部分视野。那么，我们可以对 feature vector 使用与原先基本相同的注意力机制来提取图像中与 RNN 的下一步预测相匹配的位置。<sup><a href="#fn_5" id="reffn_5">5</a></sup><sup><a href="#fn_6" id="reffn_6">6</a></sup></p>
+</li>
+</ul>
+<blockquote id="fn_5">
+<sup>5</sup>. Xe at al, Show, Attend, and Tell: Neural Image Caption Generation with Visual Attentions, ICML 2015. 这篇文章中提供了一些有趣的可视化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. Justin 还提到这样的做法可能受到了生物学上人眼观察物体的启发，但我觉得这些看法比较平凡，就不写了。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Attention-Layer"><a href="#Attention-Layer" class="headerlink" title="Attention Layer"></a>Attention Layer</h2><ul>
+<li><p>既然 Attention 这么好用，不妨考虑将其剥离出来，形成单一的 Attention Layer 。不妨想想 Attention 本质上做了什么：给定了 query vector $q$ 和 input vectors $X$ ，我们希望通过 alignment function $f<em>{att}$ 计算 $X$ 相对于 $q$ 的权重（相似度），并做加权和。简便起见，我们将 $f</em>{att}$ 实现为向量内积。<sup><a href="#fn_7" id="reffn_7">7</a></sup>这样做会带来一个问题，就是如果相似度太高，做 softmax 的时候可能会导致梯度消失，而维度越高，内积的项越多，值就可能越大。而解决方式是，我们考虑做对于维度的归一化操作，即做内积后再除以 $q$ 的维度 $D_q$ 的根。接下来，我们考虑 query vector 不唯一的情况，此时只需要改用矩阵形式即可。所以我们得到了：</p>
+<ul>
+<li><p>For $X\in\bb R^{N_x\times D_q},Q=\in \bb R^{N_q\times D_q}$ , calculate :</p>
+</li>
+<li><p>Similarities: $E = QX\T$ , where $E_{i,j}=Q_i\cdot X_j/\sqrt{D_q}$ .</p>
+</li>
+<li>Attention Weights: $A=\sm (E, dim=1)$ .</li>
+<li>Output Vectors: $Y=AX,Y\in \bb R^{N_q\times D_q}$ .</li>
+</ul>
+<p>另一方面，注意到我们实际上用 $X$ 做了两件事情，第一件是计算 input vector 与每个 output vector 的相似度，第二件是基于相似度对 $X$ 做加权和得到输出。所以我们考虑将这两件事分离开，即基于 $X$ 分别生成用于计算相似度的 Key vector 和用于计算输出的 Value vector 。过程如下如所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ear3s7wt.png" alt=""></p>
+<p>这样我们就构造出了 Attention Layer ，其对于给定的 input vectors 和 query vectors 考察了前者对于后者的影响的重要程度。</p>
+</li>
+</ul>
+<blockquote id="fn_7">
+<sup>7</sup>. 最先 $f_{att}$ 似乎实现为全连接网络，但后来发现向量内积的效果其实也还好。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Self-Attention-Layer"><a href="#Self-Attention-Layer" class="headerlink" title="Self-Attention Layer"></a>Self-Attention Layer</h2><ul>
+<li><p>以上的 Attention Layer 总是要给定不同的 query vectors 和 input vectors 。有些时候我们希望考察输入的向量内部的关系，比方说我们希望理解一个输入的句子，这就引入了 Self-Attention Layer 。思路其实很简单，只需添加一个矩阵用以根据 input vectors 预测 query vectors 就行。<sup><a href="#fn_11" id="reffn_11">11</a></sup></p>
+<p>这样做会有一个性质，就是 Self-Attention Layer 对于输入向量具备置换不变性，但有些时候我们其实是希望关注输入向量的顺序的。解决方案是，为输入向量增加 positional encoding ，即给每个位置添加可学习的向量来区分位置，并把位置向量追加到 input vectors 的末尾。</p>
+<p>另一方面，有些时候我们并不希望之后的输入向量影响之前的输入向量<sup><a href="#fn_8" id="reffn_8">8</a></sup>，相应的解决方案则被称作 Masked Self-Attention Layer ，其实就是强制把之后的权重全部置 0 ，将权重矩阵变成下三角矩阵。<sup><a href="#fn_9" id="reffn_9">9</a></sup></p>
+<p>另一个技巧被称作 Multi-head Self Attention Layer ，其实就是把输入向量拆成几节，每一节单独做 Self-Attention Layer ，最后再拼起来而已。这样做会引入一个超参数 num of heads ，另外 Self Attention Layer 内部还有一个超参数 $D_q$ ，称作 Overall Width/Size 。<sup><a href="#fn_10" id="reffn_10">10</a></sup></p>
+</li>
+</ul>
+<blockquote id="fn_8">
+<sup>8</sup>. 还是考虑句子理解。显然之后的词语不应该影响之前的词语。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_9">
+<sup>9</sup>. 可能是相对于副对角线而言的。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_10">
+<sup>10</sup>. 没看出来这样搞有什么用。可能是为了省复杂度吧。多头这个名字听起来倒是很厉害。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_11">
+<sup>11</sup>. 有些时候 Self-Attention Layer 也会加上 Residual Connection 。例如这篇文章 Zhang et al, Self-Attention Generative Adversarial Networks, ICML 2018.<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="RNN-Self-Attention-与-Transformer"><a href="#RNN-Self-Attention-与-Transformer" class="headerlink" title="RNN, Self-Attention 与 Transformer"></a>RNN, Self-Attention 与 Transformer</h1><ul>
+<li><p>总的来说，现在我们有两种处理序列的手段，分别是 RNN 与 Self-Attention 。这两者都相对善于处理长序列，但 RNN 无法并行化。我们可能会考虑结合它们以获得更好的总体表现，但一篇有名的文章<sup><a href="#fn_12" id="reffn_12">12</a></sup>指出，其实只用 Self-Attention 就可以达到好得多的效果。具体的，其构建了一个被称作 Transformer Block 的结构，如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/nql9ocpj.png" alt=""></p>
+<p>简单的说，对于输入数据，其首先经过带有 Residual Connection 的 Multi-heads Self-Attention Layer ，然后做 Layer Normalization ，然后经过带有 Residual Connection 的并行 FCNN ，最后做 Layer Normalization ，得到结果。</p>
+<p>在 Transformer 当中，实际上不同输入间交流的唯一方式就是 Self-Attention 。Transformer 的好处在于其是高度可并行的，适于实际计算。而在原论文中所搭建的 Transformer Model 由 12 个 Transformer Block 构成，前 6 个 block 作为 encoder ，后 6 个作为 decoder ，overall width 均为 512 ，number of heads 均为 6 。</p>
+<p>然后的事情我们就都知道了，Transformer 彻底击败了 RNN 成为了 NLP 中最主流的模型，就如同当年 AlexNet 在 Image Classification 中击败了所有非深度学习的模型一般。<sup><a href="#fn_13" id="reffn_13">13</a></sup></p>
+</li>
+</ul>
+<blockquote id="fn_12">
+<sup>12</sup>. Vaswani et al, Attention is all you need, NeurIPS 2017.<a href="#reffn_12" title="Jump back to footnote [12] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_13">
+<sup>13</sup>. 但是看起来 Transformer 的计算复杂度还是显著高于 RNN 的，前者为 $O(n^2)$ 而后者仅为 $O(n)$ 。<a href="#reffn_13" title="Jump back to footnote [13] in the text."> &#8617;</a>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2025/03/18/DL/ATT/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2025/03/18/DL/RNN/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">循环神经网络</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "2HGDKV4W8CiKPGzv9AEseRKX-gzGzoHsz",
+    app_key: "8pBaf8UXwOswmrmzXT7w8LdU",
+    path: window.location.pathname,
+    avatar: "identicon",
+    placeholder: "\[评论区\] 评论时若想添加昵称、头像和联系方式，请分别填写上方的昵称、邮箱和网址。其中邮箱应填写您在gravatar使用的邮箱。",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2025
+        <i class="ri-heart-fill heart_icon"></i> RPChe_
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="RPChe_&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>
