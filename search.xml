@@ -602,38 +602,6 @@ h_t&= o\odot \tanh(c_t)
       </categories>
   </entry>
   <entry>
-    <title>K-近邻与交叉验证</title>
-    <url>/2025/03/06/DL/KNN/</url>
-    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
-<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
-<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
-</ul>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
-<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
-<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
     <title>线性分类器</title>
     <url>/2025/03/06/DL/LC/</url>
     <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
@@ -676,9 +644,9 @@ l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好�
       </categories>
   </entry>
   <entry>
-    <title>反向传播</title>
-    <url>/2025/03/06/DL/BP/</url>
-    <content><![CDATA[<p>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</p>
+    <title>K-近邻与交叉验证</title>
+    <url>/2025/03/06/DL/KNN/</url>
+    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
 <a id="more"></a>
 <script type="math/tex; mode=display">
 \newcommand {\bb}{\mathbb}
@@ -686,43 +654,22 @@ l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好�
 \newcommand {\dv}{\backslash}
 \newcommand {\P}{\bb P}
 \newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
+\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
+<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
 </ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
-<script type="math/tex; mode=display">
-f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
-<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
-<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
-<ol>
-<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
-<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
-<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
-</ol>
-<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
+<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
+</ul>
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
+<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
+<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
 </li>
 </ul>
-<blockquote id="fn_9">
-<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h1><ul>
-<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
-</li>
-<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
-</li>
-</ul>
-<h1 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h1><ul>
-<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
-<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
-</ul>
-<blockquote id="fn_10">
-<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
-</blockquote>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -840,6 +787,59 @@ f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^
 <p>特别的，这里的神经网络是带有 bias term 的。</p>
 </li>
 </ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>反向传播</title>
+    <url>/2025/03/06/DL/BP/</url>
+    <content><![CDATA[<p>即 Back Propagation 。 如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定一个相对复杂的神经网络及其损失函数，求解其单点处的数值导数。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>现在我们要先引入一个概念，即 Computational Graph 。考虑以下函数：</p>
+<script type="math/tex; mode=display">
+f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/vag81obu.png" alt=""></p>
+<p>可以看出，Computational Graph 的结构与表达式树类似，它们都以图的方式刻画了表达式的运算过程，每一个入度为 $0$ 的节点都对应了一个运算数，而其余的节点对应了某种运算。不同之处在于 Computational Graph 是一张 DAG（有向无环图），即每一个节点可以向多个后继节点贡献。容易看出，表达式的运算在 Computational Graph 上是按照拓扑序进行的。我们将这一按照拓扑序进行运算得到结果的过程称作 Forward Pass 。现在我们再考虑如何从 Computational Graph 上得到所有参数的偏导数。我们将代表运算符的节点视作中间变量，假设我们已经求得了中间变量 $f$ 的偏导数（称作 upstream gradient），并希望推知 $f$ 的前驱节点 $x$ 与 $y$ 的偏导数（称作 downstream gradient），如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/23n2fzsr.png" alt=""></p>
+<p>可以看出，通过求导的链式法则，我们只需求 $f$ 关于 $x,y$ 的偏导数（称作 local gradient），就可以推出 downstream gradient 。那么，我们只需从 Computational Graph 唯一的根节点出发，逆拓扑序进行递推，就可以简单的推出损失函数关于图上所有节点的偏导数。<sup><a href="#fn_9" id="reffn_9">9</a></sup>这样做的好处是：</p>
+<ol>
+<li>省去了繁琐的计算。因为现在我们只用关心局部的形式导数了。</li>
+<li>效率极高。通过一来一去两次遍历 Computational Graph 我们就可以求得所有参数的偏导数。</li>
+<li>模块化，利于封装。如果我们想要调整神经网络，现在我们只需替换 Computational Graph 中对应的节点。特别的，我们不一定要把表达式拆成最基本的运算单元，而只需保证每个运算节点都便于求导且模块化。</li>
+</ol>
+<p>可以看出最重要的求偏导的过程是逆拓扑序进行的，所以我们将上述算法称作反向传播。</p>
+</li>
+</ul>
+<blockquote id="fn_9">
+<sup>9</sup>. 对于出度不为一的节点，将其后继的导数加起来作为 upstream gradient 即可。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="反向传播的实现"><a href="#反向传播的实现" class="headerlink" title="反向传播的实现"></a>反向传播的实现</h1><ul>
+<li><p>首先，反向传播不仅对求解复杂网络的数值导数有用，其对于求解简单网络的形式导数也极有帮助。实际上，基于 Computational Graph 的反向传播的观点，我们只需将求解的过程倒过来就可以得到求导的框架了。</p>
+</li>
+<li><p>特别的，有时 Computation Graph 上的计算会涉及到张量<sup><a href="#fn_10" id="reffn_10">10</a></sup>。这时一个相对好的处理方式是，跟踪后继中的单一变量的梯度，最后将其整合为一体，统一计算。而一个比较取巧的思路是，反正我们知道 updtream 、downstream 和 local 的所有张量的形状，所以我们只需要想办法把这些形状凑出来（例如通过矩阵乘法），再检验即可。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/2o4xqwp9.png" alt=""></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/8y1idwx7.png" alt=""></p>
+</li>
+</ul>
+<h1 id="其余的机器求导方式"><a href="#其余的机器求导方式" class="headerlink" title="其余的机器求导方式"></a>其余的机器求导方式</h1><ul>
+<li>Back Propagation 也被称作 backward mode automatic differentiation 。这是因为，我们可以将以上的逆推求导的过程看作计算所有局部的导数，再用链式法则把它们乘起来得到答案。显然导数的乘法是有结合律的，所以我们也可以正着做这件事情，这就是 forward mode automatic differentiation 。但是我并不知道这样做有什么好处，所以就不详谈了。</li>
+<li>Back Propation 也可用于求任意的高阶导数，只需将高阶微分看作连续的一阶微分，再对应的构造 Computational Graph 即可。这一部分我没有细看，就也不详谈了。</li>
+</ul>
+<blockquote id="fn_10">
+<sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
 ]]></content>
       <categories>
         <category>学术</category>
