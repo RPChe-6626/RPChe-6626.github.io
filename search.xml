@@ -1,6 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ZXY&#39;s Law</title>
+    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
+    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+<a id="more"></a>
+<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
+<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
+<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
+<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+</ul>
+<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
+<li><p>考虑下题：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
+</li>
+<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<script type="math/tex; mode=display">
+(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+<script type="math/tex; mode=display">
+g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
+<script type="math/tex; mode=display">
+f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
+<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
+<p>并且：</p>
+<script type="math/tex; mode=display">
+f(4)=\frac 72</script><p>亦即：</p>
+<script type="math/tex; mode=display">
+p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+</li>
+</ul>
+<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+]]></content>
+      <categories>
+        <category>灌水区</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于红黑树</title>
     <url>/2024/05/20/%E5%85%B3%E4%BA%8E%E7%BA%A2%E9%BB%91%E6%A0%91/</url>
     <content><![CDATA[<p>鉴于我所可以找到的关于这个数据结构的资料都不够理想，我在这里做一个简要的总结。</p>
@@ -171,6 +206,60 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
       </categories>
   </entry>
   <entry>
+    <title>维护日志</title>
+    <url>/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/</url>
+    <content><![CDATA[<p>编撰以应对并记录可能出现的技术难处。</p>
+<a id="more"></a>
+<h2 id="2023-8-13"><a href="#2023-8-13" class="headerlink" title="2023.8.13"></a>2023.8.13</h2><ul>
+<li>重启此博客。</li>
+<li>将从 GitHub 上拉取代码的方式从 HTTPS 换成 SSH ，以确保稳定性。</li>
+<li>删除遗留的大部分无价值文章。</li>
+<li>启动《维护日志》与《操作指南》。</li>
+</ul>
+<h2 id="2023-8-14"><a href="#2023-8-14" class="headerlink" title="2023.8.14"></a>2023.8.14</h2><ul>
+<li>继续重启事宜。</li>
+<li>更新博客主题为最新版，并删去次标题。</li>
+<li>修整侧边栏，删去标签以及作者栏。</li>
+<li>修复友链页面。</li>
+<li>重写关于页面。</li>
+<li>使用 hexo-generator-index-pin-top 插件替换 hexo-generator-index 以使文章支持置顶功能。</li>
+<li>置顶维护日志。</li>
+<li>为《常用 Hexo 指令》一文添加简述。</li>
+<li>为《模拟退火学习笔记》一文添加简述。</li>
+<li>重写《 ZXY’s Law 》一文。</li>
+<li>发布《关于数论》一文。</li>
+</ul>
+<h2 id="2024-5-20"><a href="#2024-5-20" class="headerlink" title="2024.5.20"></a>2024.5.20</h2><ul>
+<li>发布《关于红黑树》一文。</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>通过 SSH 拉取 GitHub 上的代码</title>
+    <url>/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
+<a id="more"></a>
+<ul>
+<li><p>配置 SSH 。</p>
+<p>下载 Git 。打开 git-bash.exe ，输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
+<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
+</li>
+<li><p>将公钥添加到 GitHub 。</p>
+<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
+</li>
+<li><p>使用 SSH 替换 HTTPS 。</p>
+<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
+</li>
+<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>操作指南</category>
+      </categories>
+  </entry>
+  <entry>
     <title>常用 Hexo 指令</title>
     <url>/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</url>
     <content><![CDATA[<p>这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 <a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">这里</a> 查看。</p>
@@ -262,92 +351,113 @@ a^{p-1}\equiv 1\pmod p</script><p>那么费马小定理得证。</p>
       </categories>
   </entry>
   <entry>
-    <title>ZXY&#39;s Law</title>
-    <url>/2023/08/14/zxy%E2%80%98s-law/</url>
-    <content><![CDATA[<p>鉴于这个东西实在是太 der 了，我还是写一下（</p>
+    <title>关于机器学习</title>
+    <url>/2025/02/25/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>实在找不到什么好的资料，于是就自己来写一个吧。</p>
+<p>本文将从基础开始介绍机器学习的算法。</p>
 <a id="more"></a>
-<p>这是一个我们在 2019 年发现的东西，堪称世界的 bug 。由于它是由 ZXY 最初提出的，我们将其命名为 ZXY’s Law（ ZXY 大定理）。下面我们先给出对 ZXY’s Law 的叙述：</p>
-<h1 id="ZXY’s-Law"><a href="#ZXY’s-Law" class="headerlink" title="ZXY’s Law"></a>ZXY’s Law</h1><ul>
-<li>对于仅含选择题的大题 $P$ ，假设其有 $n$ 个小题，分别记作 $p_1,p_2,\cdots ,p_n$ 。对于第 $i$ 道小题 $p_i$ ，若其答案是第 $x$ 个选项，则定义其值为 $x$ ，记作 $p_i=x$ 。若我们可以确定其中至少 $1$ 道题的答案，那么，若记确定答案的题目数为 $m$ ，则我们可以得到 $m$ 个形如 $(i,p_i)$ 的有序数对。将它们看作平面直角坐标系当中的坐标，则根据代数基本定理，我们可以断言，仅存在一条 $m-1$ 次曲线 $y=f(x)$ 经过这所有的 $m$ 个点。这样，对于第 $i$ 道小题 $p_i$ ，若其一共有 $k$ 个选项，则其值恰为 $\lfloor f(i)\rfloor\bmod k+1$ 。</li>
-<li>证明：<del>实践是检验真理的唯一标准。</del></li>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\T}{^{\rm T}}
+\newcommand {\ss}{\mathcal}
+\newcommand {\al}{\alpha}
+\newcommand {\na}{\nabla}
+\newcommand {\ze}{\zeta}
+\newcommand {\ga}{\gamma}</script><h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><ul>
+<li>即 Support vector machine ，SVM 。我们从两类划分的问题谈起。</li>
 </ul>
-<h1 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h1><ul>
-<li><p>考虑下题：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KfAw4.png" alt=""></p>
-</li>
-<li><p><del>不失一般性的，</del>不妨假设我们已经得到了第 $1,2,3,5$ 题的答案，这样我们也就有以下 $4$ 个坐标：</p>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>考虑以下问题：给定 $\bb R^d$ 中的 $n$ 个点 $x_1,\cdots,x_n$ ，以及它们的分类 $y_1,\cdots,y_n\in{-1，1}$ ，请找到一个最好的 $d$ 维超平面，划分开这两类点。</li>
+</ul>
+<h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><ul>
+<li>记目标超平面为 $P:w\T x+b=0$ 。考虑任意一点 $x\in\bb R^d$ ，容易推出其到 $P$ 的距离恰为<sup><a href="#fn_1" id="reffn_1">1</a></sup>：<script type="math/tex; mode=display">
+\frac{|w\T x+b|}{\|w\|}</script>其中范数取 $L_2$ 。不妨假设存在 $P$ 完全分开这两类点。我们希望 $P$ 是尽量 robust 的，因此令所有点到 $P$ 的最小距离最大，即：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{w,b}\min_{i\in [n]}&& \frac{y_i(w\T x_i+b)}{\|w\|}\\
+    &\text{s.t.} &&y_i(w\T x_i+b)>0&&\forall i\in[n]
+\end{align}</script>不妨令 $\min_{i\in[n]}y_i(w\T x_i+b)=1$ ，则：<script type="math/tex; mode=display">
+\begin{align}
+&\max_{w,b}&& \frac{1}{\|w\|}\\
+&\text{s.t.} && y_i(w\T x_i+b)\ge 1&&\forall i\in[n]\\
+\end{align}</script>显然取得最优解时，$\max_{i\in[n]}y_i(w\T x_i+b)=1$ 必然满足。进一步我们将其写作：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w\\
+&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
+\end{align}</script>这就是 SVM 的标准形式。对于使得约束取等的点，我们将其称作 support vector 。写出上述优化问题的 Lagrangian ，得到：<script type="math/tex; mode=display">
+\ss L(w,b,\al)=\frac 12w\T w+\sum_{i=1}^n \al_i(1-y_i(w\T x_i+b))</script>则原问题等价于：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}\max_{\al}&&\ss L(w,b,\al)\\
+&\text{s.t.} &&\al\ge 0\\
+\end{align}</script>其 Lagrange dual 为：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{\al}\min_{w,b}&&\ss L(w,b,\al)\\
+    &\text{s.t.} &&\al\ge 0\\
+\end{align}</script>对偶问题与原问题取等时满足 KKT 条件，即：<sup><a href="#fn_2" id="reffn_2">2</a></sup><script type="math/tex; mode=display">
+\begin{cases}
+    \na \ss L(w,b,a)=0\\
+    \al_i (1-y_i(w\T x_i+b))=0&\forall i\in[n]
+\end{cases}</script>这样：<script type="math/tex; mode=display">
+w=\sum_{i=1}^n \al_i y_i x_i\\
+\sum_{i=1}^n \al_i y_i=0\\</script>代入 Lagrange dual ，并考虑对偶可行性与 Lagrange 条件得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_jx_i\T x_j\\
+&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
+&&&\al\ge 0\\
+\end{align}</script>从技术上解这个凸优化即可。而通过 KKT 条件和 support vector ，我们可以解出 $w$ 和 $b$ 。</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 只需注意到 $w$ 为 $P$ 的法向量即可。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. 由互补松弛性可以容易的导出哪些 $x_i$ 是 support vector 。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Soft-SVM"><a href="#Soft-SVM" class="headerlink" title="Soft SVM"></a>Soft SVM</h2><ul>
+<li>以上的问题被称作 Hard SVM ，顾名思义，因为强制要求了超平面必须分离两类点。如果不强制要求分离，我们考虑引入分类错误的惩罚函数。具体的，Hard SVM 的形式为：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w\\
+&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
+\end{align}</script>我们加入一个惩罚函数<sup><a href="#fn_3" id="reffn_3">3</a></sup>，得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b}&& \frac12w\T w+C\sum_{i=1}^n\max\{0,1-y_i(w\T x_i+b)\}\\
+\end{align}</script>重写得到：<script type="math/tex; mode=display">
+\begin{align}
+    &\min_{w,b,\xi}&&\frac12w\T w+C\sum_{i=1}^n\xi_i\\
+    &\text{s.t.}&&y_i(w\T x_i+b)\ge 1-\xi_i&&\forall i\in[n]\\
+    &&&\xi\ge 0
+\end{align}</script>这就是带有 hinge loss 的 Soft SVM 。其处理方式和上述的 Hard SVM 基本相同，这里就不再演示了。</li>
+</ul>
+<blockquote id="fn_3">
+<sup>3</sup>. 即 hinge loss 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h2><ul>
+<li><p>在很多情况下给定的点类不一定是适合用超平面划分的。一个好的思路是，我们可以通过选定某种特征映射，将 $\bb R^d$ 中的点映射到高维空间（也称特征空间）中去，然后在高维空间中做线性划分。这样做的好处是，高维空间中的超平面在原先的 $\bb R^d$ 中不一定是线性的，因此适应性会更好。具体的，考虑定义域为 $\bb R^d$ ，值域为某个希尔伯特空间的映射 $\phi$ ，则 dual SVM 的形式为：</p>
 <script type="math/tex; mode=display">
-(1,1),(2,2),(3,3),(5,3)</script><p>根据拉格朗日插值定理，若 $m-1$ 次曲线 $y=g(x)$ 经过 $m$ 个点 $(a_1,b_1),(a_2,b_2),\cdots,(a_m,b_m)$ ，则有：</p>
+\begin{align}
+    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_j\phi(x_i)\T \phi(x_j)\\
+&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
+&&&\al\ge 0\\
+\end{align}</script><p>而最终的分类模型为：</p>
 <script type="math/tex; mode=display">
-g(x)=\sum_{i=1}^mb_i\prod_{j\neq i}\frac{x-a_j}{a_i-a_j}</script><p>这样我们就有：</p>
-<script type="math/tex; mode=display">
-f(x)=-\frac{1}{12}x^3+\frac{1}{2}x^2+\frac{1}{12}x+\frac{1}{2}</script><p>$C:y=f(x)$ 即为：</p>
-<p><img src="https://s2.ax1x.com/2020/02/22/3KbrHP.png" alt=""></p>
-<p>并且：</p>
-<script type="math/tex; mode=display">
-f(4)=\frac 72</script><p>亦即：</p>
-<script type="math/tex; mode=display">
-p_4=\lfloor f(4)\rfloor\bmod 4 +1 =4</script><p>也就说是第 $4$ 个小题应该选择第 $4$ 个选项 $D$ ，是正确的。</p>
+f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题是我们很难表示高维空间的向量。注意到我们实际上只关注向量的内积，实际上只需考虑如何快速求内积即可，这种技巧称作 Kernel Trick 。我们将计算特征映射的内积的函数称作核函数，记作 $K(x_i,x_j)$ 。一个简单的例子是多项式核函数，即，注意到低维的内积的幂等于高维中高次项构成的向量的内积。利用这种思路，可以构造出多项式核函数 $K(x_i,x_j)=(\zeta+\ga x_i\T x_j)^p$ ，其中 $\ze,\ga\in \bb R,p\in\bb N$ ，对应了 $\dbinom {d+p}{p}$ 维空间中的内积。<sup><a href="#fn_4" id="reffn_4">4</a></sup>核函数有很多种类，这里就不一一列举了。</p>
+<p>一个另外的问题是，给定一个函数，我们如何判定其可否用作核函数。一个简单的思路是，考虑内积的性质，我们只需验证对于任意的 $x_1,\cdots x_n$ ，核矩阵 $[K(x_i,x_j)]$ 都是半正定的即可，这里就不提供详细证明了。</p>
 </li>
 </ul>
-<p><del>特别值得一提的是，有人用这种方法做出的题的个数比他自己用心做的对的还多。</del></p>
+<blockquote id="fn_4">
+<sup>4</sup>. 括号里有 $d+1$ 个不同的项，再考虑组合得到的本质不同的项数即可。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<h2 id="Multi-Class-SVM"><a href="#Multi-Class-SVM" class="headerlink" title="Multi Class SVM"></a>Multi Class SVM</h2><ul>
+<li>现在考虑进行多 $m$  个点类的划分。一般的，有以下的两种基本思路。</li>
+</ul>
+<h3 id="One-VS-All"><a href="#One-VS-All" class="headerlink" title="One VS All"></a>One VS All</h3><ul>
+<li>考虑用 $m$ 个超平面进行划分，第 $i$ 个超平面划分第 $i$ 类点以及其余所有的点，每一次划分采用标准的 SVM 方法。这样，我们将得到 $m$ 个决策函数。对于单个待决策的点，选择最优的决策函数对应的类即可。</li>
+<li>以上的处理方式是对于每个超平面单独优化。我们也可以考虑同时对总共的 $m$ 个超平面进行优化，此时我们的处理方式将和原先产生显著的区别。具体的，我们会考虑直接对 primal SVM 进行优化，采取诸如 SGD 的数值方法，这里就不细讲了。</li>
+</ul>
+<h3 id="One-VS-One"><a href="#One-VS-One" class="headerlink" title="One VS One"></a>One VS One</h3><ul>
+<li>考虑使用 $\dfrac{m(m-1)}{2}$ 个超平面进行所有点类的两两划分，每一次划分采用标准的 SVM 方法。这样，我们将得到 $\dfrac{m(m-1)}{2}$ 个超平面。对于单个待决策的点，我们采用投票的方式决定其类别，即，对于每个超平面选择较优的一类投票，再选择总票数最高的类。</li>
+</ul>
 ]]></content>
       <categories>
-        <category>灌水区</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>维护日志</title>
-    <url>/2023/08/13/%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97/</url>
-    <content><![CDATA[<p>编撰以应对并记录可能出现的技术难处。</p>
-<a id="more"></a>
-<h2 id="2023-8-13"><a href="#2023-8-13" class="headerlink" title="2023.8.13"></a>2023.8.13</h2><ul>
-<li>重启此博客。</li>
-<li>将从 GitHub 上拉取代码的方式从 HTTPS 换成 SSH ，以确保稳定性。</li>
-<li>删除遗留的大部分无价值文章。</li>
-<li>启动《维护日志》与《操作指南》。</li>
-</ul>
-<h2 id="2023-8-14"><a href="#2023-8-14" class="headerlink" title="2023.8.14"></a>2023.8.14</h2><ul>
-<li>继续重启事宜。</li>
-<li>更新博客主题为最新版，并删去次标题。</li>
-<li>修整侧边栏，删去标签以及作者栏。</li>
-<li>修复友链页面。</li>
-<li>重写关于页面。</li>
-<li>使用 hexo-generator-index-pin-top 插件替换 hexo-generator-index 以使文章支持置顶功能。</li>
-<li>置顶维护日志。</li>
-<li>为《常用 Hexo 指令》一文添加简述。</li>
-<li>为《模拟退火学习笔记》一文添加简述。</li>
-<li>重写《 ZXY’s Law 》一文。</li>
-<li>发布《关于数论》一文。</li>
-</ul>
-<h2 id="2024-5-20"><a href="#2024-5-20" class="headerlink" title="2024.5.20"></a>2024.5.20</h2><ul>
-<li>发布《关于红黑树》一文。</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>通过 SSH 拉取 GitHub 上的代码</title>
-    <url>/2023/08/13/%E9%80%9A%E8%BF%87-SSH-%E6%8B%89%E5%8F%96-GitHub-%E4%B8%8A%E7%9A%84%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
-<a id="more"></a>
-<ul>
-<li><p>配置 SSH 。</p>
-<p>下载 Git 。打开 git-bash.exe ，输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure>
-<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
-</li>
-<li><p>将公钥添加到 GitHub 。</p>
-<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
-</li>
-<li><p>使用 SSH 替换 HTTPS 。</p>
-<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
-</li>
-<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>操作指南</category>
+        <category>学术</category>
       </categories>
   </entry>
   <entry>
@@ -398,139 +508,6 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
 <blockquote id="fn_10">
 <sup>10</sup>. 仅涉及到向量及标量的运算相对易于处理。这里的张量沿用了 pytorch 中的概念，其实就是高维数组。<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
 </blockquote>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>线性分类器</title>
-    <url>/2025/03/06/DL/LC/</url>
-    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
-f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
-L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
-l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
-l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
-\begin{align}
-&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
-\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_5">
-<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>K-近邻与交叉验证</title>
-    <url>/2025/03/06/DL/KNN/</url>
-    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
-<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
-<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
-</ul>
-<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
-<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
-</ul>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
-<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
-<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>梯度下降法</title>
-    <url>/2025/03/06/DL/GD/</url>
-    <content><![CDATA[<p>即 Gradient Descent 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\la}{\lambda}
-\newcommand {\dv}{\backslash}
-\newcommand {\P}{\bb P}
-\newcommand {\l}{\left}
-\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li>我们希望求解如下问题：<script type="math/tex; mode=display">
-\min_{W} L(W)</script>其中 $L(W)$ 在定义域内可微。</li>
-</ul>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>假设我们已经得到了一个初始解 $x_0$ ， 那么一个简单的思路是，我们每次向 $x_0$ 处的负梯度方向移动。我们期待通过有限次的移动就可以抵达一个足够好的解，这就是最朴素的梯度下降算法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Vanilla gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    dw = compute_gradient(loss_func, data, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h1><ul>
-<li><p>即 Stochastic Gradient Descent 。在运行梯度下降法时，实践中的一个常见的问题是，我们的数据集往往很大，那么每一次计算损失函数的时间开销是不能接受的。因此我们往往会考虑使用蒙特卡洛方法，即选定一个 batch size（e.g. 32/64/128），每一次计算梯度时，我们都从数据集中随机取样出大小为 batch size 的样本集，然后再对样本集计算梯度。我们期待在梯度下降的过程中，样本集可以较好的反映出数据集的性质。这样的算法就被称作 SGD 。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="SGD-with-Momentum"><a href="#SGD-with-Momentum" class="headerlink" title="SGD with Momentum"></a>SGD with Momentum</h1><ul>
-<li><p>为了避免梯度的剧烈震荡/解停滞在鞍点/较大的噪声，我们可以考虑引入“速度”的概念来替代目前的“加速度”（即负梯度）。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent with momentum</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">v = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    v = rho * v + dw</span><br><span class="line">    w -= learning_rate * v</span><br></pre></td></tr></table></figure>
-<p>其中的超参数 <code>rho</code> 是衰减系数。SGD with Momentum 也有另一种实现，称作 Nesterov Momentum ，这里就不详谈了。</p>
-</li>
-</ul>
-<h1 id="AdaGrad"><a href="#AdaGrad" class="headerlink" title="AdaGrad"></a>AdaGrad</h1><ul>
-<li><p>即自适应梯度下降。类似的，我们希望避免梯度剧烈震荡的问题，因此考虑保存每一维上梯度的平方历史和，并在计算下一个解时为每一维除以对应的开根平方历史和。这样做的好处是，变化大的维度被限制，而变化小的维度则相对不被限制。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared += dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h1><ul>
-<li><p>AdaGrad 存在一个明显的问题，就是随着 <code>grad_squared</code>  的积累，到最后解就很难移动了。一个好的改进是 RMSProp（Root Mean Square Propagation），可以将其视作带有衰减系数的 AdaGrad 。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># RMSProp</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared = decay_rate * grad_squared + (<span class="number">1</span> - decay_rate) * dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h1 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h1><ul>
-<li><p>现在我们试着结合 Momentum 和 RMSProp 的优点，这样就得到了 Adam ：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive Moment Estimation</span></span><br><span class="line">moment1 = <span class="number">0</span></span><br><span class="line">moment2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">	minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    moment1 = beta1 * moment1 + (<span class="number">1</span> - beta1) * dw</span><br><span class="line">    moment2 = beta2 * moment2 + (<span class="number">1</span> - beta2) * dw**<span class="number">2</span></span><br><span class="line">    moment1_unbias = moment1 / (<span class="number">1</span> - beta1**t)</span><br><span class="line">    moment2_unbias = moment2 / (<span class="number">1</span> - beta2**t)</span><br><span class="line">    w -= learning_rate * moment1_unbias / (moment2_unbias.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
-<p>我们在上述的代码加入了计算 <code>moment1_unbias</code> 和 <code>moment2_unbias</code> ，这是为了避免在算法最开始更新 <code>w</code> 时除以一个极小的数，导致解剧烈变化。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
-<p>特别的，Adam 在很多时候都是一个好的方法，建议的初始参数 <code>beta1 = 0.9</code> ，<code>beta2 = 0.999</code> ，<code>learning_rate = 1e-3, 5e-4, 1e-4</code> 。</p>
-</li>
-</ul>
-<blockquote id="fn_4">
-<sup>4</sup>. 这样的写法应该有更严格的推导。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="基于二阶微分的优化"><a href="#基于二阶微分的优化" class="headerlink" title="基于二阶微分的优化"></a>基于二阶微分的优化</h1><ul>
-<li>基于二阶微分的优化也是有研究的，但是并不常用，因为计算 Hessian 矩阵以及矩阵求逆的复杂度开销太高了。这里就不详谈了。</li>
-</ul>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -604,9 +581,9 @@ l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好�
       </categories>
   </entry>
   <entry>
-    <title>神经网络</title>
-    <url>/2025/03/06/DL/NN/</url>
-    <content><![CDATA[<p>即 Neural Networks 。</p>
+    <title>线性分类器</title>
+    <url>/2025/03/06/DL/LC/</url>
+    <content><![CDATA[<p>即 Linear Classifier ，使用超平面来划分数据。</p>
 <a id="more"></a>
 <script type="math/tex; mode=display">
 \newcommand {\bb}{\mathbb}
@@ -618,44 +595,28 @@ l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好�
 <li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
 </ul>
 <h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>很多时候数据集都不是线性可分的。老的解决方案是，考虑将数据点通过某种方式映射到特征空间中去，使得特征空间中的数据点变得容易划分，例如 SVM 的 Kernel Trick 。特征提取方式是多样的，例如 Color Histogram 、Histogram of Oriented Gradients 或者 Bag of Words 。但一个更加 SOTA 的方式则是神经网络。</p>
-</li>
-<li><p>具体的，我们将从 Linear Classifer 改进得到 Neural Network 。考虑最简单的 Linear Classifer 的预测方式：<sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
-<script type="math/tex; mode=display">
-f(x)=Wx,x\in\bb R^D,W\in\bb R^{C\times D}</script><p>现在我们考虑加入另一个矩阵，得到：</p>
-<script type="math/tex; mode=display">
-f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^D</script><p>我们将这个模型称作一个两层的神经网络。如图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/hhgijynd.png" style="zoom: 50%;" /></p>
-<p>我们将 $\max(0, x)$ 这个函数称作神经网络的激活函数，更具体的，称作 ReLU（Rectified Linear Unit）。激活函数对于神经网络而言是相当重要的，因为，去掉激活函数以后，多层神经网络的表达能力实际上和一般的 Linear Classifier 没有本质区别。<sup><a href="#fn_6" id="reffn_6">6</a></sup>激活函数有很多不同的种类，ReLU 是最为常见的一种。</p>
-<p>我们将每一层的点称作神经元（Neuron），并将这样的神经网络称作全连接神经网络（Fully Connected Neural Network），这是因为输入层的每一个神经元都参与决定了下一层的所有神经元的值。下图展示了一个六层的神经网络，每一层的 hidden units（即中间层的神经元个数）都是相等的（一般都会这样安排），我们将 hidden units 的个数称作神经网络的宽度（width）：<sup><a href="#fn_8" id="reffn_8">8</a></sup></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/acc029y8.png" style="zoom: 50%;" /></p>
-</li>
+<li>我们仍然将图像转为向量，将训练集的大小记作 $n$ ，其中第 $i$ 张图对应的向量记作 $x_i\in\bb R^d$ ，类别记作 $y_i\in[0,c)$ 。然后，我们考虑使用超平面进行不同类的划分。具体的，我们希望对于每一类都找到一个超平面，使其最好的区分了此类与其余的所有类别。如果我们使用矩阵的形式表示总共的 $c$ 个超平面，那么可以写出如下的预测函数：<script type="math/tex; mode=display">
+f(x)=Wx+b</script>其中 $W\in\bb R^{c\times d},b\in\bb R^c$  ，$x$ 是待决策的向量，而 $x$ 的类别就是 $f(x)$ 计算出的得分最高的那一类。特别的，有些时候，为了方便起见，我们会将向量 $b$ 吸收到 $W$ 里面，并在 $x$ 的尾部添加一个常数 $1$ ，称作 bias trick 。接下来，我们需要找到一个方式来度量我们选择的超平面的优劣。具体的，我们考虑设计一个损失函数（loss function）$l(f(x_i),y_i)$ ，其度量了将 $f(x)$ 用于预测向量 $x_i$ 的类别时，与答案 $y_i$ 所产生的损失。那么基于测试集所得到的总损失就定义为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)</script>为了防止过拟合，我们再加入一个正则化的要求，从而将总损失修改为：<script type="math/tex; mode=display">
+L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)</script>其中 $\la \in\bb R$ ，$R(W)$ 是 $W$ 的某种正则化，这里就取 $L_2$ 范数的平方了。然后我们考虑如何选择损失函数。一个常见的损失函数是 Multiclass SVM loss ，即：<sup><a href="#fn_1" id="reffn_1">1</a></sup><script type="math/tex; mode=display">
+l(x,y)=\sum_{j\in[c]\dv y}\max(0,x_j-x_y+1)</script>另一个正则化的选择则是使用交叉熵<sup><a href="#fn_2" id="reffn_2">2</a></sup>。我们将 $f(x_i)$ 视作对 $x_i$ 属于所有类别的概率的对数估计，所以我们要先对 $f(x_i)$ 做 $\exp$ ，再归一化，以得到概率估计。我们知道 $x_i$ 的类别必然是 $y_i$ ，即真实的概率是 $\P(x_i=y_i)=1$ 。然后我们再计算由 $f(x_i)$ 得到的概率估计与真实概率的交叉熵<sup><a href="#fn_3" id="reffn_3">3</a></sup>，就得到了：<script type="math/tex; mode=display">
+l(x,y)=-\log\l(e^{x_y}\bigg/\sum_{j=1}^c e^{x_j}\r)</script>那么，定义好总损失以后，我们的问题就变成了：<script type="math/tex; mode=display">
+\begin{align}
+&\min_{W,b} &&L(W,b)=\frac1n\sum_{i=1}^n l(f(x_i),y_i)+\la R(W)\\
+\end{align}</script>从技术上求解这个优化问题即可。<sup><a href="#fn_5" id="reffn_5">5</a></sup></li>
 </ul>
-<blockquote id="fn_6">
-<sup>6</sup>. 当然多次矩阵乘法与单个矩阵之间仍然是有区别的，这被称作 Multi Layer Linear Classifer 。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+<blockquote id="fn_1">
+<sup>1</sup>. 这里的 $x_j$ 指 $x$ 的第 $j$ 维。这个东西和 Soft SVM 的标准形式其实还是有点区别的，共同点是都用了 hinge loss 。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
 </blockquote>
-<blockquote id="fn_7">
-<sup>7</sup>. 这里演示的神经网络是没有 bias term 的，但是一般的神经网络应该是要带上的。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+<blockquote id="fn_2">
+<sup>2</sup>. 截止我写这个东西的时候信息论还没上完，所以我要开始口胡了。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
 </blockquote>
-<blockquote id="fn_8">
-<sup>8</sup>. 神经网络不是一个凸优化。截止 2019 年，神经网络的收敛性以及类似性质的证明似乎还是 open problem 。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+<blockquote id="fn_3">
+<sup>3</sup>. 不清楚交叉熵有什么意义。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
 </blockquote>
-<h1 id="Neural-Network-和生物学神经网络的联系"><a href="#Neural-Network-和生物学神经网络的联系" class="headerlink" title="Neural Network 和生物学神经网络的联系"></a>Neural Network 和生物学神经网络的联系</h1><ul>
-<li><p>实际上，Neural Nerwork 和生物学神经网络并没有必然的联系，相对准确的说法是前者的发明受到了后者的启发。在这里我们就大致讲讲两者之间的相似性。</p>
-</li>
-<li><p>我们可以想象，生物学神经网络是由大量神经元通过某种方式相互连接而形成的，其中每一个神经元通过轴突接受电信号，再通过树突发射电信号。我们假设发射出的电信号可以被表示为接受的电信号的线性组合再复合某个非线性函数（激活函数）的值，这样我们就可以仿照建立 Neural Network 。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jnej17pv.png" alt=""></p>
-<p>当然，我们建立的 Neural Network 相对于生物学神经网络是非常简化的。</p>
-</li>
-</ul>
-<h1 id="神经网络的表达能力"><a href="#神经网络的表达能力" class="headerlink" title="神经网络的表达能力"></a>神经网络的表达能力</h1><ul>
-<li><p>我们期待多层神经网络的表达能力要强于一般的 Linear Classifier 。不妨考虑神经网络的几何意义。先考虑单层神经网络，其实际上仍然是用了若干个超平面来划分类别。这几个超平面应该应该把整个空间划分为了若干块，然后通过 ReLU 函数，我们把所有点都集中到了其中的一块上。最后，我们在这一块空间上进行下一层神经网络的划分。因此，可以看出，由于激活函数的作用，深层神经网络的超平面对应到浅层的空间就不再是线性的了。浅层神经网络通过线性划分而扭曲了空间，从而增强了深层网络的表达能力。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gaq6ntwp.png" alt=""></p>
-<p>严格地说，我们可以将图像分类问题视作函数拟合问题。即，我们希望通过某种方式来拟合一个函数 $f:\bb R^D\to\bb R$ ，而后者则表示了所有图像的分类结果。我们可以证明，不低于两层的神经网络是具备 Universal Approximation 性质的。证明的思路其实比较简单，就是通过 ReLU 函数来构造基本单元，再用基本单元来做任意精度的拟合。以 $f:\bb R\to\bb R$ 为例，Proof Sketch 如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0grtq8dq.png" alt=""></p>
-<p>特别的，这里的神经网络是带有 bias term 的。</p>
-</li>
-</ul>
+<blockquote id="fn_5">
+<sup>5</sup>. 这是一个凸优化。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
 ]]></content>
       <categories>
         <category>学术</category>
@@ -776,62 +737,259 @@ e_{t,i}=f_{att}(s_{t-1},h_i)</script><p>然后我们将所有 $e<em>{t,i}$ 通�
       </categories>
   </entry>
   <entry>
-    <title>卷积神经网络的发展</title>
-    <url>/2025/03/07/DL/devCNN/</url>
-    <content><![CDATA[<p>本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。</p>
+    <title>梯度下降法</title>
+    <url>/2025/03/06/DL/GD/</url>
+    <content><![CDATA[<p>即 Gradient Descent 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。</p>
 <a id="more"></a>
-<h1 id="ImageNet"><a href="#ImageNet" class="headerlink" title="ImageNet"></a>ImageNet</h1><ul>
-<li><p>ImageNet Challenge（简称 ILSVRC）是图像识别领域的著名赛事，于 2010 年启动，后来在 2017 年被 CNN 终结了。ILSVRC 使用的数据集是 ImageNet 的子集，包括 1000 个类别、约 120 万张训练图像、5 万张验证图像与 10 万张测试图像，输入模型的图像格式均为 3 channels 224*224 pixels 。我们将介绍 ImageNet 历年最成功、最有代表性的 CNN 模型。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xbcmrb2q.png" alt=""></p>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>我们希望求解如下问题：<script type="math/tex; mode=display">
+\min_{W} L(W)</script>其中 $L(W)$ 在定义域内可微。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>假设我们已经得到了一个初始解 $x_0$ ， 那么一个简单的思路是，我们每次向 $x_0$ 处的负梯度方向移动。我们期待通过有限次的移动就可以抵达一个足够好的解，这就是最朴素的梯度下降算法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Vanilla gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    dw = compute_gradient(loss_func, data, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h1><ul>
-<li><p>在 2012 年以前的图像识别领域，CNN 尚且不是主流，直到当年 AlexNet 取得了重大突破。以下是 AlexNet 的结构：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/su98t1rd.png" alt=""></p>
-<p>如上图所示，AlexNet 由 5 个卷积层加上若干池化层再加上最后的三个全连接层构成。这个结构看起来比较奇怪，主要是因为受当时的算力限制，AlexNet 是在两块 GTX580 上分别训练的。此外 AlexNet 也用到了一些被后来被弃用的技术，例如 Local response normalization ，我们也不会再谈。</p>
-<p>衡量模型表现的重要因素，除开准确率之外，还有内存占用（memory）、参数量（params）以及浮点运算量（flop）。按照上篇中我们谈过的 CNN 的结构，这些指标都不难计算。下表给出了 AlexNet 的详细指标：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/37i022sy.png" alt=""></p>
-<p>下图是 AlexNet 各层开销的柱状图，并略去了开销极小的池化层：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/smc2q640.png" alt=""></p>
-<p>可以看到计算开销和空间开销主要来自卷积层，而参数量则主要来自全连接层。</p>
+<h1 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h1><ul>
+<li><p>即 Stochastic Gradient Descent 。在运行梯度下降法时，实践中的一个常见的问题是，我们的数据集往往很大，那么每一次计算损失函数的时间开销是不能接受的。因此我们往往会考虑使用蒙特卡洛方法，即选定一个 batch size（e.g. 32/64/128），每一次计算梯度时，我们都从数据集中随机取样出大小为 batch size 的样本集，然后再对样本集计算梯度。我们期待在梯度下降的过程中，样本集可以较好的反映出数据集的性质。这样的算法就被称作 SGD 。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="VGG-Net"><a href="#VGG-Net" class="headerlink" title="VGG Net"></a>VGG Net</h1><ul>
-<li><p>2013 年的 ZF Net 基本是一个大号的 AlexNet ，所以我们就略去不讲。而 2014 年则同时有两个模型取得了相近的优异表现，而且各自的实现思路有较大不同，其一是 VGG Net 。<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
-<p>AlexNet 的一个缺点是超参数太多，这使得模型调参非常麻烦。而 VGG Net 的主要目标之一便是寻求一个更好的构建网络的范式。首先，注意到 5*5 卷积所达成的视野可以被两次 3*3 的卷积替代，并且后者的计算量与参数量更小，还提供了更多的非线性化，这暗示了单次大尺寸卷积的效果也许是不如多次小尺寸卷积的<sup><a href="#fn_1" id="reffn_1">1</a></sup>。所以，VGG Net 提供的解决方案是，只做 3*3 卷积。具体的，VGG Net 的思路是构造某种网络阶段，例如两次 3*3 stride 1 pad 1 的卷积再加上一次 2*2 stride 2 的 max pool ，通过堆叠网络阶段来搭建网络，并在每一层 pooling layer 后倍增 channel 数，如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/adw4ue39.png" alt=""></p>
-<p>同 AlexNet 比较 VGG Net 的各项指标：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xuq7n4iz.png" alt=""></p>
-<p>VGG Net 的算力消耗激增。实际上，VGG Net 也是我们所要介绍的算力开销最大的模型。</p>
+<h1 id="SGD-with-Momentum"><a href="#SGD-with-Momentum" class="headerlink" title="SGD with Momentum"></a>SGD with Momentum</h1><ul>
+<li><p>为了避免梯度的剧烈震荡/解停滞在鞍点/较大的噪声，我们可以考虑引入“速度”的概念来替代目前的“加速度”（即负梯度）。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Stochastic gradient descent with momentum</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">v = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    v = rho * v + dw</span><br><span class="line">    w -= learning_rate * v</span><br></pre></td></tr></table></figure>
+<p>其中的超参数 <code>rho</code> 是衰减系数。SGD with Momentum 也有另一种实现，称作 Nesterov Momentum ，这里就不详谈了。</p>
+</li>
+</ul>
+<h1 id="AdaGrad"><a href="#AdaGrad" class="headerlink" title="AdaGrad"></a>AdaGrad</h1><ul>
+<li><p>即自适应梯度下降。类似的，我们希望避免梯度剧烈震荡的问题，因此考虑保存每一维上梯度的平方历史和，并在计算下一个解时为每一维除以对应的开根平方历史和。这样做的好处是，变化大的维度被限制，而变化小的维度则相对不被限制。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive stochastic gradient descent</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared += dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h1><ul>
+<li><p>AdaGrad 存在一个明显的问题，就是随着 <code>grad_squared</code>  的积累，到最后解就很难移动了。一个好的改进是 RMSProp（Root Mean Square Propagation），可以将其视作带有衰减系数的 AdaGrad 。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># RMSProp</span></span><br><span class="line">w = initialize_weights()</span><br><span class="line">grad_squared = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">    minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    grad_squared = decay_rate * grad_squared + (<span class="number">1</span> - decay_rate) * dw**<span class="number">2</span></span><br><span class="line">    w -= learning_rate * dw / (grad_squared.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h1><ul>
+<li><p>现在我们试着结合 Momentum 和 RMSProp 的优点，这样就得到了 Adam ：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Adaptive Moment Estimation</span></span><br><span class="line">moment1 = <span class="number">0</span></span><br><span class="line">moment2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> range(num_steps):</span><br><span class="line">	minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    moment1 = beta1 * moment1 + (<span class="number">1</span> - beta1) * dw</span><br><span class="line">    moment2 = beta2 * moment2 + (<span class="number">1</span> - beta2) * dw**<span class="number">2</span></span><br><span class="line">    moment1_unbias = moment1 / (<span class="number">1</span> - beta1**t)</span><br><span class="line">    moment2_unbias = moment2 / (<span class="number">1</span> - beta2**t)</span><br><span class="line">    w -= learning_rate * moment1_unbias / (moment2_unbias.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
+<p>我们在上述的代码加入了计算 <code>moment1_unbias</code> 和 <code>moment2_unbias</code> ，这是为了避免在算法最开始更新 <code>w</code> 时除以一个极小的数，导致解剧烈变化。<sup><a href="#fn_4" id="reffn_4">4</a></sup></p>
+<p>特别的，Adam 在很多时候都是一个好的方法，建议的初始参数 <code>beta1 = 0.9</code> ，<code>beta2 = 0.999</code> ，<code>learning_rate = 1e-3, 5e-4, 1e-4</code> 。</p>
+</li>
+</ul>
+<blockquote id="fn_4">
+<sup>4</sup>. 这样的写法应该有更严格的推导。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="基于二阶微分的优化"><a href="#基于二阶微分的优化" class="headerlink" title="基于二阶微分的优化"></a>基于二阶微分的优化</h1><ul>
+<li>基于二阶微分的优化也是有研究的，但是并不常用，因为计算 Hessian 矩阵以及矩阵求逆的复杂度开销太高了。这里就不详谈了。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>K-近邻与交叉验证</title>
+    <url>/2025/03/06/DL/KNN/</url>
+    <content><![CDATA[<p>即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross Validation 也写了。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="K-近邻"><a href="#K-近邻" class="headerlink" title="K-近邻"></a>K-近邻</h1><ul>
+<li>即 K nearest neighbors ，KNN 。是一个简单的算法。</li>
+</ul>
+<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h2 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h2><ul>
+<li>考虑将图像按照像素点排列作为向量，那么一个简单的想法是，对于一个待分类的向量，我们直接寻找训练集中距离其最近的一个向量，并选择其类别即可。进一步可以扩展为，我们寻找训练集中距离其前 $k$ 近的向量，然后通过投票寻找票数最高的类别。</li>
+</ul>
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><ul>
+<li><p>在选择超参数时，我们需要一个数据集来评估训练的效果，然后做调整。显然这个数据集不能取测试集，不然会导致过拟合。所以我们的办法是，从训练集中抽出一部分数据作为验证集，然后使用验证集调整超参数，最后再使用测试集做评估。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/13jx9o8g.png" style="zoom: 33%;" /></p>
+<p>为了在同一超参数上做多次测试，可以采用 Cross Validation 的方式，将训练集划分为多块，然后选择每一块作为验证集。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/n3oskugz.png" alt=""></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>循环神经网络</title>
+    <url>/2025/03/18/DL/RNN/</url>
+    <content><![CDATA[<p>我本来还以为 RNN 会更厉害一点来着。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\si}{\sigma}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li><p>原先的问题（Image Classification）是 one to one 的，即接受一个输入，并只有单一输出。为此，我们设计了 feed forward 的神经网络。而有时我们需要处理其它类型的问题，例如：</p>
+<ol>
+<li>one to many: Image Captioning.</li>
+<li>many to one: Video Classification.</li>
+<li>many to many: Machine Translation.</li>
+</ol>
+<p>总的来说，在这些问题中，我们需要处理序列输入/输出，而这时，典型的前馈神经网络就不那么好用了<sup><a href="#fn_1" id="reffn_1">1</a></sup>。为了处理序列问题，不妨考虑引入类似于递归的机制，循环的利用网络，并基于上一步的信息和当前的输入进行下一状态的计算，这样就得到了 Recurrent Neural Network 。</p>
 </li>
 </ul>
 <blockquote id="fn_1">
-<sup>1</sup>. 当然，单次 5*5 卷积和两次 3*3 卷积虽然达成了相同的视野，但每个点具体的权重肯定还是有区别的。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+<sup>1</sup>. 指先前的前馈网络。毕竟 transformer 也是前馈的。其中“前馈”指信息总是向前传播。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
 </blockquote>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>具体的，用 $t$ 表示步数，我们希望引入一个 hidden vector（记作 $h<em>t$ ）来保存 RNN 的状态，并利用某个固定的函数 $f_W$ 基于上一步的状态 $h</em>{t-1}$ 和当前输入 $x_t$ 来计算当前状态 $h_t$ ：</p>
+<script type="math/tex; mode=display">
+h_t=f_W(h_{t-1},x_t)</script><p>最朴素的选择（称作 Vanilla RNN）是<sup><a href="#fn_2" id="reffn_2">2</a></sup>：</p>
+<script type="math/tex; mode=display">
+h_t=\tanh(W_{hh}h_{t-1}+W_{xh} x_t)</script><p>而如果这一步还需要输出，就基于当前状态计算得到输出 $y_t$ 。Vanilla RNN 的实现是：</p>
+<script type="math/tex; mode=display">
+y_t=W_{hy} h_t</script><p>下图展示了一个 many to many 的 RNN 的结构：<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0e2jk7b4.png" alt=""></p>
+<p>注意到训练 RNN 时每一个输出都需要有损失函数，而总共的损失函数则是它们的和。RNN 的设计比较灵活，每一步都可能有输入或输出、或两者皆有。但其大体的设计与上图差别不大，这里就不赘述了。有一类比较的特别的 many to many 问题，需要我们将输入和输出分离<sup><a href="#fn_4" id="reffn_4">4</a></sup>，那么我们就相应的拼接两个 RNN ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/iw3hs4kv.png" alt=""></p>
+</li>
+<li><p>Justin 接下来举了一个比较简单的例子，即一个用于 Language Modeling 的 many to many 模型，其实就是基于给定的语料预测下一个字母。一个有趣的细节是，这个任务每一步的输入是一个大小为字符集的 one hot vector ，所以在做矩阵乘法时其等价于选取矩阵的一列。这样做看起来表达能力并不强，所以我们可以在计算 hidden vector 前加入一个 embedding layer ，即先做 一次矩阵乘法。这样做其实等价于用一个“嵌入向量”来表达字符。<sup><a href="#fn_6" id="reffn_6">6</a></sup></p>
+</li>
+</ul>
 <blockquote id="fn_2">
-<sup>2</sup>. VGG Net 仅由一个研究生和一位教师完成，相比之下，很多其它模型都是由大公司研发的。他们的成果令人震惊。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+<sup>2</sup>. 简洁起见，下面省掉了 bias term ，但实际实现中当然是有的。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
 </blockquote>
-<h1 id="Google-Net"><a href="#Google-Net" class="headerlink" title="Google Net"></a>Google Net</h1><ul>
-<li><p>2014 年脱颖而出的另一模型则是 Google Net 。Google Net 与 VGG Net 有很多共同点，但特别之处是 Google Net 把重心放到了控制模型的算力开销上。Google Net 在模型的最初几层采取了激进的 down sample 策略以减少后续计算量。</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qktm37ea.png" alt=""></p>
-<p>不同于 VGG Net ，Google Net 采用了复用网络模块的思路，即通过构造一个通用模块，再不断堆叠来搭建网络。Google Net 在网络模块中引入了平行分支，通过在不同的分支中同时做不同尺寸的卷积来避免引入卷积尺寸这一超参数。而为了控制卷积层的时间开销，Google Net 选择在卷积层之前加入 1*1 卷积层（称作 bottlenecks）来缩减 channel 的数目。 </p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gbc58luf.png" alt=""></p>
-<p>Google Net 的另一个创新是，通过 global average pooling 来替代原先模型最后巨大的全连接层，从而缩减参数量。具体的，Google Net 最后得到了 7*7*1024 的 tensor ，然后其通过 global average pooling 消除了 feature map ，只留下了一个 feature vector ，再使用单个全连接层来转换得到最后的 1000 个分类指标。</p>
-<p>Google Net 在中间加入了一些额外的输出分支，称作 Auxiliary Classifiers ，这看起来很奇怪。实际上 Auxiliary Classifiers 的用处并非预测，而是通过在中途注入梯度来加速模型收敛，而这种技巧在后来的模型中被弃用了。</p>
+<blockquote id="fn_3">
+<sup>3</sup>. 可能的任务场景是 Video per-frame Classification 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 例如 Machine Translation 。RNN 需要先理解整个句子才能翻译。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. 这看起来是一个非常简单的模型，但是你如果喂给它数据，它竟然真的能吐出像模像样的结果。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="RNN-的反向传播"><a href="#RNN-的反向传播" class="headerlink" title="RNN 的反向传播"></a>RNN 的反向传播</h1><ul>
+<li>RNN 的反向传播会多次经过自身<sup><a href="#fn_5" id="reffn_5">5</a></sup>，这在计算上没什么问题，但是由于显存大小有限，整个 RNN 的 Computational Graph 可能会存不下。所以我们需要采取一个折衷的办法，称作 Truncated Back Propagation through time ，即，我们选择一个块长 B ，每处理 B 步，我们就对这 B 步的结果做一次 Back Propagation ，并更新 Weight Matrix ，再使用更新的结构参与以后的处理。</li>
+</ul>
+<blockquote id="fn_5">
+<sup>5</sup>. 称作 Back Propagation through time 。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Hidden-Vector-的可解释性"><a href="#Hidden-Vector-的可解释性" class="headerlink" title="Hidden Vector 的可解释性"></a>Hidden Vector 的可解释性</h1><ul>
+<li>现在我们考察 Hidden Vector 是否具备可解释性。不妨考虑 Hidden Vector 的每一维是不是捕捉到了某种信息。还是以 Language Modeling 为例，有研究<sup><a href="#fn_7" id="reffn_7">7</a></sup>使用 RNN 建模了某些语料库，跟踪了 Hidden Vector 的某些维度在预测输出时的活跃程度，发现这些维度捕捉了包括 <code>for</code> 循环、引用、换行符在内的某些有趣的信息。这说明 RNN 的 hidden state 的确概括了这些特征，学到了语料库中的某些特殊结构。</li>
+</ul>
+<blockquote id="fn_7">
+<sup>7</sup>. Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016.<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><ul>
+<li><p>Vanilla RNN 的梯度流其实有很大的问题。我们知道在 0 附近 $\tanh$ 表现为恒等映射，所以在反向传播的时候 hidden vector 的梯度会包含很多 $W_{hh}$ 的幂，这一点在处理长序列时尤为明显。所以 hidden vector 的梯度很容易爆炸或者消失。为此，我们考虑修改 RNN 的结构。一个经典的方式是使用所谓的 Long Short Term Memory 。其形式如下:</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+i\\f\\o\\g
+\end{bmatrix}
+=
+\begin{bmatrix}
+\si\\
+\si\\
+\si\\
+\tanh
+\end{bmatrix}
+W
+\begin{bmatrix}
+    h_{t-1}\\
+    x_t\\
+\end{bmatrix},\quad
+\begin{align}
+c_t&=f\odot c_{t-1}+i\odot g\\
+h_t&= o\odot \tanh(c_t)
+\end{align}</script><p>简单的说，我们用分块矩阵将 Vanilla RNN 中的形式写成单次矩阵乘法，并将得到的向量的维数扩大为原先的四倍，将其切分成 4 个部分，分别通过 sigmoid 或 tanh 得到四个向量，称作 input gate 、forget gate 、output gate 和 gate gate<sup><a href="#fn_8" id="reffn_8">8</a></sup> 。我们将要多维护一个中间结果 cell stat（记作 $c_t$，意义是 LSTM 的内部的隐藏状态），并按照以上的形式计算得到新的状态，其中 $\odot$ 指得到向量的 element-wise product 。这样做的意义是，我们以 $c_t$ 作为核心，而 $i,f,o$ 都是 0 到 1 间的实数，它们表示了“程度”。具体的，$g$ 表示了当前我们希望往 $c_t$ 里面写什么，而 $i$ 表示每一维要写多少、$f$ 表示要“遗忘”多少以前的状态。最后再用 $c_t$ 通过 $\tanh$ ，得到我们要输出什么，再乘上 $o$ ，代表每一维要输出多少。</p>
+<p>以上所述均是 intuition ，LSTM 要解决的主要问题其实是为梯度提供顺畅传播的通道。不妨考虑 LSTM 的 Computational Graph ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/95uyzkss.png" alt=""></p>
+<p>可以看到 cell state 反向传播的通道并不会经过任何的非线性计算，而只是和 $f$ 做逐点乘法而已，这对于反向传播是非常友好的。当然，鉴于 $f$ 的值处在 0~1 之间，这样设计可能还是会导致梯度消失。无论如何，这的确大大改善了 Vanilla RNN 。</p>
 </li>
 </ul>
-<h1 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h1><ul>
-<li><p>2015 年是非常重要的一年，这一年诞生了很多在深度神经网络中至关重要的技术，例如 Batch Normalization 和 Residual Block ，这使得我们可以搭建深度远超以往的神经网络，即 ResNet 。</p>
-</li>
-<li><p>搭建深度网络的主要阻碍之一，就是随着深度的增加，收敛也愈发困难，这个问题在 Google Net 上已经初露端倪。而通过我们先前介绍的 Batch Normalization ，即使不依靠 Auxiliary Classifiers ，Google Net 也可以较好的收敛，但这还不够好。不妨想想为什么深度网络的预测效果反而不如更浅的网络：理论上我们只需抽调出深度网络特定的几层，使其模仿浅网络就好了，而其余的层只需被设为恒等映射即可。所以我们猜测深度网络效果不好的原因可能是卷积层学习恒等映射的效果不好。要针对这一点改进，我们考虑对原先的网络模块（称作 plain block）加入一条直接传递当前结果的捷径，修改为如下的 Residual Block ：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/g8qwtoyd.png" alt=""></p>
-<p>我们可以在 ResNet 中找到很多 VGG Net 和 Google Net 的影子，例如其采取了类似 VGG Net 的阶段化思想，并学习 Google Net 在最开始进行激进的 down sample 来降低后续开销，以及在最后安排 Global Average Pooling Layer 而非巨大的 Fully Connected Layer 。此外，在深层网络中，ResNet 采取了另一种设计来替代以上的 Residual Block（称作 Basic Block），即在单个 Block 内只做单次 3*3 卷积，而在之前之后分别插入 bottleneck 来控制 channel 的数目，以缩减计算开销，同时增加深度和非线性计算数，称作 bottleneck block 。</p>
-<p>以上的机制组合在一起，使得 ResNet 保持了每层较低的时间开销，以及更快的收敛速度，从而可以搭建深度远超以往的网络，实现跨越式的性能增长。而 ResNet 也确实横扫了 2015 年 CV 领域的各大竞赛，几乎终结了 ILSVRC 。</p>
+<blockquote id="fn_8">
+<sup>8</sup>. 我不知道这个到底应该叫什么名字。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Muti-layer-RNN"><a href="#Muti-layer-RNN" class="headerlink" title="Muti-layer RNN"></a>Muti-layer RNN</h1><ul>
+<li><p>当然我们也可以像 CNN 那样增加 RNN 的深度，大体结构如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ma5ivbhn.png" alt=""></p>
+<p>我们可以期待增加一定的层数，例如 3 到 5 层，会改善 RNN 的表现。但 RNN 一般不会像 CNN 那样搭建非常深的网络。<sup><a href="#fn_9" id="reffn_9">9</a></sup></p>
 </li>
 </ul>
-<h1 id="后续改进"><a href="#后续改进" class="headerlink" title="后续改进"></a>后续改进</h1><ul>
-<li>后续的改进大部分都是基于 ResNet 的，例如 “Pre-Activation ResNet Block” 、ResNeXt 、Densely Connected Neural Network 。但实际上 ResNet 在准确性这方面的改进空间已经不大了，所以研究者开始把重心转移到别的方面，例如缩减算力开销（MobileNets），或是研究自动生成深度网络模型的模型。以后我们不会再详谈这些方面，而是把 ResNet 作为 Image Classification 的最终方案，然后介绍 CV 领域的其它问题。</li>
-<li>最后 Justin 给了一些建议，比如一般不要去试着搭建自己的网络，而是优先考虑已有的方案，因为一般院所的算力资源都是相当有限的。</li>
+<blockquote id="fn_9">
+<sup>9</sup>. 不知道具体为什么。可能是因为算力限制或者效果不好吧。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="RNN-的其它结构"><a href="#RNN-的其它结构" class="headerlink" title="RNN 的其它结构"></a>RNN 的其它结构</h1><ul>
+<li>RNN 其实有很多其它结构，例如 Gated Recurrent Unit<sup><a href="#fn_10" id="reffn_10">10</a></sup> 之类的，此外还有自动生成 RNN 模型的研究<sup><a href="#fn_11" id="reffn_11">11</a></sup>。但大体看来它们似乎并没有得到显著优于 LSTM 的结果，所以我们也就不深入了。</li>
+</ul>
+<blockquote id="fn_10">
+<sup>10</sup>. Cho et al, Learning phrase representations using RNN encoder-decoder for statistical machine translation, 2014.<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_11">
+<sup>11</sup>. Zoph and Le, Neural Architecture Search with Reinforcement Learning, ICLR 2017.<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>神经网络</title>
+    <url>/2025/03/06/DL/NN/</url>
+    <content><![CDATA[<p>即 Neural Networks 。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\bb}{\mathbb}
+\newcommand {\la}{\lambda}
+\newcommand {\dv}{\backslash}
+\newcommand {\P}{\bb P}
+\newcommand {\l}{\left}
+\newcommand {\r}{\right}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li>给定包含图像的训练集与测试集，请基于训练集中标注的分类结果对测试集中的图像进行分类。</li>
+</ul>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>很多时候数据集都不是线性可分的。老的解决方案是，考虑将数据点通过某种方式映射到特征空间中去，使得特征空间中的数据点变得容易划分，例如 SVM 的 Kernel Trick 。特征提取方式是多样的，例如 Color Histogram 、Histogram of Oriented Gradients 或者 Bag of Words 。但一个更加 SOTA 的方式则是神经网络。</p>
+</li>
+<li><p>具体的，我们将从 Linear Classifer 改进得到 Neural Network 。考虑最简单的 Linear Classifer 的预测方式：<sup><a href="#fn_7" id="reffn_7">7</a></sup></p>
+<script type="math/tex; mode=display">
+f(x)=Wx,x\in\bb R^D,W\in\bb R^{C\times D}</script><p>现在我们考虑加入另一个矩阵，得到：</p>
+<script type="math/tex; mode=display">
+f(x)=W_2\max(0,W_1x),W_2\in \bb R^{C\times H},W_1\in\bb R^{H\times D},x\in\bb R^D</script><p>我们将这个模型称作一个两层的神经网络。如图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/hhgijynd.png" style="zoom: 50%;" /></p>
+<p>我们将 $\max(0, x)$ 这个函数称作神经网络的激活函数，更具体的，称作 ReLU（Rectified Linear Unit）。激活函数对于神经网络而言是相当重要的，因为，去掉激活函数以后，多层神经网络的表达能力实际上和一般的 Linear Classifier 没有本质区别。<sup><a href="#fn_6" id="reffn_6">6</a></sup>激活函数有很多不同的种类，ReLU 是最为常见的一种。</p>
+<p>我们将每一层的点称作神经元（Neuron），并将这样的神经网络称作全连接神经网络（Fully Connected Neural Network），这是因为输入层的每一个神经元都参与决定了下一层的所有神经元的值。下图展示了一个六层的神经网络，每一层的 hidden units（即中间层的神经元个数）都是相等的（一般都会这样安排），我们将 hidden units 的个数称作神经网络的宽度（width）：<sup><a href="#fn_8" id="reffn_8">8</a></sup></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/acc029y8.png" style="zoom: 50%;" /></p>
+</li>
+</ul>
+<blockquote id="fn_6">
+<sup>6</sup>. 当然多次矩阵乘法与单个矩阵之间仍然是有区别的，这被称作 Multi Layer Linear Classifer 。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_7">
+<sup>7</sup>. 这里演示的神经网络是没有 bias term 的，但是一般的神经网络应该是要带上的。<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_8">
+<sup>8</sup>. 神经网络不是一个凸优化。截止 2019 年，神经网络的收敛性以及类似性质的证明似乎还是 open problem 。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Neural-Network-和生物学神经网络的联系"><a href="#Neural-Network-和生物学神经网络的联系" class="headerlink" title="Neural Network 和生物学神经网络的联系"></a>Neural Network 和生物学神经网络的联系</h1><ul>
+<li><p>实际上，Neural Nerwork 和生物学神经网络并没有必然的联系，相对准确的说法是前者的发明受到了后者的启发。在这里我们就大致讲讲两者之间的相似性。</p>
+</li>
+<li><p>我们可以想象，生物学神经网络是由大量神经元通过某种方式相互连接而形成的，其中每一个神经元通过轴突接受电信号，再通过树突发射电信号。我们假设发射出的电信号可以被表示为接受的电信号的线性组合再复合某个非线性函数（激活函数）的值，这样我们就可以仿照建立 Neural Network 。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jnej17pv.png" alt=""></p>
+<p>当然，我们建立的 Neural Network 相对于生物学神经网络是非常简化的。</p>
+</li>
+</ul>
+<h1 id="神经网络的表达能力"><a href="#神经网络的表达能力" class="headerlink" title="神经网络的表达能力"></a>神经网络的表达能力</h1><ul>
+<li><p>我们期待多层神经网络的表达能力要强于一般的 Linear Classifier 。不妨考虑神经网络的几何意义。先考虑单层神经网络，其实际上仍然是用了若干个超平面来划分类别。这几个超平面应该应该把整个空间划分为了若干块，然后通过 ReLU 函数，我们把所有点都集中到了其中的一块上。最后，我们在这一块空间上进行下一层神经网络的划分。因此，可以看出，由于激活函数的作用，深层神经网络的超平面对应到浅层的空间就不再是线性的了。浅层神经网络通过线性划分而扭曲了空间，从而增强了深层网络的表达能力。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gaq6ntwp.png" alt=""></p>
+<p>严格地说，我们可以将图像分类问题视作函数拟合问题。即，我们希望通过某种方式来拟合一个函数 $f:\bb R^D\to\bb R$ ，而后者则表示了所有图像的分类结果。我们可以证明，不低于两层的神经网络是具备 Universal Approximation 性质的。证明的思路其实比较简单，就是通过 ReLU 函数来构造基本单元，再用基本单元来做任意精度的拟合。以 $f:\bb R\to\bb R$ 为例，Proof Sketch 如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0grtq8dq.png" alt=""></p>
+<p>特别的，这里的神经网络是带有 bias term 的。</p>
+</li>
 </ul>
 ]]></content>
       <categories>
@@ -1013,6 +1171,69 @@ e_{t,i}=f_{att}(s_{t-1},h_i)</script><p>然后我们将所有 $e<em>{t,i}$ 通�
       </categories>
   </entry>
   <entry>
+    <title>卷积神经网络的发展</title>
+    <url>/2025/03/07/DL/devCNN/</url>
+    <content><![CDATA[<p>本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net 以及 ResNet 。</p>
+<a id="more"></a>
+<h1 id="ImageNet"><a href="#ImageNet" class="headerlink" title="ImageNet"></a>ImageNet</h1><ul>
+<li><p>ImageNet Challenge（简称 ILSVRC）是图像识别领域的著名赛事，于 2010 年启动，后来在 2017 年被 CNN 终结了。ILSVRC 使用的数据集是 ImageNet 的子集，包括 1000 个类别、约 120 万张训练图像、5 万张验证图像与 10 万张测试图像，输入模型的图像格式均为 3 channels 224*224 pixels 。我们将介绍 ImageNet 历年最成功、最有代表性的 CNN 模型。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xbcmrb2q.png" alt=""></p>
+</li>
+</ul>
+<h1 id="AlexNet"><a href="#AlexNet" class="headerlink" title="AlexNet"></a>AlexNet</h1><ul>
+<li><p>在 2012 年以前的图像识别领域，CNN 尚且不是主流，直到当年 AlexNet 取得了重大突破。以下是 AlexNet 的结构：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/su98t1rd.png" alt=""></p>
+<p>如上图所示，AlexNet 由 5 个卷积层加上若干池化层再加上最后的三个全连接层构成。这个结构看起来比较奇怪，主要是因为受当时的算力限制，AlexNet 是在两块 GTX580 上分别训练的。此外 AlexNet 也用到了一些被后来被弃用的技术，例如 Local response normalization ，我们也不会再谈。</p>
+<p>衡量模型表现的重要因素，除开准确率之外，还有内存占用（memory）、参数量（params）以及浮点运算量（flop）。按照上篇中我们谈过的 CNN 的结构，这些指标都不难计算。下表给出了 AlexNet 的详细指标：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/37i022sy.png" alt=""></p>
+<p>下图是 AlexNet 各层开销的柱状图，并略去了开销极小的池化层：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/smc2q640.png" alt=""></p>
+<p>可以看到计算开销和空间开销主要来自卷积层，而参数量则主要来自全连接层。</p>
+</li>
+</ul>
+<h1 id="VGG-Net"><a href="#VGG-Net" class="headerlink" title="VGG Net"></a>VGG Net</h1><ul>
+<li><p>2013 年的 ZF Net 基本是一个大号的 AlexNet ，所以我们就略去不讲。而 2014 年则同时有两个模型取得了相近的优异表现，而且各自的实现思路有较大不同，其一是 VGG Net 。<sup><a href="#fn_2" id="reffn_2">2</a></sup></p>
+<p>AlexNet 的一个缺点是超参数太多，这使得模型调参非常麻烦。而 VGG Net 的主要目标之一便是寻求一个更好的构建网络的范式。首先，注意到 5*5 卷积所达成的视野可以被两次 3*3 的卷积替代，并且后者的计算量与参数量更小，还提供了更多的非线性化，这暗示了单次大尺寸卷积的效果也许是不如多次小尺寸卷积的<sup><a href="#fn_1" id="reffn_1">1</a></sup>。所以，VGG Net 提供的解决方案是，只做 3*3 卷积。具体的，VGG Net 的思路是构造某种网络阶段，例如两次 3*3 stride 1 pad 1 的卷积再加上一次 2*2 stride 2 的 max pool ，通过堆叠网络阶段来搭建网络，并在每一层 pooling layer 后倍增 channel 数，如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/adw4ue39.png" alt=""></p>
+<p>同 AlexNet 比较 VGG Net 的各项指标：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/xuq7n4iz.png" alt=""></p>
+<p>VGG Net 的算力消耗激增。实际上，VGG Net 也是我们所要介绍的算力开销最大的模型。</p>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 当然，单次 5*5 卷积和两次 3*3 卷积虽然达成了相同的视野，但每个点具体的权重肯定还是有区别的。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_2">
+<sup>2</sup>. VGG Net 仅由一个研究生和一位教师完成，相比之下，很多其它模型都是由大公司研发的。他们的成果令人震惊。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Google-Net"><a href="#Google-Net" class="headerlink" title="Google Net"></a>Google Net</h1><ul>
+<li><p>2014 年脱颖而出的另一模型则是 Google Net 。Google Net 与 VGG Net 有很多共同点，但特别之处是 Google Net 把重心放到了控制模型的算力开销上。Google Net 在模型的最初几层采取了激进的 down sample 策略以减少后续计算量。</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qktm37ea.png" alt=""></p>
+<p>不同于 VGG Net ，Google Net 采用了复用网络模块的思路，即通过构造一个通用模块，再不断堆叠来搭建网络。Google Net 在网络模块中引入了平行分支，通过在不同的分支中同时做不同尺寸的卷积来避免引入卷积尺寸这一超参数。而为了控制卷积层的时间开销，Google Net 选择在卷积层之前加入 1*1 卷积层（称作 bottlenecks）来缩减 channel 的数目。 </p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/gbc58luf.png" alt=""></p>
+<p>Google Net 的另一个创新是，通过 global average pooling 来替代原先模型最后巨大的全连接层，从而缩减参数量。具体的，Google Net 最后得到了 7*7*1024 的 tensor ，然后其通过 global average pooling 消除了 feature map ，只留下了一个 feature vector ，再使用单个全连接层来转换得到最后的 1000 个分类指标。</p>
+<p>Google Net 在中间加入了一些额外的输出分支，称作 Auxiliary Classifiers ，这看起来很奇怪。实际上 Auxiliary Classifiers 的用处并非预测，而是通过在中途注入梯度来加速模型收敛，而这种技巧在后来的模型中被弃用了。</p>
+</li>
+</ul>
+<h1 id="ResNet"><a href="#ResNet" class="headerlink" title="ResNet"></a>ResNet</h1><ul>
+<li><p>2015 年是非常重要的一年，这一年诞生了很多在深度神经网络中至关重要的技术，例如 Batch Normalization 和 Residual Block ，这使得我们可以搭建深度远超以往的神经网络，即 ResNet 。</p>
+</li>
+<li><p>搭建深度网络的主要阻碍之一，就是随着深度的增加，收敛也愈发困难，这个问题在 Google Net 上已经初露端倪。而通过我们先前介绍的 Batch Normalization ，即使不依靠 Auxiliary Classifiers ，Google Net 也可以较好的收敛，但这还不够好。不妨想想为什么深度网络的预测效果反而不如更浅的网络：理论上我们只需抽调出深度网络特定的几层，使其模仿浅网络就好了，而其余的层只需被设为恒等映射即可。所以我们猜测深度网络效果不好的原因可能是卷积层学习恒等映射的效果不好。要针对这一点改进，我们考虑对原先的网络模块（称作 plain block）加入一条直接传递当前结果的捷径，修改为如下的 Residual Block ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/g8qwtoyd.png" alt=""></p>
+<p>我们可以在 ResNet 中找到很多 VGG Net 和 Google Net 的影子，例如其采取了类似 VGG Net 的阶段化思想，并学习 Google Net 在最开始进行激进的 down sample 来降低后续开销，以及在最后安排 Global Average Pooling Layer 而非巨大的 Fully Connected Layer 。此外，在深层网络中，ResNet 采取了另一种设计来替代以上的 Residual Block（称作 Basic Block），即在单个 Block 内只做单次 3*3 卷积，而在之前之后分别插入 bottleneck 来控制 channel 的数目，以缩减计算开销，同时增加深度和非线性计算数，称作 bottleneck block 。</p>
+<p>以上的机制组合在一起，使得 ResNet 保持了每层较低的时间开销，以及更快的收敛速度，从而可以搭建深度远超以往的网络，实现跨越式的性能增长。而 ResNet 也确实横扫了 2015 年 CV 领域的各大竞赛，几乎终结了 ILSVRC 。</p>
+</li>
+</ul>
+<h1 id="后续改进"><a href="#后续改进" class="headerlink" title="后续改进"></a>后续改进</h1><ul>
+<li>后续的改进大部分都是基于 ResNet 的，例如 “Pre-Activation ResNet Block” 、ResNeXt 、Densely Connected Neural Network 。但实际上 ResNet 在准确性这方面的改进空间已经不大了，所以研究者开始把重心转移到别的方面，例如缩减算力开销（MobileNets），或是研究自动生成深度网络模型的模型。以后我们不会再详谈这些方面，而是把 ResNet 作为 Image Classification 的最终方案，然后介绍 CV 领域的其它问题。</li>
+<li>最后 Justin 给了一些建议，比如一般不要去试着搭建自己的网络，而是优先考虑已有的方案，因为一般院所的算力资源都是相当有限的。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学术</category>
+      </categories>
+  </entry>
+  <entry>
     <title>关于深度学习</title>
     <url>/2025/02/26/DL/%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>其实是对着 UMich EECS 498-007 / 598-005: Deep Learning for Computer Vision 写的，所以主题是 Computer Vision 。本文中会有配图，是从 Justin Johnson 的 slides 上蒯的。</p>
@@ -1050,227 +1271,6 @@ e_{t,i}=f_{att}(s_{t-1},h_i)</script><p>然后我们将所有 $e<em>{t,i}$ 通�
 <p>引入了 Attention 这一概念，简要介绍了 RNN with Attention 以及最主流的 Transformer 。</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>循环神经网络</title>
-    <url>/2025/03/18/DL/RNN/</url>
-    <content><![CDATA[<p>我本来还以为 RNN 会更厉害一点来着。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\si}{\sigma}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
-<li><p>原先的问题（Image Classification）是 one to one 的，即接受一个输入，并只有单一输出。为此，我们设计了 feed forward 的神经网络。而有时我们需要处理其它类型的问题，例如：</p>
-<ol>
-<li>one to many: Image Captioning.</li>
-<li>many to one: Video Classification.</li>
-<li>many to many: Machine Translation.</li>
-</ol>
-<p>总的来说，在这些问题中，我们需要处理序列输入/输出，而这时，典型的前馈神经网络就不那么好用了<sup><a href="#fn_1" id="reffn_1">1</a></sup>。为了处理序列问题，不妨考虑引入类似于递归的机制，循环的利用网络，并基于上一步的信息和当前的输入进行下一状态的计算，这样就得到了 Recurrent Neural Network 。</p>
-</li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 指先前的前馈网络。毕竟 transformer 也是前馈的。其中“前馈”指信息总是向前传播。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
-<li><p>具体的，用 $t$ 表示步数，我们希望引入一个 hidden vector（记作 $h<em>t$ ）来保存 RNN 的状态，并利用某个固定的函数 $f_W$ 基于上一步的状态 $h</em>{t-1}$ 和当前输入 $x_t$ 来计算当前状态 $h_t$ ：</p>
-<script type="math/tex; mode=display">
-h_t=f_W(h_{t-1},x_t)</script><p>最朴素的选择（称作 Vanilla RNN）是<sup><a href="#fn_2" id="reffn_2">2</a></sup>：</p>
-<script type="math/tex; mode=display">
-h_t=\tanh(W_{hh}h_{t-1}+W_{xh} x_t)</script><p>而如果这一步还需要输出，就基于当前状态计算得到输出 $y_t$ 。Vanilla RNN 的实现是：</p>
-<script type="math/tex; mode=display">
-y_t=W_{hy} h_t</script><p>下图展示了一个 many to many 的 RNN 的结构：<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0e2jk7b4.png" alt=""></p>
-<p>注意到训练 RNN 时每一个输出都需要有损失函数，而总共的损失函数则是它们的和。RNN 的设计比较灵活，每一步都可能有输入或输出、或两者皆有。但其大体的设计与上图差别不大，这里就不赘述了。有一类比较的特别的 many to many 问题，需要我们将输入和输出分离<sup><a href="#fn_4" id="reffn_4">4</a></sup>，那么我们就相应的拼接两个 RNN ：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/iw3hs4kv.png" alt=""></p>
-</li>
-<li><p>Justin 接下来举了一个比较简单的例子，即一个用于 Language Modeling 的 many to many 模型，其实就是基于给定的语料预测下一个字母。一个有趣的细节是，这个任务每一步的输入是一个大小为字符集的 one hot vector ，所以在做矩阵乘法时其等价于选取矩阵的一列。这样做看起来表达能力并不强，所以我们可以在计算 hidden vector 前加入一个 embedding layer ，即先做 一次矩阵乘法。这样做其实等价于用一个“嵌入向量”来表达字符。<sup><a href="#fn_6" id="reffn_6">6</a></sup></p>
-</li>
-</ul>
-<blockquote id="fn_2">
-<sup>2</sup>. 简洁起见，下面省掉了 bias term ，但实际实现中当然是有的。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_3">
-<sup>3</sup>. 可能的任务场景是 Video per-frame Classification 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_4">
-<sup>4</sup>. 例如 Machine Translation 。RNN 需要先理解整个句子才能翻译。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_6">
-<sup>6</sup>. 这看起来是一个非常简单的模型，但是你如果喂给它数据，它竟然真的能吐出像模像样的结果。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="RNN-的反向传播"><a href="#RNN-的反向传播" class="headerlink" title="RNN 的反向传播"></a>RNN 的反向传播</h1><ul>
-<li>RNN 的反向传播会多次经过自身<sup><a href="#fn_5" id="reffn_5">5</a></sup>，这在计算上没什么问题，但是由于显存大小有限，整个 RNN 的 Computational Graph 可能会存不下。所以我们需要采取一个折衷的办法，称作 Truncated Back Propagation through time ，即，我们选择一个块长 B ，每处理 B 步，我们就对这 B 步的结果做一次 Back Propagation ，并更新 Weight Matrix ，再使用更新的结构参与以后的处理。</li>
-</ul>
-<blockquote id="fn_5">
-<sup>5</sup>. 称作 Back Propagation through time 。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="Hidden-Vector-的可解释性"><a href="#Hidden-Vector-的可解释性" class="headerlink" title="Hidden Vector 的可解释性"></a>Hidden Vector 的可解释性</h1><ul>
-<li>现在我们考察 Hidden Vector 是否具备可解释性。不妨考虑 Hidden Vector 的每一维是不是捕捉到了某种信息。还是以 Language Modeling 为例，有研究<sup><a href="#fn_7" id="reffn_7">7</a></sup>使用 RNN 建模了某些语料库，跟踪了 Hidden Vector 的某些维度在预测输出时的活跃程度，发现这些维度捕捉了包括 <code>for</code> 循环、引用、换行符在内的某些有趣的信息。这说明 RNN 的 hidden state 的确概括了这些特征，学到了语料库中的某些特殊结构。</li>
-</ul>
-<blockquote id="fn_7">
-<sup>7</sup>. Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016.<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><ul>
-<li><p>Vanilla RNN 的梯度流其实有很大的问题。我们知道在 0 附近 $\tanh$ 表现为恒等映射，所以在反向传播的时候 hidden vector 的梯度会包含很多 $W_{hh}$ 的幂，这一点在处理长序列时尤为明显。所以 hidden vector 的梯度很容易爆炸或者消失。为此，我们考虑修改 RNN 的结构。一个经典的方式是使用所谓的 Long Short Term Memory 。其形式如下:</p>
-<script type="math/tex; mode=display">
-\begin{bmatrix}
-i\\f\\o\\g
-\end{bmatrix}
-=
-\begin{bmatrix}
-\si\\
-\si\\
-\si\\
-\tanh
-\end{bmatrix}
-W
-\begin{bmatrix}
-    h_{t-1}\\
-    x_t\\
-\end{bmatrix},\quad
-\begin{align}
-c_t&=f\odot c_{t-1}+i\odot g\\
-h_t&= o\odot \tanh(c_t)
-\end{align}</script><p>简单的说，我们用分块矩阵将 Vanilla RNN 中的形式写成单次矩阵乘法，并将得到的向量的维数扩大为原先的四倍，将其切分成 4 个部分，分别通过 sigmoid 或 tanh 得到四个向量，称作 input gate 、forget gate 、output gate 和 gate gate<sup><a href="#fn_8" id="reffn_8">8</a></sup> 。我们将要多维护一个中间结果 cell stat（记作 $c_t$，意义是 LSTM 的内部的隐藏状态），并按照以上的形式计算得到新的状态，其中 $\odot$ 指得到向量的 element-wise product 。这样做的意义是，我们以 $c_t$ 作为核心，而 $i,f,o$ 都是 0 到 1 间的实数，它们表示了“程度”。具体的，$g$ 表示了当前我们希望往 $c_t$ 里面写什么，而 $i$ 表示每一维要写多少、$f$ 表示要“遗忘”多少以前的状态。最后再用 $c_t$ 通过 $\tanh$ ，得到我们要输出什么，再乘上 $o$ ，代表每一维要输出多少。</p>
-<p>以上所述均是 intuition ，LSTM 要解决的主要问题其实是为梯度提供顺畅传播的通道。不妨考虑 LSTM 的 Computational Graph ：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/95uyzkss.png" alt=""></p>
-<p>可以看到 cell state 反向传播的通道并不会经过任何的非线性计算，而只是和 $f$ 做逐点乘法而已，这对于反向传播是非常友好的。当然，鉴于 $f$ 的值处在 0~1 之间，这样设计可能还是会导致梯度消失。无论如何，这的确大大改善了 Vanilla RNN 。</p>
-</li>
-</ul>
-<blockquote id="fn_8">
-<sup>8</sup>. 我不知道这个到底应该叫什么名字。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="Muti-layer-RNN"><a href="#Muti-layer-RNN" class="headerlink" title="Muti-layer RNN"></a>Muti-layer RNN</h1><ul>
-<li><p>当然我们也可以像 CNN 那样增加 RNN 的深度，大体结构如下图所示：</p>
-<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ma5ivbhn.png" alt=""></p>
-<p>我们可以期待增加一定的层数，例如 3 到 5 层，会改善 RNN 的表现。但 RNN 一般不会像 CNN 那样搭建非常深的网络。<sup><a href="#fn_9" id="reffn_9">9</a></sup></p>
-</li>
-</ul>
-<blockquote id="fn_9">
-<sup>9</sup>. 不知道具体为什么。可能是因为算力限制或者效果不好吧。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
-</blockquote>
-<h1 id="RNN-的其它结构"><a href="#RNN-的其它结构" class="headerlink" title="RNN 的其它结构"></a>RNN 的其它结构</h1><ul>
-<li>RNN 其实有很多其它结构，例如 Gated Recurrent Unit<sup><a href="#fn_10" id="reffn_10">10</a></sup> 之类的，此外还有自动生成 RNN 模型的研究<sup><a href="#fn_11" id="reffn_11">11</a></sup>。但大体看来它们似乎并没有得到显著优于 LSTM 的结果，所以我们也就不深入了。</li>
-</ul>
-<blockquote id="fn_10">
-<sup>10</sup>. Cho et al, Learning phrase representations using RNN encoder-decoder for statistical machine translation, 2014.<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_11">
-<sup>11</sup>. Zoph and Le, Neural Architecture Search with Reinforcement Learning, ICLR 2017.<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
-</blockquote>
-]]></content>
-      <categories>
-        <category>学术</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>关于机器学习</title>
-    <url>/2025/02/25/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>实在找不到什么好的资料，于是就自己来写一个吧。</p>
-<p>本文将从基础开始介绍机器学习的算法。</p>
-<a id="more"></a>
-<script type="math/tex; mode=display">
-\newcommand {\bb}{\mathbb}
-\newcommand {\T}{^{\rm T}}
-\newcommand {\ss}{\mathcal}
-\newcommand {\al}{\alpha}
-\newcommand {\na}{\nabla}
-\newcommand {\ze}{\zeta}
-\newcommand {\ga}{\gamma}</script><h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><ul>
-<li>即 Support vector machine ，SVM 。我们从两类划分的问题谈起。</li>
-</ul>
-<h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><ul>
-<li>考虑以下问题：给定 $\bb R^d$ 中的 $n$ 个点 $x_1,\cdots,x_n$ ，以及它们的分类 $y_1,\cdots,y_n\in{-1，1}$ ，请找到一个最好的 $d$ 维超平面，划分开这两类点。</li>
-</ul>
-<h2 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h2><ul>
-<li>记目标超平面为 $P:w\T x+b=0$ 。考虑任意一点 $x\in\bb R^d$ ，容易推出其到 $P$ 的距离恰为<sup><a href="#fn_1" id="reffn_1">1</a></sup>：<script type="math/tex; mode=display">
-\frac{|w\T x+b|}{\|w\|}</script>其中范数取 $L_2$ 。不妨假设存在 $P$ 完全分开这两类点。我们希望 $P$ 是尽量 robust 的，因此令所有点到 $P$ 的最小距离最大，即：<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{w,b}\min_{i\in [n]}&& \frac{y_i(w\T x_i+b)}{\|w\|}\\
-    &\text{s.t.} &&y_i(w\T x_i+b)>0&&\forall i\in[n]
-\end{align}</script>不妨令 $\min_{i\in[n]}y_i(w\T x_i+b)=1$ ，则：<script type="math/tex; mode=display">
-\begin{align}
-&\max_{w,b}&& \frac{1}{\|w\|}\\
-&\text{s.t.} && y_i(w\T x_i+b)\ge 1&&\forall i\in[n]\\
-\end{align}</script>显然取得最优解时，$\max_{i\in[n]}y_i(w\T x_i+b)=1$ 必然满足。进一步我们将其写作：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}&& \frac12w\T w\\
-&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
-\end{align}</script>这就是 SVM 的标准形式。对于使得约束取等的点，我们将其称作 support vector 。写出上述优化问题的 Lagrangian ，得到：<script type="math/tex; mode=display">
-\ss L(w,b,\al)=\frac 12w\T w+\sum_{i=1}^n \al_i(1-y_i(w\T x_i+b))</script>则原问题等价于：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}\max_{\al}&&\ss L(w,b,\al)\\
-&\text{s.t.} &&\al\ge 0\\
-\end{align}</script>其 Lagrange dual 为：<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{\al}\min_{w,b}&&\ss L(w,b,\al)\\
-    &\text{s.t.} &&\al\ge 0\\
-\end{align}</script>对偶问题与原问题取等时满足 KKT 条件，即：<sup><a href="#fn_2" id="reffn_2">2</a></sup><script type="math/tex; mode=display">
-\begin{cases}
-    \na \ss L(w,b,a)=0\\
-    \al_i (1-y_i(w\T x_i+b))=0&\forall i\in[n]
-\end{cases}</script>这样：<script type="math/tex; mode=display">
-w=\sum_{i=1}^n \al_i y_i x_i\\
-\sum_{i=1}^n \al_i y_i=0\\</script>代入 Lagrange dual ，并考虑对偶可行性与 Lagrange 条件得到：<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_jx_i\T x_j\\
-&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
-&&&\al\ge 0\\
-\end{align}</script>从技术上解这个凸优化即可。而通过 KKT 条件和 support vector ，我们可以解出 $w$ 和 $b$ 。</li>
-</ul>
-<blockquote id="fn_1">
-<sup>1</sup>. 只需注意到 $w$ 为 $P$ 的法向量即可。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
-</blockquote>
-<blockquote id="fn_2">
-<sup>2</sup>. 由互补松弛性可以容易的导出哪些 $x_i$ 是 support vector 。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="Soft-SVM"><a href="#Soft-SVM" class="headerlink" title="Soft SVM"></a>Soft SVM</h2><ul>
-<li>以上的问题被称作 Hard SVM ，顾名思义，因为强制要求了超平面必须分离两类点。如果不强制要求分离，我们考虑引入分类错误的惩罚函数。具体的，Hard SVM 的形式为：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}&& \frac12w\T w\\
-&\text{s.t.} &&  1-y_i(w\T x_i+b)\le 0&& \forall i\in[n]\\
-\end{align}</script>我们加入一个惩罚函数<sup><a href="#fn_3" id="reffn_3">3</a></sup>，得到：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b}&& \frac12w\T w+C\sum_{i=1}^n\max\{0,1-y_i(w\T x_i+b)\}\\
-\end{align}</script>重写得到：<script type="math/tex; mode=display">
-\begin{align}
-    &\min_{w,b,\xi}&&\frac12w\T w+C\sum_{i=1}^n\xi_i\\
-    &\text{s.t.}&&y_i(w\T x_i+b)\ge 1-\xi_i&&\forall i\in[n]\\
-    &&&\xi\ge 0
-\end{align}</script>这就是带有 hinge loss 的 Soft SVM 。其处理方式和上述的 Hard SVM 基本相同，这里就不再演示了。</li>
-</ul>
-<blockquote id="fn_3">
-<sup>3</sup>. 即 hinge loss 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="Kernel-Trick"><a href="#Kernel-Trick" class="headerlink" title="Kernel Trick"></a>Kernel Trick</h2><ul>
-<li><p>在很多情况下给定的点类不一定是适合用超平面划分的。一个好的思路是，我们可以通过选定某种特征映射，将 $\bb R^d$ 中的点映射到高维空间（也称特征空间）中去，然后在高维空间中做线性划分。这样做的好处是，高维空间中的超平面在原先的 $\bb R^d$ 中不一定是线性的，因此适应性会更好。具体的，考虑定义域为 $\bb R^d$ ，值域为某个希尔伯特空间的映射 $\phi$ ，则 dual SVM 的形式为：</p>
-<script type="math/tex; mode=display">
-\begin{align}
-    &\max_{\al}&& \sum_{i=1}^n \al_i-\frac12\sum_{i=1}^n\sum_{j=1}^n\al_i\al_jy_iy_j\phi(x_i)\T \phi(x_j)\\
-&\text{s.t.}&&\sum_{i=1}^n \al_i y_i=0\\
-&&&\al\ge 0\\
-\end{align}</script><p>而最终的分类模型为：</p>
-<script type="math/tex; mode=display">
-f(x)=\sum_{i=1}^n\al_iy_i\phi(x_i)\T\phi(x)+b</script><p>然而有一个问题是我们很难表示高维空间的向量。注意到我们实际上只关注向量的内积，实际上只需考虑如何快速求内积即可，这种技巧称作 Kernel Trick 。我们将计算特征映射的内积的函数称作核函数，记作 $K(x_i,x_j)$ 。一个简单的例子是多项式核函数，即，注意到低维的内积的幂等于高维中高次项构成的向量的内积。利用这种思路，可以构造出多项式核函数 $K(x_i,x_j)=(\zeta+\ga x_i\T x_j)^p$ ，其中 $\ze,\ga\in \bb R,p\in\bb N$ ，对应了 $\dbinom {d+p}{p}$ 维空间中的内积。<sup><a href="#fn_4" id="reffn_4">4</a></sup>核函数有很多种类，这里就不一一列举了。</p>
-<p>一个另外的问题是，给定一个函数，我们如何判定其可否用作核函数。一个简单的思路是，考虑内积的性质，我们只需验证对于任意的 $x_1,\cdots x_n$ ，核矩阵 $[K(x_i,x_j)]$ 都是半正定的即可，这里就不提供详细证明了。</p>
-</li>
-</ul>
-<blockquote id="fn_4">
-<sup>4</sup>. 括号里有 $d+1$ 个不同的项，再考虑组合得到的本质不同的项数即可。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
-</blockquote>
-<h2 id="Multi-Class-SVM"><a href="#Multi-Class-SVM" class="headerlink" title="Multi Class SVM"></a>Multi Class SVM</h2><ul>
-<li>现在考虑进行多 $m$  个点类的划分。一般的，有以下的两种基本思路。</li>
-</ul>
-<h3 id="One-VS-All"><a href="#One-VS-All" class="headerlink" title="One VS All"></a>One VS All</h3><ul>
-<li>考虑用 $m$ 个超平面进行划分，第 $i$ 个超平面划分第 $i$ 类点以及其余所有的点，每一次划分采用标准的 SVM 方法。这样，我们将得到 $m$ 个决策函数。对于单个待决策的点，选择最优的决策函数对应的类即可。</li>
-<li>以上的处理方式是对于每个超平面单独优化。我们也可以考虑同时对总共的 $m$ 个超平面进行优化，此时我们的处理方式将和原先产生显著的区别。具体的，我们会考虑直接对 primal SVM 进行优化，采取诸如 SGD 的数值方法，这里就不细讲了。</li>
-</ul>
-<h3 id="One-VS-One"><a href="#One-VS-One" class="headerlink" title="One VS One"></a>One VS One</h3><ul>
-<li>考虑使用 $\dfrac{m(m-1)}{2}$ 个超平面进行所有点类的两两划分，每一次划分采用标准的 SVM 方法。这样，我们将得到 $\dfrac{m(m-1)}{2}$ 个超平面。对于单个待决策的点，我们采用投票的方式决定其类别，即，对于每个超平面选择较优的一类投票，再选择总票数最高的类。</li>
-</ul>
 ]]></content>
       <categories>
         <category>学术</category>
