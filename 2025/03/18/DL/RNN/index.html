@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="OI" />
+       
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>循环神经网络 |  RPChe_&#39;s Blog</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-DL/RNN"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  循环神经网络
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2025/03/18/DL/RNN/" class="article-date">
+  <time datetime="2025-03-17T16:00:00.000Z" itemprop="datePublished">2025-03-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>我本来还以为 RNN 会更厉害一点来着。</p>
+<a id="more"></a>
+<script type="math/tex; mode=display">
+\newcommand {\si}{\sigma}</script><h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li><p>原先的问题（Image Classification）是 one to one 的，即接受一个输入，并只有单一输出。为此，我们设计了 feed forward 的神经网络。而有时我们需要处理其它类型的问题，例如：</p>
+<ol>
+<li>one to many: Image Captioning.</li>
+<li>many to one: Video Classification.</li>
+<li>many to many: Machine Translation.</li>
+</ol>
+<p>总的来说，在这些问题中，我们需要处理序列输入/输出，而这时，典型的前馈神经网络就不那么好用了<sup><a href="#fn_1" id="reffn_1">1</a></sup>。为了处理序列问题，不妨考虑引入类似于递归的机制，循环的利用网络，并基于上一步的信息和当前的输入进行下一状态的计算，这样就得到了 Recurrent Neural Network 。</p>
+</li>
+</ul>
+<blockquote id="fn_1">
+<sup>1</sup>. 指先前的前馈网络。毕竟 transformer 也是前馈的。其中“前馈”指信息总是向前传播。<a href="#reffn_1" title="Jump back to footnote [1] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h1><ul>
+<li><p>具体的，用 $t$ 表示步数，我们希望引入一个 hidden vector（记作 $h<em>t$ ）来保存 RNN 的状态，并利用某个固定的函数 $f_W$ 基于上一步的状态 $h</em>{t-1}$ 和当前输入 $x_t$ 来计算当前状态 $h_t$ ：</p>
+<script type="math/tex; mode=display">
+h_t=f_W(h_{t-1},x_t)</script><p>最朴素的选择（称作 Vanilla RNN）是<sup><a href="#fn_2" id="reffn_2">2</a></sup>：</p>
+<script type="math/tex; mode=display">
+h_t=\tanh(W_{hh}h_{t-1}+W_{xh} x_t)</script><p>而如果这一步还需要输出，就基于当前状态计算得到输出 $y_t$ 。Vanilla RNN 的实现是：</p>
+<script type="math/tex; mode=display">
+y_t=W_{hy} h_t</script><p>下图展示了一个 many to many 的 RNN 的结构：<sup><a href="#fn_3" id="reffn_3">3</a></sup></p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/0e2jk7b4.png" alt=""></p>
+<p>注意到训练 RNN 时每一个输出都需要有损失函数，而总共的损失函数则是它们的和。RNN 的设计比较灵活，每一步都可能有输入或输出、或两者皆有。但其大体的设计与上图差别不大，这里就不赘述了。有一类比较的特别的 many to many 问题，需要我们将输入和输出分离<sup><a href="#fn_4" id="reffn_4">4</a></sup>，那么我们就相应的拼接两个 RNN ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/iw3hs4kv.png" alt=""></p>
+</li>
+<li><p>Justin 接下来举了一个比较简单的例子，即一个用于 Language Modeling 的 many to many 模型，其实就是基于给定的语料预测下一个字母。一个有趣的细节是，这个任务每一步的输入是一个大小为字符集的 one hot vector ，所以在做矩阵乘法时其等价于选取矩阵的一列。这样做看起来表达能力并不强，所以我们可以在计算 hidden vector 前加入一个 embedding layer ，即先做 一次矩阵乘法。这样做其实等价于用一个“嵌入向量”来表达字符。<sup><a href="#fn_6" id="reffn_6">6</a></sup></p>
+</li>
+</ul>
+<blockquote id="fn_2">
+<sup>2</sup>. 简洁起见，下面省掉了 bias term ，但实际实现中当然是有的。<a href="#reffn_2" title="Jump back to footnote [2] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_3">
+<sup>3</sup>. 可能的任务场景是 Video per-frame Classification 。<a href="#reffn_3" title="Jump back to footnote [3] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_4">
+<sup>4</sup>. 例如 Machine Translation 。RNN 需要先理解整个句子才能翻译。<a href="#reffn_4" title="Jump back to footnote [4] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_6">
+<sup>6</sup>. 这看起来是一个非常简单的模型，但是你如果喂给它数据，它竟然真的能吐出像模像样的结果。<a href="#reffn_6" title="Jump back to footnote [6] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="RNN-的反向传播"><a href="#RNN-的反向传播" class="headerlink" title="RNN 的反向传播"></a>RNN 的反向传播</h1><ul>
+<li>RNN 的反向传播会多次经过自身<sup><a href="#fn_5" id="reffn_5">5</a></sup>，这在计算上没什么问题，但是由于显存大小有限，整个 RNN 的 Computational Graph 可能会存不下。所以我们需要采取一个折衷的办法，称作 Truncated Back Propagation through time ，即，我们选择一个块长 B ，每处理 B 步，我们就对这 B 步的结果做一次 Back Propagation ，并更新 Weight Matrix ，再使用更新的结构参与以后的处理。</li>
+</ul>
+<blockquote id="fn_5">
+<sup>5</sup>. 称作 Back Propagation through time 。<a href="#reffn_5" title="Jump back to footnote [5] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Hidden-Vector-的可解释性"><a href="#Hidden-Vector-的可解释性" class="headerlink" title="Hidden Vector 的可解释性"></a>Hidden Vector 的可解释性</h1><ul>
+<li>现在我们考察 Hidden Vector 是否具备可解释性。不妨考虑 Hidden Vector 的每一维是不是捕捉到了某种信息。还是以 Language Modeling 为例，有研究<sup><a href="#fn_7" id="reffn_7">7</a></sup>使用 RNN 建模了某些语料库，跟踪了 Hidden Vector 的某些维度在预测输出时的活跃程度，发现这些维度捕捉了包括 <code>for</code> 循环、引用、换行符在内的某些有趣的信息。这说明 RNN 的 hidden state 的确概括了这些特征，学到了语料库中的某些特殊结构。</li>
+</ul>
+<blockquote id="fn_7">
+<sup>7</sup>. Karpathy, Johnson, and Fei-Fei: Visualizing and Understanding Recurrent Networks, ICLR Workshop 2016.<a href="#reffn_7" title="Jump back to footnote [7] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><ul>
+<li><p>Vanilla RNN 的梯度流其实有很大的问题。我们知道在 0 附近 $\tanh$ 表现为恒等映射，所以在反向传播的时候 hidden vector 的梯度会包含很多 $W_{hh}$ 的幂，这一点在处理长序列时尤为明显。所以 hidden vector 的梯度很容易爆炸或者消失。为此，我们考虑修改 RNN 的结构。一个经典的方式是使用所谓的 Long Short Term Memory 。其形式如下:</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+i\\f\\o\\g
+\end{bmatrix}
+=
+\begin{bmatrix}
+\si\\
+\si\\
+\si\\
+\tanh
+\end{bmatrix}
+W
+\begin{bmatrix}
+    h_{t-1}\\
+    x_t\\
+\end{bmatrix},\quad
+\begin{align}
+c_t&=f\odot c_{t-1}+i\odot g\\
+h_t&= o\odot \tanh(c_t)
+\end{align}</script><p>简单的说，我们用分块矩阵将 Vanilla RNN 中的形式写成单次矩阵乘法，并将得到的向量的维数扩大为原先的四倍，将其切分成 4 个部分，分别通过 sigmoid 或 tanh 得到四个向量，称作 input gate 、forget gate 、output gate 和 gate gate<sup><a href="#fn_8" id="reffn_8">8</a></sup> 。我们将要多维护一个中间结果 cell stat（记作 $c_t$，意义是 LSTM 的内部的隐藏状态），并按照以上的形式计算得到新的状态，其中 $\odot$ 指得到向量的 element-wise product 。这样做的意义是，我们以 $c_t$ 作为核心，而 $i,f,o$ 都是 0 到 1 间的实数，它们表示了“程度”。具体的，$g$ 表示了当前我们希望往 $c_t$ 里面写什么，而 $i$ 表示每一维要写多少、$f$ 表示要“遗忘”多少以前的状态。最后再用 $c_t$ 通过 $\tanh$ ，得到我们要输出什么，再乘上 $o$ ，代表每一维要输出多少。</p>
+<p>以上所述均是 intuition ，LSTM 要解决的主要问题其实是为梯度提供顺畅传播的通道。不妨考虑 LSTM 的 Computational Graph ：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/95uyzkss.png" alt=""></p>
+<p>可以看到 cell state 反向传播的通道并不会经过任何的非线性计算，而只是和 $f$ 做逐点乘法而已，这对于反向传播是非常友好的。当然，鉴于 $f$ 的值处在 0~1 之间，这样设计可能还是会导致梯度消失。无论如何，这的确大大改善了 Vanilla RNN 。</p>
+</li>
+</ul>
+<blockquote id="fn_8">
+<sup>8</sup>. 我不知道这个到底应该叫什么名字。<a href="#reffn_8" title="Jump back to footnote [8] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="Muti-layer-RNN"><a href="#Muti-layer-RNN" class="headerlink" title="Muti-layer RNN"></a>Muti-layer RNN</h1><ul>
+<li><p>当然我们也可以像 CNN 那样增加 RNN 的深度，大体结构如下图所示：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/ma5ivbhn.png" alt=""></p>
+<p>我们可以期待增加一定的层数，例如 3 到 5 层，会改善 RNN 的表现。但 RNN 一般不会像 CNN 那样搭建非常深的网络。<sup><a href="#fn_9" id="reffn_9">9</a></sup></p>
+</li>
+</ul>
+<blockquote id="fn_9">
+<sup>9</sup>. 不知道具体为什么。可能是因为算力限制或者效果不好吧。<a href="#reffn_9" title="Jump back to footnote [9] in the text."> &#8617;</a>
+</blockquote>
+<h1 id="RNN-的其它结构"><a href="#RNN-的其它结构" class="headerlink" title="RNN 的其它结构"></a>RNN 的其它结构</h1><ul>
+<li>RNN 其实有很多其它结构，例如 Gated Recurrent Unit<sup><a href="#fn_10" id="reffn_10">10</a></sup> 之类的，此外还有自动生成 RNN 模型的研究<sup><a href="#fn_11" id="reffn_11">11</a></sup>。但大体看来它们似乎并没有得到显著优于 LSTM 的结果，所以我们也就不深入了。</li>
+</ul>
+<blockquote id="fn_10">
+<sup>10</sup>. Cho et al, Learning phrase representations using RNN encoder-decoder for statistical machine translation, 2014.<a href="#reffn_10" title="Jump back to footnote [10] in the text."> &#8617;</a>
+</blockquote>
+<blockquote id="fn_11">
+<sup>11</sup>. Zoph and Le, Neural Architecture Search with Reinforcement Learning, ICLR 2017.<a href="#reffn_11" title="Jump back to footnote [11] in the text."> &#8617;</a>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://rpche-6626.github.io/2025/03/18/DL/RNN/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2025/03/18/DL/ATT/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            注意力机制
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2025/03/11/DL/train/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">如何训练神经网络</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "2HGDKV4W8CiKPGzv9AEseRKX-gzGzoHsz",
+    app_key: "8pBaf8UXwOswmrmzXT7w8LdU",
+    path: window.location.pathname,
+    avatar: "identicon",
+    placeholder: "评论时若想添加昵称、头像和联系方式，请分别填写上方的昵称、邮箱和网址。其中邮箱应填写您在gravatar使用的邮箱。",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020-2025
+        <i class="ri-heart-fill heart_icon"></i> RPChe_
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="RPChe_&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>
