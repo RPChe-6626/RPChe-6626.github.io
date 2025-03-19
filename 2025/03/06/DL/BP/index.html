@@ -231,51 +231,73 @@ f(x,w)=\frac{1}{1+e^{-(w_0x_0+w_1x_1)}}</script><p>其 Computational Graph 为�
    
   <nav class="article-nav">
     
-      <a href="/2025/03/06/DL/NN/" class="article-nav-link">
+      <a href="/2025/03/07/DL/devCNN/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            神经网络
+            卷积神经网络的发展
           
         </div>
       </a>
     
     
-      <a href="/2025/03/06/DL/GD/" class="article-nav-link">
+      <a href="/2025/03/06/DL/LC/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">梯度下降法</div>
+        <div class="article-nav-title">线性分类器</div>
       </a>
     
   </nav>
 
-  
    
-<div class="gitalk" id="gitalk-container"></div>
-
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.css">
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.7.2/gitalk.min.js"></script>
-
-
-<script src="https://cdn.staticfile.org/blueimp-md5/2.19.0/js/md5.min.js"></script>
-
-<script type="text/javascript">
-  var gitalk = new Gitalk({
-    clientID: 'Ov23liT3QoEfJXeCUfju',
-    clientSecret: '5f4e2837d266117fa40abce36a021c80c9f72a30',
-    repo: 'RPChe-6626.github.io',
-    owner: 'RPChe-6626',
-    admin: ['RPChe-6626'],
-    // id: location.pathname,      // Ensure uniqueness and length less than 50
-    id: md5(location.pathname),
-    distractionFreeMode: false,  // Facebook-like distraction free mode
-    pagerDirection: 'last'
-  })
-
-  gitalk.render('gitalk-container')
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "2HGDKV4W8CiKPGzv9AEseRKX-gzGzoHsz",
+    app_key: "8pBaf8UXwOswmrmzXT7w8LdU",
+    path: window.location.pathname,
+    avatar: "identicon",
+    placeholder: "评论时若想添加昵称、头像和联系方式，请分别填写上方的昵称、邮箱和网址。其中邮箱应填写您在gravatar使用的邮箱。",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
 </script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
 
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
   
     
 </article>
