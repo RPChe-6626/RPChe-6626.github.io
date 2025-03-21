@@ -13,7 +13,7 @@
     
     <!--- Seo Part-->
     
-    <link rel="canonical" href="https://RPChe-6626.github.io/2025/03/07/dl/devcnn/"/>
+    <link rel="canonical" href="https://RPChe-6626.github.io/2025/03/21/dl/cnnapp/"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
@@ -23,16 +23,16 @@
         
         <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="卷积神经网络的发展">
-<meta property="og:url" content="https://rpche-6626.github.io/2025/03/07/DL/devCNN/index.html">
+<meta property="og:title" content="卷积神经网络的可视化与可解释性">
+<meta property="og:url" content="https://rpche-6626.github.io/2025/03/21/DL/CNNapp/index.html">
 <meta property="og:site_name" content="RPChe_&#39;s Blog">
 <meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rpche-6626.github.io/images/redefine-og.webp">
-<meta property="article:published_time" content="2025-03-06T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-03-07T14:56:51.596Z">
+<meta property="article:published_time" content="2025-03-20T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-03-21T17:02:44.770Z">
 <meta property="article:author" content="RPChe_">
-<meta property="article:tag" content="OI">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://rpche-6626.github.io/images/redefine-og.webp">
     
@@ -46,7 +46,7 @@
     
     <title>
         
-            卷积神经网络的发展 | RPChe_&#39;s Blog
+            卷积神经网络的可视化与可解释性 | RPChe_&#39;s Blog
         
     </title>
 
@@ -484,7 +484,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">19</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -507,7 +507,7 @@ mjx-container[display="true"] + br {
 		<div class="article-title relative w-full">
 			
 			<div class="w-full flex items-center pt-6 justify-start">
-				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">卷积神经网络的发展</h1>
+				<h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">卷积神经网络的可视化与可解释性</h1>
 			</div>
 			
 		</div>
@@ -526,15 +526,15 @@ mjx-container[display="true"] + br {
 					<div class="article-meta-info">
     <span class="article-date article-meta-item">
         <i class="fa-regular fa-pen-fancy"></i>&nbsp;
-        <span class="desktop">2025-03-07</span>
-        <span class="mobile">2025-03-07</span>
+        <span class="desktop">2025-03-21</span>
+        <span class="mobile">2025-03-21</span>
         <span class="hover-info">创建</span>
     </span>
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-03-07 22:56:51</span>
-            <span class="mobile">2025-03-07 22:56:51</span>
+            <span class="desktop">2025-03-22 01:02:44</span>
+            <span class="mobile">2025-03-22 01:02:44</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -557,11 +557,22 @@ mjx-container[display="true"] + br {
         </span>
     
     
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
 
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>1.9k 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>2k 字</span>
         </span>
     
     
@@ -585,122 +596,128 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
-以及 ResNet 。</p>
+			<p>CNN 的中间结果可视化技术原来还可以拿来干这些事情。</p>
 <span id="more"></span>
-<h1 id="imagenet">ImageNet</h1>
+<p><span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="0.036ex" height="0.036ex" role="img" focusable="false" viewBox="0 0 16 16"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"></g></g></svg></mjx-container></span></p>
+<h1 id="问题背景">问题背景</h1>
 <ul>
-<li><p>ImageNet Challenge（简称 ILSVRC）是图像识别领域的著名赛事，于
-2010 年启动，后来在 2017 年被 CNN 终结了。ILSVRC 使用的数据集是 ImageNet
-的子集，包括 1000 个类别、约 120 万张训练图像、5 万张验证图像与 10
-万张测试图像，输入模型的图像格式均为 3 channels 224*224 pixels
-。我们将介绍 ImageNet 历年最成功、最有代表性的 CNN 模型。</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/xbcmrb2q.png"></p></li>
+<li>先前我们已经简要介绍了 CNN
+的结构，现在我们希望可以找到好的方式来可视化 CNN
+的中间结果，以提供可解释性。</li>
 </ul>
-<h1 id="alexnet">AlexNet</h1>
+<h1 id="可视化技术">可视化技术</h1>
 <ul>
-<li><p>在 2012 年以前的图像识别领域，CNN 尚且不是主流，直到当年 AlexNet
-取得了重大突破。以下是 AlexNet 的结构：</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/su98t1rd.png"></p>
-<p>如上图所示，AlexNet 由 5
-个卷积层加上若干池化层再加上最后的三个全连接层构成。这个结构看起来比较奇怪，主要是因为受当时的算力限制，AlexNet
-是在两块 GTX580 上分别训练的。此外 AlexNet
-也用到了一些被后来被弃用的技术，例如 Local response normalization
-，我们也不会再谈。</p>
-<p>衡量模型表现的重要因素，除开准确率之外，还有内存占用（memory）、参数量（params）以及浮点运算量（flop）。按照上篇中我们谈过的
-CNN 的结构，这些指标都不难计算。下表给出了 AlexNet 的详细指标：</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/37i022sy.png"></p>
-<p>下图是 AlexNet 各层开销的柱状图，并略去了开销极小的池化层：</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/smc2q640.png"></p>
-<p>可以看到计算开销和空间开销主要来自卷积层，而参数量则主要来自全连接层。</p></li>
+<li>我们先简要的介绍一些可视化技术</li>
 </ul>
-<h1 id="vgg-net">VGG Net</h1>
+<h2 id="画出-cnn-的第一层-filter">画出 CNN 的第一层 filter</h2>
 <ul>
-<li><p>2013 年的 ZF Net 基本是一个大号的 AlexNet
-，所以我们就略去不讲。而 2014
-年则同时有两个模型取得了相近的优异表现，而且各自的实现思路有较大不同，其一是
-VGG Net 。<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
-<p>AlexNet 的一个缺点是超参数太多，这使得模型调参非常麻烦。而 VGG Net
-的主要目标之一便是寻求一个更好的构建网络的范式。首先，注意到 5*5
-卷积所达成的视野可以被两次 3*3
-的卷积替代，并且后者的计算量与参数量更小，还提供了更多的非线性化，这暗示了单次大尺寸卷积的效果也许是不如多次小尺寸卷积的<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。所以，VGG Net
-提供的解决方案是，只做 3*3 卷积。具体的，VGG Net
-的思路是构造某种网络阶段，例如两次 3*3 stride 1 pad 1 的卷积再加上一次
-2*2 stride 2 的 max pool ，通过堆叠网络阶段来搭建网络，并在每一层
-pooling layer 后倍增 channel 数，如下图所示：</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/adw4ue39.png"></p>
-<p>同 AlexNet 比较 VGG Net 的各项指标：</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/xuq7n4iz.png"></p>
-<p>VGG Net 的算力消耗激增。实际上，VGG Net
-也是我们所要介绍的算力开销最大的模型。</p></li>
+<li>CNN 的第一层 filter 必然是 3channel 的，这使得我们可以使用三通道 RGB
+的方式作出其图像。如果你实际操作过的话，这些 filter
+大致是某种斑点、色块和不同指向的边缘。可以认为 filter
+实际上是在提取原图中的这些信息，因为我们知道 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span> 内积可以被视作某种对相似度的度量<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>。但是这些图像似乎并不具备较强的可解释性，而且其余层的
+filter 也不一定是 3channel 的。我们可以试着做出其余 filter
+的灰度图像，但效果并不好。</li>
 </ul>
-<h1 id="google-net">Google Net</h1>
+<h2 id="对-cnn-最后的特征向量做降维">对 CNN 最后的特征向量做降维</h2>
 <ul>
-<li><p>2014 年脱颖而出的另一模型则是 Google Net 。Google Net 与 VGG Net
-有很多共同点，但特别之处是 Google Net
-把重心放到了控制模型的算力开销上。Google Net
-在模型的最初几层采取了激进的 down sample 策略以减少后续计算量。</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/qktm37ea.png"></p>
-<p>不同于 VGG Net ，Google Net
-采用了复用网络模块的思路，即通过构造一个通用模块，再不断堆叠来搭建网络。Google
-Net
-在网络模块中引入了平行分支，通过在不同的分支中同时做不同尺寸的卷积来避免引入卷积尺寸这一超参数。而为了控制卷积层的时间开销，Google
-Net 选择在卷积层之前加入 1*1 卷积层（称作 bottlenecks）来缩减 channel
-的数目。</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/gbc58luf.png"></p>
-<p>Google Net 的另一个创新是，通过 global average pooling
-来替代原先模型最后巨大的全连接层，从而缩减参数量。具体的，Google Net
-最后得到了 7*7*1024 的 tensor ，然后其通过 global average pooling 消除了
-feature map ，只留下了一个 feature vector
-，再使用单个全连接层来转换得到最后的 1000 个分类指标。</p>
-<p>Google Net 在中间加入了一些额外的输出分支，称作 Auxiliary Classifiers
-，这看起来很奇怪。实际上 Auxiliary Classifiers
-的用处并非预测，而是通过在中途注入梯度来加速模型收敛，而这种技巧在后来的模型中被弃用了。</p></li>
+<li>我们之前在迁移学习中就提到过，可以认为 CNN
+在最后的分类之前得到的特征向量编码了图像的信息。如果我们对这些这些向量做
+KNN
+，可以发现同一类别的图像很大程度上是相邻的。为了将这个现象可视化，我们考虑将
+<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.653ex" height="1.932ex" role="img" focusable="false" viewBox="0 -853.7 1172.7 853.7"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="211D" d="M17 665Q17 672 28 683H221Q415 681 439 677Q461 673 481 667T516 654T544 639T566 623T584 607T597 592T607 578T614 565T618 554L621 548Q626 530 626 497Q626 447 613 419Q578 348 473 326L455 321Q462 310 473 292T517 226T578 141T637 72T686 35Q705 30 705 16Q705 7 693 -1H510Q503 6 404 159L306 310H268V183Q270 67 271 59Q274 42 291 38Q295 37 319 35Q344 35 353 28Q362 17 353 3L346 -1H28Q16 5 16 16Q16 35 55 35Q96 38 101 52Q106 60 106 341T101 632Q95 645 55 648Q17 648 17 665ZM241 35Q238 42 237 45T235 78T233 163T233 337V621L237 635L244 648H133Q136 641 137 638T139 603T141 517T141 341Q141 131 140 89T134 37Q133 36 133 35H241ZM457 496Q457 540 449 570T425 615T400 634T377 643Q374 643 339 648Q300 648 281 635Q271 628 270 610T268 481V346H284Q327 346 375 352Q421 364 439 392T457 496ZM492 537T492 496T488 427T478 389T469 371T464 361Q464 360 465 360Q469 360 497 370Q593 400 593 495Q593 592 477 630L457 637L461 626Q474 611 488 561Q492 537 492 496ZM464 243Q411 317 410 317Q404 317 401 315Q384 315 370 312H346L526 35H619L606 50Q553 109 464 243Z"></path></g></g><g data-mml-node="mi" transform="translate(755,363) scale(0.707)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path></g></g></g></g></svg></mjx-container></span> 中的向量降维到 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="2.621ex" height="1.887ex" role="img" focusable="false" viewBox="0 -833.9 1158.6 833.9"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msup"><g data-mml-node="TeXAtom" data-mjx-texclass="ORD"><g data-mml-node="mi"><path data-c="211D" d="M17 665Q17 672 28 683H221Q415 681 439 677Q461 673 481 667T516 654T544 639T566 623T584 607T597 592T607 578T614 565T618 554L621 548Q626 530 626 497Q626 447 613 419Q578 348 473 326L455 321Q462 310 473 292T517 226T578 141T637 72T686 35Q705 30 705 16Q705 7 693 -1H510Q503 6 404 159L306 310H268V183Q270 67 271 59Q274 42 291 38Q295 37 319 35Q344 35 353 28Q362 17 353 3L346 -1H28Q16 5 16 16Q16 35 55 35Q96 38 101 52Q106 60 106 341T101 632Q95 645 55 648Q17 648 17 665ZM241 35Q238 42 237 45T235 78T233 163T233 337V621L237 635L244 648H133Q136 641 137 638T139 603T141 517T141 341Q141 131 140 89T134 37Q133 36 133 35H241ZM457 496Q457 540 449 570T425 615T400 634T377 643Q374 643 339 648Q300 648 281 635Q271 628 270 610T268 481V346H284Q327 346 375 352Q421 364 439 392T457 496ZM492 537T492 496T488 427T478 389T469 371T464 361Q464 360 465 360Q469 360 497 370Q593 400 593 495Q593 592 477 630L457 637L461 626Q474 611 488 561Q492 537 492 496ZM464 243Q411 317 410 317Q404 317 401 315Q384 315 370 312H346L526 35H619L606 50Q553 109 464 243Z"></path></g></g><g data-mml-node="mn" transform="translate(755,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span> 上，可用的算法包括 PCA 和 t-SNE
+。可以发现，降维之后同一类别的特征向量确实几乎是聚集在一起的。</li>
 </ul>
-<h1 id="resnet">ResNet</h1>
+<h2 id="画出-cnn-中间层的-feature-map">画出 CNN 中间层的 feature
+map</h2>
 <ul>
-<li><p>2015
-年是非常重要的一年，这一年诞生了很多在深度神经网络中至关重要的技术，例如
-Batch Normalization 和 Residual Block
-，这使得我们可以搭建深度远超以往的神经网络，即 ResNet 。</p></li>
-<li><p>搭建深度网络的主要阻碍之一，就是随着深度的增加，收敛也愈发困难，这个问题在
-Google Net 上已经初露端倪。而通过我们先前介绍的 Batch Normalization
-，即使不依靠 Auxiliary Classifiers ，Google Net
-也可以较好的收敛，但这还不够好。不妨想想为什么深度网络的预测效果反而不如更浅的网络：理论上我们只需抽调出深度网络特定的几层，使其模仿浅网络就好了，而其余的层只需被设为恒等映射即可。所以我们猜测深度网络效果不好的原因可能是卷积层学习恒等映射的效果不好。要针对这一点改进，我们考虑对原先的网络模块（称作
-plain block）加入一条直接传递当前结果的捷径，修改为如下的 Residual Block
-：</p>
-<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/g8qwtoyd.png"></p>
-<p>我们可以在 ResNet 中找到很多 VGG Net 和 Google Net
-的影子，例如其采取了类似 VGG Net 的阶段化思想，并学习 Google Net
-在最开始进行激进的 down sample 来降低后续开销，以及在最后安排 Global
-Average Pooling Layer 而非巨大的 Fully Connected Layer
-。此外，在深层网络中，ResNet 采取了另一种设计来替代以上的 Residual
-Block（称作 Basic Block），即在单个 Block 内只做单次 3*3
-卷积，而在之前之后分别插入 bottleneck 来控制 channel
-的数目，以缩减计算开销，同时增加深度和非线性计算数，称作 bottleneck
-block 。</p>
-<p>以上的机制组合在一起，使得 ResNet
-保持了每层较低的时间开销，以及更快的收敛速度，从而可以搭建深度远超以往的网络，实现跨越式的性能增长。而
-ResNet 也确实横扫了 2015 年 CV 领域的各大竞赛，几乎终结了 ILSVRC
-。</p></li>
+<li>我们也可以取某一中间层，画出其所有的 feature map
+的灰度图像。我们可以期待，存在一部分的 feature map
+，它们对输入图像有较强的反应，并且表达了输入图像的某种特征。另一个细节是，大部分的
+feature map 都不会对输入起任何反应，这大概是因为 ReLU 把所有负值都改成了
+0 。</li>
 </ul>
-<h1 id="后续改进">后续改进</h1>
+<h2 id="输入图像对某一神经元的影响">输入图像对某一神经元的影响</h2>
 <ul>
-<li>后续的改进大部分都是基于 ResNet 的，例如 "Pre-Activation ResNet
-Block" 、ResNeXt 、Densely Connected Neural Network 。但实际上 ResNet
-在准确性这方面的改进空间已经不大了，所以研究者开始把重心转移到别的方面，例如缩减算力开销（MobileNets），或是研究自动生成深度网络模型的模型。以后我们不会再详谈这些方面，而是把
-ResNet 作为 Image Classification 的最终方案，然后介绍 CV
-领域的其它问题。</li>
-<li>最后 Justin
-给了一些建议，比如一般不要去试着搭建自己的网络，而是优先考虑已有的方案，因为一般院所的算力资源都是相当有限的。</li>
+<li>考察某一层中某一个 feature map
+上某一个神经元对输入的反应，我们挑出造成反应最显著的一部分。我们可以期待，这些图像<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>很大程度上具有相似的特征。而当考察的神经元的深度加深，其视野会更大，也会越发关注图像整体。</li>
+</ul>
+<h2 id="显著影响分类概率或神经元的像素">显著影响分类概率或神经元的像素</h2>
+<ul>
+<li>要考察像素对分类概率的影响，我们可以考虑概率对于此像素的导数。这样，只需单次反向传播我们就可以得到梯度的
+Saliency Map 。<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>这将有助于检查 CNN
+是否学习到了我们所希望的部分，例如其分辨船的办法不是找水而是找船本身。一个有趣的延申是，我们可以试着用
+Saliency Map
+来做无监督的图像语义分割，但这个做法在广泛的输入上的表现并不一定好。</li>
+<li>如果希望考察像素对于某一中间神经元的作用，我们当然也可以考虑反向传播。但实践中这样做的效果并不好。有研究提出了一种奇妙的技巧<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，称作 Guided Back Propagation
+，也就是，原先的反向传播是把梯度矩阵中正向传播时小于 0
+的位置的值全部改成 0 ，而导向反向传播则还要对梯度矩阵再做一次 ReLU
+。这种技巧似乎可以较好的改善 Saliency Map 。</li>
+</ul>
+<h1 id="图像生成">图像生成</h1>
+<ul>
+<li>严格的说并不算是生成，而是 CNN 结构可视化的有趣应用。</li>
+</ul>
+<h2 id="根据特征生成图像与-deep-dream">根据特征生成图像与 Deep
+Dream</h2>
+<ul>
+<li><p>给定已经训练完成的 CNN
+，我们希望生成最符合其提取出的某个特征的图像。最简单的情况是，考虑某一类分类概率、或是某一个神经元的值，我们希望从随机矩阵开始，使用
+(Guided) Back Propagation
+与梯度上升生成最大化该指标的图像。为了使得图像看起来更好，我们同样需要为优化目标加上正则化，例如图像的
+<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span>
+范数。值得一提的是，通过某些精心设计的正则化，我们可以生成出看起来很不错的图片。</p></li>
+<li><p>另一方面，优化对象也可以是 feature map 或者 feature vector
+之类的，这种思路称作 feature inversion
+。简单的说，我们希望可以找到一个图像最好的匹配了给定的 feature vector
+，当然也需要带上某种正则化。度量匹配程度的方式一般是 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span>
+范数，正则化则考虑优化图像的平滑度。值得一提的是，这样优化出的结果往往与原先输入的图像匹配的相当好。而且
+feature vector 的深度越浅，匹配越好；深层的 feature vector
+会倾向于丢失图像的局部颜色与线条，而保留整体结构。</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/ufntt5xa.png"></p></li>
+<li><p>另一个有趣的应用是 Deep Dream 。简单的说，我们将输入图像通过 CNN
+，将选定层的计算结果直接作为该层的梯度进行反向传播。这样做的结果是，以“令该层的特征最为显著”为目标进行优化。<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>这样做会把 CNN
+中该层保存的特征强加到原图中，很可能会优化出一些阴间结果，取决于原先 CNN
+训练的数据集里有什么。<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p></li>
+</ul>
+<h2 id="texture-synthesis-与风格迁移">Texture Synthesis 与风格迁移</h2>
+<ul>
+<li><p>Texture Synthesis
+指的是，给定材质模板，我们希望基于此模板合成更大的图片。这意味着，我们希望学习材质的颜色、线条等特征，而丢弃其空间特征。有趣的是，这恰好可以用
+CNN 的 feature map 的 gram matrix 来描述。简单的说，对于一层的 C*H*W 的
+feature map ，其一共有 H*W 个 feature vector ，取其两两做外积<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>，并取均值得到 C*C 的 gram matrix
+。如上得到的 gram matrix 描述了 feature vector
+的未归一化的协方差，可以认为其描述了这一层的抛开空间关系的特征。<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+<p>而使用 gram matrix 做 Texture Synthesis 的方法则是，令材质通过 CNN
+以提取特征，取其前若干层的 gram matrix ，再令噪声输入通过 CNN
+，同样得到其 gram matrix ，再以所有 gram matrix 的相似度<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a>为目标进行优化。</p></li>
+<li><p>如果把艺术作品作为材质，我们就可以做风格迁移了。简单的说，Texture
+Synthesis 是保留局部而舍弃整体，而深层的 feature inversion
+则是保留整体而舍弃局部。所以我们考虑同时对 gram matrix 和 feature vector
+做优化<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>，这样就可以把前者的局部特征添加到后者的整体框架上。令人意外的是，这样做的结果相当好。</p>
+<p>一个问题是每一次风格迁移都要做梯度上升的话就太慢了。解决方案是训练一个前馈网络来做风格迁移，而把后面的
+CNN 整体当作损失函数。</p>
+<p><img lazyload="" src="/images/loading.svg" data-src="https://cdn.luogu.com.cn/upload/image_hosting/9hthxk4l.png"></p>
+<p>另外还有一些细节，例如使用 instance normalization 来加速收敛和使用
+conditional instance normalization
+来利用同一前馈网络同时做多种风格转换和风格混合，这里就不深入了。</p></li>
 </ul>
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>VGG Net
-仅由一个研究生和一位教师完成，相比之下，很多其它模型都是由大公司研发的。他们的成果令人震惊。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>当然，单次 5*5 卷积和两次 3*3
-卷积虽然达成了相同的视野，但每个点具体的权重肯定还是有区别的。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>向量之间的夹角。<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>我们只关注神经元的视野，其余无关的像素点是不考虑的。<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>这篇论文里有一些很好的可视化。Simonyan, Vedaldi, and
+Zisserman, Deep Inside Convolutional Networks: Visualizing Image
+Classification Models and Saliency Map, ICLR Workshop 2014.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>截止2019年，这种技巧似乎并没有一个好的理论解释。<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>目标函数为该层的 feature map 的 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span> 范数之和。<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>如果你在 ImageNet 上训练，可能会得到 dog fish, admiral
+dog, dog frog 之类的。<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>其实就是做矩乘得到 C*C 的结果。<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>其实这些东西我也不是很熟。这里是口胡的。<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>一般是 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container></span>
+范数的加权和。<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>大概是对两者的损失函数做加权和。<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 
@@ -710,18 +727,18 @@ ResNet 作为 Image Classification 的最终方案，然后介绍 CV
 		<div class="post-copyright-info w-full my-8 px-2 sm:px-6 md:px-8">
 			<div class="article-copyright-info-container">
     <ul>
-        <li><strong>标题:</strong> 卷积神经网络的发展</li>
+        <li><strong>标题:</strong> 卷积神经网络的可视化与可解释性</li>
         <li><strong>作者:</strong> RPChe_</li>
         <li><strong>创建于
-                :</strong> 2025-03-07 00:00:00</li>
+                :</strong> 2025-03-21 00:00:00</li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-03-07 22:56:51
+                    :</strong> 2025-03-22 01:02:44
             </li>
         
         <li>
-            <strong>链接:</strong> https://rpche-6626.github.io/2025/03/07/DL/devCNN/
+            <strong>链接:</strong> https://rpche-6626.github.io/2025/03/21/DL/CNNapp/
         </li>
         <li>
             <strong>
@@ -740,6 +757,14 @@ ResNet 作为 Image Classification 的最终方案，然后介绍 CV
 		
 
 		
+		<ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+			
+			<li class="tag-item mx-0.5">
+				<a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">#深度学习</a>&nbsp;
+			</li>
+			
+		</ul>
+		
 
 		
   <div class="recommended-article px-2 sm:px-6 md:px-8">
@@ -747,10 +772,22 @@ ResNet 作为 Image Classification 的最终方案，然后介绍 CV
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/02/26/DL/关于深度学习/" title="关于深度学习" rel="bookmark">
-  <img src="/images/hw.png" alt="关于深度学习" class="!max-w-none">
-  <span class="title">关于深度学习</span>
-</a><a class="recommended-article-item" href="/2025/03/07/DL/CNN/" title="卷积神经网络" rel="bookmark">
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/03/07/DL/CNN/" title="卷积神经网络" rel="bookmark">
+  <img src="https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png" alt="卷积神经网络" class="!max-w-none">
+  <span class="title">卷积神经网络</span>
+</a><a class="recommended-article-item" href="/2025/03/11/DL/train/" title="如何训练神经网络" rel="bookmark">
+  <img src="/images/hw.png" alt="如何训练神经网络" class="!max-w-none">
+  <span class="title">如何训练神经网络</span>
+</a><a class="recommended-article-item" href="/2025/03/18/DL/ATT/" title="注意力机制" rel="bookmark">
+  <img src="/images/hw.png" alt="注意力机制" class="!max-w-none">
+  <span class="title">注意力机制</span>
+</a></div>
+   </div>
+   <div class="recommended-mobile">
+   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
+     <i aria-hidden="true"></i><span>推荐阅读</span>
+   </div>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/03/07/DL/CNN/" title="卷积神经网络" rel="bookmark">
   <img src="https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png" alt="卷积神经网络" class="!max-w-none">
   <span class="title">卷积神经网络</span>
 </a><a class="recommended-article-item" href="/2025/03/11/DL/train/" title="如何训练神经网络" rel="bookmark">
@@ -758,40 +795,16 @@ ResNet 作为 Image Classification 的最终方案，然后介绍 CV
   <span class="title">如何训练神经网络</span>
 </a></div>
    </div>
-   <div class="recommended-mobile">
-   <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
-     <i aria-hidden="true"></i><span>推荐阅读</span>
-   </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/02/26/DL/关于深度学习/" title="关于深度学习" rel="bookmark">
-  <img src="/images/hw.png" alt="关于深度学习" class="!max-w-none">
-  <span class="title">关于深度学习</span>
-</a><a class="recommended-article-item" href="/2025/03/07/DL/CNN/" title="卷积神经网络" rel="bookmark">
-  <img src="https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png" alt="卷积神经网络" class="!max-w-none">
-  <span class="title">卷积神经网络</span>
-</a></div>
-   </div>
   </div>
 
 		
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
-			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/03/07/DL/CNN/">
-					<span class="left arrow-icon flex justify-center items-center">
-						<i class="fa-solid fa-chevron-left"></i>
-					</span>
-					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">卷积神经网络</span>
-						<span class="post-nav-item">上一篇</span>
-					</span>
-				</a>
-			</div>
-			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/03/06/DL/BP/">
+				<a class="next" rel="next" href="/2025/03/18/DL/ATT/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">反向传播</span>
+						<span class="post-nav-title-item">注意力机制</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -866,8 +879,10 @@ ResNet 作为 Image Classification 的最终方案，然后介绍 CV
 		<div class="post-toc-wrap">
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
-		<div class="page-title">卷积神经网络的发展</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#imagenet"><span class="nav-text">ImageNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#alexnet"><span class="nav-text">AlexNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#vgg-net"><span class="nav-text">VGG Net</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#google-net"><span class="nav-text">Google Net</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#resnet"><span class="nav-text">ResNet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD%E6%94%B9%E8%BF%9B"><span class="nav-text">后续改进</span></a></li></ol>
+		<div class="page-title">卷积神经网络的可视化与可解释性</div>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8A%80%E6%9C%AF"><span class="nav-text">可视化技术</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E5%87%BA-cnn-%E7%9A%84%E7%AC%AC%E4%B8%80%E5%B1%82-filter"><span class="nav-text">画出 CNN 的第一层 filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9-cnn-%E6%9C%80%E5%90%8E%E7%9A%84%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F%E5%81%9A%E9%99%8D%E7%BB%B4"><span class="nav-text">对 CNN 最后的特征向量做降维</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%BB%E5%87%BA-cnn-%E4%B8%AD%E9%97%B4%E5%B1%82%E7%9A%84-feature-map"><span class="nav-text">画出 CNN 中间层的 feature
+map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E5%9B%BE%E5%83%8F%E5%AF%B9%E6%9F%90%E4%B8%80%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-text">输入图像对某一神经元的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%98%BE%E8%91%97%E5%BD%B1%E5%93%8D%E5%88%86%E7%B1%BB%E6%A6%82%E7%8E%87%E6%88%96%E7%A5%9E%E7%BB%8F%E5%85%83%E7%9A%84%E5%83%8F%E7%B4%A0"><span class="nav-text">显著影响分类概率或神经元的像素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F%E7%94%9F%E6%88%90"><span class="nav-text">图像生成</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%B9%E6%8D%AE%E7%89%B9%E5%BE%81%E7%94%9F%E6%88%90%E5%9B%BE%E5%83%8F%E4%B8%8E-deep-dream"><span class="nav-text">根据特征生成图像与 Deep
+Dream</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#texture-synthesis-%E4%B8%8E%E9%A3%8E%E6%A0%BC%E8%BF%81%E7%A7%BB"><span class="nav-text">Texture Synthesis 与风格迁移</span></a></li></ol></li></ol>
 
 	</div>
 </div>
@@ -894,11 +909,11 @@ ResNet 作为 Image Classification 的最终方案，然后介绍 CV
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 19 篇文章
+                        共撰写了 20 篇文章
                     </span>
                     
                         <span>
-                            共 22.9k 字
+                            共 25k 字
                         </span>
                     
                 </p>
