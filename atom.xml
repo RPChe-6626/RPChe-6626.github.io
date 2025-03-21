@@ -73,16 +73,17 @@
     <link href="https://rpche-6626.github.io/2025/03/07/DL/CNN/"/>
     <id>https://rpche-6626.github.io/2025/03/07/DL/CNN/</id>
     <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-07T11:10:43.300Z</updated>
+    <updated>2025-03-21T06:58:25.901Z</updated>
     
     
-    <summary type="html">&lt;p&gt;这应该是目前最强大的处理图像识别问题的工具。&lt;/p&gt;
-&lt;p&gt;&lt;img lazyload=&quot;&quot; src=&quot;/images/loading.svg&quot; data-src=&quot;https://cdn.luogu.com.cn/upload/image_hosting/kncqtzd3.png&quot;&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;这应该是目前最强大的处理图像识别问题的工具。&lt;/p&gt;</summary>
     
     
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
+    
+    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -96,24 +97,6 @@
     
     <summary type="html">&lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
 以及 ResNet 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>反向传播</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/BP/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/BP/</id>
-    <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-06T15:03:08.909Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;即 Back Propagation 。
-如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。&lt;/p&gt;</summary>
     
     
     
@@ -150,6 +133,24 @@
     
     <summary type="html">&lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross
 Validation 也写了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>反向传播</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/BP/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/BP/</id>
+    <published>2025-03-05T16:00:00.000Z</published>
+    <updated>2025-03-06T15:03:08.909Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;即 Back Propagation 。
+如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。&lt;/p&gt;</summary>
     
     
     
@@ -197,7 +198,7 @@ Validation 也写了。&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2025/02/26/DL/%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     <id>https://rpche-6626.github.io/2025/02/26/DL/%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-02-25T16:00:00.000Z</published>
-    <updated>2025-03-18T03:40:38.599Z</updated>
+    <updated>2025-03-21T07:00:22.114Z</updated>
     
     
     <summary type="html">&lt;p&gt;其实是对着 UMich EECS 498-007 / 598-005: Deep Learning for Computer
@@ -208,6 +209,8 @@ Johnson 的 slides 上蒯的。&lt;/p&gt;</summary>
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
+    
+    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -247,23 +250,6 @@ Johnson 的 slides 上蒯的。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>ZXY&#39;s Law</title>
-    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
-    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
-    <published>2023-08-13T16:00:00.000Z</published>
-    <updated>2023-08-14T10:25:44.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="灌水区" scheme="https://rpche-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>关于数论</title>
     <link href="https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/"/>
     <id>https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</id>
@@ -276,6 +262,23 @@ Johnson 的 slides 上蒯的。&lt;/p&gt;</summary>
     
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ZXY&#39;s Law</title>
+    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
+    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
+    <published>2023-08-13T16:00:00.000Z</published>
+    <updated>2023-08-14T10:25:44.000Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="灌水区" scheme="https://rpche-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
     
     
   </entry>
