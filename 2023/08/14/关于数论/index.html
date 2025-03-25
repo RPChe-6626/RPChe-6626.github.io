@@ -476,7 +476,7 @@ mjx-container[display="true"] + br {
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">1</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -484,7 +484,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">20</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">22</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -749,9 +749,9 @@ mjx-container[display="true"] + br {
     <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/08/14/zxy‘s-law/" title="ZXY's Law" rel="bookmark">
   <img src="/images/hw.png" alt="ZXY's Law" class="!max-w-none">
   <span class="title">ZXY's Law</span>
-</a><a class="recommended-article-item" href="/2025/02/25/ML/关于机器学习/" title="关于机器学习" rel="bookmark">
-  <img src="/images/hw.png" alt="关于机器学习" class="!max-w-none">
-  <span class="title">关于机器学习</span>
+</a><a class="recommended-article-item" href="/2024/02/25/ML/SVM/" title="支持向量机" rel="bookmark">
+  <img src="/images/hw.png" alt="支持向量机" class="!max-w-none">
+  <span class="title">支持向量机</span>
 </a><a class="recommended-article-item" href="/2025/03/06/DL/LC/" title="线性分类器" rel="bookmark">
   <img src="/images/hw.png" alt="线性分类器" class="!max-w-none">
   <span class="title">线性分类器</span>
@@ -764,9 +764,9 @@ mjx-container[display="true"] + br {
    <div class="recommended-article-group"><a class="recommended-article-item" href="/2023/08/14/zxy‘s-law/" title="ZXY's Law" rel="bookmark">
   <img src="/images/hw.png" alt="ZXY's Law" class="!max-w-none">
   <span class="title">ZXY's Law</span>
-</a><a class="recommended-article-item" href="/2025/02/25/ML/关于机器学习/" title="关于机器学习" rel="bookmark">
-  <img src="/images/hw.png" alt="关于机器学习" class="!max-w-none">
-  <span class="title">关于机器学习</span>
+</a><a class="recommended-article-item" href="/2024/02/25/ML/SVM/" title="支持向量机" rel="bookmark">
+  <img src="/images/hw.png" alt="支持向量机" class="!max-w-none">
+  <span class="title">支持向量机</span>
 </a></div>
    </div>
   </div>
@@ -893,11 +893,11 @@ mjx-container[display="true"] + br {
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 20 篇文章
+                        共撰写了 22 篇文章
                     </span>
                     
                         <span>
-                            共 25k 字
+                            共 25.1k 字
                         </span>
                     
                 </p>
@@ -1174,6 +1174,21 @@ mjx-container[display="true"] + br {
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
