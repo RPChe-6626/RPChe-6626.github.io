@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-03-27T09:26:11.006Z</updated>
+  <updated>2025-03-27T09:33:11.395Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rpche-6626.github.io/2025/03/26/DL/OD/"/>
     <id>https://rpche-6626.github.io/2025/03/26/DL/OD/</id>
     <published>2025-03-25T16:00:00.000Z</published>
-    <updated>2025-03-27T09:26:11.006Z</updated>
+    <updated>2025-03-27T09:33:11.395Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文简要介绍了用于 Object Detection 的 Region Proposal 以及 R-CNN
@@ -218,14 +218,14 @@ Validation 也写了。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>神经网络</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
+    <title>线性分类器</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/LC/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/LC/</id>
     <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-06T15:02:39.541Z</updated>
+    <updated>2025-03-06T15:01:09.251Z</updated>
     
     
-    <summary type="html">&lt;p&gt;即 Neural Networks 。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;即 Linear Classifier ，使用超平面来划分数据。&lt;/p&gt;</summary>
     
     
     
@@ -235,14 +235,14 @@ Validation 也写了。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>线性分类器</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/LC/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/LC/</id>
+    <title>神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
     <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-06T15:01:09.251Z</updated>
+    <updated>2025-03-06T15:02:39.541Z</updated>
     
     
-    <summary type="html">&lt;p&gt;即 Linear Classifier ，使用超平面来划分数据。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;即 Neural Networks 。&lt;/p&gt;</summary>
     
     
     
