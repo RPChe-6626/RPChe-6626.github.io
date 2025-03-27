@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-03-26T18:37:44.145Z</updated>
+  <updated>2025-03-27T09:26:11.006Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rpche-6626.github.io/2025/03/26/DL/OD/"/>
     <id>https://rpche-6626.github.io/2025/03/26/DL/OD/</id>
     <published>2025-03-25T16:00:00.000Z</published>
-    <updated>2025-03-26T18:37:44.145Z</updated>
+    <updated>2025-03-27T09:26:11.006Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文简要介绍了用于 Object Detection 的 Region Proposal 以及 R-CNN
@@ -200,14 +200,15 @@
   </entry>
   
   <entry>
-    <title>线性分类器</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/LC/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/LC/</id>
+    <title>K-近邻与交叉验证</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/KNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/KNN/</id>
     <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-06T15:01:09.251Z</updated>
+    <updated>2025-03-11T09:07:21.648Z</updated>
     
     
-    <summary type="html">&lt;p&gt;即 Linear Classifier ，使用超平面来划分数据。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross
+Validation 也写了。&lt;/p&gt;</summary>
     
     
     
@@ -234,15 +235,14 @@
   </entry>
   
   <entry>
-    <title>K-近邻与交叉验证</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/KNN/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/KNN/</id>
+    <title>线性分类器</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/LC/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/LC/</id>
     <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-11T09:07:21.648Z</updated>
+    <updated>2025-03-06T15:01:09.251Z</updated>
     
     
-    <summary type="html">&lt;p&gt;即 KNN 与 Cross Validation 。因为 KNN 比较简单就顺便把 Cross
-Validation 也写了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;即 Linear Classifier ，使用超平面来划分数据。&lt;/p&gt;</summary>
     
     
     
