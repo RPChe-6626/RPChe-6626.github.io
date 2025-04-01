@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-03-27T09:33:11.395Z</updated>
+  <updated>2025-04-01T06:09:12.116Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,31 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>物件侦测与分割</title>
+    <title>西罗定理的证明</title>
+    <link href="https://rpche-6626.github.io/2025/03/27/%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E/"/>
+    <id>https://rpche-6626.github.io/2025/03/27/%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E/</id>
+    <published>2025-03-26T16:00:00.000Z</published>
+    <updated>2025-04-01T06:09:12.116Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;感觉中科大那本书的证明写得有点烂啊。&lt;/p&gt;
+&lt;p&gt;阅读本文需要一定的群论基础。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>物件侦测与语义分割</title>
     <link href="https://rpche-6626.github.io/2025/03/26/DL/OD/"/>
     <id>https://rpche-6626.github.io/2025/03/26/DL/OD/</id>
     <published>2025-03-25T16:00:00.000Z</published>
-    <updated>2025-03-27T09:33:11.395Z</updated>
+    <updated>2025-03-28T14:48:13.912Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文简要介绍了用于 Object Detection 的 Region Proposal 以及 R-CNN
@@ -329,23 +349,6 @@ Johnson 的 slides 上蒯的。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>ZXY&#39;s Law</title>
-    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
-    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
-    <published>2023-08-13T16:00:00.000Z</published>
-    <updated>2023-08-14T10:25:44.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="灌水区" scheme="https://rpche-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>关于数论</title>
     <link href="https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/"/>
     <id>https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</id>
@@ -363,18 +366,18 @@ Johnson 的 slides 上蒯的。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>常用 Hexo 指令</title>
-    <link href="https://rpche-6626.github.io/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/"/>
-    <id>https://rpche-6626.github.io/2023/08/13/%E5%B8%B8%E7%94%A8%20Hexo%20%E6%8C%87%E4%BB%A4/</id>
-    <published>2023-08-12T16:00:00.000Z</published>
-    <updated>2023-08-14T08:41:12.000Z</updated>
+    <title>ZXY&#39;s Law</title>
+    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
+    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
+    <published>2023-08-13T16:00:00.000Z</published>
+    <updated>2023-08-14T10:25:44.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;这里收录了一部分笔者常用的 Hexo 指令，完整的指令目录可以到 &lt;a class=&quot;link&quot; href=&quot;https://hexo.io/zh-cn/docs/commands.html&quot;&gt;这里&lt;i class=&quot;fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon&quot;&gt;&lt;/i&gt;&lt;/a&gt; 查看。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;</summary>
     
     
     
-    <category term="操作指南" scheme="https://rpche-6626.github.io/categories/%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
+    <category term="灌水区" scheme="https://rpche-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
     
     
   </entry>
