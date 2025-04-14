@@ -59,7 +59,7 @@
     <link href="https://rpche-6626.github.io/2025/04/10/DL/3DV/"/>
     <id>https://rpche-6626.github.io/2025/04/10/DL/3DV/</id>
     <published>2025-04-09T16:00:00.000Z</published>
-    <updated>2025-04-11T17:04:27.677Z</updated>
+    <updated>2025-04-14T16:53:21.699Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文简要介绍了处理 3D 视觉问题的一些基本技术。&lt;/p&gt;</summary>
@@ -98,7 +98,7 @@
     <link href="https://rpche-6626.github.io/2025/03/26/DL/OD/"/>
     <id>https://rpche-6626.github.io/2025/03/26/DL/OD/</id>
     <published>2025-03-25T16:00:00.000Z</published>
-    <updated>2025-03-28T14:48:13.912Z</updated>
+    <updated>2025-04-14T16:51:19.661Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文简要介绍了用于 Object Detection 的 Region Proposal 以及 R-CNN
@@ -204,24 +204,6 @@
   </entry>
   
   <entry>
-    <title>卷积神经网络的发展</title>
-    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNNdev/"/>
-    <id>https://rpche-6626.github.io/2025/03/07/DL/CNNdev/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-07T14:56:51.596Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
-以及 ResNet 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>卷积神经网络</title>
     <link href="https://rpche-6626.github.io/2025/03/07/DL/CNN/"/>
     <id>https://rpche-6626.github.io/2025/03/07/DL/CNN/</id>
@@ -237,6 +219,24 @@
     
     
     <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卷积神经网络的发展</title>
+    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNNdev/"/>
+    <id>https://rpche-6626.github.io/2025/03/07/DL/CNNdev/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-07T14:56:51.596Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
+以及 ResNet 。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
     
   </entry>
   
@@ -268,6 +268,23 @@
     
     <summary type="html">&lt;p&gt;即 Gradient Descent
 。我们不是来讲最优化方法的，所以这里将不会提供收敛性和收敛速度的严格分析。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
+    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
+    <published>2025-03-05T16:00:00.000Z</published>
+    <updated>2025-03-06T15:02:39.541Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;即 Neural Networks 。&lt;/p&gt;</summary>
     
     
     
@@ -312,28 +329,11 @@ Validation 也写了。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>神经网络</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/NN/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/NN/</id>
-    <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-06T15:02:39.541Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;即 Neural Networks 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>关于深度学习</title>
     <link href="https://rpche-6626.github.io/2025/02/26/DL/%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     <id>https://rpche-6626.github.io/2025/02/26/DL/%E5%85%B3%E4%BA%8E%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-02-25T16:00:00.000Z</published>
-    <updated>2025-03-26T18:38:51.334Z</updated>
+    <updated>2025-04-14T16:55:23.640Z</updated>
     
     
     <summary type="html">&lt;p&gt;其实是对着 UMich EECS 498-007 / 598-005: Deep Learning for Computer
