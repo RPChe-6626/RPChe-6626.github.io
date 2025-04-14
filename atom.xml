@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-04-01T06:09:12.116Z</updated>
+  <updated>2025-04-14T16:45:50.805Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,14 +17,71 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>生成模型：自回归模型、变分自编码器与生成对抗网络</title>
+    <link href="https://rpche-6626.github.io/2025/04/12/DL/GEN/"/>
+    <id>https://rpche-6626.github.io/2025/04/12/DL/GEN/</id>
+    <published>2025-04-11T16:00:00.000Z</published>
+    <updated>2025-04-14T16:45:50.805Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将引入一个新的研究分支，即生成模型，并且将简要介绍其中的自回归模型、变分自编码器与生成对抗网络。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>视频识别与分类</title>
+    <link href="https://rpche-6626.github.io/2025/04/12/DL/VDO/"/>
+    <id>https://rpche-6626.github.io/2025/04/12/DL/VDO/</id>
+    <published>2025-04-11T16:00:00.000Z</published>
+    <updated>2025-04-14T16:43:23.697Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将简要介绍一些从图像识别扩展到视频识别的技术。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>3D 视觉</title>
+    <link href="https://rpche-6626.github.io/2025/04/10/DL/3DV/"/>
+    <id>https://rpche-6626.github.io/2025/04/10/DL/3DV/</id>
+    <published>2025-04-09T16:00:00.000Z</published>
+    <updated>2025-04-11T17:04:27.677Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文简要介绍了处理 3D 视觉问题的一些基本技术。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>西罗定理的证明</title>
     <link href="https://rpche-6626.github.io/2025/03/27/%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E/"/>
     <id>https://rpche-6626.github.io/2025/03/27/%E8%A5%BF%E7%BD%97%E5%AE%9A%E7%90%86%E7%9A%84%E8%AF%81%E6%98%8E/</id>
     <published>2025-03-26T16:00:00.000Z</published>
-    <updated>2025-04-01T06:09:12.116Z</updated>
+    <updated>2025-04-04T10:35:45.498Z</updated>
     
     
-    <summary type="html">&lt;p&gt;感觉中科大那本书的证明写得有点烂啊。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;感觉中科大那本书的证明写得有烂啊，本文主要参照了华师大版近世代数的证明。&lt;/p&gt;
 &lt;p&gt;阅读本文需要一定的群论基础。&lt;/p&gt;</summary>
     
     
@@ -147,25 +204,6 @@
   </entry>
   
   <entry>
-    <title>卷积神经网络</title>
-    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNN/"/>
-    <id>https://rpche-6626.github.io/2025/03/07/DL/CNN/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-21T06:58:25.901Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;这应该是目前最强大的处理图像识别问题的工具。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>卷积神经网络的发展</title>
     <link href="https://rpche-6626.github.io/2025/03/07/DL/CNNdev/"/>
     <id>https://rpche-6626.github.io/2025/03/07/DL/CNNdev/</id>
@@ -180,6 +218,25 @@
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
+    
+  </entry>
+  
+  <entry>
+    <title>卷积神经网络</title>
+    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNN/"/>
+    <id>https://rpche-6626.github.io/2025/03/07/DL/CNN/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-04-12T08:17:35.583Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;这应该是目前最强大的处理图像识别问题的工具。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -325,59 +382,6 @@ Johnson 的 slides 上蒯的。&lt;/p&gt;</summary>
     
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>支持向量机</title>
-    <link href="https://rpche-6626.github.io/2024/02/25/ML/SVM/"/>
-    <id>https://rpche-6626.github.io/2024/02/25/ML/SVM/</id>
-    <published>2024-02-24T16:00:00.000Z</published>
-    <updated>2025-03-24T03:31:53.338Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;介绍了基本的支持向量机模型。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于数论</title>
-    <link href="https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/"/>
-    <id>https://rpche-6626.github.io/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/</id>
-    <published>2023-08-13T16:00:00.000Z</published>
-    <updated>2023-08-23T12:04:38.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;从基础谈起。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>ZXY&#39;s Law</title>
-    <link href="https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/"/>
-    <id>https://rpche-6626.github.io/2023/08/14/zxy%E2%80%98s-law/</id>
-    <published>2023-08-13T16:00:00.000Z</published>
-    <updated>2023-08-14T10:25:44.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;鉴于这个东西实在是太 der 了，我还是写一下（&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="灌水区" scheme="https://rpche-6626.github.io/categories/%E7%81%8C%E6%B0%B4%E5%8C%BA/"/>
     
     
   </entry>
