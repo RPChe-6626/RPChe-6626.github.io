@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-04-22T16:12:12.083Z</updated>
+  <updated>2025-04-22T16:16:00.228Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rpche-6626.github.io/2025/04/22/IT/aep/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/aep/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:12:12.083Z</updated>
+    <updated>2025-04-22T16:16:00.228Z</updated>
     
     
     <summary type="html">&lt;p&gt;Typical Set 和 Asymptotic Equipartition Property
@@ -41,7 +41,7 @@
     <link href="https://rpche-6626.github.io/2025/04/22/IT/defs/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/defs/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:08:40.007Z</updated>
+    <updated>2025-04-22T17:00:50.454Z</updated>
     
     
     <summary type="html">&lt;p&gt;大多数人可能会认为信息熵抽象而不明确，这的确很难避免；另一些人会认为信息熵仅是玻尔兹曼熵的推广、或者信息熵度量了信息量，这很大程度上是不对的。严格的说，信息熵的定义一方面依赖于概率论，其度量了随机变量的不确定度；另一方面则依赖于信息的编码理论。下面我们要从两个方面导出信息熵。并且如若不特别说明，我们只考虑离散的情况。&lt;/p&gt;</summary>
@@ -98,7 +98,7 @@
     <link href="https://rpche-6626.github.io/2025/04/22/IT/rate/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/rate/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:08:57.373Z</updated>
+    <updated>2025-04-22T16:35:56.121Z</updated>
     
     
     <summary type="html">&lt;p&gt;熵率是要探讨信源编码的长期平均速率的极限。现在我们先要复习一些概率论基础，我本来是不想在这边写这些的，但是我没单独写概率论，所以还是提一下。以后的内容均在一定程度上依赖于基础实分析。&lt;/p&gt;</summary>
@@ -158,14 +158,14 @@ Deep Q Learning 和 Policy Gradient</summary>
   </entry>
   
   <entry>
-    <title>视频识别与分类</title>
-    <link href="https://rpche-6626.github.io/2025/04/12/DL/VDO/"/>
-    <id>https://rpche-6626.github.io/2025/04/12/DL/VDO/</id>
+    <title>生成模型：自回归模型、变分自编码器与生成对抗网络</title>
+    <link href="https://rpche-6626.github.io/2025/04/12/DL/GEN/"/>
+    <id>https://rpche-6626.github.io/2025/04/12/DL/GEN/</id>
     <published>2025-04-11T16:00:00.000Z</published>
-    <updated>2025-04-14T16:43:23.697Z</updated>
+    <updated>2025-04-14T17:32:21.701Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要介绍一些从图像识别扩展到视频识别的技术。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将引入一个新的研究分支，即生成模型，并且将简要介绍其中的自回归模型、变分自编码器与生成对抗网络。&lt;/p&gt;</summary>
     
     
     
@@ -177,14 +177,14 @@ Deep Q Learning 和 Policy Gradient</summary>
   </entry>
   
   <entry>
-    <title>生成模型：自回归模型、变分自编码器与生成对抗网络</title>
-    <link href="https://rpche-6626.github.io/2025/04/12/DL/GEN/"/>
-    <id>https://rpche-6626.github.io/2025/04/12/DL/GEN/</id>
+    <title>视频识别与分类</title>
+    <link href="https://rpche-6626.github.io/2025/04/12/DL/VDO/"/>
+    <id>https://rpche-6626.github.io/2025/04/12/DL/VDO/</id>
     <published>2025-04-11T16:00:00.000Z</published>
-    <updated>2025-04-14T17:32:21.701Z</updated>
+    <updated>2025-04-14T16:43:23.697Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将引入一个新的研究分支，即生成模型，并且将简要介绍其中的自回归模型、变分自编码器与生成对抗网络。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要介绍一些从图像识别扩展到视频识别的技术。&lt;/p&gt;</summary>
     
     
     
@@ -345,24 +345,6 @@ Deep Q Learning 和 Policy Gradient</summary>
   </entry>
   
   <entry>
-    <title>卷积神经网络的发展</title>
-    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNNdev/"/>
-    <id>https://rpche-6626.github.io/2025/03/07/DL/CNNdev/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-07T14:56:51.596Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
-以及 ResNet 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>卷积神经网络</title>
     <link href="https://rpche-6626.github.io/2025/03/07/DL/CNN/"/>
     <id>https://rpche-6626.github.io/2025/03/07/DL/CNN/</id>
@@ -378,6 +360,24 @@ Deep Q Learning 和 Policy Gradient</summary>
     
     
     <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卷积神经网络的发展</title>
+    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNNdev/"/>
+    <id>https://rpche-6626.github.io/2025/03/07/DL/CNNdev/</id>
+    <published>2025-03-06T16:00:00.000Z</published>
+    <updated>2025-03-07T14:56:51.596Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
+以及 ResNet 。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
     
   </entry>
   
