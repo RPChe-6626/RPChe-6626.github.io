@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-04-22T16:16:00.228Z</updated>
+  <updated>2025-04-25T17:29:32.481Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>信道模型与信道容量</title>
+    <link href="https://rpche-6626.github.io/2025/04/23/IT/chan/"/>
+    <id>https://rpche-6626.github.io/2025/04/23/IT/chan/</id>
+    <published>2025-04-22T16:00:00.000Z</published>
+    <updated>2025-04-25T17:29:32.481Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;信道模型其实在信息论以外的领域不是很常见，但我认为这套理论还是相当优美的，所以我们还是谈一谈。以下我们将简要介绍信道模型与信道容量。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>典型集与渐进均分性</title>
     <link href="https://rpche-6626.github.io/2025/04/22/IT/aep/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/aep/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:16:00.228Z</updated>
+    <updated>2025-04-25T17:27:27.303Z</updated>
     
     
     <summary type="html">&lt;p&gt;Typical Set 和 Asymptotic Equipartition Property
@@ -37,33 +56,14 @@
   </entry>
   
   <entry>
-    <title></title>
+    <title>信息熵的定义</title>
     <link href="https://rpche-6626.github.io/2025/04/22/IT/defs/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/defs/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T17:00:50.454Z</updated>
+    <updated>2025-04-23T08:33:34.625Z</updated>
     
     
     <summary type="html">&lt;p&gt;大多数人可能会认为信息熵抽象而不明确，这的确很难避免；另一些人会认为信息熵仅是玻尔兹曼熵的推广、或者信息熵度量了信息量，这很大程度上是不对的。严格的说，信息熵的定义一方面依赖于概率论，其度量了随机变量的不确定度；另一方面则依赖于信息的编码理论。下面我们要从两个方面导出信息熵。并且如若不特别说明，我们只考虑离散的情况。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>马尔可夫链与法诺不等式</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/mark/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/mark/</id>
-    <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:08:45.829Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;下面我们将简要介绍 Markov chain 与 Fano&#39;s Inequality 。&lt;/p&gt;</summary>
     
     
     
@@ -98,10 +98,29 @@
     <link href="https://rpche-6626.github.io/2025/04/22/IT/rate/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/rate/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:35:56.121Z</updated>
+    <updated>2025-04-25T07:16:33.426Z</updated>
     
     
     <summary type="html">&lt;p&gt;熵率是要探讨信源编码的长期平均速率的极限。现在我们先要复习一些概率论基础，我本来是不想在这边写这些的，但是我没单独写概率论，所以还是提一下。以后的内容均在一定程度上依赖于基础实分析。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>马尔可夫链与法诺不等式</title>
+    <link href="https://rpche-6626.github.io/2025/04/22/IT/mark/"/>
+    <id>https://rpche-6626.github.io/2025/04/22/IT/mark/</id>
+    <published>2025-04-21T16:00:00.000Z</published>
+    <updated>2025-04-22T16:08:45.829Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;下面我们将简要介绍 Markov chain 与 Fano&#39;s Inequality 。&lt;/p&gt;</summary>
     
     
     
@@ -117,7 +136,7 @@
     <link href="https://rpche-6626.github.io/2025/04/21/IT/%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
     <id>https://rpche-6626.github.io/2025/04/21/IT/%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E8%AE%BA/</id>
     <published>2025-04-20T16:00:00.000Z</published>
-    <updated>2025-04-22T16:12:36.491Z</updated>
+    <updated>2025-04-23T10:31:40.529Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇是我复习信息论的时候写的。本来想把标题取作“写给小学生看的信息论”之类的，但感觉有点怪，所以就叫做《基础信息论》了。本文的重点不是完全严格的理论叙述，所以没有取题为《信息论基础》。&lt;/p&gt;</summary>
@@ -136,17 +155,11 @@
     <link href="https://rpche-6626.github.io/2025/04/16/DL/RL/"/>
     <id>https://rpche-6626.github.io/2025/04/16/DL/RL/</id>
     <published>2025-04-15T16:00:00.000Z</published>
-    <updated>2025-04-15T17:06:53.179Z</updated>
+    <updated>2025-04-26T16:15:59.701Z</updated>
     
     
-      
-      
-        
-        
     <summary type="html">&lt;p&gt;本文将引入强化学习这一领域，并简要介绍一些基础的理论建模，及其深度学习的解法，例如
-Deep Q Learning 和 Policy Gradient</summary>
-        
-      
+Deep Q Learning 和 Policy Gradient 。&lt;/p&gt;</summary>
     
     
     
@@ -373,24 +386,6 @@ Deep Q Learning 和 Policy Gradient</summary>
     
     <summary type="html">&lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
 以及 ResNet 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>反向传播</title>
-    <link href="https://rpche-6626.github.io/2025/03/06/DL/BP/"/>
-    <id>https://rpche-6626.github.io/2025/03/06/DL/BP/</id>
-    <published>2025-03-05T16:00:00.000Z</published>
-    <updated>2025-03-06T15:03:08.909Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;即 Back Propagation 。
-如果你试着实现过神经网络，你就会发现进行梯度下降时手工计算神经网络的损失函数的形式导数是极为繁琐的。所以现在我们要来谈点求导的技术。&lt;/p&gt;</summary>
     
     
     
