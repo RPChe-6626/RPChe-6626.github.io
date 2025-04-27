@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-04-26T16:22:38.233Z</updated>
+  <updated>2025-04-27T11:09:20.524Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,6 +17,25 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>微分熵</title>
+    <link href="https://rpche-6626.github.io/2025/04/27/IT/diff/"/>
+    <id>https://rpche-6626.github.io/2025/04/27/IT/diff/</id>
+    <published>2025-04-26T16:00:00.000Z</published>
+    <updated>2025-04-27T11:09:20.524Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;此处我们只是简单的将先前的概念推广到连续随机变量的情况下而已。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>信道模型与信道容量</title>
     <link href="https://rpche-6626.github.io/2025/04/23/IT/chan/"/>
     <id>https://rpche-6626.github.io/2025/04/23/IT/chan/</id>
@@ -25,6 +44,26 @@
     
     
     <summary type="html">&lt;p&gt;信道模型其实在信息论以外的领域不是很常见，但我认为这套理论还是相当优美的，所以我们还是谈一谈。以下我们将简要介绍信道模型与信道容量。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>典型集与渐进均分性</title>
+    <link href="https://rpche-6626.github.io/2025/04/22/IT/aep/"/>
+    <id>https://rpche-6626.github.io/2025/04/22/IT/aep/</id>
+    <published>2025-04-21T16:00:00.000Z</published>
+    <updated>2025-04-25T17:27:27.303Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Typical Set 和 Asymptotic Equipartition Property
+应该是很深刻的性质。&lt;/p&gt;</summary>
     
     
     
@@ -93,26 +132,6 @@
   </entry>
   
   <entry>
-    <title>典型集与渐进均分性</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/aep/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/aep/</id>
-    <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-25T17:27:27.303Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;Typical Set 和 Asymptotic Equipartition Property
-应该是很深刻的性质。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
     <title>熵率</title>
     <link href="https://rpche-6626.github.io/2025/04/22/IT/rate/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/rate/</id>
@@ -136,7 +155,7 @@
     <link href="https://rpche-6626.github.io/2025/04/21/IT/%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
     <id>https://rpche-6626.github.io/2025/04/21/IT/%E5%9F%BA%E7%A1%80%E4%BF%A1%E6%81%AF%E8%AE%BA/</id>
     <published>2025-04-20T16:00:00.000Z</published>
-    <updated>2025-04-26T16:22:44.538Z</updated>
+    <updated>2025-04-27T07:12:26.150Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇是我复习信息论的时候写的。本来想把标题取作“写给小学生看的信息论”之类的，但感觉有点怪，所以就叫做《基础信息论》了。本文的重点不是完全严格的理论叙述，所以没有取题为《信息论基础》。&lt;/p&gt;</summary>
@@ -373,24 +392,6 @@ Deep Q Learning 和 Policy Gradient 。&lt;/p&gt;</summary>
     
     
     <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>卷积神经网络的发展</title>
-    <link href="https://rpche-6626.github.io/2025/03/07/DL/CNNdev/"/>
-    <id>https://rpche-6626.github.io/2025/03/07/DL/CNNdev/</id>
-    <published>2025-03-06T16:00:00.000Z</published>
-    <updated>2025-03-07T14:56:51.596Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文梳理了 CNN 模型的发展，简要介绍了 AlexNet 、VGG Net 、Google Net
-以及 ResNet 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
     
   </entry>
   
