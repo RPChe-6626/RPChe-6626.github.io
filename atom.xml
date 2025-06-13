@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-05-25T07:55:25.495Z</updated>
+  <updated>2025-06-04T15:05:17.362Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,21 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>唯一分解整环上的多项式环</title>
-    <link href="https://rpche-6626.github.io/2025/05/25/MA/2025-05-25-%E5%94%AF%E4%B8%80%E5%88%86%E8%A7%A3%E6%95%B4%E7%8E%AF%E4%B8%8A%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF/"/>
-    <id>https://rpche-6626.github.io/2025/05/25/MA/2025-05-25-%E5%94%AF%E4%B8%80%E5%88%86%E8%A7%A3%E6%95%B4%E7%8E%AF%E4%B8%8A%E7%9A%84%E5%A4%9A%E9%A1%B9%E5%BC%8F%E7%8E%AF/</id>
-    <published>2025-05-24T16:00:00.000Z</published>
-    <updated>2025-05-25T07:55:25.495Z</updated>
+    <title>代数扩张与多项式的分裂域</title>
+    <link href="https://rpche-6626.github.io/2025/06/04/MA/2025-06-04-%E4%BB%A3%E6%95%B0%E6%89%A9%E5%BC%A0/"/>
+    <id>https://rpche-6626.github.io/2025/06/04/MA/2025-06-04-%E4%BB%A3%E6%95%B0%E6%89%A9%E5%BC%A0/</id>
+    <published>2025-06-03T16:00:00.000Z</published>
+    <updated>2025-06-04T15:05:17.362Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">
-</summary>
-        
-      
+    <summary type="html">&lt;p&gt;s&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>域上的向量空间与扩域</title>
+    <link href="https://rpche-6626.github.io/2025/05/26/MA/2025-05-26-%E5%9F%9F%E4%B8%8A%E7%9A%84%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4/"/>
+    <id>https://rpche-6626.github.io/2025/05/26/MA/2025-05-26-%E5%9F%9F%E4%B8%8A%E7%9A%84%E5%90%91%E9%87%8F%E7%A9%BA%E9%97%B4/</id>
+    <published>2025-05-25T16:00:00.000Z</published>
+    <updated>2025-06-03T17:08:22.194Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们从这里开始系统性的研究域以及域上多项式环的性质，并证明一些重要的定理。&lt;/p&gt;</summary>
     
     
     
@@ -47,10 +59,32 @@
     <link href="https://rpche-6626.github.io/2025/05/25/MA/pid/"/>
     <id>https://rpche-6626.github.io/2025/05/25/MA/pid/</id>
     <published>2025-05-24T16:00:00.000Z</published>
-    <updated>2025-05-25T08:04:02.675Z</updated>
+    <updated>2025-05-25T16:54:00.383Z</updated>
     
     
     <summary type="html">&lt;p&gt;本篇简要介绍了主理想整环与欧几里得整环。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>唯一分解整环上的多项式环</title>
+    <link href="https://rpche-6626.github.io/2025/05/25/MA/ufdpoly/"/>
+    <id>https://rpche-6626.github.io/2025/05/25/MA/ufdpoly/</id>
+    <published>2025-05-24T16:00:00.000Z</published>
+    <updated>2025-05-25T16:35:06.767Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;MATH2203
+里面只涉及了这里的一部分内容，但华师大的书上所有前置命题其实都是为证明
+UFD 上的多项式环也是 UFD
+服务的。鉴于这个命题比较优美，我们还是简单谈一下。&lt;/p&gt;</summary>
     
     
     
@@ -81,14 +115,14 @@
   </entry>
   
   <entry>
-    <title>多项式环与整环的商域</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
+    <title>环同态、素理想、极大理想与环的特征</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:03:07.704Z</updated>
+    <updated>2025-05-25T08:02:57.877Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
     
     
     
@@ -100,14 +134,14 @@
   </entry>
   
   <entry>
-    <title>环同态、素理想、极大理想与环的特征</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
+    <title>多项式环与整环的商域</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:02:57.877Z</updated>
+    <updated>2025-05-25T08:03:07.704Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
     
     
     
@@ -161,7 +195,7 @@
     <link href="https://rpche-6626.github.io/2025/04/27/IT/diff/"/>
     <id>https://rpche-6626.github.io/2025/04/27/IT/diff/</id>
     <published>2025-04-26T16:00:00.000Z</published>
-    <updated>2025-04-27T11:09:20.524Z</updated>
+    <updated>2025-06-13T10:39:53.530Z</updated>
     
     
     <summary type="html">&lt;p&gt;此处我们只是简单的将先前的概念推广到连续随机变量的情况下而已。&lt;/p&gt;</summary>
@@ -180,7 +214,7 @@
     <link href="https://rpche-6626.github.io/2025/04/23/IT/chan/"/>
     <id>https://rpche-6626.github.io/2025/04/23/IT/chan/</id>
     <published>2025-04-22T16:00:00.000Z</published>
-    <updated>2025-04-26T16:22:38.233Z</updated>
+    <updated>2025-06-13T10:42:21.704Z</updated>
     
     
     <summary type="html">&lt;p&gt;信道模型其实在信息论以外的领域不是很常见，但我认为这套理论还是相当优美的，所以我们还是谈一谈。以下我们将简要介绍信道模型与信道容量。&lt;/p&gt;</summary>
@@ -215,14 +249,14 @@
   </entry>
   
   <entry>
-    <title>马尔可夫链与法诺不等式</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/mark/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/mark/</id>
+    <title>信息熵的定义</title>
+    <link href="https://rpche-6626.github.io/2025/04/22/IT/defs/"/>
+    <id>https://rpche-6626.github.io/2025/04/22/IT/defs/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:08:45.829Z</updated>
+    <updated>2025-04-23T08:33:34.625Z</updated>
     
     
-    <summary type="html">&lt;p&gt;下面我们将简要介绍 Markov chain 与 Fano&#39;s Inequality 。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;大多数人可能会认为信息熵抽象而不明确，这的确很难避免；另一些人会认为信息熵仅是玻尔兹曼熵的推广、或者信息熵度量了信息量，这很大程度上是不对的。严格的说，信息熵的定义一方面依赖于概率论，其度量了随机变量的不确定度；另一方面则依赖于信息的编码理论。下面我们要从两个方面导出信息熵。并且如若不特别说明，我们只考虑离散的情况。&lt;/p&gt;</summary>
     
     
     
@@ -234,14 +268,14 @@
   </entry>
   
   <entry>
-    <title>信息熵的定义</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/defs/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/defs/</id>
+    <title>马尔可夫链与法诺不等式</title>
+    <link href="https://rpche-6626.github.io/2025/04/22/IT/mark/"/>
+    <id>https://rpche-6626.github.io/2025/04/22/IT/mark/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-23T08:33:34.625Z</updated>
+    <updated>2025-04-22T16:08:45.829Z</updated>
     
     
-    <summary type="html">&lt;p&gt;大多数人可能会认为信息熵抽象而不明确，这的确很难避免；另一些人会认为信息熵仅是玻尔兹曼熵的推广、或者信息熵度量了信息量，这很大程度上是不对的。严格的说，信息熵的定义一方面依赖于概率论，其度量了随机变量的不确定度；另一方面则依赖于信息的编码理论。下面我们要从两个方面导出信息熵。并且如若不特别说明，我们只考虑离散的情况。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;下面我们将简要介绍 Markov chain 与 Fano&#39;s Inequality 。&lt;/p&gt;</summary>
     
     
     
@@ -364,45 +398,6 @@ Deep Q Learning 和 Policy Gradient 。&lt;/p&gt;</summary>
     
     
     <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>3D 视觉</title>
-    <link href="https://rpche-6626.github.io/2025/04/10/DL/3DV/"/>
-    <id>https://rpche-6626.github.io/2025/04/10/DL/3DV/</id>
-    <published>2025-04-09T16:00:00.000Z</published>
-    <updated>2025-04-14T16:53:21.699Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文简要介绍了处理 3D 视觉问题的一些基本技术。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="深度学习" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>西罗定理的证明</title>
-    <link href="https://rpche-6626.github.io/2025/03/27/MA/sylow/"/>
-    <id>https://rpche-6626.github.io/2025/03/27/MA/sylow/</id>
-    <published>2025-03-26T16:00:00.000Z</published>
-    <updated>2025-04-04T10:35:45.498Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;感觉中科大那本书的证明写得有烂啊，本文主要参照了华师大版近世代数的证明。&lt;/p&gt;
-&lt;p&gt;阅读本文需要一定的群论基础。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
     
   </entry>
   
