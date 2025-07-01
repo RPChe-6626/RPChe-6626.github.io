@@ -474,7 +474,7 @@ mjx-container[display="true"] + br {
 
         <div class="statistics flex justify-around my-2.5">
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">4</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
         <div class="label text-third-text-color text-sm">标签</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
@@ -482,7 +482,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">45</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">47</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -520,6 +520,25 @@ mjx-container[display="true"] + br {
                 
                     
                     
+                         <!-- Close the previous LI if not the first item -->
+                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-12'>
+                    
+                    <a href="/2025/04/12/DL/GEN/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">生成模型：自回归模型、变分自编码器与生成对抗网络</span>
+                    </a>
+                    
+                
+                    
+                    
+                    <a href="/2025/04/12/DL/VDO/" class="block w-fit">
+                        <span class="article-title my-0.5 text-2xl">视频识别与分类</span>
+                    </a>
+                    
+                
+                    
+                    
+                        
+                            </li>
                          <!-- Close the previous LI if not the first item -->
                         <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='04-10'>
                     
@@ -607,25 +626,6 @@ mjx-container[display="true"] + br {
                     </a>
                     
                 
-                    
-                    
-                        
-                            </li>
-                         <!-- Close the previous LI if not the first item -->
-                        <li class="article-item space-y-2 px-6 pt-10 pb-2 text-xl relative border-l-2 border-border-color" date-is='03-07'>
-                    
-                    <a href="/2025/03/07/DL/CNN/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">卷积神经网络</span>
-                    </a>
-                    
-                
-                    
-                    
-                    <a href="/2025/03/07/DL/CNNdev/" class="block w-fit">
-                        <span class="article-title my-0.5 text-2xl">卷积神经网络的发展</span>
-                    </a>
-                    
-                
                 </li> <!-- Ensure the last item is properly closed -->
             </ul>
         </section>
@@ -670,11 +670,11 @@ mjx-container[display="true"] + br {
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 45 篇文章
+                        共撰写了 47 篇文章
                     </span>
                     
                         <span>
-                            共 54.8k 字
+                            共 56.8k 字
                         </span>
                     
                 </p>
@@ -930,6 +930,21 @@ mjx-container[display="true"] + br {
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
