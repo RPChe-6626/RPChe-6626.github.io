@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-07-01T16:59:36.783Z</updated>
+  <updated>2025-07-02T14:02:38.284Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,10 +21,10 @@
     <link href="https://rpche-6626.github.io/2025/07/02/NJU/concen/"/>
     <id>https://rpche-6626.github.io/2025/07/02/NJU/concen/</id>
     <published>2025-07-01T16:00:00.000Z</published>
-    <updated>2025-07-01T16:59:36.783Z</updated>
+    <updated>2025-07-02T14:02:38.284Z</updated>
     
     
-    <summary type="html">&lt;p&gt;这里面真的只有概率矩阵不等式基础，但是我确实也是第一次正经写某些
+    <summary type="html">&lt;p&gt;这里面真的只有概率集中不等式基础，但是我确实也是第一次正经写某些
 bound 。&lt;/p&gt;</summary>
     
     
@@ -288,25 +288,6 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>信息熵的定义</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/defs/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/defs/</id>
-    <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-23T08:33:34.625Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;大多数人可能会认为信息熵抽象而不明确，这的确很难避免；另一些人会认为信息熵仅是玻尔兹曼熵的推广、或者信息熵度量了信息量，这很大程度上是不对的。严格的说，信息熵的定义一方面依赖于概率论，其度量了随机变量的不确定度；另一方面则依赖于信息的编码理论。下面我们要从两个方面导出信息熵。并且如若不特别说明，我们只考虑离散的情况。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
     <title>马尔可夫链与法诺不等式</title>
     <link href="https://rpche-6626.github.io/2025/04/22/IT/mark/"/>
     <id>https://rpche-6626.github.io/2025/04/22/IT/mark/</id>
@@ -326,14 +307,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>熵的性质</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/prop/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/prop/</id>
+    <title>熵率</title>
+    <link href="https://rpche-6626.github.io/2025/04/22/IT/rate/"/>
+    <id>https://rpche-6626.github.io/2025/04/22/IT/rate/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:08:51.267Z</updated>
+    <updated>2025-04-25T07:16:33.426Z</updated>
     
     
-    <summary type="html">&lt;p&gt;熵有一些显然的性质，例如其是凹函数，这里就不赘述了。下面我们将定义一些其它种类的熵，并介绍其性质。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;熵率是要探讨信源编码的长期平均速率的极限。现在我们先要复习一些概率论基础，我本来是不想在这边写这些的，但是我没单独写概率论，所以还是提一下。以后的内容均在一定程度上依赖于基础实分析。&lt;/p&gt;</summary>
     
     
     
@@ -345,14 +326,33 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>熵率</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/rate/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/rate/</id>
+    <title>信息熵的定义</title>
+    <link href="https://rpche-6626.github.io/2025/04/22/IT/defs/"/>
+    <id>https://rpche-6626.github.io/2025/04/22/IT/defs/</id>
     <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-25T07:16:33.426Z</updated>
+    <updated>2025-04-23T08:33:34.625Z</updated>
     
     
-    <summary type="html">&lt;p&gt;熵率是要探讨信源编码的长期平均速率的极限。现在我们先要复习一些概率论基础，我本来是不想在这边写这些的，但是我没单独写概率论，所以还是提一下。以后的内容均在一定程度上依赖于基础实分析。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;大多数人可能会认为信息熵抽象而不明确，这的确很难避免；另一些人会认为信息熵仅是玻尔兹曼熵的推广、或者信息熵度量了信息量，这很大程度上是不对的。严格的说，信息熵的定义一方面依赖于概率论，其度量了随机变量的不确定度；另一方面则依赖于信息的编码理论。下面我们要从两个方面导出信息熵。并且如若不特别说明，我们只考虑离散的情况。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>熵的性质</title>
+    <link href="https://rpche-6626.github.io/2025/04/22/IT/prop/"/>
+    <id>https://rpche-6626.github.io/2025/04/22/IT/prop/</id>
+    <published>2025-04-21T16:00:00.000Z</published>
+    <updated>2025-04-22T16:08:51.267Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;熵有一些显然的性质，例如其是凹函数，这里就不赘述了。下面我们将定义一些其它种类的熵，并介绍其性质。&lt;/p&gt;</summary>
     
     
     
