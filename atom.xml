@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-07-10T18:12:40.559Z</updated>
+  <updated>2025-07-14T13:13:56.054Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,10 +21,13 @@
     <link href="https://rpche-6626.github.io/2025/07/11/NJU/linear/"/>
     <id>https://rpche-6626.github.io/2025/07/11/NJU/linear/</id>
     <published>2025-07-10T16:00:00.000Z</published>
-    <updated>2025-07-10T18:12:40.559Z</updated>
+    <updated>2025-07-14T13:13:56.054Z</updated>
     
     
-    <summary type="html">&lt;p&gt;随机数值线性代数看起来不是一个很经典的方向，但是里面的理论还是相当有趣且深刻的，我们将会在这里介绍一些基本的内容。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;随机数值线性代数看起来不是一个很经典的方向，但是里面的理论还是相当有趣且深刻的，我们将会在这里介绍一些基本的内容。&lt;/p&gt;
+&lt;p&gt;特别的，由于这是一个新兴的方向，lecture
+里面的结果都是离现在较近的，且带有一定的综述性质。另外出于时间上的问题，lecture
+跳过了部分引理的证明。&lt;/p&gt;</summary>
     
     
     
@@ -40,7 +43,7 @@
     <link href="https://rpche-6626.github.io/2025/07/08/NJU/hash/"/>
     <id>https://rpche-6626.github.io/2025/07/08/NJU/hash/</id>
     <published>2025-07-07T16:00:00.000Z</published>
-    <updated>2025-07-10T18:12:42.383Z</updated>
+    <updated>2025-07-13T07:46:11.889Z</updated>
     
     
     <summary type="html">&lt;p&gt;尽管 lecture
@@ -195,25 +198,6 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>多项式环与整环的商域</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
-    <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:03:07.704Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>环同态、素理想、极大理想与环的特征</title>
     <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
     <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
@@ -241,6 +225,25 @@ UFD 上的多项式环也是 UFD
     
     
     <summary type="html">&lt;p&gt;总体来说，环和域是描述运算和多项式的工具。我们知道，群是一个相对简单的结构，和我们实际上使用的代数结构，例如实数和多项式，是有区别的，而对这些对象的抽象就是环和域。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多项式环与整环的商域</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
+    <published>2025-05-22T16:00:00.000Z</published>
+    <updated>2025-05-25T08:03:07.704Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
     
     
     
