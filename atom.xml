@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-07-14T15:13:19.579Z</updated>
+  <updated>2025-07-14T15:20:31.849Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,11 +21,12 @@
     <link href="https://rpche-6626.github.io/2025/07/14/NJU/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E%E3%80%902025%E3%80%91/"/>
     <id>https://rpche-6626.github.io/2025/07/14/NJU/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E%E3%80%902025%E3%80%91/</id>
     <published>2025-07-13T16:00:00.000Z</published>
-    <updated>2025-07-14T15:13:19.579Z</updated>
+    <updated>2025-07-14T15:20:31.849Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本人参加了南京大学举办的计算理论之美 2025
-暑期讲习班。总体来说，讲课内容还是相当有趣的，于是在这里挑了一部分记录了下来。本次讲习班有
+    <summary type="html">&lt;p&gt;本人参加了南京大学举办的 &lt;a class=&quot;link&quot; href=&quot;https://tcs.nju.edu.cn/wiki/index.php?title=计算理论之美_(Summer_2025)&quot;&gt;计算理论之美
+2025 暑期讲习班&lt;i class=&quot;fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+。总体来说，讲课内容还是相当有趣的，于是在这里挑了一部分记录了下来。本次讲习班有
 7
 个专题，其中次模函数没有接触过、LLM理论没咋听、分布式计算不太感兴趣，所以这几个部分没有写。其余的随机算法、哈希设计、概率集中不等式与随机数值线性代数则分别写了一些比较基本的部分。&lt;/p&gt;</summary>
     
@@ -239,14 +240,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>环、域、理想与商环</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/ring/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/ring/</id>
+    <title>环同态、素理想、极大理想与环的特征</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-23T07:55:48.078Z</updated>
+    <updated>2025-05-25T08:02:57.877Z</updated>
     
     
-    <summary type="html">&lt;p&gt;总体来说，环和域是描述运算和多项式的工具。我们知道，群是一个相对简单的结构，和我们实际上使用的代数结构，例如实数和多项式，是有区别的，而对这些对象的抽象就是环和域。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
     
     
     
@@ -258,14 +259,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>环同态、素理想、极大理想与环的特征</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
+    <title>环、域、理想与商环</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/ring/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/ring/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:02:57.877Z</updated>
+    <updated>2025-05-23T07:55:48.078Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;总体来说，环和域是描述运算和多项式的工具。我们知道，群是一个相对简单的结构，和我们实际上使用的代数结构，例如实数和多项式，是有区别的，而对这些对象的抽象就是环和域。&lt;/p&gt;</summary>
     
     
     
