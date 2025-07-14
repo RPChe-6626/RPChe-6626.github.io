@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-07-14T13:13:56.054Z</updated>
+  <updated>2025-07-14T15:13:19.579Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>计算理论之美【2025】</title>
+    <link href="https://rpche-6626.github.io/2025/07/14/NJU/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E%E3%80%902025%E3%80%91/"/>
+    <id>https://rpche-6626.github.io/2025/07/14/NJU/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E%E3%80%902025%E3%80%91/</id>
+    <published>2025-07-13T16:00:00.000Z</published>
+    <updated>2025-07-14T15:13:19.579Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本人参加了南京大学举办的计算理论之美 2025
+暑期讲习班。总体来说，讲课内容还是相当有趣的，于是在这里挑了一部分记录了下来。本次讲习班有
+7
+个专题，其中次模函数没有接触过、LLM理论没咋听、分布式计算不太感兴趣，所以这几个部分没有写。其余的随机算法、哈希设计、概率集中不等式与随机数值线性代数则分别写了一些比较基本的部分。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="计算理论之美" scheme="https://rpche-6626.github.io/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>随机数值线性代数</title>
     <link href="https://rpche-6626.github.io/2025/07/11/NJU/linear/"/>
     <id>https://rpche-6626.github.io/2025/07/11/NJU/linear/</id>
     <published>2025-07-10T16:00:00.000Z</published>
-    <updated>2025-07-14T13:13:56.054Z</updated>
+    <updated>2025-07-14T15:12:18.070Z</updated>
     
     
     <summary type="html">&lt;p&gt;随机数值线性代数看起来不是一个很经典的方向，但是里面的理论还是相当有趣且深刻的，我们将会在这里介绍一些基本的内容。&lt;/p&gt;
@@ -198,14 +220,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>环同态、素理想、极大理想与环的特征</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
+    <title>多项式环与整环的商域</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:02:57.877Z</updated>
+    <updated>2025-05-25T08:03:07.704Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
     
     
     
@@ -236,14 +258,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>多项式环与整环的商域</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
+    <title>环同态、素理想、极大理想与环的特征</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:03:07.704Z</updated>
+    <updated>2025-05-25T08:02:57.877Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
     
     
     
@@ -359,25 +381,6 @@ UFD 上的多项式环也是 UFD
     
     
     <summary type="html">&lt;p&gt;下面我们将简要介绍 Markov chain 与 Fano&#39;s Inequality 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>熵率</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/rate/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/rate/</id>
-    <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-25T07:16:33.426Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;熵率是要探讨信源编码的长期平均速率的极限。现在我们先要复习一些概率论基础，我本来是不想在这边写这些的，但是我没单独写概率论，所以还是提一下。以后的内容均在一定程度上依赖于基础实分析。&lt;/p&gt;</summary>
     
     
     
