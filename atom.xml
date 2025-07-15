@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-07-14T15:20:31.849Z</updated>
+  <updated>2025-07-15T18:08:07.387Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>拉格朗日条件</title>
+    <link href="https://rpche-6626.github.io/2025/07/15/OPT/lag/"/>
+    <id>https://rpche-6626.github.io/2025/07/15/OPT/lag/</id>
+    <published>2025-07-14T16:00:00.000Z</published>
+    <updated>2025-07-15T18:08:07.387Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;我们将在这里尽量详细的介绍 Lagrangian 、KKT condition 与 Lagrange
+dual 。我会尽量以符合直观，并且严谨的方式来写。&lt;/p&gt;
+&lt;p&gt;特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>计算理论之美【2025】</title>
@@ -221,14 +242,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>多项式环与整环的商域</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
+    <title>环同态、素理想、极大理想与环的特征</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:03:07.704Z</updated>
+    <updated>2025-05-25T08:02:57.877Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
     
     
     
@@ -240,14 +261,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>环同态、素理想、极大理想与环的特征</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
+    <title>多项式环与整环的商域</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/poly/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/poly/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:02:57.877Z</updated>
+    <updated>2025-05-25T08:03:07.704Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇介绍了环的扩张定理，并严格的定义了多项式环与整环的商域。&lt;/p&gt;</summary>
     
     
     
@@ -382,25 +403,6 @@ UFD 上的多项式环也是 UFD
     
     
     <summary type="html">&lt;p&gt;下面我们将简要介绍 Markov chain 与 Fano&#39;s Inequality 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>熵的性质</title>
-    <link href="https://rpche-6626.github.io/2025/04/22/IT/prop/"/>
-    <id>https://rpche-6626.github.io/2025/04/22/IT/prop/</id>
-    <published>2025-04-21T16:00:00.000Z</published>
-    <updated>2025-04-22T16:08:51.267Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;熵有一些显然的性质，例如其是凹函数，这里就不赘述了。下面我们将定义一些其它种类的熵，并介绍其性质。&lt;/p&gt;</summary>
     
     
     
