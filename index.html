@@ -576,7 +576,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">51</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -614,7 +614,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">51</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">54</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -1045,16 +1045,234 @@ Johnson 的 slides 上蒯的。
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2025/07/15/OPT/lag/">
-                            拉格朗日法
+                        <a href="/2025/07/20/OPT/lagd/">
+                            拉格朗日对偶性
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             <p>
-我们将在这里尽量详细的介绍 Lagrangian 、KKT condition 与 Lagrange dual
-。我会尽量以符合直观，并且严谨的方式来写。
+从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。
+</p>
+<p>
+特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。
+</p>
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jul 20 2025 00:00:00 GMT+0800">
+                
+                    2025-07-20
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">最优化方法</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/07/20/OPT/lagd/">阅读全文<span class="seo-reader-text">拉格朗日对偶性</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">
+                            浅谈最优化方法
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            <p>
+最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。
+</p>
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Jul 20 2025 00:00:00 GMT+0800">
+                
+                    2025-07-20
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">最优化方法</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">阅读全文<span class="seo-reader-text">浅谈最优化方法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/07/18/OPT/kkt/">
+                            不等式约束优化问题的KKT条件
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            <p>
+我们将在这里尽量详细的介绍不等式约束优化问题的 KKT condition
+，我会尽量以符合直观，并且严谨的方式来写。
+</p>
+<p>
+特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。
+</p>
+
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Fri Jul 18 2025 00:00:00 GMT+0800">
+                
+                    2025-07-18
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">最优化方法</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/07/18/OPT/kkt/">阅读全文<span class="seo-reader-text">不等式约束优化问题的KKT条件</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/07/15/OPT/lag/">
+                            等式约束优化问题的拉格朗日条件
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            <p>
+我们将在这里尽量详细的介绍等式约束优化问题的 Lagrange condition
+，我会尽量以符合直观，并且严谨的方式来写。
 </p>
 <p>
 特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。
@@ -1104,225 +1322,7 @@ Johnson 的 slides 上蒯的。
         
     </div>
 
-    <a href="/2025/07/15/OPT/lag/">阅读全文<span class="seo-reader-text">拉格朗日法</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/07/11/NJU/linear/">
-                            随机数值线性代数
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>
-随机数值线性代数看起来不是一个很经典的方向，但是里面的理论还是相当有趣且深刻的，我们将会在这里介绍一些基本的内容。
-</p>
-<p>
-特别的，由于这是一个新兴的方向，lecture
-里面的结果都是离现在较近的，且带有一定的综述性质。另外出于时间上的问题，lecture
-跳过了部分引理的证明。
-</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Jul 11 2025 00:00:00 GMT+0800">
-                
-                    2025-07-11
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/">计算理论之美</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/07/11/NJU/linear/">阅读全文<span class="seo-reader-text">随机数值线性代数</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/07/08/NJU/hash/">
-                            浅谈现代哈希设计
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>
-尽管 lecture
-里面其实介绍了非常现代的哈希表设计思想，但我在这里应该只会介绍一些基本的内容，主要包括
-Universal Hashing 、Perfect Hashing ，以及可能的 Succinct Dictionary 。
-</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Jul 08 2025 00:00:00 GMT+0800">
-                
-                    2025-07-08
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/">计算理论之美</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/07/08/NJU/hash/">阅读全文<span class="seo-reader-text">浅谈现代哈希设计</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/07/02/NJU/concen/">
-                            浅谈概率集中不等式
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>
-这里面真的只有概率集中不等式基础，但是我确实也是第一次正经写某些 bound
-。
-</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Wed Jul 02 2025 00:00:00 GMT+0800">
-                
-                    2025-07-02
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/">计算理论之美</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/07/02/NJU/concen/">阅读全文<span class="seo-reader-text">浅谈概率集中不等式</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2025/07/15/OPT/lag/">阅读全文<span class="seo-reader-text">等式约束优化问题的拉格朗日条件</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -1358,11 +1358,11 @@ Universal Hashing 、Perfect Hashing ，以及可能的 Succinct Dictionary 。
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 51 篇文章
+                        共撰写了 54 篇文章
                     </span>
                     
                         <span>
-                            共 63.2k 字
+                            共 64k 字
                         </span>
                     
                 </p>
