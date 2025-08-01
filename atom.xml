@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-08-01T14:51:07.919Z</updated>
+  <updated>2025-08-01T16:57:24.839Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,22 +17,27 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Flow and Diffusion Models</title>
-    <link href="https://rpche-6626.github.io/2025/07/26/DF/model/"/>
-    <id>https://rpche-6626.github.io/2025/07/26/DF/model/</id>
-    <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-08-01T14:51:07.919Z</updated>
+    <title>构建训练目标</title>
+    <link href="https://rpche-6626.github.io/2025/08/02/DF/target/"/>
+    <id>https://rpche-6626.github.io/2025/08/02/DF/target/</id>
+    <published>2025-08-01T16:00:00.000Z</published>
+    <updated>2025-08-01T16:57:24.839Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文我们主要从微分方程的角度介绍了 Flow models 与 Diffusion models
-的建模，并没有涉及后者的物理背景。&lt;/p&gt;</summary>
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在严格的构建了 Flow models 和 Diffusion</summary>
+        
+      
     
     
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="MIT6.S184" scheme="https://rpche-6626.github.io/tags/MIT6-S184/"/>
+    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
     
   </entry>
   
@@ -41,7 +46,7 @@
     <link href="https://rpche-6626.github.io/2025/07/26/DF/%E6%B5%81%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/"/>
     <id>https://rpche-6626.github.io/2025/07/26/DF/%E6%B5%81%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/</id>
     <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-07-26T08:07:06.284Z</updated>
+    <updated>2025-08-01T16:53:51.593Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文是对着 MIT6.S184: Generative AI with Stochastic Differential
@@ -55,28 +60,27 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="MIT6.S184" scheme="https://rpche-6626.github.io/tags/MIT6-S184/"/>
+    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
     
   </entry>
   
   <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
-    <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-07-20T16:15:46.269Z</updated>
+    <title>Flow and Diffusion Models</title>
+    <link href="https://rpche-6626.github.io/2025/07/26/DF/model/"/>
+    <id>https://rpche-6626.github.io/2025/07/26/DF/model/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-08-01T16:54:16.309Z</updated>
     
     
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;
-&lt;p&gt;特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文我们主要从微分方程的角度介绍了 Flow models 与 Diffusion models
+的建模，并没有涉及后者的物理背景。&lt;/p&gt;</summary>
     
     
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
     
   </entry>
   
@@ -89,6 +93,27 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
     
     
     <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>拉格朗日对偶性</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
+    <published>2025-07-19T16:00:00.000Z</published>
+    <updated>2025-08-01T16:51:34.329Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;
+&lt;p&gt;特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
     
     
     
@@ -365,25 +390,6 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>环、域、理想与商环</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/ring/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/ring/</id>
-    <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-23T07:55:48.078Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;总体来说，环和域是描述运算和多项式的工具。我们知道，群是一个相对简单的结构，和我们实际上使用的代数结构，例如实数和多项式，是有区别的，而对这些对象的抽象就是环和域。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>环同态、素理想、极大理想与环的特征</title>
     <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
     <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
@@ -403,14 +409,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>浅谈近世代数</title>
-    <link href="https://rpche-6626.github.io/2025/05/19/MA/%E6%B5%85%E8%B0%88%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
-    <id>https://rpche-6626.github.io/2025/05/19/MA/%E6%B5%85%E8%B0%88%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/</id>
-    <published>2025-05-18T16:00:00.000Z</published>
-    <updated>2025-06-16T08:21:09.978Z</updated>
+    <title>环、域、理想与商环</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/ring/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/ring/</id>
+    <published>2025-05-22T16:00:00.000Z</published>
+    <updated>2025-05-23T07:55:48.078Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文是我复习近世代数的时候写的，其中略过了讲群的部分，因为虽然我还不熟悉每个定理的证明，但这些理论的脉络和直观是较为明晰的。本文的主题将是环和域的理论，加上有限群的西罗定理的证明。另外由于本人很可能没有精力去深究每个部分的详细证明，我们会侧重于更重要的理论框架。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;总体来说，环和域是描述运算和多项式的工具。我们知道，群是一个相对简单的结构，和我们实际上使用的代数结构，例如实数和多项式，是有区别的，而对这些对象的抽象就是环和域。&lt;/p&gt;</summary>
     
     
     
