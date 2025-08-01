@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-07-20T16:03:56.864Z</updated>
+  <updated>2025-08-01T14:51:07.919Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,21 +17,45 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
-    <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-07-20T16:03:56.864Z</updated>
+    <title>Flow and Diffusion Models</title>
+    <link href="https://rpche-6626.github.io/2025/07/26/DF/model/"/>
+    <id>https://rpche-6626.github.io/2025/07/26/DF/model/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-08-01T14:51:07.919Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文我们主要从微分方程的角度介绍了 Flow models 与 Diffusion models
+的建模，并没有涉及后者的物理背景。&lt;/p&gt;</summary>
     
     
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <category term="MIT6.S184" scheme="https://rpche-6626.github.io/tags/MIT6-S184/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Introduction to Flow Matching and Diffusion Models</title>
+    <link href="https://rpche-6626.github.io/2025/07/26/DF/%E6%B5%81%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://rpche-6626.github.io/2025/07/26/DF/%E6%B5%81%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/</id>
+    <published>2025-07-25T16:00:00.000Z</published>
+    <updated>2025-07-26T08:07:06.284Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文是对着 MIT6.S184: Generative AI with Stochastic Differential
+Equations
+写的。其实我很早以前就想正经学点生成模型了，但是一直苦于找不到好的资源。这次有幸找到了
+MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
+&lt;p&gt;特别的，本人此前并没有系统性的学过微分方程，物理也学得不好，所以本文中我们可能会跳过一部分引理的证明。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="MIT6.S184" scheme="https://rpche-6626.github.io/tags/MIT6-S184/"/>
     
   </entry>
   
@@ -46,6 +70,25 @@
     <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
 基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;
 &lt;p&gt;特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈最优化方法</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
+    <published>2025-07-19T16:00:00.000Z</published>
+    <updated>2025-07-20T16:03:56.864Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。&lt;/p&gt;</summary>
     
     
     
@@ -322,14 +365,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>环同态、素理想、极大理想与环的特征</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
+    <title>环、域、理想与商环</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/ring/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/ring/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-25T08:02:57.877Z</updated>
+    <updated>2025-05-23T07:55:48.078Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;总体来说，环和域是描述运算和多项式的工具。我们知道，群是一个相对简单的结构，和我们实际上使用的代数结构，例如实数和多项式，是有区别的，而对这些对象的抽象就是环和域。&lt;/p&gt;</summary>
     
     
     
@@ -341,14 +384,14 @@ UFD 上的多项式环也是 UFD
   </entry>
   
   <entry>
-    <title>环、域、理想与商环</title>
-    <link href="https://rpche-6626.github.io/2025/05/23/MA/ring/"/>
-    <id>https://rpche-6626.github.io/2025/05/23/MA/ring/</id>
+    <title>环同态、素理想、极大理想与环的特征</title>
+    <link href="https://rpche-6626.github.io/2025/05/23/MA/rhomo/"/>
+    <id>https://rpche-6626.github.io/2025/05/23/MA/rhomo/</id>
     <published>2025-05-22T16:00:00.000Z</published>
-    <updated>2025-05-23T07:55:48.078Z</updated>
+    <updated>2025-05-25T08:02:57.877Z</updated>
     
     
-    <summary type="html">&lt;p&gt;总体来说，环和域是描述运算和多项式的工具。我们知道，群是一个相对简单的结构，和我们实际上使用的代数结构，例如实数和多项式，是有区别的，而对这些对象的抽象就是环和域。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本篇进一步讨论了一些环的性质。&lt;/p&gt;</summary>
     
     
     
@@ -375,44 +418,6 @@ UFD 上的多项式环也是 UFD
     
     
     <category term="近世代数" scheme="https://rpche-6626.github.io/tags/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微分熵</title>
-    <link href="https://rpche-6626.github.io/2025/04/27/IT/diff/"/>
-    <id>https://rpche-6626.github.io/2025/04/27/IT/diff/</id>
-    <published>2025-04-26T16:00:00.000Z</published>
-    <updated>2025-06-13T10:39:53.530Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;此处我们只是简单的将先前的概念推广到连续随机变量的情况下而已。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>信道模型与信道容量</title>
-    <link href="https://rpche-6626.github.io/2025/04/23/IT/chan/"/>
-    <id>https://rpche-6626.github.io/2025/04/23/IT/chan/</id>
-    <published>2025-04-22T16:00:00.000Z</published>
-    <updated>2025-06-13T10:42:21.704Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;信道模型其实在信息论以外的领域不是很常见，但我认为这套理论还是相当优美的，所以我们还是谈一谈。以下我们将简要介绍信道模型与信道容量。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="信息论" scheme="https://rpche-6626.github.io/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/"/>
     
   </entry>
   
