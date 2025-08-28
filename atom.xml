@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-08-27T17:52:06.224Z</updated>
+  <updated>2025-08-28T06:27:51.601Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rpche-6626.github.io/2025/08/26/DF/diffusion/"/>
     <id>https://rpche-6626.github.io/2025/08/26/DF/diffusion/</id>
     <published>2025-08-25T16:00:00.000Z</published>
-    <updated>2025-08-27T17:52:06.224Z</updated>
+    <updated>2025-08-28T06:27:51.601Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文通过之前的结果构建了广泛的扩散模型的范式，并详细介绍了扩散模型的框架，训练目标的构建，以及训练过程。&lt;/p&gt;</summary>
@@ -40,7 +40,7 @@
     <link href="https://rpche-6626.github.io/2025/08/24/DF/fpe/"/>
     <id>https://rpche-6626.github.io/2025/08/24/DF/fpe/</id>
     <published>2025-08-23T16:00:00.000Z</published>
-    <updated>2025-08-26T10:08:41.057Z</updated>
+    <updated>2025-08-28T06:27:32.145Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文简略的介绍了物理上的扩散过程以及描述扩散分布演化的关键的
@@ -60,7 +60,7 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
     <link href="https://rpche-6626.github.io/2025/08/21/DF/sde/"/>
     <id>https://rpche-6626.github.io/2025/08/21/DF/sde/</id>
     <published>2025-08-20T16:00:00.000Z</published>
-    <updated>2025-08-25T18:44:14.543Z</updated>
+    <updated>2025-08-28T06:27:12.333Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文的目标是从较为严格的角度提供随机微分方程的定义，使得我们可以定义后续的扩散模型。限于篇幅和本人的数学水平，本文跳过了大部分证明。&lt;/p&gt;</summary>
@@ -79,7 +79,7 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
     <link href="https://rpche-6626.github.io/2025/08/12/DF/flow/"/>
     <id>https://rpche-6626.github.io/2025/08/12/DF/flow/</id>
     <published>2025-08-11T16:00:00.000Z</published>
-    <updated>2025-08-27T15:02:02.573Z</updated>
+    <updated>2025-08-28T06:27:46.532Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文中我们将简要介绍一般生成模型的范式，并详细的介绍流模型的框架和训练目标的构建。&lt;/p&gt;</summary>
@@ -98,7 +98,7 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
     <link href="https://rpche-6626.github.io/2025/08/09/DF/fluid/"/>
     <id>https://rpche-6626.github.io/2025/08/09/DF/fluid/</id>
     <published>2025-08-08T16:00:00.000Z</published>
-    <updated>2025-08-25T16:52:55.080Z</updated>
+    <updated>2025-08-28T06:27:41.944Z</updated>
     
     
     <summary type="html">&lt;p&gt;我本来以为这门课很快可以结束的，但是其中实在是有太多我没有学过的东西了。因此，为了严谨性和直观性，我们还是要特别的谈点物理基础。&lt;/p&gt;</summary>
@@ -136,16 +136,14 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
+    <title>浅谈最优化方法</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-08-01T16:51:34.329Z</updated>
+    <updated>2025-07-20T16:03:56.864Z</updated>
     
     
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;
-&lt;p&gt;特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。&lt;/p&gt;</summary>
     
     
     
@@ -157,14 +155,16 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
+    <title>拉格朗日对偶性</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-07-20T16:03:56.864Z</updated>
+    <updated>2025-08-01T16:51:34.329Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;
+&lt;p&gt;特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
     
     
     
