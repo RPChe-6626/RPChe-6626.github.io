@@ -103,7 +103,8 @@
     
     
     
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -215,8 +216,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-</head>
+</style></head>
 
 
 
@@ -576,7 +576,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">61</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">65</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -614,7 +614,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">61</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">65</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -723,7 +723,7 @@ MIT 的这门课，就作为一个引子好了。
                     <div class="home-article-content markdown-body">
                         
                             <p>
-最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。
+最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。
 </p>
 
                         
@@ -1081,13 +1081,8 @@ Johnson 的 slides 上蒯的。
                     <div class="home-article-content markdown-body">
                         
                             <p>
-实在找不到什么好的资料，于是就自己来写一个吧。
-</p>
-<p>
-本文将从基础开始介绍机器学习的算法。
-</p>
-<p>
-想想还是算了，学到什么写什么得了。你实在是很难在基础的ML课找到什么正经讲理论的东西。
+交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
+的重新摘要。总的来说，本文将按照一定的脉络尽量严格的介绍传统机器学习方法，并尽量避免如同其它大部分资料一般的感性与杂乱。
 </p>
 
                         
@@ -1191,15 +1186,15 @@ Johnson 的 slides 上蒯的。
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2025/08/29/DF/imgen/">
-                            Instance：Image Generators
+                        <a href="/2025/09/23/ML/svm/">
+                            Support Vector Machine and Kernels
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             <p>
-通过先前的章节，我们已经基本清楚的介绍了流模型和扩散模型的理论框架。本文将侧重于生成模型在图像生成方面的应用，简要的介绍如何实现带有要求的指向（条件）生成，具体神经网络架构的设计，并分析几个现代的大型生成模型的实例。
+sss
 </p>
 
                         
@@ -1208,9 +1203,9 @@ Johnson 的 slides 上蒯的。
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Fri Aug 29 2025 00:00:00 GMT+0800">
+            <span class="home-article-date" data-date="Tue Sep 23 2025 00:00:00 GMT+0800">
                 
-                    2025-08-29
+                    2025-09-23
                 
             </span>
         </span>
@@ -1238,7 +1233,7 @@ Johnson 的 slides 上蒯的。
                     
                         <li>
                             
-                            <a href="/tags/MIT6-S184-Generative-models/">MIT6.S184 Generative models</a>&nbsp;
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -1246,7 +1241,7 @@ Johnson 的 slides 上蒯的。
         
     </div>
 
-    <a href="/2025/08/29/DF/imgen/">阅读全文<span class="seo-reader-text">Instance：Image Generators</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2025/09/23/ML/svm/">阅读全文<span class="seo-reader-text">Support Vector Machine and Kernels</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -1261,15 +1256,16 @@ Johnson 的 slides 上蒯的。
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2025/08/26/DF/diffusion/">
-                            Diffusion Models
+                        <a href="/2025/09/21/ML/gen/">
+                            Generative Learning Algorithms
                         </a>
                     </h3>
 
                     <div class="home-article-content markdown-body">
                         
                             <p>
-本文通过之前的结果构建了广泛的扩散模型的范式，并详细介绍了扩散模型的框架，训练目标的构建，以及训练过程。
+本文介绍了与先前的判别式算法不同的生成式算法，特别是 Gaussian
+Discriminant Analysis 和 Naive Bayes 。
 </p>
 
                         
@@ -1278,9 +1274,9 @@ Johnson 的 slides 上蒯的。
                     <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
         <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Aug 26 2025 00:00:00 GMT+0800">
+            <span class="home-article-date" data-date="Sun Sep 21 2025 00:00:00 GMT+0800">
                 
-                    2025-08-26
+                    2025-09-21
                 
             </span>
         </span>
@@ -1308,7 +1304,7 @@ Johnson 的 slides 上蒯的。
                     
                         <li>
                             
-                            <a href="/tags/MIT6-S184-Generative-models/">MIT6.S184 Generative models</a>&nbsp;
+                            <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>&nbsp;
                         </li>
                     
                 </ul>
@@ -1316,7 +1312,7 @@ Johnson 的 slides 上蒯的。
         
     </div>
 
-    <a href="/2025/08/26/DF/diffusion/">阅读全文<span class="seo-reader-text">Diffusion Models</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+    <a href="/2025/09/21/ML/gen/">阅读全文<span class="seo-reader-text">Generative Learning Algorithms</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
                 </div>
@@ -1352,11 +1348,11 @@ Johnson 的 slides 上蒯的。
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 61 篇文章
+                        共撰写了 65 篇文章
                     </span>
                     
                         <span>
-                            共 74.1k 字
+                            共 79.9k 字
                         </span>
                     
                 </p>

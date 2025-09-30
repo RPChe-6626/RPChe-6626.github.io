@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rpche-6626.github.io/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-02-24T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-30T11:24:13.115Z">
+<meta property="article:modified_time" content="2025-09-22T12:33:08.386Z">
 <meta property="article:author" content="RPChe_">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,8 @@
     
     
     
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -217,8 +218,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-</head>
+</style></head>
 
 
 
@@ -484,7 +484,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">61</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">65</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -533,8 +533,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-06-30 19:24:13</span>
-            <span class="mobile">2025-06-30 19:24:13</span>
+            <span class="desktop">2025-09-22 20:33:08</span>
+            <span class="mobile">2025-09-22 20:33:08</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -572,7 +572,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>148 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>197 字</span>
         </span>
     
     
@@ -596,19 +596,26 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>实在找不到什么好的资料，于是就自己来写一个吧。</p>
-<p>本文将从基础开始介绍机器学习的算法。</p>
-<p>想想还是算了，学到什么写什么得了。你实在是很难在基础的ML课找到什么正经讲理论的东西。</p>
+			<p>交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
+的重新摘要。总的来说，本文将按照一定的脉络尽量严格的介绍传统机器学习方法，并尽量避免如同其它大部分资料一般的感性与杂乱。</p>
 <span id="more"></span>
 <p>本文被拆分为了多篇，本篇为全文的目录。</p>
 <h1 id="目录">目录</h1>
 <ol type="1">
+<li><p><a href="\2025\09\17\ML\linear">Linear Regression</a></p>
+<p>本文介绍了一些基本的术语，以及线性回归与 Locally Weighted Linear
+Regression 。</p></li>
+<li><p><a href="\2025\09\18\ML\logi">Logistic Regression and Generalized
+Linear Models</a></p>
+<p>本文继续介绍了 Logistic Regression 与 Generalized Linear Models
+。</p></li>
+<li><p><a href="\2025\09\21\ML\gen">Generative Learning
+Algorithms</a></p>
+<p>本文介绍了与先前的判别式算法不同的生成式算法，特别是 Gaussian
+Discriminant Analysis 和 Naive Bayes 。</p></li>
 <li><p><a href="\2025\02\25\ML\SVM">支持向量机</a></p>
 <p>介绍了基本的 SVM 模型，包括 Hard/Soft/Multi Class SVM 以及 Kernel
 Trick 。</p></li>
-<li><p><a href="\2025\03\24\ML\NB&amp;LR">贝叶斯方法与逻辑回归</a></p>
-<p>简要的介绍了 Naive Bayesian Classifier 、Guassian Naive Bayes
-、Logistic Regression 等方法。</p></li>
 </ol>
 
 		</div>
@@ -624,7 +631,7 @@ Trick 。</p></li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-06-30 19:24:13
+                    :</strong> 2025-09-22 20:33:08
             </li>
         
         <li>
@@ -662,27 +669,27 @@ Trick 。</p></li>
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/03/24/ML/NB&LR/" title="贝叶斯方法与逻辑回归" rel="bookmark">
-  <img src="/images/hw.png" alt="贝叶斯方法与逻辑回归" class="!max-w-none">
-  <span class="title">贝叶斯方法与逻辑回归</span>
-</a><a class="recommended-article-item" href="/2024/02/25/ML/SVM/" title="支持向量机" rel="bookmark">
-  <img src="/images/hw.png" alt="支持向量机" class="!max-w-none">
-  <span class="title">支持向量机</span>
-</a><a class="recommended-article-item" href="/2025/07/26/DF/流匹配与扩散模型/" title="Introduction to Flow Matching and Diffusion Models" rel="bookmark">
-  <img src="/images/hw.png" alt="Introduction to Flow Matching and Diffusion Models" class="!max-w-none">
-  <span class="title">Introduction to Flow Matching and Diffusion Models</span>
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/09/18/ML/logi/" title="Logistic Regression and Generalized Linear Models" rel="bookmark">
+  <img src="/images/hw.png" alt="Logistic Regression and Generalized Linear Models" class="!max-w-none">
+  <span class="title">Logistic Regression and Generalized Linear Models</span>
+</a><a class="recommended-article-item" href="/2025/09/17/ML/linear/" title="Linear Regression" rel="bookmark">
+  <img src="/images/hw.png" alt="Linear Regression" class="!max-w-none">
+  <span class="title">Linear Regression</span>
+</a><a class="recommended-article-item" href="/2025/09/21/ML/gen/" title="Generative Learning Algorithms" rel="bookmark">
+  <img src="/images/hw.png" alt="Generative Learning Algorithms" class="!max-w-none">
+  <span class="title">Generative Learning Algorithms</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/03/24/ML/NB&LR/" title="贝叶斯方法与逻辑回归" rel="bookmark">
-  <img src="/images/hw.png" alt="贝叶斯方法与逻辑回归" class="!max-w-none">
-  <span class="title">贝叶斯方法与逻辑回归</span>
-</a><a class="recommended-article-item" href="/2024/02/25/ML/SVM/" title="支持向量机" rel="bookmark">
-  <img src="/images/hw.png" alt="支持向量机" class="!max-w-none">
-  <span class="title">支持向量机</span>
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/09/18/ML/logi/" title="Logistic Regression and Generalized Linear Models" rel="bookmark">
+  <img src="/images/hw.png" alt="Logistic Regression and Generalized Linear Models" class="!max-w-none">
+  <span class="title">Logistic Regression and Generalized Linear Models</span>
+</a><a class="recommended-article-item" href="/2025/09/17/ML/linear/" title="Linear Regression" rel="bookmark">
+  <img src="/images/hw.png" alt="Linear Regression" class="!max-w-none">
+  <span class="title">Linear Regression</span>
 </a></div>
    </div>
   </div>
@@ -809,11 +816,11 @@ Trick 。</p></li>
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 61 篇文章
+                        共撰写了 65 篇文章
                     </span>
                     
                         <span>
-                            共 74.1k 字
+                            共 79.9k 字
                         </span>
                     
                 </p>

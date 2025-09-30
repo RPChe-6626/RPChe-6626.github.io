@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rpche-6626.github.io/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-07-19T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-20T16:03:56.864Z">
+<meta property="article:modified_time" content="2025-09-30T14:39:53.325Z">
 <meta property="article:author" content="RPChe_">
 <meta property="article:tag" content="最优化方法">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,8 @@
     
     
     
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -217,8 +218,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-</head>
+</style></head>
 
 
 
@@ -484,7 +484,7 @@ mjx-container[display="true"] + br {
         <div class="label text-third-text-color text-sm">分类</div>
     </a>
     <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
-        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">61</div>
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">65</div>
         <div class="label text-third-text-color text-sm">文章</div>
     </a>
 </div>
@@ -533,8 +533,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-07-21 00:03:56</span>
-            <span class="mobile">2025-07-21 00:03:56</span>
+            <span class="desktop">2025-09-30 22:39:53</span>
+            <span class="mobile">2025-09-30 22:39:53</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -572,7 +572,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>339 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>340 字</span>
         </span>
     
     
@@ -596,23 +596,22 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。</p>
+			<p>最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。</p>
 <span id="more"></span>
 <p>本文将仍然采用多篇的形式，本篇是全文的目录。</p>
 <h1 id="目录">目录</h1>
 <ol type="1">
+<li><p><a href="">浅谈矩阵求导</a></p>
+<p>向量或是矩阵值的导数应该是最优化理论的前置之一，但就我所知很多地方并不会专门的介绍这部分内容。因此，为了消除歧义，我们要简要介绍这套记号。</p></li>
 <li><p><a href="\2025\07\15\OPT\lag">等式约束优化问题的拉格朗日条件</a></p>
 <p>我们将在这里尽量详细的介绍等式约束优化问题的 Lagrange condition
-，我会尽量以符合直观，并且严谨的方式来写。</p>
-<p>特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。</p></li>
+，我会尽量以符合直观，并且严谨的方式来写。</p></li>
 <li><p><a href="\2025\07\18\OPT\kkt">不等式约束优化问题的KKT条件</a></p>
 <p>我们将在这里尽量详细的介绍不等式约束优化问题的 KKT condition
-，我会尽量以符合直观，并且严谨的方式来写。</p>
-<p>特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。</p></li>
+，我会尽量以符合直观，并且严谨的方式来写。</p></li>
 <li><p><a href="\2025\07\20\OPT\lagd">拉格朗日对偶性</a></p>
 <p>从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-是理论上的层层深入，我们会逐步的介绍对优化问题更深入的刻画。</p>
-<p>特别的，阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。</p></li>
+是理论上的层层深入，我们会逐步的介绍对优化问题更深入的刻画。</p></li>
 </ol>
 
 		</div>
@@ -628,7 +627,7 @@ mjx-container[display="true"] + br {
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-07-21 00:03:56
+                    :</strong> 2025-09-30 22:39:53
             </li>
         
         <li>
@@ -666,27 +665,27 @@ mjx-container[display="true"] + br {
     <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
     </div>
-    <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/07/20/OPT/lagd/" title="拉格朗日对偶性" rel="bookmark">
-  <img src="/images/hw.png" alt="拉格朗日对偶性" class="!max-w-none">
-  <span class="title">拉格朗日对偶性</span>
-</a><a class="recommended-article-item" href="/2025/07/18/OPT/kkt/" title="不等式约束优化问题的KKT条件" rel="bookmark">
+    <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/07/18/OPT/kkt/" title="不等式约束优化问题的KKT条件" rel="bookmark">
   <img src="/images/hw.png" alt="不等式约束优化问题的KKT条件" class="!max-w-none">
   <span class="title">不等式约束优化问题的KKT条件</span>
 </a><a class="recommended-article-item" href="/2025/07/15/OPT/lag/" title="等式约束优化问题的拉格朗日条件" rel="bookmark">
   <img src="/images/hw.png" alt="等式约束优化问题的拉格朗日条件" class="!max-w-none">
   <span class="title">等式约束优化问题的拉格朗日条件</span>
+</a><a class="recommended-article-item" href="/2025/07/20/OPT/lagd/" title="拉格朗日对偶性" rel="bookmark">
+  <img src="/images/hw.png" alt="拉格朗日对偶性" class="!max-w-none">
+  <span class="title">拉格朗日对偶性</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
    <div class="recommended-article-header text-xl md:text-3xl font-bold mt-10">
      <i aria-hidden="true"></i><span>推荐阅读</span>
    </div>
-   <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/07/20/OPT/lagd/" title="拉格朗日对偶性" rel="bookmark">
-  <img src="/images/hw.png" alt="拉格朗日对偶性" class="!max-w-none">
-  <span class="title">拉格朗日对偶性</span>
-</a><a class="recommended-article-item" href="/2025/07/18/OPT/kkt/" title="不等式约束优化问题的KKT条件" rel="bookmark">
+   <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/07/18/OPT/kkt/" title="不等式约束优化问题的KKT条件" rel="bookmark">
   <img src="/images/hw.png" alt="不等式约束优化问题的KKT条件" class="!max-w-none">
   <span class="title">不等式约束优化问题的KKT条件</span>
+</a><a class="recommended-article-item" href="/2025/07/15/OPT/lag/" title="等式约束优化问题的拉格朗日条件" rel="bookmark">
+  <img src="/images/hw.png" alt="等式约束优化问题的拉格朗日条件" class="!max-w-none">
+  <span class="title">等式约束优化问题的拉格朗日条件</span>
 </a></div>
    </div>
   </div>
@@ -695,12 +694,12 @@ mjx-container[display="true"] + br {
 		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
 			
 			<div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="prev" rel="prev" href="/2025/07/20/OPT/lagd/">
+				<a class="prev" rel="prev" href="/2025/07/26/DF/%E6%B5%81%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/">
 					<span class="left arrow-icon flex justify-center items-center">
 						<i class="fa-solid fa-chevron-left"></i>
 					</span>
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">拉格朗日对偶性</span>
+						<span class="post-nav-title-item">Introduction to Flow Matching and Diffusion Models</span>
 						<span class="post-nav-item">上一篇</span>
 					</span>
 				</a>
@@ -708,9 +707,9 @@ mjx-container[display="true"] + br {
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/07/18/OPT/kkt/">
+				<a class="next" rel="next" href="/2025/07/20/OPT/lagd/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">不等式约束优化问题的KKT条件</span>
+						<span class="post-nav-title-item">拉格朗日对偶性</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -813,11 +812,11 @@ mjx-container[display="true"] + br {
                 
                 <p class="post-count space-x-0.5">
                     <span>
-                        共撰写了 61 篇文章
+                        共撰写了 65 篇文章
                     </span>
                     
                         <span>
-                            共 74.1k 字
+                            共 79.9k 字
                         </span>
                     
                 </p>
