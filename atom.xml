@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-09-30T14:39:05.565Z</updated>
+  <updated>2025-10-03T18:20:48.883Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,51 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>关于机器学习</title>
+    <link href="https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
+    <published>2025-10-03T16:00:00.000Z</published>
+    <updated>2025-10-03T18:20:48.883Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
+的重新摘要。总的来说，本文将按照一定的脉络尽量严格的介绍传统机器学习方法，并尽量避免如同其它大部分资料一般的感性与杂乱。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Representor Theorem and Kernels</title>
+    <link href="https://rpche-6626.github.io/2025/10/02/ML/rep/"/>
+    <id>https://rpche-6626.github.io/2025/10/02/ML/rep/</id>
+    <published>2025-10-01T16:00:00.000Z</published>
+    <updated>2025-10-03T18:20:40.811Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文严格建模了一般监督学习，并由此引出了（机器学习中）表示定理的严格定义。接下来本文从再生核希尔伯特空间的角度介绍了核技巧，最后给出了
+Mercer&#39;s Theorem 。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Support Vector Machine and Kernels</title>
     <link href="https://rpche-6626.github.io/2025/09/23/ML/svm/"/>
     <id>https://rpche-6626.github.io/2025/09/23/ML/svm/</id>
     <published>2025-09-22T16:00:00.000Z</published>
-    <updated>2025-09-30T14:39:05.565Z</updated>
+    <updated>2025-10-02T09:34:44.447Z</updated>
     
     
     <summary type="html">&lt;p&gt;sss&lt;/p&gt;</summary>
@@ -261,15 +301,14 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
+    <title>浅谈最优化方法</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T14:40:35.030Z</updated>
+    <updated>2025-09-30T15:01:43.881Z</updated>
     
     
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
     
     
     
@@ -281,14 +320,15 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
+    <title>拉格朗日对偶性</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T15:01:43.881Z</updated>
+    <updated>2025-09-30T14:40:35.030Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
     
     
     
@@ -374,48 +414,6 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
 &lt;p&gt;特别的，由于这是一个新兴的方向，lecture
 里面的结果都是离现在较近的，且带有一定的综述性质。另外出于时间上的问题，lecture
 跳过了部分引理的证明。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="计算理论之美" scheme="https://rpche-6626.github.io/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈现代哈希设计</title>
-    <link href="https://rpche-6626.github.io/2025/07/08/NJU/hash/"/>
-    <id>https://rpche-6626.github.io/2025/07/08/NJU/hash/</id>
-    <published>2025-07-07T16:00:00.000Z</published>
-    <updated>2025-07-13T07:46:11.889Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;尽管 lecture
-里面其实介绍了非常现代的哈希表设计思想，但我在这里应该只会介绍一些基本的内容，主要包括
-Universal Hashing 、Perfect Hashing ，以及可能的 Succinct Dictionary
-。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="计算理论之美" scheme="https://rpche-6626.github.io/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈概率集中不等式</title>
-    <link href="https://rpche-6626.github.io/2025/07/02/NJU/concen/"/>
-    <id>https://rpche-6626.github.io/2025/07/02/NJU/concen/</id>
-    <published>2025-07-01T16:00:00.000Z</published>
-    <updated>2025-07-10T18:08:51.842Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;这里面真的只有概率集中不等式基础，但是我确实也是第一次正经写某些
-bound 。&lt;/p&gt;</summary>
     
     
     
