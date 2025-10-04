@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-10-03T18:25:55.532Z</updated>
+  <updated>2025-10-04T17:06:46.669Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     <id>https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-10-03T16:00:00.000Z</published>
-    <updated>2025-10-03T18:25:55.532Z</updated>
+    <updated>2025-10-04T17:06:46.669Z</updated>
     
     
     <summary type="html">&lt;p&gt;交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
@@ -41,7 +41,7 @@
     <link href="https://rpche-6626.github.io/2025/10/02/ML/rep/"/>
     <id>https://rpche-6626.github.io/2025/10/02/ML/rep/</id>
     <published>2025-10-01T16:00:00.000Z</published>
-    <updated>2025-10-03T18:20:40.811Z</updated>
+    <updated>2025-10-04T15:52:13.063Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文严格建模了一般监督学习，并由此引出了（机器学习中）表示定理的严格定义。接下来本文从再生核希尔伯特空间的角度介绍了核技巧，最后给出了
@@ -57,14 +57,16 @@ Mercer&#39;s Theorem 。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>Support Vector Machine and Kernels</title>
+    <title>Support Vector Machines</title>
     <link href="https://rpche-6626.github.io/2025/09/23/ML/svm/"/>
     <id>https://rpche-6626.github.io/2025/09/23/ML/svm/</id>
     <published>2025-09-22T16:00:00.000Z</published>
-    <updated>2025-10-02T09:34:44.447Z</updated>
+    <updated>2025-10-04T17:06:24.529Z</updated>
     
     
-    <summary type="html">&lt;p&gt;sss&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文介绍了 Support Vector Machines ，使用 Lagrange Duality 推导了
+Hard SVM 的对偶形式，并使用表示定理导出了 Soft SVM
+的一般形式，讨论了选取复杂核函数时对 Soft SVM 的解读。&lt;/p&gt;</summary>
     
     
     
@@ -301,14 +303,15 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
+    <title>拉格朗日对偶性</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T15:01:43.881Z</updated>
+    <updated>2025-10-04T11:38:53.336Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
     
     
     
@@ -320,15 +323,14 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
+    <title>浅谈最优化方法</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T14:40:35.030Z</updated>
+    <updated>2025-09-30T15:01:43.881Z</updated>
     
     
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
     
     
     
