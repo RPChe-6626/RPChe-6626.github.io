@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-10-04T17:06:46.669Z</updated>
+  <updated>2025-10-11T03:32:55.454Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>关于机器学习</title>
+    <title>Basic Machine Learning Theories</title>
+    <link href="https://rpche-6626.github.io/2025/10/09/ML/mlt/"/>
+    <id>https://rpche-6626.github.io/2025/10/09/ML/mlt/</id>
+    <published>2025-10-08T16:00:00.000Z</published>
+    <updated>2025-10-11T03:32:55.454Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将简要介绍机器学习理论的基础内容，主要是依赖于先前介绍的集中不等式给出一些优化函数空间有限时相对简单的界，并引入
+VC 维。此外本文也将简要介绍 bias-various tradeoff
+，尽管此中似乎并无什么深入的理论，连是否应该归于本篇也是有待商榷的。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>浅谈机器学习</title>
     <link href="https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     <id>https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-10-03T16:00:00.000Z</published>
-    <updated>2025-10-04T17:06:46.669Z</updated>
+    <updated>2025-10-11T03:38:38.534Z</updated>
     
     
     <summary type="html">&lt;p&gt;交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
@@ -122,7 +143,7 @@ Discriminant Analysis 和 Naive Bayes 。&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2025/09/17/ML/linear/"/>
     <id>https://rpche-6626.github.io/2025/09/17/ML/linear/</id>
     <published>2025-09-16T16:00:00.000Z</published>
-    <updated>2025-09-30T05:37:10.110Z</updated>
+    <updated>2025-10-11T03:35:42.830Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了一些基本的术语，以及线性回归与 Locally Weighted Linear
@@ -303,15 +324,14 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
+    <title>浅谈最优化方法</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-10-04T11:38:53.336Z</updated>
+    <updated>2025-09-30T15:01:43.881Z</updated>
     
     
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
     
     
     
@@ -323,14 +343,15 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
+    <title>拉格朗日对偶性</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T15:01:43.881Z</updated>
+    <updated>2025-10-04T11:38:53.336Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
     
     
     
@@ -394,28 +415,6 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
 。总体来说，讲课内容还是相当有趣的，于是在这里挑了一部分记录了下来。本次讲习班有
 7
 个专题，其中次模函数没有接触过、LLM理论没咋听、分布式计算不太感兴趣，所以这几个部分没有写。其余的随机算法、哈希设计、概率集中不等式与随机数值线性代数则分别写了一些比较基本的部分。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="计算理论之美" scheme="https://rpche-6626.github.io/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>随机数值线性代数</title>
-    <link href="https://rpche-6626.github.io/2025/07/11/NJU/linear/"/>
-    <id>https://rpche-6626.github.io/2025/07/11/NJU/linear/</id>
-    <published>2025-07-10T16:00:00.000Z</published>
-    <updated>2025-07-14T15:12:18.070Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;随机数值线性代数看起来不是一个很经典的方向，但是里面的理论还是相当有趣且深刻的，我们将会在这里介绍一些基本的内容。&lt;/p&gt;
-&lt;p&gt;特别的，由于这是一个新兴的方向，lecture
-里面的结果都是离现在较近的，且带有一定的综述性质。另外出于时间上的问题，lecture
-跳过了部分引理的证明。&lt;/p&gt;</summary>
     
     
     
