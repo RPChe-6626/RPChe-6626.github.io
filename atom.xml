@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-10-11T03:32:55.454Z</updated>
+  <updated>2025-10-15T17:44:22.171Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,50 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Ensemble Learning</title>
+    <link href="https://rpche-6626.github.io/2025/10/15/ML/el/"/>
+    <id>https://rpche-6626.github.io/2025/10/15/ML/el/</id>
+    <published>2025-10-14T16:00:00.000Z</published>
+    <updated>2025-10-15T17:44:22.171Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将简要介绍集成学习，主要包括 bagging 、random forest 、gradient
+boost 、adaboost 和 XGboost 。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Decision Tree</title>
+    <link href="https://rpche-6626.github.io/2025/10/14/ML/dt/"/>
+    <id>https://rpche-6626.github.io/2025/10/14/ML/dt/</id>
+    <published>2025-10-13T16:00:00.000Z</published>
+    <updated>2025-10-15T15:29:53.536Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将简要的介绍决策树这一简单的模型，主要是说明熵度量的合理性。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Basic Machine Learning Theories</title>
     <link href="https://rpche-6626.github.io/2025/10/09/ML/mlt/"/>
     <id>https://rpche-6626.github.io/2025/10/09/ML/mlt/</id>
     <published>2025-10-08T16:00:00.000Z</published>
-    <updated>2025-10-11T03:32:55.454Z</updated>
+    <updated>2025-10-13T16:53:38.204Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文将简要介绍机器学习理论的基础内容，主要是依赖于先前介绍的集中不等式给出一些优化函数空间有限时相对简单的界，并引入
@@ -42,7 +81,7 @@ VC 维。此外本文也将简要介绍 bias-various tradeoff
     <link href="https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     <id>https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-10-03T16:00:00.000Z</published>
-    <updated>2025-10-11T03:38:38.534Z</updated>
+    <updated>2025-10-15T15:26:54.745Z</updated>
     
     
     <summary type="html">&lt;p&gt;交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
@@ -82,7 +121,7 @@ Mercer&#39;s Theorem 。&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2025/09/23/ML/svm/"/>
     <id>https://rpche-6626.github.io/2025/09/23/ML/svm/</id>
     <published>2025-09-22T16:00:00.000Z</published>
-    <updated>2025-10-04T17:06:24.529Z</updated>
+    <updated>2025-10-15T17:39:30.229Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文介绍了 Support Vector Machines ，使用 Lagrange Duality 推导了
@@ -324,14 +363,15 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
+    <title>拉格朗日对偶性</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T15:01:43.881Z</updated>
+    <updated>2025-10-04T11:38:53.336Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
     
     
     
@@ -343,15 +383,14 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
+    <title>浅谈最优化方法</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-10-04T11:38:53.336Z</updated>
+    <updated>2025-09-30T15:01:43.881Z</updated>
     
     
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
     
     
     
@@ -379,49 +418,6 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
     
     
     <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>等式约束优化问题的拉格朗日条件</title>
-    <link href="https://rpche-6626.github.io/2025/07/15/OPT/lag/"/>
-    <id>https://rpche-6626.github.io/2025/07/15/OPT/lag/</id>
-    <published>2025-07-14T16:00:00.000Z</published>
-    <updated>2025-09-30T14:40:14.393Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我们将在这里尽量详细的介绍等式约束优化问题的 Lagrange condition
-，我会尽量以符合直观，并且严谨的方式来写。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算理论之美【2025】</title>
-    <link href="https://rpche-6626.github.io/2025/07/14/NJU/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E%E3%80%902025%E3%80%91/"/>
-    <id>https://rpche-6626.github.io/2025/07/14/NJU/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E%E3%80%902025%E3%80%91/</id>
-    <published>2025-07-13T16:00:00.000Z</published>
-    <updated>2025-07-14T15:20:31.849Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本人参加了南京大学举办的 &lt;a class=&quot;link&quot; href=&quot;https://tcs.nju.edu.cn/wiki/index.php?title=计算理论之美_(Summer_2025)&quot;&gt;计算理论之美
-2025 暑期讲习班&lt;i class=&quot;fa-solid fa-arrow-up-right ml-[0.2em] font-light align-text-top text-[0.7em] link-icon&quot;&gt;&lt;/i&gt;&lt;/a&gt;
-。总体来说，讲课内容还是相当有趣的，于是在这里挑了一部分记录了下来。本次讲习班有
-7
-个专题，其中次模函数没有接触过、LLM理论没咋听、分布式计算不太感兴趣，所以这几个部分没有写。其余的随机算法、哈希设计、概率集中不等式与随机数值线性代数则分别写了一些比较基本的部分。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="计算理论之美" scheme="https://rpche-6626.github.io/tags/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E4%B9%8B%E7%BE%8E/"/>
     
   </entry>
   
