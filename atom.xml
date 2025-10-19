@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-10-18T18:15:26.900Z</updated>
+  <updated>2025-10-19T09:30:45.704Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,15 +17,15 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Ensemble Learning</title>
-    <link href="https://rpche-6626.github.io/2025/10/15/ML/el/"/>
-    <id>https://rpche-6626.github.io/2025/10/15/ML/el/</id>
+    <title>Boosting</title>
+    <link href="https://rpche-6626.github.io/2025/10/15/ML/bt/"/>
+    <id>https://rpche-6626.github.io/2025/10/15/ML/bt/</id>
     <published>2025-10-14T16:00:00.000Z</published>
-    <updated>2025-10-18T18:15:26.900Z</updated>
+    <updated>2025-10-19T09:30:45.704Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要介绍集成学习，主要包括 bagging 、random forest 、gradient
-boost 、adaboost 和 XGboost 。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要介绍 Boosting 这一集成学习方法，主要包括 Gradient Boost
+，XGBoost ，以及对 Adaboost 的详细建模和收敛性分析。&lt;/p&gt;</summary>
     
     
     
@@ -37,14 +37,15 @@ boost 、adaboost 和 XGboost 。&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>Decision Tree</title>
+    <title>Decision Tree and Bagging</title>
     <link href="https://rpche-6626.github.io/2025/10/14/ML/dt/"/>
     <id>https://rpche-6626.github.io/2025/10/14/ML/dt/</id>
     <published>2025-10-13T16:00:00.000Z</published>
-    <updated>2025-10-15T15:29:53.536Z</updated>
+    <updated>2025-10-19T09:11:27.223Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要的介绍决策树这一简单的模型，主要是说明熵度量的合理性。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要的介绍决策树这一简单的模型，主要是说明熵度量的合理性；以及集成学习中的
+Bagging 方法，并引出与决策树结合的随机森林。&lt;/p&gt;</summary>
     
     
     
@@ -81,7 +82,7 @@ VC 维。此外本文也将简要介绍 bias-various tradeoff
     <link href="https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     <id>https://rpche-6626.github.io/2025/10/04/ML/%E5%85%B3%E4%BA%8E%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</id>
     <published>2025-10-03T16:00:00.000Z</published>
-    <updated>2025-10-15T15:26:54.745Z</updated>
+    <updated>2025-10-19T09:31:10.164Z</updated>
     
     
     <summary type="html">&lt;p&gt;交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
@@ -363,15 +364,14 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
+    <title>浅谈最优化方法</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-10-04T11:38:53.336Z</updated>
+    <updated>2025-09-30T15:01:43.881Z</updated>
     
     
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
     
     
     
@@ -383,14 +383,15 @@ MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
   </entry>
   
   <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
+    <title>拉格朗日对偶性</title>
+    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
+    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
     <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T15:01:43.881Z</updated>
+    <updated>2025-10-04T11:38:53.336Z</updated>
     
     
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
+基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
     
     
     
