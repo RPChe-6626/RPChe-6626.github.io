@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://rpche-6626.github.io/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-10-03T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-10-19T09:31:10.164Z">
+<meta property="article:modified_time" content="2025-10-31T18:47:27.157Z">
 <meta property="article:author" content="RPChe_">
 <meta property="article:tag" content="机器学习">
 <meta name="twitter:card" content="summary">
@@ -533,8 +533,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-10-19 17:31:10</span>
-            <span class="mobile">2025-10-19 17:31:10</span>
+            <span class="desktop">2025-11-01 02:47:27</span>
+            <span class="mobile">2025-11-01 02:47:27</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -572,12 +572,12 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>504 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>573 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fa-regular fa-clock"></i>&nbsp;<span>1 分钟</span>
+            <i class="fa-regular fa-clock"></i>&nbsp;<span>2 分钟</span>
         </span>
     
     
@@ -632,7 +632,15 @@ Bagging 方法，并引出与决策树结合的随机森林。</p></li>
 <li><p><a href="\2025\10\15\ML\bt">Boosting</a></p>
 <p>本文将简要介绍 Boosting 这一集成学习方法，主要包括 Gradient Boost
 ，XGBoost ，以及对 Adaboost 的详细建模和收敛性分析。</p></li>
+<li><p><a href="\2025\10\30\ML\em">K-means and Expectation
+Minimum</a></p>
+<p>本文将简要介绍 K-means 和 Expectation Maximization 方法，可能会以
+Gaussian Mixture Models 作为后者的特例进行讨论。</p></li>
+<li><p><a href="\2025\10\31\ML\gmm">Gaussian Mixture Models and Factor
+Analysis</a></p></li>
 </ol>
+<p>本文将简要介绍 Gaussian Mixture Models 和 Factor Analysis
+，主要是将其作为 EM 方法的特例。</p>
 
 		</div>
 
@@ -647,7 +655,7 @@ Bagging 方法，并引出与决策树结合的随机森林。</p></li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-10-19 17:31:10
+                    :</strong> 2025-11-01 02:47:27
             </li>
         
         <li>
@@ -688,12 +696,12 @@ Bagging 方法，并引出与决策树结合的随机森林。</p></li>
     <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/09/18/ML/logi/" title="Logistic Regression and Generalized Linear Models" rel="bookmark">
   <img src="/images/hw.png" alt="Logistic Regression and Generalized Linear Models" class="!max-w-none">
   <span class="title">Logistic Regression and Generalized Linear Models</span>
+</a><a class="recommended-article-item" href="/2025/10/31/ML/gmm/" title="Gaussian Mixture Models and Factor Analysis" rel="bookmark">
+  <img src="/images/hw.png" alt="Gaussian Mixture Models and Factor Analysis" class="!max-w-none">
+  <span class="title">Gaussian Mixture Models and Factor Analysis</span>
 </a><a class="recommended-article-item" href="/2025/10/02/ML/rep/" title="Representor Theorem and Kernels" rel="bookmark">
   <img src="/images/hw.png" alt="Representor Theorem and Kernels" class="!max-w-none">
   <span class="title">Representor Theorem and Kernels</span>
-</a><a class="recommended-article-item" href="/2025/09/23/ML/svm/" title="Support Vector Machines" rel="bookmark">
-  <img src="/images/hw.png" alt="Support Vector Machines" class="!max-w-none">
-  <span class="title">Support Vector Machines</span>
 </a></div>
    </div>
    <div class="recommended-mobile">
@@ -703,9 +711,9 @@ Bagging 方法，并引出与决策树结合的随机森林。</p></li>
    <div class="recommended-article-group"><a class="recommended-article-item" href="/2025/09/18/ML/logi/" title="Logistic Regression and Generalized Linear Models" rel="bookmark">
   <img src="/images/hw.png" alt="Logistic Regression and Generalized Linear Models" class="!max-w-none">
   <span class="title">Logistic Regression and Generalized Linear Models</span>
-</a><a class="recommended-article-item" href="/2025/10/02/ML/rep/" title="Representor Theorem and Kernels" rel="bookmark">
-  <img src="/images/hw.png" alt="Representor Theorem and Kernels" class="!max-w-none">
-  <span class="title">Representor Theorem and Kernels</span>
+</a><a class="recommended-article-item" href="/2025/10/31/ML/gmm/" title="Gaussian Mixture Models and Factor Analysis" rel="bookmark">
+  <img src="/images/hw.png" alt="Gaussian Mixture Models and Factor Analysis" class="!max-w-none">
+  <span class="title">Gaussian Mixture Models and Factor Analysis</span>
 </a></div>
    </div>
   </div>
@@ -836,7 +844,7 @@ Bagging 方法，并引出与决策树结合的随机森林。</p></li>
                     </span>
                     
                         <span>
-                            共 92.3k 字
+                            共 92.4k 字
                         </span>
                     
                 </p>
@@ -1113,21 +1121,6 @@ Bagging 方法，并引出与决策树结合的随机森林。</p></li>
 
 
 	
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
