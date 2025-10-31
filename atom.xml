@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2025-10-19T09:30:45.704Z</updated>
+  <updated>2025-10-31T13:48:02.134Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Variational Auto Encoder</title>
+    <link href="https://rpche-6626.github.io/2025/10/31/DG/vae/"/>
+    <id>https://rpche-6626.github.io/2025/10/31/DG/vae/</id>
+    <published>2025-10-30T16:00:00.000Z</published>
+    <updated>2025-10-31T13:48:02.134Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将简要的介绍 VAE 、VQ-VAE ，以及一些现代的混合架构模型。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="深度生成模型" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gaussian Mixture Models and Factor Analysis</title>
+    <link href="https://rpche-6626.github.io/2025/10/31/ML/gmm/"/>
+    <id>https://rpche-6626.github.io/2025/10/31/ML/gmm/</id>
+    <published>2025-10-30T16:00:00.000Z</published>
+    <updated>2025-10-31T17:31:36.585Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将简要介绍 Gaussian Mixture Models 和 Factor Analysis
+，主要是将其作为 EM 方法的特例。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>K-means and Expectation Minimum</title>
+    <link href="https://rpche-6626.github.io/2025/10/30/ML/em/"/>
+    <id>https://rpche-6626.github.io/2025/10/30/ML/em/</id>
+    <published>2025-10-29T16:00:00.000Z</published>
+    <updated>2025-10-31T16:37:08.085Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;本文将简要介绍 K-means 和 Expectation Maximization 方法，可能会以
+Gaussian Mixture Models 作为后者的特例进行讨论。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>Boosting</title>
@@ -227,8 +286,8 @@ Regression 。&lt;/p&gt;</summary>
   
   <entry>
     <title>Instance：Image Generators</title>
-    <link href="https://rpche-6626.github.io/2025/08/29/DF/imgen/"/>
-    <id>https://rpche-6626.github.io/2025/08/29/DF/imgen/</id>
+    <link href="https://rpche-6626.github.io/2025/08/29/DG/imgen/"/>
+    <id>https://rpche-6626.github.io/2025/08/29/DG/imgen/</id>
     <published>2025-08-28T16:00:00.000Z</published>
     <updated>2025-08-30T17:52:35.922Z</updated>
     
@@ -246,8 +305,8 @@ Regression 。&lt;/p&gt;</summary>
   
   <entry>
     <title>Diffusion Models</title>
-    <link href="https://rpche-6626.github.io/2025/08/26/DF/diffusion/"/>
-    <id>https://rpche-6626.github.io/2025/08/26/DF/diffusion/</id>
+    <link href="https://rpche-6626.github.io/2025/08/26/DG/diffusion/"/>
+    <id>https://rpche-6626.github.io/2025/08/26/DG/diffusion/</id>
     <published>2025-08-25T16:00:00.000Z</published>
     <updated>2025-08-29T10:18:16.429Z</updated>
     
@@ -265,8 +324,8 @@ Regression 。&lt;/p&gt;</summary>
   
   <entry>
     <title>Diffusion and Fokker-Planck Equation</title>
-    <link href="https://rpche-6626.github.io/2025/08/24/DF/fpe/"/>
-    <id>https://rpche-6626.github.io/2025/08/24/DF/fpe/</id>
+    <link href="https://rpche-6626.github.io/2025/08/24/DG/fpe/"/>
+    <id>https://rpche-6626.github.io/2025/08/24/DG/fpe/</id>
     <published>2025-08-23T16:00:00.000Z</published>
     <updated>2025-08-28T06:27:32.145Z</updated>
     
@@ -285,8 +344,8 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
   
   <entry>
     <title>Definition of Stochastic Differential Equation</title>
-    <link href="https://rpche-6626.github.io/2025/08/21/DF/sde/"/>
-    <id>https://rpche-6626.github.io/2025/08/21/DF/sde/</id>
+    <link href="https://rpche-6626.github.io/2025/08/21/DG/sde/"/>
+    <id>https://rpche-6626.github.io/2025/08/21/DG/sde/</id>
     <published>2025-08-20T16:00:00.000Z</published>
     <updated>2025-08-28T06:27:12.333Z</updated>
     
@@ -304,8 +363,8 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
   
   <entry>
     <title>Flow Models</title>
-    <link href="https://rpche-6626.github.io/2025/08/12/DF/flow/"/>
-    <id>https://rpche-6626.github.io/2025/08/12/DF/flow/</id>
+    <link href="https://rpche-6626.github.io/2025/08/12/DG/flow/"/>
+    <id>https://rpche-6626.github.io/2025/08/12/DG/flow/</id>
     <published>2025-08-11T16:00:00.000Z</published>
     <updated>2025-08-29T13:55:25.893Z</updated>
     
@@ -323,13 +382,13 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
   
   <entry>
     <title>Basic Fluid Mechanism</title>
-    <link href="https://rpche-6626.github.io/2025/08/09/DF/fluid/"/>
-    <id>https://rpche-6626.github.io/2025/08/09/DF/fluid/</id>
+    <link href="https://rpche-6626.github.io/2025/08/09/DG/fluid/"/>
+    <id>https://rpche-6626.github.io/2025/08/09/DG/fluid/</id>
     <published>2025-08-08T16:00:00.000Z</published>
-    <updated>2025-08-30T06:31:31.708Z</updated>
+    <updated>2025-10-29T15:09:20.569Z</updated>
     
     
-    <summary type="html">&lt;p&gt;我本来以为这门课很快可以结束的，但是其中实在是有太多我没有学过的东西了。因此，为了严谨性和直观性，我们还是要特别的谈点物理基础。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;我相信大多数人会将流模型视作概率模型，然而其具体刻画概率流演化的方式基本是单纯流体力学的。因此，为了严谨性和直观性，我们还是要特别的谈点物理基础。&lt;/p&gt;</summary>
     
     
     
@@ -341,84 +400,27 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
   </entry>
   
   <entry>
-    <title>Introduction to Flow Matching and Diffusion Models</title>
-    <link href="https://rpche-6626.github.io/2025/07/26/DF/%E6%B5%81%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/"/>
-    <id>https://rpche-6626.github.io/2025/07/26/DF/%E6%B5%81%E5%8C%B9%E9%85%8D%E4%B8%8E%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B/</id>
+    <title>浅谈深度生成模型</title>
+    <link href="https://rpche-6626.github.io/2025/07/26/DG/%E6%B5%85%E8%B0%88%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://rpche-6626.github.io/2025/07/26/DG/%E6%B5%85%E8%B0%88%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/</id>
     <published>2025-07-25T16:00:00.000Z</published>
-    <updated>2025-08-30T17:52:34.688Z</updated>
+    <updated>2025-10-29T15:08:49.054Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文是对着 MIT6.S184: Generative AI with Stochastic Differential
-Equations
-写的。其实我很早以前就想正经学点生成模型了，但是一直苦于找不到好的资源。这次有幸找到了
-MIT 的这门课，就作为一个引子好了。&lt;/p&gt;
-&lt;p&gt;特别的，本人此前并没有系统性的学过微分方程，物理也学得不好，所以本文中我们可能会跳过一部分引理的证明。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浅谈最优化方法</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/</id>
-    <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-09-30T15:01:43.881Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;最优化方法其实是一门相对比较杂的学科，这里面既有理论，也会有对机器算法的收敛性的分析。我们在这里主要挑了一些比较重要的部分来写。阅读本文应该需要一定的凸优化基础。方便起见，文中的向量就不加粗了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文原先的主题是 Introduction to Flow Matching and Diffusion Models
+，但后来觉得这样的讨论主题太狭窄了，于是扩展为了 Introduction to Deep
+Generative Models 。我将尽量以合理、严格且 self-contained
+的方式介绍生成模型。然而由于本人此前并没有系统性的学过微分方程，物理也学得不好，所以本文中我们可能会跳过一部分引理的证明。&lt;/p&gt;
+&lt;p&gt;本文的参考资料包括 MIT6.S184: Generative AI with Stochastic
+Differential Equations ，Imperial70010 Deep Learning ，MIT6.S978 Deep
+Generative Models 。&lt;/p&gt;</summary>
     
     
     
     <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
     
     
-    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>拉格朗日对偶性</title>
-    <link href="https://rpche-6626.github.io/2025/07/20/OPT/lagd/"/>
-    <id>https://rpche-6626.github.io/2025/07/20/OPT/lagd/</id>
-    <published>2025-07-19T16:00:00.000Z</published>
-    <updated>2025-10-04T11:38:53.336Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;从 Lagrange Condition 到 KKT Condition 再到 Lagrange Duality
-基本是层层深入，我们会渐渐的介绍对优化问题更深入的刻画。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不等式约束优化问题的KKT条件</title>
-    <link href="https://rpche-6626.github.io/2025/07/18/OPT/kkt/"/>
-    <id>https://rpche-6626.github.io/2025/07/18/OPT/kkt/</id>
-    <published>2025-07-17T16:00:00.000Z</published>
-    <updated>2025-09-30T14:40:28.917Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;我们将在这里尽量详细的介绍不等式约束优化问题的 KKT condition
-，我会尽量以符合直观，并且严谨的方式来写。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
+    <category term="深度生成模型" scheme="https://rpche-6626.github.io/tags/%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B/"/>
     
   </entry>
   
