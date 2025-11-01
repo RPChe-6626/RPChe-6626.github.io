@@ -1196,7 +1196,8 @@ Johnson 的 slides 上蒯的。
                     <div class="home-article-content markdown-body">
                         
                             <p>
-本文将简要的介绍 VAE 、VQ-VAE ，以及一些现代的混合架构模型。
+本文将简要的介绍 VAE 。本来还想谈谈 VQ-VAE
+，但是觉得这种模型比较平凡，因此不讲了。
 </p>
 
                         
@@ -1354,7 +1355,7 @@ Johnson 的 slides 上蒯的。
                     </span>
                     
                         <span>
-                            共 92.4k 字
+                            共 93.7k 字
                         </span>
                     
                 </p>
@@ -1611,6 +1612,21 @@ Johnson 的 slides 上蒯的。
 
 
 	
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
