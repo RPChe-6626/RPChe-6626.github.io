@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2026-06-04T09:55:04.502Z</updated>
+  <updated>2026-06-06T17:35:28.161Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Basic Concepts of Covariance</title>
+    <link href="https://rpche-6626.github.io/2026/06/05/ML/cov/"/>
+    <id>https://rpche-6626.github.io/2026/06/05/ML/cov/</id>
+    <published>2026-06-04T16:00:00.000Z</published>
+    <updated>2026-06-06T17:35:28.161Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;由于本人只学过概率论，所以在这里简单的复习一点协方差的意义和性质。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
+    
+    
+    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>2026 PKU Workshop on Optimization and Learning</title>
@@ -89,15 +108,16 @@ as I intend to pursue such fields in the future.&lt;/p&gt;</summary>
   </entry>
   
   <entry>
-    <title>Gaussian Mixture Models and Factor Analysis</title>
-    <link href="https://rpche-6626.github.io/2025/10/31/ML/gmm/"/>
-    <id>https://rpche-6626.github.io/2025/10/31/ML/gmm/</id>
+    <title>Factor Analysis</title>
+    <link href="https://rpche-6626.github.io/2025/10/31/ML/fa/"/>
+    <id>https://rpche-6626.github.io/2025/10/31/ML/fa/</id>
     <published>2025-10-30T16:00:00.000Z</published>
-    <updated>2025-10-31T17:31:36.000Z</updated>
+    <updated>2026-06-06T17:35:22.323Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要介绍 Gaussian Mixture Models 和 Factor Analysis
-，主要是将其作为 EM 方法的特例。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文原先是要讲 Mixture of Gaussians 和 Factor Analysis 作为 EM
+的特例，但后来我觉得计算上实在是没什么好讲的，更重要的或许是 FA
+这一类模型的假设。&lt;/p&gt;</summary>
     
     
     
@@ -113,7 +133,7 @@ as I intend to pursue such fields in the future.&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2025/10/30/ML/em/"/>
     <id>https://rpche-6626.github.io/2025/10/30/ML/em/</id>
     <published>2025-10-29T16:00:00.000Z</published>
-    <updated>2025-12-02T06:58:30.000Z</updated>
+    <updated>2026-06-05T12:55:49.605Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文将简要介绍 K-means 和 Expectation Maximization 方法，可能会以
@@ -275,7 +295,7 @@ Discriminant Analysis 和 Naive Bayes 。&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2025/09/18/ML/logi/"/>
     <id>https://rpche-6626.github.io/2025/09/18/ML/logi/</id>
     <published>2025-09-17T16:00:00.000Z</published>
-    <updated>2025-09-21T16:31:57.000Z</updated>
+    <updated>2026-06-05T18:24:26.708Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文继续介绍了 Logistic Regression 与 Generalized Linear Models
@@ -404,25 +424,6 @@ Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt
     
     
     <summary type="html">&lt;p&gt;本文的目标是从较为严格的角度提供随机微分方程的定义，使得我们可以定义后续的扩散模型。限于篇幅和本人的数学水平，本文跳过了大部分证明。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flow Models</title>
-    <link href="https://rpche-6626.github.io/2025/08/12/DG/flow/"/>
-    <id>https://rpche-6626.github.io/2025/08/12/DG/flow/</id>
-    <published>2025-08-11T16:00:00.000Z</published>
-    <updated>2025-08-29T13:55:25.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文中我们将简要介绍一般生成模型的范式，并详细的介绍流模型的框架和训练目标的构建。&lt;/p&gt;</summary>
     
     
     
