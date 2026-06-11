@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2026-06-06T17:42:24.636Z</updated>
+  <updated>2026-06-11T18:49:13.908Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Introduction to Reinforcement Learning</title>
+    <link href="https://rpche-6626.github.io/2026/06/12/RL/intro/"/>
+    <id>https://rpche-6626.github.io/2026/06/12/RL/intro/</id>
+    <published>2026-06-11T16:00:00.000Z</published>
+    <updated>2026-06-11T18:49:13.908Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;I&#39;ve been interested in the topics in reinforcement learning, and the
+group I&#39;m in now focuses on reinforcement learning as well. So here I&#39;ll
+briedly note Stanford CS234 Spring 2024. And I know I&#39;ve opened quite a
+few notes that hasn&#39;t been written since the beginning of this year.
+I&#39;ll update them in the following a few months, I think.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Academic" scheme="https://rpche-6626.github.io/categories/Academic/"/>
+    
+    
+    <category term="Reinforcement Learning" scheme="https://rpche-6626.github.io/tags/Reinforcement-Learning/"/>
+    
+  </entry>
   
   <entry>
     <title>Basic Concepts of Covariance</title>
@@ -112,7 +135,7 @@ as I intend to pursue such fields in the future.&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2025/10/31/ML/fa/"/>
     <id>https://rpche-6626.github.io/2025/10/31/ML/fa/</id>
     <published>2025-10-30T16:00:00.000Z</published>
-    <updated>2026-06-06T17:35:22.323Z</updated>
+    <updated>2026-06-06T17:52:06.429Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文原先是要讲 Mixture of Gaussians 和 Factor Analysis 作为 EM
@@ -295,7 +318,7 @@ Discriminant Analysis 和 Naive Bayes 。&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2025/09/18/ML/logi/"/>
     <id>https://rpche-6626.github.io/2025/09/18/ML/logi/</id>
     <published>2025-09-17T16:00:00.000Z</published>
-    <updated>2026-06-05T18:24:26.708Z</updated>
+    <updated>2026-06-06T17:51:54.558Z</updated>
     
     
     <summary type="html">&lt;p&gt;本文继续介绍了 Logistic Regression 与 Generalized Linear Models
@@ -405,25 +428,6 @@ Regression 。&lt;/p&gt;</summary>
     
     <summary type="html">&lt;p&gt;本文简略的介绍了物理上的扩散过程以及描述扩散分布演化的关键的
 Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Definition of Stochastic Differential Equation</title>
-    <link href="https://rpche-6626.github.io/2025/08/21/DG/sde/"/>
-    <id>https://rpche-6626.github.io/2025/08/21/DG/sde/</id>
-    <published>2025-08-20T16:00:00.000Z</published>
-    <updated>2025-08-28T06:27:12.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文的目标是从较为严格的角度提供随机微分方程的定义，使得我们可以定义后续的扩散模型。限于篇幅和本人的数学水平，本文跳过了大部分证明。&lt;/p&gt;</summary>
     
     
     
