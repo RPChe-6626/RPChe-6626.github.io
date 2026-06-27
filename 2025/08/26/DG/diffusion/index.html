@@ -218,6 +218,22 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
+
+
+/* mathjax-layout-fix: keep wide display formulas inside the post column. */
+.post-page-container,
+.article-content-container,
+.article-content {
+  min-width: 0;
+}
+
+.article-content mjx-container[jax="SVG"][display="true"] {
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
 </style></head>
 
 
