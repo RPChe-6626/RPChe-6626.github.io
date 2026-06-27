@@ -614,253 +614,114 @@ mjx-container[display="true"] + br {
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
 			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>本文将简要介绍一些从图像识别扩展到视频识别的技术。</p>
 <span id="more"></span>
-<h1 id="问题背景">问题背景</h1>
-<ul>
-<li>类似于 3D vision
-，你所可以想象的图像方面的问题都可以扩展到视频当中。主要包括：
-<ol type="1">
+<h1 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h1><ul>
+<li><p>类似于 3D vision ，你所可以想象的图像方面的问题都可以扩展到视频当中。主要包括：</p>
+<ol>
 <li>Video Classification.</li>
 <li>Video captioning.</li>
 <li>Temporal Action Localization.</li>
 <li>Spatial-Temporal Detection.</li>
 </ol>
-本文的主线是最基本的 Video Classification
-，而其它任务可以使用类似图像处理的方式扩展，比较复杂，这里不会深入。</li>
+<p>本文的主线是最基本的 Video Classification ，而其它任务可以使用类似图像处理的方式扩展，比较复杂，这里不会深入。</p>
+</li>
 </ul>
-<h1 id="切片分类">切片分类</h1>
-<ul>
-<li>我们仍然从最基本的 Video Classification
-谈起。一个显著的问题是视频的空间占用太大了，为了将其作为神经网络的输入，我们需要做非常激进的下采样，比方说仅保留
-16 帧 112*112
-像素的切片。在训练时，我们往往会对同一视频做多个切片；而在测试时，我们会考虑对目标取多个切片，并计算其均值。以下，假定我们要处理
-T*3*H*W 的视频输入。</li>
+<h1 id="切片分类"><a href="#切片分类" class="headerlink" title="切片分类"></a>切片分类</h1><ul>
+<li>我们仍然从最基本的 Video Classification 谈起。一个显著的问题是视频的空间占用太大了，为了将其作为神经网络的输入，我们需要做非常激进的下采样，比方说仅保留 16 帧 112*112 像素的切片。在训练时，我们往往会对同一视频做多个切片；而在测试时，我们会考虑对目标取多个切片，并计算其均值。以下，假定我们要处理 T*3*H*W 的视频输入。</li>
 </ul>
-<h2 id="single-frame-cnn">Single-Frame CNN</h2>
-<ul>
-<li>你可能会觉得提取视频中的单帧画面，逐帧通过 CNN 单独做 Image
-Classification
-，最后对它们的概率做平均得到最终的结果是件很蠢的事，但实际上这种方式的效果意外的好，以至于截止2019年，Single-frame
-CNN 还经常作为此类问题的 baseline
-。总的来说，这的确是一个非常值得一试的好选择。</li>
+<h2 id="Single-Frame-CNN"><a href="#Single-Frame-CNN" class="headerlink" title="Single-Frame CNN"></a>Single-Frame CNN</h2><ul>
+<li>你可能会觉得提取视频中的单帧画面，逐帧通过 CNN 单独做 Image Classification ，最后对它们的概率做平均得到最终的结果是件很蠢的事，但实际上这种方式的效果意外的好，以至于截止2019年，Single-frame CNN 还经常作为此类问题的 baseline 。总的来说，这的确是一个非常值得一试的好选择。</li>
 </ul>
-<h2 id="lateearlyslow-fusion">Late/Early/Slow Fusion</h2>
-<ul>
-<li><p>要在 Single-Frame CNN
-的基础上改进，我们考虑引入帧间联系。其一是在 Single-Frame CNN
-的最后，将所有的 feature map 展平并拼接成单一向量（或者除 channel
-以外的维做 Global Average Pooling），再通过 FCNN 以得到分类结果，称作
-Late Fusion 。</p>
-<p>若希望更早的建立初始帧之间的联系，可以考虑 Early Fusion
-，即在一开始将所有帧按照 temporal 堆叠，再将该 3T*H*W 的张量输入一般的
-2D CNN 。</p>
-<p>实际上一个相对更好的看法是，我们保留 T*3*H*W 的输入格式，并直接对其做
-3D convolution 。这种方法相比 Early Fusion 的好处是保留了 Temporal
-Invariant ，即可以使用单一 filter
-提取周期性/不同时间点的特征。我们可以想象该方法中 temporal
-上的联系是逐步建立的，因此将其称作 Slow fusion
-。<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="3D convolution 本身的计算开销也会更大。另外 Slow Fusion 也可以像 2D CNN 一样对 filter 做可视化。实际上 Justin 也提到可以对广泛的视频模型做可视化，通过梯度上升生成最符合单一分类指标的视频。但我觉得这比较平凡，就不谈了。
-">[1]</span></a></sup></p></li>
-<li><p>如果在数据集<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="此处选择了 Sports-1M ，包括了 Youtube 上截取的运动切片，分类粒度非常高。">[2]</span></a></sup>上比较
-Late/Early/Slow Fusion ，可以得到一些有趣的结果：</p>
-<p><img 
-
+<h2 id="Late-Early-Slow-Fusion"><a href="#Late-Early-Slow-Fusion" class="headerlink" title="Late/Early/Slow Fusion"></a>Late/Early/Slow Fusion</h2><ul>
+<li><p>要在 Single-Frame CNN 的基础上改进，我们考虑引入帧间联系。其一是在 Single-Frame CNN 的最后，将所有的 feature map 展平并拼接成单一向量（或者除 channel 以外的维做 Global Average Pooling），再通过 FCNN 以得到分类结果，称作 Late Fusion 。</p>
+<p>若希望更早的建立初始帧之间的联系，可以考虑 Early Fusion ，即在一开始将所有帧按照 temporal 堆叠，再将该 3T*H*W 的张量输入一般的 2D CNN 。</p>
+<p>实际上一个相对更好的看法是，我们保留 T*3*H*W 的输入格式，并直接对其做 3D convolution 。这种方法相比 Early Fusion 的好处是保留了 Temporal Invariant ，即可以使用单一 filter 提取周期性/不同时间点的特征。我们可以想象该方法中 temporal 上的联系是逐步建立的，因此将其称作 Slow fusion 。<sup id="fnref:1"><a href="#fn:1" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="3D convolution 本身的计算开销也会更大。另外 Slow Fusion 也可以像 2D CNN 一样对 filter 做可视化。实际上 Justin 也提到可以对广泛的视频模型做可视化，通过梯度上升生成最符合单一分类指标的视频。但我觉得这比较平凡，就不谈了。
+">[1]</span></a></sup></p>
+</li>
+<li><p>如果在数据集<sup id="fnref:2"><a href="#fn:2" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="此处选择了 Sports-1M ，包括了 Youtube 上截取的运动切片，分类粒度非常高。">[2]</span></a></sup>上比较 Late/Early/Slow Fusion ，可以得到一些有趣的结果：</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/dyav1ul5.png"
-                      
+                      alt=""
                 ></p>
-<p>这说明 Single-Frame CNN 的效果确实非常不错。其中的 C3D 是一种构建
-Slow Fusion 的方式，形似 VGG Net ，结构如下：</p>
-<p><img 
-
+<p>这说明 Single-Frame CNN 的效果确实非常不错。其中的 C3D 是一种构建 Slow Fusion 的方式，形似 VGG Net ，结构如下：</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/xycoh87u.png"
-                      
-                ></p></li>
+                      alt=""
+                ></p>
+</li>
 </ul>
-<h2 id="optical-flow-and-two-stream-networks">Optical Flow and
-Two-Stream Networks</h2>
-<ul>
-<li><p>一个有趣的观点是人感知视频的一个重要方面是通过“动作”，我们希望将此概念同样引入到模型中，具体的方式则是
-Optical Flow 。Optical Flow
-描述的是像素在局部的帧间移动趋势，我们往往考虑垂直与水平两个方向：<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="具体的计算方式课上没有深入。
+<h2 id="Optical-Flow-and-Two-Stream-Networks"><a href="#Optical-Flow-and-Two-Stream-Networks" class="headerlink" title="Optical Flow and Two-Stream Networks"></a>Optical Flow and Two-Stream Networks</h2><ul>
+<li><p>一个有趣的观点是人感知视频的一个重要方面是通过“动作”，我们希望将此概念同样引入到模型中，具体的方式则是 Optical Flow 。Optical Flow 描述的是像素在局部的帧间移动趋势，我们往往考虑垂直与水平两个方向：<sup id="fnref:3"><a href="#fn:3" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="具体的计算方式课上没有深入。
 ">[3]</span></a></sup></p>
-<p><img 
-
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/pamc7qzz.png"
-                      
+                      alt=""
                 ></p>
 <p>在此基础上，我们可以得到所谓的 2-stream network ：</p>
-<p><img 
-
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/75077jmh.png"
-                      
+                      alt=""
                 ></p>
-<p>简单的说，对于 stream 1 ，我们提取切片中的单帧进行 Image
-Classification ；对于 stream 2 ，我们对于每一帧计算其 Optical
-Flow（这应是一个 2 channel 的张量），再对其做 Early Fusion
-。在训练时我们分别训练 steam 1 &amp; 2
-，而在推理时我们对它们的预测结果做平均。我们可以期待这样做融合了视频的外观和动作，而其确实也取得了不错的结果：<sup id="fnref:4"><a href="#fn:4" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="数据集是 UCF-101 。">[4]</span></a></sup></p>
-<p><img 
-
+<p>简单的说，对于 stream 1 ，我们提取切片中的单帧进行 Image Classification ；对于 stream 2 ，我们对于每一帧计算其 Optical Flow（这应是一个 2 channel 的张量），再对其做 Early Fusion 。在训练时我们分别训练 steam 1 &amp; 2 ，而在推理时我们对它们的预测结果做平均。我们可以期待这样做融合了视频的外观和动作，而其确实也取得了不错的结果：<sup id="fnref:4"><a href="#fn:4" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="数据集是 UCF-101 。">[4]</span></a></sup></p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/838pl1ah.png"
-                      
-                ></p></li>
+                      alt=""
+                ></p>
+</li>
 </ul>
-<h1 id="长视频处理">长视频处理</h1>
-<ul>
-<li><p>我们无法直接使用 CNN
-处理长视频，因为其开销太大。一个折衷的办法是，我们取长视频的若干时序切片，然后分别分析它们，最后使用某种序列处理方式，例如
-RNN ，综合它们，以得到最后的结果。</p>
-<p>另外的一个观点是更深度的结合 CNN 和 RNN 。我们先前提到过 Multi-Layer
-RNN 这一技巧，在长视频处理中，我们考虑将 CNN 融入 Multi-Layer RNN ，称作
-Recurrent Convolutional Network ，，大体结构如下：</p>
-<p><img 
-
+<h1 id="长视频处理"><a href="#长视频处理" class="headerlink" title="长视频处理"></a>长视频处理</h1><ul>
+<li><p>我们无法直接使用 CNN 处理长视频，因为其开销太大。一个折衷的办法是，我们取长视频的若干时序切片，然后分别分析它们，最后使用某种序列处理方式，例如 RNN ，综合它们，以得到最后的结果。</p>
+<p>另外的一个观点是更深度的结合 CNN 和 RNN 。我们先前提到过 Multi-Layer RNN 这一技巧，在长视频处理中，我们考虑将 CNN 融入 Multi-Layer RNN ，称作 Recurrent Convolutional Network ，，大体结构如下：</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/aypfhb2s.png"
-                      
+                      alt=""
                 ></p>
-<p>简单的说，原先的 RNN ，例如 Vanilla RNN ，是对 feature vector
-做操作；而现在我们的操作对象变成了更三维的张量，因此我们考虑转而做 2D
-convolution 。这样，原先的 RNN 架构，例如 GRU 和 LSTM
-，都可以被无痛迁移到 RCN 当中。总的来说，RCN 融合了 CNN 的图像特征提取和
-RNN 的序列处理，是一个好的结构，但主要的问题是 RCN
-仍然存在时序依赖，无法被有效的并行化。</p></li>
-<li><p>回忆在文本处理中，我们使用 Self Attention 替代了 RNN
-，而前者是可以高度并行化的。在这里我们也可以做一样的操作。为此，我们可以设计出类似的
-Video Self Attention 模块，即如下的 Nonlocal Block
-：<sup id="fnref:5"><a href="#fn:5" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="Self Attention 的结构比较明晰，这里应该是不需要解释的。">[5]</span></a></sup></p>
-<p><img 
-
+<p>简单的说，原先的 RNN ，例如 Vanilla RNN ，是对 feature vector 做操作；而现在我们的操作对象变成了更三维的张量，因此我们考虑转而做 2D convolution 。这样，原先的 RNN 架构，例如 GRU 和 LSTM ，都可以被无痛迁移到 RCN 当中。总的来说，RCN 融合了 CNN 的图像特征提取和 RNN 的序列处理，是一个好的结构，但主要的问题是 RCN 仍然存在时序依赖，无法被有效的并行化。</p>
+</li>
+<li><p>回忆在文本处理中，我们使用 Self Attention 替代了 RNN ，而前者是可以高度并行化的。在这里我们也可以做一样的操作。为此，我们可以设计出类似的 Video Self Attention 模块，即如下的 Nonlocal Block ：<sup id="fnref:5"><a href="#fn:5" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="Self Attention 的结构比较明晰，这里应该是不需要解释的。">[5]</span></a></sup></p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/e9uhl79e.png"
-                      
+                      alt=""
                 ></p>
-<p>可以看出，Nonlocal block 同时做了时序上和帧内的 Self Attention 。将
-Nonlocal Block 引入到 Slow Fusion 当中，我们就可以得到截止 2019 年的
-SOTA 架构：</p>
-<p><img 
-
+<p>可以看出，Nonlocal block 同时做了时序上和帧内的 Self Attention 。将 Nonlocal Block 引入到 Slow Fusion 当中，我们就可以得到截止 2019 年的 SOTA 架构：</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/earw6nkf.png"
-                      
+                      alt=""
                 ></p>
-<p>另外一个训练时的技巧是将最后的 1*1*1 卷积初始化为全 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.131ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 500 688"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></g></g></g></svg></mjx-container> ，从而令 Nonlocal Block
-变成单位映射。然后我们直接将其插入预训练的模型，再进行 fine tuning
-。</p></li>
+<p>另外一个训练时的技巧是将最后的 1*1*1 卷积初始化为全 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.131ex" height="1.557ex" role="img" focusable="false" viewBox="0 -666 500 688"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mn"><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path></g></g></g></svg></mjx-container> ，从而令 Nonlocal Block 变成单位映射。然后我们直接将其插入预训练的模型，再进行 fine tuning 。</p>
+</li>
 </ul>
-<h1 id="将图像模型用于视频">将图像模型用于视频</h1>
-<ul>
-<li>这其实是一个自然的想法，而对应的技术也是自然的：对于给定的图像模型，我们考虑其每一层卷积和池化的尺寸，为其增加一个时间维<sup id="fnref:6"><a href="#fn:6" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="具体怎么加课上没有细说。看起来一个不错的方法是添加与原先相同的大小。">[6]</span></a></sup>，而时间维的参数则是原先参数的重复。这一方法没被称作
-Inflating 2D networks to
-3D（I3D）。有趣的是如上引入图像的先验以后，模型的表现其实比从头训练更好。另外我们也可以对
-2-stream network 做相同的操作，分别为 stream 1 &amp; 2
-选择一个图像模型。</li>
+<h1 id="将图像模型用于视频"><a href="#将图像模型用于视频" class="headerlink" title="将图像模型用于视频"></a>将图像模型用于视频</h1><ul>
+<li>这其实是一个自然的想法，而对应的技术也是自然的：对于给定的图像模型，我们考虑其每一层卷积和池化的尺寸，为其增加一个时间维<sup id="fnref:6"><a href="#fn:6" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="具体怎么加课上没有细说。看起来一个不错的方法是添加与原先相同的大小。">[6]</span></a></sup>，而时间维的参数则是原先参数的重复。这一方法没被称作 Inflating 2D networks to 3D（I3D）。有趣的是如上引入图像的先验以后，模型的表现其实比从头训练更好。另外我们也可以对 2-stream network 做相同的操作，分别为 stream 1 &amp; 2 选择一个图像模型。</li>
 </ul>
-<h1 id="slowfast-network">SlowFast Network</h1>
-<ul>
-<li><p>2-stream network 的缺陷是，其依赖于外部计算的 optical flow 。而
-SlowFast Network 则改进了这一点，不同的是其并没有显式的拟合 optical flow
-，而是令 stream 1 以高时间维处理低帧率的切片，stream 2
-以低时间维处理高帧率的切片，并且加入 stream 2 到 stream 1
-的横向信息传递，如下所示：</p>
-<p><img 
-
+<h1 id="SlowFast-Network"><a href="#SlowFast-Network" class="headerlink" title="SlowFast Network"></a>SlowFast Network</h1><ul>
+<li><p>2-stream network 的缺陷是，其依赖于外部计算的 optical flow 。而 SlowFast Network 则改进了这一点，不同的是其并没有显式的拟合 optical flow ，而是令 stream 1 以高时间维处理低帧率的切片，stream 2 以低时间维处理高帧率的切片，并且加入 stream 2 到 stream 1 的横向信息传递，如下所示：</p>
+<p><img  
                      lazyload
                      src="/images/loading.svg"
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/mth0lnaw.png"
-                      
-                ></p></li>
-<li><p>我们可以期待 stream 1 提取了视频的外观信息，而 stream 2 的类似
-optical flow 的提取了动作信息。另外 SlowFast Network
-也综合了先前介绍了另外一些技术，包括使用 I3D 构建 stream 1 &amp; 2
-<sup id="fnref:7"><a href="#fn:7" rel="footnote"><span
-class="hint--top hint--error hint--medium hint--rounded hint--bounce"
-aria-label="以 ResNet50 为基础。">[7]</span></a></sup>和引入 Nonlocal
-Block 。总的来说，SlowFast Network 是截止2019年的相当 SOTA
-的方法。</p></li>
+                      alt=""
+                ></p>
+</li>
+<li><p>我们可以期待 stream 1 提取了视频的外观信息，而 stream 2 的类似 optical flow 的提取了动作信息。另外 SlowFast Network 也综合了先前介绍了另外一些技术，包括使用 I3D 构建 stream 1 &amp; 2 <sup id="fnref:7"><a href="#fn:7" rel="footnote"><span class="hint--top hint--error hint--medium hint--rounded hint--bounce" aria-label="以 ResNet50 为基础。">[7]</span></a></sup>和引入 Nonlocal Block 。总的来说，SlowFast Network 是截止2019年的相当 SOTA 的方法。</p>
+</li>
 </ul>
-<div id="footnotes">
-<hr>
-<div id="footnotelist">
-<ol style="list-style: none; padding-left: 0; margin-left: 40px">
-<li id="fn:1">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span
-style="display: inline-block; vertical-align: top; margin-left: 10px;">3D
-convolution 本身的计算开销也会更大。另外 Slow Fusion 也可以像 2D CNN
-一样对 filter 做可视化。实际上 Justin
-也提到可以对广泛的视频模型做可视化，通过梯度上升生成最符合单一分类指标的视频。但我觉得这比较平凡，就不谈了。<a href="#fnref:1" rev="footnote">
-↩︎</a></span>
-</li>
-<li id="fn:2">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span
-style="display: inline-block; vertical-align: top; margin-left: 10px;">此处选择了
-Sports-1M ，包括了 Youtube
-上截取的运动切片，分类粒度非常高。<a href="#fnref:2" rev="footnote">
-↩︎</a></span>
-</li>
-<li id="fn:3">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span
-style="display: inline-block; vertical-align: top; margin-left: 10px;">具体的计算方式课上没有深入。<a href="#fnref:3" rev="footnote">
-↩︎</a></span>
-</li>
-<li id="fn:4">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">4.</span><span
-style="display: inline-block; vertical-align: top; margin-left: 10px;">数据集是
-UCF-101 。<a href="#fnref:4" rev="footnote"> ↩︎</a></span>
-</li>
-<li id="fn:5">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">5.</span><span
-style="display: inline-block; vertical-align: top; margin-left: 10px;">Self
-Attention
-的结构比较明晰，这里应该是不需要解释的。<a href="#fnref:5" rev="footnote">
-↩︎</a></span>
-</li>
-<li id="fn:6">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">6.</span><span
-style="display: inline-block; vertical-align: top; margin-left: 10px;">具体怎么加课上没有细说。看起来一个不错的方法是添加与原先相同的大小。<a href="#fnref:6" rev="footnote">
-↩︎</a></span>
-</li>
-<li id="fn:7">
-<span
-style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">7.</span><span
-style="display: inline-block; vertical-align: top; margin-left: 10px;">以
-ResNet50 为基础。<a href="#fnref:7" rev="footnote"> ↩︎</a></span>
-</li>
-</ol>
-</div>
-</div>
-</div>
-
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">3D convolution 本身的计算开销也会更大。另外 Slow Fusion 也可以像 2D CNN 一样对 filter 做可视化。实际上 Justin 也提到可以对广泛的视频模型做可视化，通过梯度上升生成最符合单一分类指标的视频。但我觉得这比较平凡，就不谈了。<a href="#fnref:1" rev="footnote"> ↩</a></span></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">2.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">此处选择了 Sports-1M ，包括了 Youtube 上截取的运动切片，分类粒度非常高。<a href="#fnref:2" rev="footnote"> ↩</a></span></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">3.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">具体的计算方式课上没有深入。<a href="#fnref:3" rev="footnote"> ↩</a></span></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">4.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">数据集是 UCF-101 。<a href="#fnref:4" rev="footnote"> ↩</a></span></li><li id="fn:5"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">5.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">Self Attention 的结构比较明晰，这里应该是不需要解释的。<a href="#fnref:5" rev="footnote"> ↩</a></span></li><li id="fn:6"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">6.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">具体怎么加课上没有细说。看起来一个不错的方法是添加与原先相同的大小。<a href="#fnref:6" rev="footnote"> ↩</a></span></li><li id="fn:7"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">7.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">以 ResNet50 为基础。<a href="#fnref:7" rev="footnote"> ↩</a></span></li></ol></div></div>
 		</div>
 
 		
@@ -1032,8 +893,7 @@ ResNet50 为基础。<a href="#fnref:7" rev="footnote"> ↩︎</a></span>
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">视频识别与分类</div>
-		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E7%89%87%E5%88%86%E7%B1%BB"><span class="nav-text">切片分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#single-frame-cnn"><span class="nav-text">Single-Frame CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lateearlyslow-fusion"><span class="nav-text">Late&#x2F;Early&#x2F;Slow Fusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#optical-flow-and-two-stream-networks"><span class="nav-text">Optical Flow and
-Two-Stream Networks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%95%BF%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86"><span class="nav-text">长视频处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%86%E5%9B%BE%E5%83%8F%E6%A8%A1%E5%9E%8B%E7%94%A8%E4%BA%8E%E8%A7%86%E9%A2%91"><span class="nav-text">将图像模型用于视频</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#slowfast-network"><span class="nav-text">SlowFast Network</span></a></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-text">问题背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%87%E7%89%87%E5%88%86%E7%B1%BB"><span class="nav-text">切片分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Single-Frame-CNN"><span class="nav-text">Single-Frame CNN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Late-Early-Slow-Fusion"><span class="nav-text">Late&#x2F;Early&#x2F;Slow Fusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optical-Flow-and-Two-Stream-Networks"><span class="nav-text">Optical Flow and Two-Stream Networks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%95%BF%E8%A7%86%E9%A2%91%E5%A4%84%E7%90%86"><span class="nav-text">长视频处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%86%E5%9B%BE%E5%83%8F%E6%A8%A1%E5%9E%8B%E7%94%A8%E4%BA%8E%E8%A7%86%E9%A2%91"><span class="nav-text">将图像模型用于视频</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SlowFast-Network"><span class="nav-text">SlowFast Network</span></a></li></ol>
 
 	</div>
 </div>
@@ -1064,7 +924,7 @@ Two-Stream Networks</span></a></li></ol></li><li class="nav-item nav-level-1"><a
                     </span>
                     
                         <span>
-                            共 100.9k 字
+                            共 101.9k 字
                         </span>
                     
                 </p>
