@@ -484,32 +484,34 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>本文原先的主题是 Introduction to Flow Matching and Diffusion Models ，但后来觉得这样的讨论主题太狭窄了，于是扩展为了 Introduction to Deep Generative Models 。我将尽量以合理、严格且 self-contained 的方式介绍生成模型。然而由于本人此前并没有系统性的学过微分方程，物理也学得不好，所以本文中我们可能会跳过一部分引理的证明。</p>
-<p>本文的参考资料包括 MIT6.S184: Generative AI with Stochastic Differential Equations ，Imperial70010 Deep Learning ，MIT6.S978 Deep Generative Models 。</p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>本文原先的主题是 Introduction to Flow Matching and Diffusion Models
+，但后来觉得这样的讨论主题太狭窄了，于是扩展为了 Introduction to Deep
+Generative Models 。我将尽量以合理、严格且 self-contained
+的方式介绍生成模型。然而由于本人此前并没有系统性的学过微分方程，物理也学得不好，所以本文中我们可能会跳过一部分引理的证明。</p>
+<p>本文的参考资料包括 MIT6.S184: Generative AI with Stochastic
+Differential Equations ，Imperial70010 Deep Learning ，MIT6.S978 Deep
+Generative Models 。</p>
 <span id="more"></span>
 <p>本文将仍然采用多篇的形式，本篇是全文的目录。</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
+<h1 id="目录">目录</h1>
+<ol type="1">
 <li><p><a href="\2025\10\31\DG\vae">Variational Auto Encoder</a></p>
-<p>本文将简要的介绍 VAE 、VQ-VAE ，以及一些现代的混合架构模型。</p>
-</li>
+<p>本文将简要的介绍 VAE 、VQ-VAE ，以及一些现代的混合架构模型。</p></li>
 <li><p><a href="\2025\08\09\DG\fluid">Basic Fluid Mechanics</a></p>
-<p>我相信大多数人会将流模型视作概率模型，然而其具体刻画概率流演化的方式基本是单纯流体力学的。因此，为了严谨性和直观性，我们还是要特别的谈点物理基础。</p>
-</li>
+<p>我相信大多数人会将流模型视作概率模型，然而其具体刻画概率流演化的方式基本是单纯流体力学的。因此，为了严谨性和直观性，我们还是要特别的谈点物理基础。</p></li>
 <li><p><a href="\2025\08\12\DG\flow">Flow Models</a></p>
-<p>本文中我们将简要介绍一般生成模型的范式，并详细的介绍流模型的框架、训练目标的构建、以及训练方法。</p>
-</li>
-<li><p><a href="\2025\08\21\DG\sde">Definition of Stochastic Differential Equation</a></p>
-<p>本文的目标是从较为严格的角度提供随机微分方程的定义，使得我们可以定义后续的扩散模型。限于篇幅和本人的数学水平，本文跳过了大部分证明。</p>
-</li>
-<li><p><a href="\2025\08\24\DG\fpe">Diffusion and Fokker-Planck Equation</a></p>
-<p>本文简略的介绍了物理上的扩散过程以及描述扩散分布演化的关键的 Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。</p>
-</li>
+<p>本文中我们将简要介绍一般生成模型的范式，并详细的介绍流模型的框架、训练目标的构建、以及训练方法。</p></li>
+<li><p><a href="\2025\08\21\DG\sde">Definition of Stochastic
+Differential Equation</a></p>
+<p>本文的目标是从较为严格的角度提供随机微分方程的定义，使得我们可以定义后续的扩散模型。限于篇幅和本人的数学水平，本文跳过了大部分证明。</p></li>
+<li><p><a href="\2025\08\24\DG\fpe">Diffusion and Fokker-Planck
+Equation</a></p>
+<p>本文简略的介绍了物理上的扩散过程以及描述扩散分布演化的关键的
+Fokker-Planck 方程，目的在于提供直观，并为扩散模型铺垫。</p></li>
 <li><p><a href="\2025\08\26\DG\diffusion">Diffusion Models</a></p>
-<p>本文通过之前的结果构建了广泛的扩散模型的范式，并详细介绍了扩散模型的框架，训练目标的构建，以及训练过程。</p>
-</li>
+<p>本文通过之前的结果构建了广泛的扩散模型的范式，并详细介绍了扩散模型的框架，训练目标的构建，以及训练过程。</p></li>
 <li><p><a href="\2025\08\29\DG\imgen">Instance：Image Generators</a></p>
-<p>通过先前的章节，我们已经基本清楚的介绍了流模型和扩散模型的理论框架。本文将侧重于生成模型在图像生成方面的应用，简要的介绍如何实现带有要求的指向（条件）生成，具体神经网络架构的设计，并分析几个现代的大型生成模型的实例。</p>
-</li>
+<p>通过先前的章节，我们已经基本清楚的介绍了流模型和扩散模型的理论框架。本文将侧重于生成模型在图像生成方面的应用，简要的介绍如何实现带有要求的指向（条件）生成，具体神经网络架构的设计，并分析几个现代的大型生成模型的实例。</p></li>
 </ol>
 
 		</div>
@@ -605,9 +607,9 @@
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/07/20/OPT/lagd/">
+				<a class="next" rel="next" href="/2025/07/20/OPT/%E6%B5%85%E8%B0%88%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">拉格朗日对偶性</span>
+						<span class="post-nav-title-item">浅谈最优化方法</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
@@ -714,7 +716,7 @@
                     </span>
                     
                         <span>
-                            共 122.2k 字
+                            共 100.9k 字
                         </span>
                     
                 </p>
