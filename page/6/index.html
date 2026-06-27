@@ -103,119 +103,7 @@
     
     
     
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
 </head>
 
 
@@ -580,146 +468,6 @@ mjx-container[display="true"] + br {
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
-                        <a href="/2025/04/22/IT/defs/">
-                            信息熵的定义
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>
-大多数人可能会认为信息熵抽象而不明确，这的确很难避免；另一些人会认为信息熵仅是玻尔兹曼熵的推广、或者信息熵度量了信息量，这很大程度上是不对的。严格的说，信息熵的定义一方面依赖于概率论，其度量了随机变量的不确定度；另一方面则依赖于信息的编码理论。下面我们要从两个方面导出信息熵。并且如若不特别说明，我们只考虑离散的情况。
-</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Apr 22 2025 00:00:00 GMT+0800">
-                
-                    2025-04-22
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/">信息论</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/04/22/IT/defs/">阅读全文<span class="seo-reader-text">信息熵的定义</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
-                        <a href="/2025/04/22/IT/rate/">
-                            熵率
-                        </a>
-                    </h3>
-
-                    <div class="home-article-content markdown-body">
-                        
-                            <p>
-熵率是要探讨信源编码的长期平均速率的极限。现在我们先要复习一些概率论基础，我本来是不想在这边写这些的，但是我没单独写概率论，所以还是提一下。以后的内容均在一定程度上依赖于基础实分析。
-</p>
-
-                        
-                    </div>
-
-                    <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fa-solid fa-calendars"></i>&nbsp;
-            <span class="home-article-date" data-date="Tue Apr 22 2025 00:00:00 GMT+0800">
-                
-                    2025-04-22
-                
-            </span>
-        </span>
-        
-            <span class="home-article-category">
-                <i class="fa-solid fa-folders"></i>&nbsp;
-            <ul>
-                
-                
-                    
-                        
-                        <li>
-                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
-                        </li>
-                    
-                    
-                
-            </ul>
-        </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fa-solid fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/">信息论</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2025/04/22/IT/rate/">阅读全文<span class="seo-reader-text">熵率</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
-</div>
-
-                </div>
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                
-
-                
-                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
-                    <h3 class="home-article-title">
                         <a href="/2025/04/22/IT/mark/">
                             马尔可夫链与法诺不等式
                         </a>
@@ -727,10 +475,7 @@ mjx-container[display="true"] + br {
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-下面我们将简要介绍 Markov chain 与 Fano's Inequality 。
-</p>
-
+                            <p>下面我们将简要介绍 Markov chain 与 Fano’s Inequality 。</p>
                         
                     </div>
 
@@ -790,6 +535,140 @@ mjx-container[display="true"] + br {
                 
                 <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
                     <h3 class="home-article-title">
+                        <a href="/2025/04/22/IT/prop/">
+                            熵的性质
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            <p>熵有一些显然的性质，例如其是凹函数，这里就不赘述了。下面我们将定义一些其它种类的熵，并介绍其性质。</p>
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue Apr 22 2025 00:00:00 GMT+0800">
+                
+                    2025-04-22
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/">信息论</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/04/22/IT/prop/">阅读全文<span class="seo-reader-text">熵的性质</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
+                        <a href="/2025/04/22/IT/rate/">
+                            熵率
+                        </a>
+                    </h3>
+
+                    <div class="home-article-content markdown-body">
+                        
+                            <p>熵率是要探讨信源编码的长期平均速率的极限。现在我们先要复习一些概率论基础，我本来是不想在这边写这些的，但是我没单独写概率论，所以还是提一下。以后的内容均在一定程度上依赖于基础实分析。</p>
+                        
+                    </div>
+
+                    <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue Apr 22 2025 00:00:00 GMT+0800">
+                
+                    2025-04-22
+                
+            </span>
+        </span>
+        
+            <span class="home-article-category">
+                <i class="fa-solid fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/%E5%AD%A6%E6%9C%AF/">学术</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E4%BF%A1%E6%81%AF%E8%AE%BA/">信息论</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2025/04/22/IT/rate/">阅读全文<span class="seo-reader-text">熵率</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+                </div>
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                
+                <div class="flex flex-col gap-5 px-7 pb-7 pt-7">
+                    <h3 class="home-article-title">
                         <a href="/2025/04/16/DL/RL/">
                             浅谈强化学习的深度学习方法
                         </a>
@@ -797,11 +676,7 @@ mjx-container[display="true"] + br {
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-本文将引入强化学习这一领域，并简要介绍一些基础的理论建模，及其深度学习的解法，例如
-Deep Q Learning 和 Policy Gradient 。
-</p>
-
+                            <p>本文将引入强化学习这一领域，并简要介绍一些基础的理论建模，及其深度学习的解法，例如 Deep Q Learning 和 Policy Gradient 。</p>
                         
                     </div>
 
@@ -868,10 +743,7 @@ Deep Q Learning 和 Policy Gradient 。
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-本文将引入一个新的研究分支，即生成模型，并且将简要介绍其中的自回归模型、变分自编码器与生成对抗网络。
-</p>
-
+                            <p>本文将引入一个新的研究分支，即生成模型，并且将简要介绍其中的自回归模型、变分自编码器与生成对抗网络。</p>
                         
                     </div>
 
@@ -938,10 +810,7 @@ Deep Q Learning 和 Policy Gradient 。
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-本文将简要介绍一些从图像识别扩展到视频识别的技术。
-</p>
-
+                            <p>本文将简要介绍一些从图像识别扩展到视频识别的技术。</p>
                         
                     </div>
 
@@ -1008,10 +877,7 @@ Deep Q Learning 和 Policy Gradient 。
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-本文简要介绍了处理 3D 视觉问题的一些基本技术。
-</p>
-
+                            <p>本文简要介绍了处理 3D 视觉问题的一些基本技术。</p>
                         
                     </div>
 
@@ -1078,13 +944,8 @@ Deep Q Learning 和 Policy Gradient 。
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-感觉中科大那本书的证明写得有烂啊，本文主要参照了华师大版近世代数的证明。
-</p>
-<p>
-阅读本文需要一定的群论基础。
-</p>
-
+                            <p>感觉中科大那本书的证明写得有烂啊，本文主要参照了华师大版近世代数的证明。</p>
+<p>阅读本文需要一定的群论基础。</p>
                         
                     </div>
 
@@ -1151,10 +1012,7 @@ Deep Q Learning 和 Policy Gradient 。
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-本文简要介绍了用于 Object Detection 的 Region Proposal 以及 R-CNN 。
-</p>
-
+                            <p>本文简要介绍了用于 Object Detection 的 Region Proposal 以及 R-CNN 。</p>
                         
                     </div>
 
@@ -1221,10 +1079,7 @@ Deep Q Learning 和 Policy Gradient 。
 
                     <div class="home-article-content markdown-body">
                         
-                            <p>
-CNN 的中间结果可视化技术原来还可以拿来干这些事情。
-</p>
-
+                            <p>CNN 的中间结果可视化技术原来还可以拿来干这些事情。</p>
                         
                     </div>
 
@@ -1309,7 +1164,7 @@ CNN 的中间结果可视化技术原来还可以拿来干这些事情。
                     </span>
                     
                         <span>
-                            共 99.8k 字
+                            共 122.2k 字
                         </span>
                     
                 </p>
@@ -1566,21 +1421,6 @@ CNN 的中间结果可视化技术原来还可以拿来干这些事情。
 
 
 	
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>

@@ -105,119 +105,7 @@
     
     
     
-<meta name="generator" content="Hexo 7.3.0"><style>mjx-container[jax="SVG"] {
-  direction: ltr;
-}
-
-mjx-container[jax="SVG"] > svg {
-  overflow: visible;
-}
-
-mjx-container[jax="SVG"][display="true"] {
-  display: block;
-  text-align: center;
-  margin: 1em 0;
-}
-
-mjx-container[jax="SVG"][justify="left"] {
-  text-align: left;
-}
-
-mjx-container[jax="SVG"][justify="right"] {
-  text-align: right;
-}
-
-g[data-mml-node="merror"] > g {
-  fill: red;
-  stroke: red;
-}
-
-g[data-mml-node="merror"] > rect[data-background] {
-  fill: yellow;
-  stroke: none;
-}
-
-g[data-mml-node="mtable"] > line[data-line] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > rect[data-frame] {
-  stroke-width: 70px;
-  fill: none;
-}
-
-g[data-mml-node="mtable"] > .mjx-dashed {
-  stroke-dasharray: 140;
-}
-
-g[data-mml-node="mtable"] > .mjx-dotted {
-  stroke-linecap: round;
-  stroke-dasharray: 0,140;
-}
-
-g[data-mml-node="mtable"] > svg {
-  overflow: visible;
-}
-
-[jax="SVG"] mjx-tool {
-  display: inline-block;
-  position: relative;
-  width: 0;
-  height: 0;
-}
-
-[jax="SVG"] mjx-tool > mjx-tip {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-mjx-tool > mjx-tip {
-  display: inline-block;
-  padding: .2em;
-  border: 1px solid #888;
-  font-size: 70%;
-  background-color: #F8F8F8;
-  color: black;
-  box-shadow: 2px 2px 5px #AAAAAA;
-}
-
-g[data-mml-node="maction"][data-toggle] {
-  cursor: pointer;
-}
-
-mjx-status {
-  display: block;
-  position: fixed;
-  left: 1em;
-  bottom: 1em;
-  min-width: 25%;
-  padding: .2em .4em;
-  border: 1px solid #888;
-  font-size: 90%;
-  background-color: #F8F8F8;
-  color: black;
-}
-
-foreignObject[data-mjx-xml] {
-  font-family: initial;
-  line-height: normal;
-  overflow: visible;
-}
-
-.MathJax path {
-  stroke-width: 3;
-}
-
-mjx-container[display="true"] {
-  overflow: auto hidden;
-}
-
-mjx-container[display="true"] + br {
-  display: none;
-}
-</style><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
 </head>
 
 
@@ -561,7 +449,7 @@ mjx-container[display="true"] + br {
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>251 字</span>
+            <i class="fa-regular fa-typewriter"></i>&nbsp;<span>253 字</span>
         </span>
     
     
@@ -585,26 +473,22 @@ mjx-container[display="true"] + br {
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
+			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>使用 SSH 协议替代 HTTPS 协议以获取更高的稳定性和更快的速度。</p>
 <span id="more"></span>
 <ul>
 <li><p>配置 SSH 。</p>
 <p>下载 Git 。打开 git-bash.exe ，输入：</p>
-<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C "email"</span><br></pre></td></tr></table></figure></div>
-<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在
-<code>C:\Users\username\.ssh</code> 。</p></li>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;email&quot;</span><br></pre></td></tr></table></figure></div>
+<p>按提示完成操作以生成秘钥对。生成的密钥对一般存放在 <code>C:\Users\username\.ssh</code> 。</p>
+</li>
 <li><p>将公钥添加到 GitHub 。</p>
-<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and
-GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH
-时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key
-以添加公钥。</p></li>
+<p>进入 GitHub ，登入账号，单击头像，进入 Settings 。紧接着进入 SSH and GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH 时生成的公钥（ id_rsa.pub ）即可。然后单击 Add SSH key 以添加公钥。</p>
+</li>
 <li><p>使用 SSH 替换 HTTPS 。</p>
-<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH
-，复制其中的内容。打开博客的配置文件（ config.yml ），找到
-<code>deploy</code> 下的 <code>repository</code>
-，将其替换为你所复制的内容，保存配置。</p></li>
-<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS
-变更为 SSH ，同时稳定性和速度均有显著提升。</p></li>
+<p>进入 GitHub 中博客的存储库，单击 Code ，在 Clone 栏中选择 SSH ，复制其中的内容。打开博客的配置文件（ config.yml ），找到 <code>deploy</code> 下的 <code>repository</code> ，将其替换为你所复制的内容，保存配置。</p>
+</li>
+<li><p>再次对博客的本地文件执行上传操作，可以发现，发送方式已从 HTTPS 变更为 SSH ，同时稳定性和速度均有显著提升。</p>
+</li>
 </ul>
 
 		</div>
@@ -801,7 +685,7 @@ GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH
                     </span>
                     
                         <span>
-                            共 99.8k 字
+                            共 122.2k 字
                         </span>
                     
                 </p>
@@ -1078,21 +962,6 @@ GPG keys ，单击 New SSH key 。Title 任取，在 Key 处填入配置 SSH
 
 
 	
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 </html>
