@@ -484,46 +484,60 @@
 
 
 		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-			<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229 的重新摘要。总的来说，本文将按照一定的脉络尽量严格的介绍传统机器学习方法，并尽量避免如同其它大部分资料一般的感性与杂乱。</p>
+			<p>交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
+的重新摘要。总的来说，本文将按照一定的脉络尽量严格的介绍传统机器学习方法，并尽量避免如同其它大部分资料一般的感性与杂乱。</p>
 <span id="more"></span>
 <p>本文被拆分为了多篇，本篇为全文的目录。</p>
-<h1 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h1><ol>
-<li><p><a href="/2026/06/05/ML/cov/">Basic Concepts of Covariance</a></p>
-<p>由于本人只学过概率论，所以在这里简单的复习一点协方差的意义和性质。</p>
-</li>
-<li><p><a href="/2026/06/15/ML/dif/">Discussion to Differetials and Derivatives</a></p>
-<p>我以前一直没怎么弄明白微分，而且现在越来越多的接触到矩阵微分，经常碰到定义上和计算上的问题，所以我们要在这里重新介绍微分那一套。特别的，比较严格的理论（主要是微分的某些内蕴性质）恐怕要在微分几何上才会遇到，因此我们暂时不会涉及这一部分。本文的主线是一般流形上的一阶微分，并以矩阵空间为例。</p>
-</li>
+<h1 id="目录">目录</h1>
+<ol type="1">
+<li><p><a href="/2026/06/05/ML/cov/">Basic Concepts of
+Covariance</a></p>
+<p>由于本人只学过概率论，所以在这里简单的复习一点协方差的意义和性质。</p></li>
+<li><p><a href="/2026/06/15/ML/dif/">Discussion to Differetials and
+Derivatives</a></p>
+<p>我以前一直没怎么弄明白微分，而且现在越来越多的接触到矩阵微分，经常碰到定义上和计算上的问题，所以我们要在这里重新介绍微分那一套。特别的，比较严格的理论（主要是微分的某些内蕴性质）恐怕要在微分几何上才会遇到，因此我们暂时不会涉及这一部分。本文的主线是一般流形上的一阶微分，并以矩阵空间为例。</p></li>
 <li><p><a href="/2025/09/17/ML/linear/">Linear Regression</a></p>
-<p>本文介绍了一些基本的术语，以及线性回归与 Locally Weighted Linear Regression 。</p>
-</li>
-<li><p><a href="/2025/09/18/ML/logi/">Logistic Regression and Generalized Linear Models</a></p>
-<p>本文继续介绍了 Logistic Regression 与 Generalized Linear Models 。</p>
-</li>
-<li><p><a href="/2025/09/21/ML/gen/">Generative Learning Algorithms</a></p>
-<p>本文介绍了与先前的判别式算法不同的生成式算法，特别是 Gaussian Discriminant Analysis 和 Naive Bayes 。</p>
-</li>
-<li><p><a href="/2025/10/02/ML/rep/">Representor Theorem and Kernels</a></p>
-<p>本文严格建模了一般监督学习，并由此引出了（机器学习中）表示定理的严格定义。接下来本文从再生核希尔伯特空间的角度介绍了核技巧，最后给出了 Mercer’s Theorem 。</p>
-</li>
+<p>本文介绍了一些基本的术语，以及线性回归与 Locally Weighted Linear
+Regression 。</p></li>
+<li><p><a href="/2025/09/18/ML/logi/">Logistic Regression and
+Generalized Linear Models</a></p>
+<p>本文继续介绍了 Logistic Regression 与 Generalized Linear Models
+。</p></li>
+<li><p><a href="/2025/09/21/ML/gen/">Generative Learning
+Algorithms</a></p>
+<p>本文介绍了与先前的判别式算法不同的生成式算法，特别是 Gaussian
+Discriminant Analysis 和 Naive Bayes 。</p></li>
+<li><p><a href="/2025/10/02/ML/rep/">Representor Theorem and
+Kernels</a></p>
+<p>本文严格建模了一般监督学习，并由此引出了（机器学习中）表示定理的严格定义。接下来本文从再生核希尔伯特空间的角度介绍了核技巧，最后给出了
+Mercer's Theorem 。</p></li>
 <li><p><a href="/2025/09/23/ML/svm/">Support Vector Machines</a></p>
-<p>本文介绍了 Support Vector Machines ，使用 Lagrange Duality 推导了 Hard SVM 的对偶形式，并使用表示定理导出了 Soft SVM 的一般形式，讨论了选取复杂核函数时对 Soft SVM 的解读。</p>
-</li>
-<li><p><a href="/2025/10/09/ML/mlt/">Basic Machine Learning Theories</a></p>
-<p>本文将简要介绍机器学习理论的基础内容，主要是依赖于先前介绍的集中不等式给出一些优化函数空间有限时相对简单的界，并引入 VC 维。此外本文也将简要介绍 bias-various tradeoff ，尽管此中似乎并无什么深入的理论，连是否应该归于本篇也是有待商榷的。</p>
-</li>
+<p>本文介绍了 Support Vector Machines ，使用 Lagrange Duality 推导了
+Hard SVM 的对偶形式，并使用表示定理导出了 Soft SVM
+的一般形式，讨论了选取复杂核函数时对 Soft SVM 的解读。</p></li>
+<li><p><a href="/2025/10/09/ML/mlt/">Basic Machine Learning
+Theories</a></p>
+<p>本文将简要介绍机器学习理论的基础内容，主要是依赖于先前介绍的集中不等式给出一些优化函数空间有限时相对简单的界，并引入
+VC 维。此外本文也将简要介绍 bias-various tradeoff
+，尽管此中似乎并无什么深入的理论，连是否应该归于本篇也是有待商榷的。</p></li>
 <li><p><a href="/2025/10/14/ML/dt/">Decision Tree and Bagging</a></p>
-<p>本文将简要的介绍决策树这一简单的模型，主要是说明熵度量的合理性；以及集成学习中的 Bagging 方法，并引出与决策树结合的随机森林。</p>
-</li>
-<li><p><a href="/2025/10/15/ML/bt/">Boosting</a></p>
-<p>本文将简要介绍 Boosting 这一集成学习方法，主要包括 Gradient Boost ，XGBoost ，以及对 Adaboost 的详细建模和收敛性分析。</p>
-</li>
-<li><p><a href="/2025/10/30/ML/em/">K-means and Expectation Maximization</a></p>
-<p>   本文将简要介绍 K-means 和 Expectation Maximization 方法，可能会以 Gaussian Mixture Models 作为后者的特例进行讨论。</p>
-</li>
-<li><p><a href="/2025/10/31/ML/fa/">Factor Analysis and Principal Components Analysis</a></p>
-<p>本文原先是要讲 Mixture of Gaussians, Factor Analysis, Independent Components Analysis 和 Principal Components Analysis 的。但后来我觉得 MoG 在计算上实在是没什么好讲的，而 ICA 的假设太强而脱离实际，所以这两者就不讲了。</p>
-</li>
+<p>本文将简要的介绍决策树这一简单的模型，主要是说明熵度量的合理性；以及集成学习中的
+Bagging 方法，并引出与决策树结合的随机森林。</p></li>
+<li><p><a href="/2025/10/15/ML/bt/">Boosting</a></p></li>
+</ol>
+<p>本文将简要介绍 Boosting 这一集成学习方法，主要包括 Gradient Boost
+，XGBoost ，以及对 Adaboost 的详细建模和收敛性分析。</p>
+<ol start="11" type="1">
+<li><p><a href="/2025/10/30/ML/em/">K-means and Expectation
+Maximization</a></p>
+<p>本文将简要介绍 K-means 和 Expectation Maximization 方法，可能会以
+Gaussian Mixture Models 作为后者的特例进行讨论。</p></li>
+<li><p><a href="/2025/10/31/ML/fa/">Factor Analysis and Principal
+Components Analysis</a></p>
+<p>本文原先是要讲 Mixture of Gaussians, Factor Analysis, Independent
+Components Analysis 和 Principal Components Analysis 的。但后来我觉得
+MoG 在计算上实在是没什么好讲的，而 ICA
+的假设太强而脱离实际，所以这两者就不讲了。</p></li>
 </ol>
 
 		</div>
@@ -728,7 +742,7 @@
                     </span>
                     
                         <span>
-                            共 101.9k 字
+                            共 100.7k 字
                         </span>
                     
                 </p>

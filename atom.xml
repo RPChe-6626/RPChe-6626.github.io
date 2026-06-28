@@ -43,7 +43,11 @@
     <updated>2026-06-11T18:49:13.908Z</updated>
     
     
-    <summary type="html">&lt;p&gt;I’ve been interested in the topics in reinforcement learning, and the group I’m in now focuses on reinforcement learning as well. So here I’ll briedly note Stanford CS234 Spring 2024. And I know I’ve opened quite a few notes that hasn’t been written since the beginning of this year. I’ll update them in the following a few months, I think.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;I&#39;ve been interested in the topics in reinforcement learning, and the
+group I&#39;m in now focuses on reinforcement learning as well. So here I&#39;ll
+briedly note Stanford CS234 Spring 2024. And I know I&#39;ve opened quite a
+few notes that hasn&#39;t been written since the beginning of this year.
+I&#39;ll update them in the following a few months, I think.&lt;/p&gt;</summary>
     
     
     
@@ -81,7 +85,12 @@
     <updated>2026-06-04T09:55:04.502Z</updated>
     
     
-    <summary type="html">&lt;p&gt;I attended the 2026 PKU Workshop on Optimization and Learning, mainly because of the distinguished invited speakers and the interesting topics. Speakers introcued their works in short talks. Here I’ll briefly note a few talks with the referenced literatures. I’ll except the talks on distributed learning and optimization and communications, because I’m not familiar with these fields.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;I attended the 2026 PKU Workshop on Optimization and Learning, mainly
+because of the distinguished invited speakers and the interesting
+topics. Speakers introcued their works in short talks. Here I&#39;ll briefly
+note a few talks with the referenced literatures. I&#39;ll except the talks
+on distributed learning and optimization and communications, because I&#39;m
+not familiar with these fields.&lt;/p&gt;</summary>
     
     
     
@@ -100,8 +109,16 @@
     <updated>2026-02-24T13:42:31.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;You know that I was writing these notes in Chinese for convenience and better expression. However later I realized that these things are written mostly for peers, so I am writing in English from now.&lt;/p&gt;
-&lt;p&gt;We have discussed a few aspects of deep generative models in previous parts, specifically VAE and a brief cover (from MIT 6.S184) of diffusion and flow models. As I finished CS3936 I realized that these theories are merely an aspect of stochastic interpolants. So I decide to have a more detailed discussion on these closely related sampling and generative algorithms along with basic mathematical tools and more detailed proofs, as I intend to pursue such fields in the future.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;You know that I was writing these notes in Chinese for convenience
+and better expression. However later I realized that these things are
+written mostly for peers, so I am writing in English from now.&lt;/p&gt;
+&lt;p&gt;We have discussed a few aspects of deep generative models in previous
+parts, specifically VAE and a brief cover (from MIT 6.S184) of diffusion
+and flow models. As I finished CS3936 I realized that these theories are
+merely an aspect of stochastic interpolants. So I decide to have a more
+detailed discussion on these closely related sampling and generative
+algorithms along with basic mathematical tools and more detailed proofs,
+as I intend to pursue such fields in the future.&lt;/p&gt;</summary>
     
     
     
@@ -120,7 +137,8 @@
     <updated>2025-11-01T13:15:56.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要的介绍 VAE 。本来还想谈谈 VQ-VAE ，但是觉得这种模型比较平凡，因此不讲了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要的介绍 VAE 。本来还想谈谈 VQ-VAE
+，但是觉得这种模型比较平凡，因此不讲了。&lt;/p&gt;</summary>
     
     
     
@@ -139,7 +157,10 @@
     <updated>2026-06-27T18:05:23.600Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文原先是要讲 Mixture of Gaussians, Factor Analysis, Independent Components Analysis 和 Principal Components Analysis 的。但后来我觉得 MoG 在计算上实在是没什么好讲的，而 ICA 的假设太强而脱离实际，所以这两者就不讲了。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文原先是要讲 Mixture of Gaussians, Factor Analysis, Independent
+Components Analysis 和 Principal Components Analysis 的。但后来我觉得
+MoG 在计算上实在是没什么好讲的，而 ICA
+的假设太强而脱离实际，所以这两者就不讲了。&lt;/p&gt;</summary>
     
     
     
@@ -158,7 +179,8 @@
     <updated>2026-06-05T12:55:49.605Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要介绍 K-means 和 Expectation Maximization 方法，可能会以 Gaussian Mixture Models 作为后者的特例进行讨论。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要介绍 K-means 和 Expectation Maximization 方法，可能会以
+Gaussian Mixture Models 作为后者的特例进行讨论。&lt;/p&gt;</summary>
     
     
     
@@ -177,7 +199,8 @@
     <updated>2025-10-19T09:30:45.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要介绍 Boosting 这一集成学习方法，主要包括 Gradient Boost ，XGBoost ，以及对 Adaboost 的详细建模和收敛性分析。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要介绍 Boosting 这一集成学习方法，主要包括 Gradient Boost
+，XGBoost ，以及对 Adaboost 的详细建模和收敛性分析。&lt;/p&gt;</summary>
     
     
     
@@ -196,7 +219,8 @@
     <updated>2025-10-19T09:11:27.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要的介绍决策树这一简单的模型，主要是说明熵度量的合理性；以及集成学习中的 Bagging 方法，并引出与决策树结合的随机森林。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要的介绍决策树这一简单的模型，主要是说明熵度量的合理性；以及集成学习中的
+Bagging 方法，并引出与决策树结合的随机森林。&lt;/p&gt;</summary>
     
     
     
@@ -215,7 +239,9 @@
     <updated>2025-10-18T16:01:41.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文将简要介绍机器学习理论的基础内容，主要是依赖于先前介绍的集中不等式给出一些优化函数空间有限时相对简单的界，并引入 VC 维。此外本文也将简要介绍 bias-various tradeoff ，尽管此中似乎并无什么深入的理论，连是否应该归于本篇也是有待商榷的。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文将简要介绍机器学习理论的基础内容，主要是依赖于先前介绍的集中不等式给出一些优化函数空间有限时相对简单的界，并引入
+VC 维。此外本文也将简要介绍 bias-various tradeoff
+，尽管此中似乎并无什么深入的理论，连是否应该归于本篇也是有待商榷的。&lt;/p&gt;</summary>
     
     
     
@@ -234,7 +260,8 @@
     <updated>2026-06-18T19:24:17.703Z</updated>
     
     
-    <summary type="html">&lt;p&gt;交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229 的重新摘要。总的来说，本文将按照一定的脉络尽量严格的介绍传统机器学习方法，并尽量避免如同其它大部分资料一般的感性与杂乱。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;交大的 CS3308 还是讲得太烂了，因此本文是对 Stanford CS229
+的重新摘要。总的来说，本文将按照一定的脉络尽量严格的介绍传统机器学习方法，并尽量避免如同其它大部分资料一般的感性与杂乱。&lt;/p&gt;</summary>
     
     
     
@@ -253,7 +280,8 @@
     <updated>2025-10-04T15:52:13.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文严格建模了一般监督学习，并由此引出了（机器学习中）表示定理的严格定义。接下来本文从再生核希尔伯特空间的角度介绍了核技巧，最后给出了 Mercer’s Theorem 。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文严格建模了一般监督学习，并由此引出了（机器学习中）表示定理的严格定义。接下来本文从再生核希尔伯特空间的角度介绍了核技巧，最后给出了
+Mercer&#39;s Theorem 。&lt;/p&gt;</summary>
     
     
     
@@ -272,7 +300,9 @@
     <updated>2025-10-15T17:39:30.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文介绍了 Support Vector Machines ，使用 Lagrange Duality 推导了 Hard SVM 的对偶形式，并使用表示定理导出了 Soft SVM 的一般形式，讨论了选取复杂核函数时对 Soft SVM 的解读。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文介绍了 Support Vector Machines ，使用 Lagrange Duality 推导了
+Hard SVM 的对偶形式，并使用表示定理导出了 Soft SVM
+的一般形式，讨论了选取复杂核函数时对 Soft SVM 的解读。&lt;/p&gt;</summary>
     
     
     
@@ -291,7 +321,8 @@
     <updated>2025-09-30T05:37:55.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文介绍了与先前的判别式算法不同的生成式算法，特别是 Gaussian Discriminant Analysis 和 Naive Bayes 。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文介绍了与先前的判别式算法不同的生成式算法，特别是 Gaussian
+Discriminant Analysis 和 Naive Bayes 。&lt;/p&gt;</summary>
     
     
     
@@ -310,7 +341,8 @@
     <updated>2026-06-27T15:38:39.196Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文继续介绍了 Logistic Regression 与 Generalized Linear Models 。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文继续介绍了 Logistic Regression 与 Generalized Linear Models
+。&lt;/p&gt;</summary>
     
     
     
@@ -329,7 +361,8 @@
     <updated>2025-10-11T03:35:42.000Z</updated>
     
     
-    <summary type="html">&lt;p&gt;本文介绍了一些基本的术语，以及线性回归与 Locally Weighted Linear Regression 。&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;本文介绍了一些基本的术语，以及线性回归与 Locally Weighted Linear
+Regression 。&lt;/p&gt;</summary>
     
     
     
@@ -352,7 +385,9 @@
       
         
         
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot;</summary>
+    <summary type="html">&lt;p&gt;这一节要讲的主要是向量值函数求导的记号与性质。由于篇幅不长，就当为未来的杂项预留了。&lt;/p&gt;
+&lt;!--more0--&gt;
+&lt;p&gt;&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot; display=&quot;true&quot;&gt;&lt;svg</summary>
         
       
     
