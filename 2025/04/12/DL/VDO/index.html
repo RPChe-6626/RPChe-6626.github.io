@@ -106,172 +106,7 @@
     
     
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-<style>
-/* footnote-tooltip-style: show endnotes next to footnote references. */
-.footnote-tooltip-wrap {
-  display: inline-block;
-  line-height: 1;
-  position: relative;
-}
-
-.footnote-tooltip-wrap .footnote-ref {
-  cursor: help;
-}
-
-.footnote-tooltip {
-  position: fixed;
-  left: var(--footnote-tooltip-left, 50vw);
-  top: var(--footnote-tooltip-top, 0);
-  transform: translate(-50%, calc(-100% - 10px));
-  z-index: 10000;
-  box-sizing: border-box;
-  width: max-content;
-  max-width: min(28rem, calc(100vw - 24px));
-  max-height: min(18rem, calc(100vh - 24px));
-  overflow: auto;
-  padding: 0.65rem 0.75rem;
-  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
-  border-radius: 8px;
-  background: var(--background-color, #fff);
-  color: var(--default-text-color, #1f2933);
-  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
-  font-size: 0.92rem;
-  line-height: 1.55;
-  text-align: left;
-  white-space: normal;
-  overflow-wrap: break-word;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
-}
-
-.footnote-tooltip[data-placement="bottom"] {
-  transform: translate(-50%, 10px);
-}
-
-.footnote-tooltip::after {
-  content: "";
-  position: absolute;
-  left: var(--footnote-tooltip-arrow-left, 50%);
-  bottom: -6px;
-  width: 10px;
-  height: 10px;
-  border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
-  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
-  background: var(--background-color, #fff);
-  transform: translateX(-50%) rotate(45deg);
-}
-
-.footnote-tooltip[data-placement="bottom"]::after {
-  top: -6px;
-  bottom: auto;
-  border: 0;
-  border-left: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
-  border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
-}
-
-.footnote-tooltip-wrap:hover .footnote-tooltip,
-.footnote-tooltip-wrap:focus-within .footnote-tooltip {
-  opacity: 1;
-  visibility: visible;
-}
-
-.footnote-tooltip p,
-.footnote-tooltip ul,
-.footnote-tooltip ol {
-  margin: 0;
-}
-
-.footnote-tooltip p + p,
-.footnote-tooltip ul + p,
-.footnote-tooltip ol + p {
-  margin-top: 0.5rem;
-}
-
-.footnote-tooltip mjx-container {
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-  font-size: 95%;
-}
-
-@media (max-width: 640px) {
-  .footnote-tooltip {
-    max-width: calc(100vw - 24px);
-    font-size: 0.9rem;
-  }
-}
-</style><script id="footnote-tooltip-script">
-(function () {
-  function onReady(callback) {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', callback, { once: true });
-    } else {
-      callback();
-    }
-  }
-
-  function clamp(value, min, max) {
-    return Math.max(min, Math.min(max, value));
-  }
-
-  function activeWrapper() {
-    return document.querySelector('.footnote-tooltip-wrap:hover, .footnote-tooltip-wrap:focus-within');
-  }
-
-  function positionTooltip(wrapper) {
-    var ref = wrapper.querySelector('.footnote-ref');
-    var tooltip = wrapper.querySelector('.footnote-tooltip');
-    if (!ref || !tooltip) return;
-
-    var margin = 12;
-    var refRect = ref.getBoundingClientRect();
-    var maxWidth = Math.max(180, Math.min(448, window.innerWidth - margin * 2));
-    tooltip.style.maxWidth = maxWidth + 'px';
-
-    var width = Math.min(tooltip.offsetWidth || maxWidth, maxWidth);
-    var height = tooltip.offsetHeight || 0;
-    var anchorCenter = refRect.left + refRect.width / 2;
-    var left = clamp(anchorCenter, margin + width / 2, window.innerWidth - margin - width / 2);
-    var placement = 'top';
-    var top = refRect.top;
-
-    if (refRect.top - height - 14 < margin && refRect.bottom + height + 14 < window.innerHeight - margin) {
-      placement = 'bottom';
-      top = refRect.bottom;
-    }
-
-    var arrowLeft = clamp(anchorCenter - (left - width / 2), 12, Math.max(12, width - 12));
-    tooltip.dataset.placement = placement;
-    tooltip.style.setProperty('--footnote-tooltip-left', left + 'px');
-    tooltip.style.setProperty('--footnote-tooltip-top', top + 'px');
-    tooltip.style.setProperty('--footnote-tooltip-arrow-left', arrowLeft + 'px');
-  }
-
-  onReady(function () {
-    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.footnote-tooltip-wrap'));
-    wrappers.forEach(function (wrapper) {
-      var update = function () {
-        positionTooltip(wrapper);
-      };
-      wrapper.addEventListener('mouseenter', update);
-      wrapper.addEventListener('focusin', update);
-      wrapper.addEventListener('touchstart', update, { passive: true });
-    });
-
-    window.addEventListener('resize', function () {
-      var wrapper = activeWrapper();
-      if (wrapper) positionTooltip(wrapper);
-    });
-
-    window.addEventListener('scroll', function () {
-      var wrapper = activeWrapper();
-      if (wrapper) positionTooltip(wrapper);
-    }, true);
-  });
-})();
-</script><style>mjx-container[jax="SVG"] {
+<style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -824,14 +659,11 @@ Late Fusion 。</p>
 3D convolution 。这种方法相比 Early Fusion 的好处是保留了 Temporal
 Invariant ，即可以使用单一 filter
 提取周期性/不同时间点的特征。我们可以想象该方法中 temporal
-上的联系是逐步建立的，因此将其称作 Slow fusion 。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref1-tooltip" href="#fn1"
+上的联系是逐步建立的，因此将其称作 Slow fusion 。<a href="#fn1"
 class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a><span class="footnote-tooltip" id="fnref1-tooltip" role="tooltip"><p>3D convolution 本身的计算开销也会更大。另外 Slow Fusion
-也可以像 2D CNN 一样对 filter 做可视化。实际上 Justin
-也提到可以对广泛的视频模型做可视化，通过梯度上升生成最符合单一分类指标的视频。但我觉得这比较平凡，就不谈了。</p></span></span></p></li>
-<li><p>如果在数据集<span class="footnote-tooltip-wrap"><a aria-describedby="fnref2-tooltip" href="#fn2" class="footnote-ref" id="fnref2"
-role="doc-noteref"><sup>2</sup></a><span class="footnote-tooltip" id="fnref2-tooltip" role="tooltip"><p>此处选择了 Sports-1M ，包括了 Youtube
-上截取的运动切片，分类粒度非常高。</p></span></span>上比较 Late/Early/Slow Fusion
+role="doc-noteref"><sup>1</sup></a></p></li>
+<li><p>如果在数据集<a href="#fn2" class="footnote-ref" id="fnref2"
+role="doc-noteref"><sup>2</sup></a>上比较 Late/Early/Slow Fusion
 ，可以得到一些有趣的结果：</p>
 <p><img 
 
@@ -855,9 +687,9 @@ Two-Stream Networks</h2>
 <ul>
 <li><p>一个有趣的观点是人感知视频的一个重要方面是通过“动作”，我们希望将此概念同样引入到模型中，具体的方式则是
 Optical Flow 。Optical Flow
-描述的是像素在局部的帧间移动趋势，我们往往考虑垂直与水平两个方向：<span class="footnote-tooltip-wrap"><a aria-describedby="fnref3-tooltip"
+描述的是像素在局部的帧间移动趋势，我们往往考虑垂直与水平两个方向：<a
 href="#fn3" class="footnote-ref" id="fnref3"
-role="doc-noteref"><sup>3</sup></a><span class="footnote-tooltip" id="fnref3-tooltip" role="tooltip"><p>具体的计算方式课上没有深入。</p></span></span></p>
+role="doc-noteref"><sup>3</sup></a></p>
 <p><img 
 
                      lazyload
@@ -877,9 +709,9 @@ role="doc-noteref"><sup>3</sup></a><span class="footnote-tooltip" id="fnref3-too
 Classification ；对于 stream 2 ，我们对于每一帧计算其 Optical
 Flow（这应是一个 2 channel 的张量），再对其做 Early Fusion
 。在训练时我们分别训练 steam 1 &amp; 2
-，而在推理时我们对它们的预测结果做平均。我们可以期待这样做融合了视频的外观和动作，而其确实也取得了不错的结果：<span class="footnote-tooltip-wrap"><a aria-describedby="fnref4-tooltip"
+，而在推理时我们对它们的预测结果做平均。我们可以期待这样做融合了视频的外观和动作，而其确实也取得了不错的结果：<a
 href="#fn4" class="footnote-ref" id="fnref4"
-role="doc-noteref"><sup>4</sup></a><span class="footnote-tooltip" id="fnref4-tooltip" role="tooltip"><p>数据集是 UCF-101 。</p></span></span></p>
+role="doc-noteref"><sup>4</sup></a></p>
 <p><img 
 
                      lazyload
@@ -911,9 +743,8 @@ RNN 的序列处理，是一个好的结构，但主要的问题是 RCN
 仍然存在时序依赖，无法被有效的并行化。</p></li>
 <li><p>回忆在文本处理中，我们使用 Self Attention 替代了 RNN
 ，而前者是可以高度并行化的。在这里我们也可以做一样的操作。为此，我们可以设计出类似的
-Video Self Attention 模块，即如下的 Nonlocal Block ：<span class="footnote-tooltip-wrap"><a aria-describedby="fnref5-tooltip" href="#fn5"
-class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a><span class="footnote-tooltip" id="fnref5-tooltip" role="tooltip"><p>Self Attention
-的结构比较明晰，这里应该是不需要解释的。</p></span></span></p>
+Video Self Attention 模块，即如下的 Nonlocal Block ：<a href="#fn5"
+class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <p><img 
 
                      lazyload
@@ -937,9 +768,9 @@ SOTA 架构：</p>
 </ul>
 <h1 id="将图像模型用于视频">将图像模型用于视频</h1>
 <ul>
-<li>这其实是一个自然的想法，而对应的技术也是自然的：对于给定的图像模型，我们考虑其每一层卷积和池化的尺寸，为其增加一个时间维<span class="footnote-tooltip-wrap"><a aria-describedby="fnref6-tooltip"
+<li>这其实是一个自然的想法，而对应的技术也是自然的：对于给定的图像模型，我们考虑其每一层卷积和池化的尺寸，为其增加一个时间维<a
 href="#fn6" class="footnote-ref" id="fnref6"
-role="doc-noteref"><sup>6</sup></a><span class="footnote-tooltip" id="fnref6-tooltip" role="tooltip"><p>具体怎么加课上没有细说。看起来一个不错的方法是添加与原先相同的大小。</p></span></span>，而时间维的参数则是原先参数的重复。这一方法没被称作
+role="doc-noteref"><sup>6</sup></a>，而时间维的参数则是原先参数的重复。这一方法没被称作
 Inflating 2D networks to
 3D（I3D）。有趣的是如上引入图像的先验以后，模型的表现其实比从头训练更好。另外我们也可以对
 2-stream network 做相同的操作，分别为 stream 1 &amp; 2
@@ -961,9 +792,9 @@ SlowFast Network 则改进了这一点，不同的是其并没有显式的拟合
                 ></p></li>
 <li><p>我们可以期待 stream 1 提取了视频的外观信息，而 stream 2 的类似
 optical flow 的提取了动作信息。另外 SlowFast Network
-也综合了先前介绍了另外一些技术，包括使用 I3D 构建 stream 1 &amp; 2 <span class="footnote-tooltip-wrap"><a aria-describedby="fnref7-tooltip"
+也综合了先前介绍了另外一些技术，包括使用 I3D 构建 stream 1 &amp; 2 <a
 href="#fn7" class="footnote-ref" id="fnref7"
-role="doc-noteref"><sup>7</sup></a><span class="footnote-tooltip" id="fnref7-tooltip" role="tooltip"><p>以 ResNet50 为基础。</p></span></span>和引入 Nonlocal Block
+role="doc-noteref"><sup>7</sup></a>和引入 Nonlocal Block
 。总的来说，SlowFast Network 是截止2019年的相当 SOTA 的方法。</p></li>
 </ul>
 <section id="footnotes" class="footnotes footnotes-end-of-document"
