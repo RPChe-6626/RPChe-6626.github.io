@@ -106,7 +106,172 @@
     
     
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-<style>mjx-container[jax="SVG"] {
+<style>
+/* footnote-tooltip-style: show endnotes next to footnote references. */
+.footnote-tooltip-wrap {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+}
+
+.footnote-tooltip-wrap .footnote-ref {
+  cursor: help;
+}
+
+.footnote-tooltip {
+  position: fixed;
+  left: var(--footnote-tooltip-left, 50vw);
+  top: var(--footnote-tooltip-top, 0);
+  transform: translate(-50%, calc(-100% - 10px));
+  z-index: 10000;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 24px));
+  max-height: min(18rem, calc(100vh - 24px));
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-radius: 8px;
+  background: var(--background-color, #fff);
+  color: var(--default-text-color, #1f2933);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
+}
+
+.footnote-tooltip[data-placement="bottom"] {
+  transform: translate(-50%, 10px);
+}
+
+.footnote-tooltip::after {
+  content: "";
+  position: absolute;
+  left: var(--footnote-tooltip-arrow-left, 50%);
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  background: var(--background-color, #fff);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.footnote-tooltip[data-placement="bottom"]::after {
+  top: -6px;
+  bottom: auto;
+  border: 0;
+  border-left: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+}
+
+.footnote-tooltip-wrap:hover .footnote-tooltip,
+.footnote-tooltip-wrap:focus-within .footnote-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footnote-tooltip p,
+.footnote-tooltip ul,
+.footnote-tooltip ol {
+  margin: 0;
+}
+
+.footnote-tooltip p + p,
+.footnote-tooltip ul + p,
+.footnote-tooltip ol + p {
+  margin-top: 0.5rem;
+}
+
+.footnote-tooltip mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 95%;
+}
+
+@media (max-width: 640px) {
+  .footnote-tooltip {
+    max-width: calc(100vw - 24px);
+    font-size: 0.9rem;
+  }
+}
+</style><script id="footnote-tooltip-script">
+(function () {
+  function onReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function activeWrapper() {
+    return document.querySelector('.footnote-tooltip-wrap:hover, .footnote-tooltip-wrap:focus-within');
+  }
+
+  function positionTooltip(wrapper) {
+    var ref = wrapper.querySelector('.footnote-ref');
+    var tooltip = wrapper.querySelector('.footnote-tooltip');
+    if (!ref || !tooltip) return;
+
+    var margin = 12;
+    var refRect = ref.getBoundingClientRect();
+    var maxWidth = Math.max(180, Math.min(448, window.innerWidth - margin * 2));
+    tooltip.style.maxWidth = maxWidth + 'px';
+
+    var width = Math.min(tooltip.offsetWidth || maxWidth, maxWidth);
+    var height = tooltip.offsetHeight || 0;
+    var anchorCenter = refRect.left + refRect.width / 2;
+    var left = clamp(anchorCenter, margin + width / 2, window.innerWidth - margin - width / 2);
+    var placement = 'top';
+    var top = refRect.top;
+
+    if (refRect.top - height - 14 < margin && refRect.bottom + height + 14 < window.innerHeight - margin) {
+      placement = 'bottom';
+      top = refRect.bottom;
+    }
+
+    var arrowLeft = clamp(anchorCenter - (left - width / 2), 12, Math.max(12, width - 12));
+    tooltip.dataset.placement = placement;
+    tooltip.style.setProperty('--footnote-tooltip-left', left + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-top', top + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-arrow-left', arrowLeft + 'px');
+  }
+
+  onReady(function () {
+    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.footnote-tooltip-wrap'));
+    wrappers.forEach(function (wrapper) {
+      var update = function () {
+        positionTooltip(wrapper);
+      };
+      wrapper.addEventListener('mouseenter', update);
+      wrapper.addEventListener('focusin', update);
+      wrapper.addEventListener('touchstart', update, { passive: true });
+    });
+
+    window.addEventListener('resize', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    });
+
+    window.addEventListener('scroll', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    }, true);
+  });
+})();
+</script><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -675,16 +840,16 @@ template ，即图像的模板；而在 CNN 中，convolutional layer
 convolutional layer
 都会导致图像的尺寸减小，这限制了网络的深度。而解决方案则是做 padding
 ，一般来说是在网络的四周补 0 。最常见的操作是 same padding ，即使得
-padding 以后得到的 feature map 和输入量具备相同的尺寸<a href="#fn1"
+padding 以后得到的 feature map 和输入量具备相同的尺寸<span class="footnote-tooltip-wrap"><a aria-describedby="fnref1-tooltip" href="#fn1"
 class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a>。另一个细节则是，通过连续的
+role="doc-noteref"><sup>1</sup></a><span class="footnote-tooltip" id="fnref1-tooltip" role="tooltip"><p>这里的尺寸是不管 channel 的。</p></span></span>。另一个细节则是，通过连续的
 Convolutional layer ，feature map
 中的每一个点都对应了原先的一个较大的部分，即保存了这个局部的特征。如果我们希望尽快建立
 feature vector 对于全局的印象，或者快速缩减 feature map
 的大小，可以考虑引入 stride
 ，即每次都间隔一定步数再做取样。方便起见，我们一般会设置 stride
-的大小使其恰好可以覆盖全图。将输入量的边长<a href="#fn2"
-class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>记作
+的大小使其恰好可以覆盖全图。将输入量的边长<span class="footnote-tooltip-wrap"><a aria-describedby="fnref2-tooltip" href="#fn2"
+class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a><span class="footnote-tooltip" id="fnref2-tooltip" role="tooltip"><p>方便起见，我们令输入的图像为正方形，每一次处理的时候我们也保证得到正方形。</p></span></span>记作
 W ，Filter 的边长记作 K ，Padding 大小记作 P ，Stride 大小记作 S
 ，那么输出的 feature map 的边长就是 (W - K + 2P) / S + 1 。</p></li>
 </ul>
@@ -710,8 +875,8 @@ Kernel Size 和 Stride ，还有用于采样的 Pooling function ，一般是取
 <ul>
 <li><p>通过 Convolutional Layer 、Pooling Layer 以及 Fully Connected
 Layer ，我们就可以搭建出完整的 CNN 模型了。下图展示了经典的 Lecun 搭建的
-CNN 模型 LeNet-5<a href="#fn3" class="footnote-ref" id="fnref3"
-role="doc-noteref"><sup>3</sup></a> ：</p>
+CNN 模型 LeNet-5<span class="footnote-tooltip-wrap"><a aria-describedby="fnref3-tooltip" href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a><span class="footnote-tooltip" id="fnref3-tooltip" role="tooltip"><p>Lynette</p></span></span> ：</p>
 <p><img 
 
                      lazyload
@@ -719,16 +884,20 @@ role="doc-noteref"><sup>3</sup></a> ：</p>
                      data-src="https://cdn.luogu.com.cn/upload/image_hosting/uhuzac2o.png"
                       
                 ></p>
-<p>但有一个棘手的问题是，随着网络的深度不断加深，使其收敛变得非常困难。<a
+<p>但有一个棘手的问题是，随着网络的深度不断加深，使其收敛变得非常困难。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref4-tooltip"
 href="#fn4" class="footnote-ref" id="fnref4"
-role="doc-noteref"><sup>4</sup></a>相对比较近的工作提出了一个技巧，即所谓的
+role="doc-noteref"><sup>4</sup></a><span class="footnote-tooltip" id="fnref4-tooltip" role="tooltip"><p>Lecun 在 1998
+年发表了这个模型，而当时其实还没有遇到这个问题，因为其时的网络还是很浅的。我们在下篇会讲
+CNN 的发展，那时再详谈这个问题。</p></span></span>相对比较近的工作提出了一个技巧，即所谓的
 Batch Normalization
-。不妨想想深度网络难以收敛的潜在原因：我们的优化方式是基于梯度的，那么对于单一变量，其偏导等价于固定其余所有变量的取值，然后选择这个变量下降最快的方向。在迭代的过程当中，所有变量会同时更新，导致不同层的变量之间的变动缺乏联系。从而为了避免损失函数的剧烈震荡，学习率就必须足够小，导致了收敛速度慢。<a
+。不妨想想深度网络难以收敛的潜在原因：我们的优化方式是基于梯度的，那么对于单一变量，其偏导等价于固定其余所有变量的取值，然后选择这个变量下降最快的方向。在迭代的过程当中，所有变量会同时更新，导致不同层的变量之间的变动缺乏联系。从而为了避免损失函数的剧烈震荡，学习率就必须足够小，导致了收敛速度慢。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref5-tooltip"
 href="#fn5" class="footnote-ref" id="fnref5"
-role="doc-noteref"><sup>5</sup></a></p>
-<p>具体的，为了辅助收敛，我们希望神经网络中的每一层所接受的分布<a
+role="doc-noteref"><sup>5</sup></a><span class="footnote-tooltip" id="fnref5-tooltip" role="tooltip"><p>这只是一个直观上的解释。截止到 2019 年，Batch
+Normalization 的有效性的理论保证似乎还是 Open Problem 。因此以下对 Batch
+Normalization 的描述其实也都仅是直观上的。</p></span></span></p>
+<p>具体的，为了辅助收敛，我们希望神经网络中的每一层所接受的分布<span class="footnote-tooltip-wrap"><a aria-describedby="fnref6-tooltip"
 href="#fn6" class="footnote-ref" id="fnref6"
-role="doc-noteref"><sup>6</sup></a>满足比较好的性质，因此针对每一个
+role="doc-noteref"><sup>6</sup></a><span class="footnote-tooltip" id="fnref6-tooltip" role="tooltip"><p>这里的分布是指训练集上的 feature map 的分布。</p></span></span>满足比较好的性质，因此针对每一个
 channel ，我们要求训练集上所有数据的 feature map 的分布满足期望为 0
 且方差为 1 。下图是对 Fully Connected Layer 做 Batch Normalization
 的演示：</p>
@@ -749,9 +918,9 @@ channel ，我们要求训练集上所有数据的 feature map 的分布满足�
 还有一个很大的问题，就是其导致网络的预测与输入的 Batch
 相关，这显然是很荒唐的。我们的解决方案是，在训练完成后固定期望 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.666ex;" xmlns="http://www.w3.org/2000/svg" width="2.211ex" height="1.666ex" role="img" focusable="false" viewBox="0 -442 977.3 736.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D707" d="M58 -216Q44 -216 34 -208T23 -186Q23 -176 96 116T173 414Q186 442 219 442Q231 441 239 435T249 423T251 413Q251 401 220 279T187 142Q185 131 185 107V99Q185 26 252 26Q261 26 270 27T287 31T302 38T315 45T327 55T338 65T348 77T356 88T365 100L372 110L408 253Q444 395 448 404Q461 431 491 431Q504 431 512 424T523 412T525 402L449 84Q448 79 448 68Q448 43 455 35T476 26Q485 27 496 35Q517 55 537 131Q543 151 547 152Q549 153 557 153H561Q580 153 580 144Q580 138 575 117T555 63T523 13Q510 0 491 -8Q483 -10 467 -10Q446 -10 429 -4T402 11T385 29T376 44T374 51L368 45Q362 39 350 30T324 12T288 -4T246 -11Q199 -11 153 12L129 -85Q108 -167 104 -180T92 -202Q76 -216 58 -216Z"></path></g><g data-mml-node="mi" transform="translate(636,-150) scale(0.707)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></g></g></g></g></svg></mjx-container> 和方差 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.97ex;" xmlns="http://www.w3.org/2000/svg" width="2.28ex" height="2.857ex" role="img" focusable="false" viewBox="0 -833.9 1007.6 1262.6"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msubsup"><g data-mml-node="mi"><path data-c="1D70E" d="M184 -11Q116 -11 74 34T31 147Q31 247 104 333T274 430Q275 431 414 431H552Q553 430 555 429T559 427T562 425T565 422T567 420T569 416T570 412T571 407T572 401Q572 357 507 357Q500 357 490 357T476 358H416L421 348Q439 310 439 263Q439 153 359 71T184 -11ZM361 278Q361 358 276 358Q152 358 115 184Q114 180 114 178Q106 141 106 117Q106 67 131 47T188 26Q242 26 287 73Q316 103 334 153T356 233T361 278Z"></path></g><g data-mml-node="mn" transform="translate(604,363) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g><g data-mml-node="mi" transform="translate(604,-284.4) scale(0.707)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"></path></g></g></g></g></svg></mjx-container>
 。至于它们的取值，要么就在训练的时候维护历史指数均值，要么就直接取最后几轮训练的结果的均值。</p>
-<p>但这样做了以后又会引入一个问题，就是我们的模型在预训练阶段和预测阶段所做的事情其实是不一样的，而我们期待训练和预测时模型的动作应该是相同的。<a
+<p>但这样做了以后又会引入一个问题，就是我们的模型在预训练阶段和预测阶段所做的事情其实是不一样的，而我们期待训练和预测时模型的动作应该是相同的。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref7-tooltip"
 href="#fn7" class="footnote-ref" id="fnref7"
-role="doc-noteref"><sup>7</sup></a>对此，我们考虑更换 Normalization
+role="doc-noteref"><sup>7</sup></a><span class="footnote-tooltip" id="fnref7-tooltip" role="tooltip"><p>Justin 说可能会导致一些问题。</p></span></span>对此，我们考虑更换 Normalization
 的方式。可选的方案是 Layer Normalization（对每层内部做 Normalization）或
 Instance Normalization（对每个 feature map 做 Normalization）。</p></li>
 </ul>

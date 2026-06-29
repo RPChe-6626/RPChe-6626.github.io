@@ -106,7 +106,172 @@
     
     
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-<style>mjx-container[jax="SVG"] {
+<style>
+/* footnote-tooltip-style: show endnotes next to footnote references. */
+.footnote-tooltip-wrap {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+}
+
+.footnote-tooltip-wrap .footnote-ref {
+  cursor: help;
+}
+
+.footnote-tooltip {
+  position: fixed;
+  left: var(--footnote-tooltip-left, 50vw);
+  top: var(--footnote-tooltip-top, 0);
+  transform: translate(-50%, calc(-100% - 10px));
+  z-index: 10000;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 24px));
+  max-height: min(18rem, calc(100vh - 24px));
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-radius: 8px;
+  background: var(--background-color, #fff);
+  color: var(--default-text-color, #1f2933);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
+}
+
+.footnote-tooltip[data-placement="bottom"] {
+  transform: translate(-50%, 10px);
+}
+
+.footnote-tooltip::after {
+  content: "";
+  position: absolute;
+  left: var(--footnote-tooltip-arrow-left, 50%);
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  background: var(--background-color, #fff);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.footnote-tooltip[data-placement="bottom"]::after {
+  top: -6px;
+  bottom: auto;
+  border: 0;
+  border-left: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+}
+
+.footnote-tooltip-wrap:hover .footnote-tooltip,
+.footnote-tooltip-wrap:focus-within .footnote-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footnote-tooltip p,
+.footnote-tooltip ul,
+.footnote-tooltip ol {
+  margin: 0;
+}
+
+.footnote-tooltip p + p,
+.footnote-tooltip ul + p,
+.footnote-tooltip ol + p {
+  margin-top: 0.5rem;
+}
+
+.footnote-tooltip mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 95%;
+}
+
+@media (max-width: 640px) {
+  .footnote-tooltip {
+    max-width: calc(100vw - 24px);
+    font-size: 0.9rem;
+  }
+}
+</style><script id="footnote-tooltip-script">
+(function () {
+  function onReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function activeWrapper() {
+    return document.querySelector('.footnote-tooltip-wrap:hover, .footnote-tooltip-wrap:focus-within');
+  }
+
+  function positionTooltip(wrapper) {
+    var ref = wrapper.querySelector('.footnote-ref');
+    var tooltip = wrapper.querySelector('.footnote-tooltip');
+    if (!ref || !tooltip) return;
+
+    var margin = 12;
+    var refRect = ref.getBoundingClientRect();
+    var maxWidth = Math.max(180, Math.min(448, window.innerWidth - margin * 2));
+    tooltip.style.maxWidth = maxWidth + 'px';
+
+    var width = Math.min(tooltip.offsetWidth || maxWidth, maxWidth);
+    var height = tooltip.offsetHeight || 0;
+    var anchorCenter = refRect.left + refRect.width / 2;
+    var left = clamp(anchorCenter, margin + width / 2, window.innerWidth - margin - width / 2);
+    var placement = 'top';
+    var top = refRect.top;
+
+    if (refRect.top - height - 14 < margin && refRect.bottom + height + 14 < window.innerHeight - margin) {
+      placement = 'bottom';
+      top = refRect.bottom;
+    }
+
+    var arrowLeft = clamp(anchorCenter - (left - width / 2), 12, Math.max(12, width - 12));
+    tooltip.dataset.placement = placement;
+    tooltip.style.setProperty('--footnote-tooltip-left', left + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-top', top + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-arrow-left', arrowLeft + 'px');
+  }
+
+  onReady(function () {
+    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.footnote-tooltip-wrap'));
+    wrappers.forEach(function (wrapper) {
+      var update = function () {
+        positionTooltip(wrapper);
+      };
+      wrapper.addEventListener('mouseenter', update);
+      wrapper.addEventListener('focusin', update);
+      wrapper.addEventListener('touchstart', update, { passive: true });
+    });
+
+    window.addEventListener('resize', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    });
+
+    window.addEventListener('scroll', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    }, true);
+  });
+})();
+</script><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -632,9 +797,9 @@ mjx-container[display="true"] + br {
 <li>CNN 的第一层 filter 必然是 3channel 的，这使得我们可以使用三通道 RGB
 的方式作出其图像。如果你实际操作过的话，这些 filter
 大致是某种斑点、色块和不同指向的边缘。可以认为 filter
-实际上是在提取原图中的这些信息，因为我们知道 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container> 内积可以被视作某种对相似度的度量<a
+实际上是在提取原图中的这些信息，因为我们知道 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container> 内积可以被视作某种对相似度的度量<span class="footnote-tooltip-wrap"><a aria-describedby="fnref1-tooltip"
 href="#fn1" class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a>。但是这些图像似乎并不具备较强的可解释性，而且其余层的
+role="doc-noteref"><sup>1</sup></a><span class="footnote-tooltip" id="fnref1-tooltip" role="tooltip"><p>向量之间的夹角。</p></span></span>。但是这些图像似乎并不具备较强的可解释性，而且其余层的
 filter 也不一定是 3channel 的。我们可以试着做出其余 filter
 的灰度图像，但效果并不好。</li>
 </ul>
@@ -659,22 +824,24 @@ feature map 都不会对输入起任何反应，这大概是因为 ReLU 把所�
 <h2 id="输入图像对某一神经元的影响">输入图像对某一神经元的影响</h2>
 <ul>
 <li>考察某一层中某一个 feature map
-上某一个神经元对输入的反应，我们挑出造成反应最显著的一部分。我们可以期待，这些图像<a
+上某一个神经元对输入的反应，我们挑出造成反应最显著的一部分。我们可以期待，这些图像<span class="footnote-tooltip-wrap"><a aria-describedby="fnref2-tooltip"
 href="#fn2" class="footnote-ref" id="fnref2"
-role="doc-noteref"><sup>2</sup></a>很大程度上具有相似的特征。而当考察的神经元的深度加深，其视野会更大，也会越发关注图像整体。</li>
+role="doc-noteref"><sup>2</sup></a><span class="footnote-tooltip" id="fnref2-tooltip" role="tooltip"><p>我们只关注神经元的视野，其余无关的像素点是不考虑的。</p></span></span>很大程度上具有相似的特征。而当考察的神经元的深度加深，其视野会更大，也会越发关注图像整体。</li>
 </ul>
 <h2
 id="显著影响分类概率或神经元的像素">显著影响分类概率或神经元的像素</h2>
 <ul>
 <li>要考察像素对分类概率的影响，我们可以考虑概率对于此像素的导数。这样，只需单次反向传播我们就可以得到梯度的
-Saliency Map 。<a href="#fn3" class="footnote-ref" id="fnref3"
-role="doc-noteref"><sup>3</sup></a>这将有助于检查 CNN
+Saliency Map 。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref3-tooltip" href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a><span class="footnote-tooltip" id="fnref3-tooltip" role="tooltip"><p>这篇论文里有一些很好的可视化。Simonyan, Vedaldi, and
+Zisserman, Deep Inside Convolutional Networks: Visualizing Image
+Classification Models and Saliency Map, ICLR Workshop 2014.</p></span></span>这将有助于检查 CNN
 是否学习到了我们所希望的部分，例如其分辨船的办法不是找水而是找船本身。一个有趣的延申是，我们可以试着用
 Saliency Map
 来做无监督的图像语义分割，但这个做法在广泛的输入上的表现并不一定好。</li>
-<li>如果希望考察像素对于某一中间神经元的作用，我们当然也可以考虑反向传播。但实践中这样做的效果并不好。有研究提出了一种奇妙的技巧<a
+<li>如果希望考察像素对于某一中间神经元的作用，我们当然也可以考虑反向传播。但实践中这样做的效果并不好。有研究提出了一种奇妙的技巧<span class="footnote-tooltip-wrap"><a aria-describedby="fnref4-tooltip"
 href="#fn4" class="footnote-ref" id="fnref4"
-role="doc-noteref"><sup>4</sup></a>，称作 Guided Back Propagation
+role="doc-noteref"><sup>4</sup></a><span class="footnote-tooltip" id="fnref4-tooltip" role="tooltip"><p>截止2019年，这种技巧似乎并没有一个好的理论解释。</p></span></span>，称作 Guided Back Propagation
 ，也就是，原先的反向传播是把梯度矩阵中正向传播时小于 0
 的位置的值全部改成 0 ，而导向反向传播则还要对梯度矩阵再做一次 ReLU
 。这种技巧似乎可以较好的改善 Saliency Map 。</li>
@@ -707,35 +874,37 @@ feature vector 的深度越浅，匹配越好；深层的 feature vector
                       
                 ></p></li>
 <li><p>另一个有趣的应用是 Deep Dream 。简单的说，我们将输入图像通过 CNN
-，将选定层的计算结果直接作为该层的梯度进行反向传播。这样做的结果是，以“令该层的特征最为显著”为目标进行优化。<a
+，将选定层的计算结果直接作为该层的梯度进行反向传播。这样做的结果是，以“令该层的特征最为显著”为目标进行优化。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref5-tooltip"
 href="#fn5" class="footnote-ref" id="fnref5"
-role="doc-noteref"><sup>5</sup></a>这样做会把 CNN
+role="doc-noteref"><sup>5</sup></a><span class="footnote-tooltip" id="fnref5-tooltip" role="tooltip"><p>目标函数为该层的 feature map 的 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container> 范数之和。</p></span></span>这样做会把 CNN
 中该层保存的特征强加到原图中，很可能会优化出一些阴间结果，取决于原先 CNN
-训练的数据集里有什么。<a href="#fn6" class="footnote-ref" id="fnref6"
-role="doc-noteref"><sup>6</sup></a></p></li>
+训练的数据集里有什么。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref6-tooltip" href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a><span class="footnote-tooltip" id="fnref6-tooltip" role="tooltip"><p>如果你在 ImageNet 上训练，可能会得到 dog fish, admiral
+dog, dog frog 之类的。</p></span></span></p></li>
 </ul>
 <h2 id="texture-synthesis-与风格迁移">Texture Synthesis 与风格迁移</h2>
 <ul>
 <li><p>Texture Synthesis
 指的是，给定材质模板，我们希望基于此模板合成更大的图片。这意味着，我们希望学习材质的颜色、线条等特征，而丢弃其空间特征。有趣的是，这恰好可以用
 CNN 的 feature map 的 gram matrix 来描述。简单的说，对于一层的 C*H*W 的
-feature map ，其一共有 H*W 个 feature vector ，取其两两做外积<a
+feature map ，其一共有 H*W 个 feature vector ，取其两两做外积<span class="footnote-tooltip-wrap"><a aria-describedby="fnref7-tooltip"
 href="#fn7" class="footnote-ref" id="fnref7"
-role="doc-noteref"><sup>7</sup></a>，并取均值得到 C*C 的 gram matrix
+role="doc-noteref"><sup>7</sup></a><span class="footnote-tooltip" id="fnref7-tooltip" role="tooltip"><p>其实就是做矩乘得到 C*C 的结果。</p></span></span>，并取均值得到 C*C 的 gram matrix
 。如上得到的 gram matrix 描述了 feature vector
-的未归一化的协方差，可以认为其描述了这一层的抛开空间关系的特征。<a
+的未归一化的协方差，可以认为其描述了这一层的抛开空间关系的特征。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref8-tooltip"
 href="#fn8" class="footnote-ref" id="fnref8"
-role="doc-noteref"><sup>8</sup></a></p>
+role="doc-noteref"><sup>8</sup></a><span class="footnote-tooltip" id="fnref8-tooltip" role="tooltip"><p>其实这些东西我也不是很熟。这里是口胡的。</p></span></span></p>
 <p>而使用 gram matrix 做 Texture Synthesis 的方法则是，令材质通过 CNN
 以提取特征，取其前若干层的 gram matrix ，再令噪声输入通过 CNN
-，同样得到其 gram matrix ，再以所有 gram matrix 的相似度<a href="#fn9"
+，同样得到其 gram matrix ，再以所有 gram matrix 的相似度<span class="footnote-tooltip-wrap"><a aria-describedby="fnref9-tooltip" href="#fn9"
 class="footnote-ref" id="fnref9"
-role="doc-noteref"><sup>9</sup></a>为目标进行优化。</p></li>
+role="doc-noteref"><sup>9</sup></a><span class="footnote-tooltip" id="fnref9-tooltip" role="tooltip"><p>一般是 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.339ex;" xmlns="http://www.w3.org/2000/svg" width="2.528ex" height="1.885ex" role="img" focusable="false" viewBox="0 -683 1117.6 833"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path></g><g data-mml-node="mn" transform="translate(714,-150) scale(0.707)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path></g></g></g></g></svg></mjx-container>
+范数的加权和。</p></span></span>为目标进行优化。</p></li>
 <li><p>如果把艺术作品作为材质，我们就可以做风格迁移了。简单的说，Texture
 Synthesis 是保留局部而舍弃整体，而深层的 feature inversion
 则是保留整体而舍弃局部。所以我们考虑同时对 gram matrix 和 feature vector
-做优化<a href="#fn10" class="footnote-ref" id="fnref10"
-role="doc-noteref"><sup>10</sup></a>，这样就可以把前者的局部特征添加到后者的整体框架上。令人意外的是，这样做的结果相当好。</p>
+做优化<span class="footnote-tooltip-wrap"><a aria-describedby="fnref10-tooltip" href="#fn10" class="footnote-ref" id="fnref10"
+role="doc-noteref"><sup>10</sup></a><span class="footnote-tooltip" id="fnref10-tooltip" role="tooltip"><p>大概是对两者的损失函数做加权和。</p></span></span>，这样就可以把前者的局部特征添加到后者的整体框架上。令人意外的是，这样做的结果相当好。</p>
 <p>一个问题是每一次风格迁移都要做梯度上升的话就太慢了。解决方案是训练一个前馈网络来做风格迁移，而把后面的
 CNN 整体当作损失函数。</p>
 <p><img 

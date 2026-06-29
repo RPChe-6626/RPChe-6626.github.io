@@ -106,7 +106,172 @@
     
     
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-<style>mjx-container[jax="SVG"] {
+<style>
+/* footnote-tooltip-style: show endnotes next to footnote references. */
+.footnote-tooltip-wrap {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+}
+
+.footnote-tooltip-wrap .footnote-ref {
+  cursor: help;
+}
+
+.footnote-tooltip {
+  position: fixed;
+  left: var(--footnote-tooltip-left, 50vw);
+  top: var(--footnote-tooltip-top, 0);
+  transform: translate(-50%, calc(-100% - 10px));
+  z-index: 10000;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 24px));
+  max-height: min(18rem, calc(100vh - 24px));
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-radius: 8px;
+  background: var(--background-color, #fff);
+  color: var(--default-text-color, #1f2933);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
+}
+
+.footnote-tooltip[data-placement="bottom"] {
+  transform: translate(-50%, 10px);
+}
+
+.footnote-tooltip::after {
+  content: "";
+  position: absolute;
+  left: var(--footnote-tooltip-arrow-left, 50%);
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  background: var(--background-color, #fff);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.footnote-tooltip[data-placement="bottom"]::after {
+  top: -6px;
+  bottom: auto;
+  border: 0;
+  border-left: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+}
+
+.footnote-tooltip-wrap:hover .footnote-tooltip,
+.footnote-tooltip-wrap:focus-within .footnote-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footnote-tooltip p,
+.footnote-tooltip ul,
+.footnote-tooltip ol {
+  margin: 0;
+}
+
+.footnote-tooltip p + p,
+.footnote-tooltip ul + p,
+.footnote-tooltip ol + p {
+  margin-top: 0.5rem;
+}
+
+.footnote-tooltip mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 95%;
+}
+
+@media (max-width: 640px) {
+  .footnote-tooltip {
+    max-width: calc(100vw - 24px);
+    font-size: 0.9rem;
+  }
+}
+</style><script id="footnote-tooltip-script">
+(function () {
+  function onReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function activeWrapper() {
+    return document.querySelector('.footnote-tooltip-wrap:hover, .footnote-tooltip-wrap:focus-within');
+  }
+
+  function positionTooltip(wrapper) {
+    var ref = wrapper.querySelector('.footnote-ref');
+    var tooltip = wrapper.querySelector('.footnote-tooltip');
+    if (!ref || !tooltip) return;
+
+    var margin = 12;
+    var refRect = ref.getBoundingClientRect();
+    var maxWidth = Math.max(180, Math.min(448, window.innerWidth - margin * 2));
+    tooltip.style.maxWidth = maxWidth + 'px';
+
+    var width = Math.min(tooltip.offsetWidth || maxWidth, maxWidth);
+    var height = tooltip.offsetHeight || 0;
+    var anchorCenter = refRect.left + refRect.width / 2;
+    var left = clamp(anchorCenter, margin + width / 2, window.innerWidth - margin - width / 2);
+    var placement = 'top';
+    var top = refRect.top;
+
+    if (refRect.top - height - 14 < margin && refRect.bottom + height + 14 < window.innerHeight - margin) {
+      placement = 'bottom';
+      top = refRect.bottom;
+    }
+
+    var arrowLeft = clamp(anchorCenter - (left - width / 2), 12, Math.max(12, width - 12));
+    tooltip.dataset.placement = placement;
+    tooltip.style.setProperty('--footnote-tooltip-left', left + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-top', top + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-arrow-left', arrowLeft + 'px');
+  }
+
+  onReady(function () {
+    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.footnote-tooltip-wrap'));
+    wrappers.forEach(function (wrapper) {
+      var update = function () {
+        positionTooltip(wrapper);
+      };
+      wrapper.addEventListener('mouseenter', update);
+      wrapper.addEventListener('focusin', update);
+      wrapper.addEventListener('touchstart', update, { passive: true });
+    });
+
+    window.addEventListener('resize', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    });
+
+    window.addEventListener('scroll', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    }, true);
+  });
+})();
+</script><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -667,8 +832,8 @@ Propagation），可以将其视作带有衰减系数的 AdaGrad 。</p>
 <div class="code-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Adaptive Moment Estimation</span></span><br><span class="line">moment1 = <span class="number">0</span></span><br><span class="line">moment2 = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(num_steps):</span><br><span class="line">	minibatch = sample_data(data, batch_size)</span><br><span class="line">    dw = compute_gradient(loss_func, minibatch, w)</span><br><span class="line">    moment1 = beta1 * moment1 + (<span class="number">1</span> - beta1) * dw</span><br><span class="line">    moment2 = beta2 * moment2 + (<span class="number">1</span> - beta2) * dw**<span class="number">2</span></span><br><span class="line">    moment1_unbias = moment1 / (<span class="number">1</span> - beta1**t)</span><br><span class="line">    moment2_unbias = moment2 / (<span class="number">1</span> - beta2**t)</span><br><span class="line">    w -= learning_rate * moment1_unbias / (moment2_unbias.sqrt() + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure></div>
 <p>我们在上述的代码加入了计算 <code>moment1_unbias</code> 和
 <code>moment2_unbias</code> ，这是为了避免在算法最开始更新
-<code>w</code> 时除以一个极小的数，导致解剧烈变化。<a href="#fn1"
-class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<code>w</code> 时除以一个极小的数，导致解剧烈变化。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref1-tooltip" href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a><span class="footnote-tooltip" id="fnref1-tooltip" role="tooltip"><p>这样的写法应该有更严格的推导。</p></span></span></p>
 <p>特别的，Adam 在很多时候都是一个好的方法，建议的初始参数
 <code>beta1 = 0.9</code> ，<code>beta2 = 0.999</code>
 ，<code>learning_rate = 1e-3, 5e-4, 1e-4</code> 。</p></li>
@@ -780,9 +945,9 @@ class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2025/03/06/DL/LC/">
+				<a class="next" rel="next" href="/2025/03/06/DL/KNN/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">线性分类器</span>
+						<span class="post-nav-title-item">K-近邻与交叉验证</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">

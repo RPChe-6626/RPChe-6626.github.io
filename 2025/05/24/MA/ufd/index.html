@@ -106,7 +106,172 @@
     
     
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-<style>mjx-container[jax="SVG"] {
+<style>
+/* footnote-tooltip-style: show endnotes next to footnote references. */
+.footnote-tooltip-wrap {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+}
+
+.footnote-tooltip-wrap .footnote-ref {
+  cursor: help;
+}
+
+.footnote-tooltip {
+  position: fixed;
+  left: var(--footnote-tooltip-left, 50vw);
+  top: var(--footnote-tooltip-top, 0);
+  transform: translate(-50%, calc(-100% - 10px));
+  z-index: 10000;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 24px));
+  max-height: min(18rem, calc(100vh - 24px));
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-radius: 8px;
+  background: var(--background-color, #fff);
+  color: var(--default-text-color, #1f2933);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
+}
+
+.footnote-tooltip[data-placement="bottom"] {
+  transform: translate(-50%, 10px);
+}
+
+.footnote-tooltip::after {
+  content: "";
+  position: absolute;
+  left: var(--footnote-tooltip-arrow-left, 50%);
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  background: var(--background-color, #fff);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.footnote-tooltip[data-placement="bottom"]::after {
+  top: -6px;
+  bottom: auto;
+  border: 0;
+  border-left: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+}
+
+.footnote-tooltip-wrap:hover .footnote-tooltip,
+.footnote-tooltip-wrap:focus-within .footnote-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footnote-tooltip p,
+.footnote-tooltip ul,
+.footnote-tooltip ol {
+  margin: 0;
+}
+
+.footnote-tooltip p + p,
+.footnote-tooltip ul + p,
+.footnote-tooltip ol + p {
+  margin-top: 0.5rem;
+}
+
+.footnote-tooltip mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 95%;
+}
+
+@media (max-width: 640px) {
+  .footnote-tooltip {
+    max-width: calc(100vw - 24px);
+    font-size: 0.9rem;
+  }
+}
+</style><script id="footnote-tooltip-script">
+(function () {
+  function onReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function activeWrapper() {
+    return document.querySelector('.footnote-tooltip-wrap:hover, .footnote-tooltip-wrap:focus-within');
+  }
+
+  function positionTooltip(wrapper) {
+    var ref = wrapper.querySelector('.footnote-ref');
+    var tooltip = wrapper.querySelector('.footnote-tooltip');
+    if (!ref || !tooltip) return;
+
+    var margin = 12;
+    var refRect = ref.getBoundingClientRect();
+    var maxWidth = Math.max(180, Math.min(448, window.innerWidth - margin * 2));
+    tooltip.style.maxWidth = maxWidth + 'px';
+
+    var width = Math.min(tooltip.offsetWidth || maxWidth, maxWidth);
+    var height = tooltip.offsetHeight || 0;
+    var anchorCenter = refRect.left + refRect.width / 2;
+    var left = clamp(anchorCenter, margin + width / 2, window.innerWidth - margin - width / 2);
+    var placement = 'top';
+    var top = refRect.top;
+
+    if (refRect.top - height - 14 < margin && refRect.bottom + height + 14 < window.innerHeight - margin) {
+      placement = 'bottom';
+      top = refRect.bottom;
+    }
+
+    var arrowLeft = clamp(anchorCenter - (left - width / 2), 12, Math.max(12, width - 12));
+    tooltip.dataset.placement = placement;
+    tooltip.style.setProperty('--footnote-tooltip-left', left + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-top', top + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-arrow-left', arrowLeft + 'px');
+  }
+
+  onReady(function () {
+    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.footnote-tooltip-wrap'));
+    wrappers.forEach(function (wrapper) {
+      var update = function () {
+        positionTooltip(wrapper);
+      };
+      wrapper.addEventListener('mouseenter', update);
+      wrapper.addEventListener('focusin', update);
+      wrapper.addEventListener('touchstart', update, { passive: true });
+    });
+
+    window.addEventListener('resize', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    });
+
+    window.addEventListener('scroll', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    }, true);
+  });
+})();
+</script><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -652,9 +817,9 @@ PID 。</p></li>
 </ul>
 <h2 id="唯一分解整环的定义">唯一分解整环的定义</h2>
 <ul>
-<li><p>在一般的整环上，不可约元不一定是素元。<a href="#fn1"
+<li><p>在一般的整环上，不可约元不一定是素元。<span class="footnote-tooltip-wrap"><a aria-describedby="fnref1-tooltip" href="#fn1"
 class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a>但是在某一类特殊的环上，我们其实可以证明这一点，这就是本文的中心，唯一分解整环（Unique
+role="doc-noteref"><sup>1</sup></a><span class="footnote-tooltip" id="fnref1-tooltip" role="tooltip"><p>后面举例。</p></span></span>但是在某一类特殊的环上，我们其实可以证明这一点，这就是本文的中心，唯一分解整环（Unique
 Factorization Domain），UFD。具体的：</p>
 <ol type="1">
 <li><p>对于整环 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.873ex" height="1.545ex" role="img" focusable="false" viewBox="0 -683 828 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D437" d="M287 628Q287 635 230 637Q207 637 200 638T193 647Q193 655 197 667T204 682Q206 683 403 683Q570 682 590 682T630 676Q702 659 752 597T803 431Q803 275 696 151T444 3L430 1L236 0H125H72Q48 0 41 2T33 11Q33 13 36 25Q40 41 44 43T67 46Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628ZM703 469Q703 507 692 537T666 584T629 613T590 629T555 636Q553 636 541 636T512 636T479 637H436Q392 637 386 627Q384 623 313 339T242 52Q242 48 253 48T330 47Q335 47 349 47T373 46Q499 46 581 128Q617 164 640 212T683 339T703 469Z"></path></g></g></g></svg></mjx-container>

@@ -106,7 +106,172 @@
     
     
 <meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="/atom.xml" title="RPChe_'s Blog" type="application/atom+xml">
-<style>mjx-container[jax="SVG"] {
+<style>
+/* footnote-tooltip-style: show endnotes next to footnote references. */
+.footnote-tooltip-wrap {
+  display: inline-block;
+  line-height: 1;
+  position: relative;
+}
+
+.footnote-tooltip-wrap .footnote-ref {
+  cursor: help;
+}
+
+.footnote-tooltip {
+  position: fixed;
+  left: var(--footnote-tooltip-left, 50vw);
+  top: var(--footnote-tooltip-top, 0);
+  transform: translate(-50%, calc(-100% - 10px));
+  z-index: 10000;
+  box-sizing: border-box;
+  width: max-content;
+  max-width: min(28rem, calc(100vw - 24px));
+  max-height: min(18rem, calc(100vh - 24px));
+  overflow: auto;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-radius: 8px;
+  background: var(--background-color, #fff);
+  color: var(--default-text-color, #1f2933);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: left;
+  white-space: normal;
+  overflow-wrap: break-word;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.14s ease, transform 0.14s ease, visibility 0.14s ease;
+}
+
+.footnote-tooltip[data-placement="bottom"] {
+  transform: translate(-50%, 10px);
+}
+
+.footnote-tooltip::after {
+  content: "";
+  position: absolute;
+  left: var(--footnote-tooltip-arrow-left, 50%);
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  border-right: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-bottom: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  background: var(--background-color, #fff);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.footnote-tooltip[data-placement="bottom"]::after {
+  top: -6px;
+  bottom: auto;
+  border: 0;
+  border-left: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+  border-top: 1px solid var(--border-color, rgba(0, 0, 0, 0.16));
+}
+
+.footnote-tooltip-wrap:hover .footnote-tooltip,
+.footnote-tooltip-wrap:focus-within .footnote-tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+.footnote-tooltip p,
+.footnote-tooltip ul,
+.footnote-tooltip ol {
+  margin: 0;
+}
+
+.footnote-tooltip p + p,
+.footnote-tooltip ul + p,
+.footnote-tooltip ol + p {
+  margin-top: 0.5rem;
+}
+
+.footnote-tooltip mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 95%;
+}
+
+@media (max-width: 640px) {
+  .footnote-tooltip {
+    max-width: calc(100vw - 24px);
+    font-size: 0.9rem;
+  }
+}
+</style><script id="footnote-tooltip-script">
+(function () {
+  function onReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
+    } else {
+      callback();
+    }
+  }
+
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function activeWrapper() {
+    return document.querySelector('.footnote-tooltip-wrap:hover, .footnote-tooltip-wrap:focus-within');
+  }
+
+  function positionTooltip(wrapper) {
+    var ref = wrapper.querySelector('.footnote-ref');
+    var tooltip = wrapper.querySelector('.footnote-tooltip');
+    if (!ref || !tooltip) return;
+
+    var margin = 12;
+    var refRect = ref.getBoundingClientRect();
+    var maxWidth = Math.max(180, Math.min(448, window.innerWidth - margin * 2));
+    tooltip.style.maxWidth = maxWidth + 'px';
+
+    var width = Math.min(tooltip.offsetWidth || maxWidth, maxWidth);
+    var height = tooltip.offsetHeight || 0;
+    var anchorCenter = refRect.left + refRect.width / 2;
+    var left = clamp(anchorCenter, margin + width / 2, window.innerWidth - margin - width / 2);
+    var placement = 'top';
+    var top = refRect.top;
+
+    if (refRect.top - height - 14 < margin && refRect.bottom + height + 14 < window.innerHeight - margin) {
+      placement = 'bottom';
+      top = refRect.bottom;
+    }
+
+    var arrowLeft = clamp(anchorCenter - (left - width / 2), 12, Math.max(12, width - 12));
+    tooltip.dataset.placement = placement;
+    tooltip.style.setProperty('--footnote-tooltip-left', left + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-top', top + 'px');
+    tooltip.style.setProperty('--footnote-tooltip-arrow-left', arrowLeft + 'px');
+  }
+
+  onReady(function () {
+    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.footnote-tooltip-wrap'));
+    wrappers.forEach(function (wrapper) {
+      var update = function () {
+        positionTooltip(wrapper);
+      };
+      wrapper.addEventListener('mouseenter', update);
+      wrapper.addEventListener('focusin', update);
+      wrapper.addEventListener('touchstart', update, { passive: true });
+    });
+
+    window.addEventListener('resize', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    });
+
+    window.addEventListener('scroll', function () {
+      var wrapper = activeWrapper();
+      if (wrapper) positionTooltip(wrapper);
+    }, true);
+  });
+})();
+</script><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -608,14 +773,14 @@ mjx-container[display="true"] + br {
 <h2 id="红黑树的性质">红黑树的性质</h2>
 <ul>
 <li><p>红黑树是一种自平衡的二叉搜索树，特点是每个节点额外存储了一个“颜色”信息，可以为红或黑。</p></li>
-<li><p>我们对红黑树的结构提出一些要求。具体的，我们希望<a href="#fn1"
+<li><p>我们对红黑树的结构提出一些要求。具体的，我们希望<span class="footnote-tooltip-wrap"><a aria-describedby="fnref1-tooltip" href="#fn1"
 class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a>：</p>
+role="doc-noteref"><sup>1</sup></a><span class="footnote-tooltip" id="fnref1-tooltip" role="tooltip"><p>不同的资料中对红黑树的要求可能存在些微不同。</p></span></span>：</p>
 <ol type="1">
 <li>根节点为黑。</li>
 <li>红结点的儿子必为黑。</li>
-<li>叶子结点为虚拟点，且颜色必为黑<a href="#fn2" class="footnote-ref"
-id="fnref2" role="doc-noteref"><sup>2</sup></a>。</li>
+<li>叶子结点为虚拟点，且颜色必为黑<span class="footnote-tooltip-wrap"><a aria-describedby="fnref2-tooltip" href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a><span class="footnote-tooltip" id="fnref2-tooltip" role="tooltip"><p>以下，请读者根据语境判断是否考虑虚拟结点。</p></span></span>。</li>
 <li>任何叶子结点到根的路径上的黑结点个数相同，称作黑高度。</li>
 </ol>
 <p>对于包含 <mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="1.357ex" height="1.025ex" role="img" focusable="false" viewBox="0 -442 600 453"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D45B" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path></g></g></g></svg></mjx-container>
@@ -801,9 +966,9 @@ href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 			
 			
 			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
-				<a class="next" rel="next" href="/2023/08/14/%E5%85%B3%E4%BA%8E%E6%95%B0%E8%AE%BA/">
+				<a class="next" rel="next" href="/2023/08/14/zxy%E2%80%98s-law/">
 					<span class="title flex justify-center items-center">
-						<span class="post-nav-title-item">关于数论</span>
+						<span class="post-nav-title-item">ZXY&#39;s Law</span>
 						<span class="post-nav-item">下一篇</span>
 					</span>
 					<span class="right arrow-icon flex justify-center items-center">
