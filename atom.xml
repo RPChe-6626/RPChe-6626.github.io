@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2026-06-18T18:55:51.029Z</updated>
+  <updated>2026-07-04T18:39:21.192Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,82 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Markov Decision Processes and Policy Evaluation</title>
+    <link href="https://rpche-6626.github.io/2026/07/03/RL/MDP/"/>
+    <id>https://rpche-6626.github.io/2026/07/03/RL/MDP/</id>
+    <published>2026-07-02T16:00:00.000Z</published>
+    <updated>2026-07-04T18:39:21.192Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Markov Decision Process is the threotical foundation of reincement
+learning. This installment introduces the foundamental settings of
+Reinforcement Learning.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Academic" scheme="https://rpche-6626.github.io/categories/Academic/"/>
+    
+    
+    <category term="Reinforcement Learning" scheme="https://rpche-6626.github.io/tags/Reinforcement-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>High-Dimensional Probability for Big Data</title>
+    <link href="https://rpche-6626.github.io/2026/07/01/AA/intro/"/>
+    <id>https://rpche-6626.github.io/2026/07/01/AA/intro/</id>
+    <published>2026-06-30T16:00:00.000Z</published>
+    <updated>2026-07-02T16:38:40.060Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;This article is actually a summary of CS3936 Topic in Modern
+Algorithms Fall 2025. The focus here is on high-dimensional probability
+for big data algorithms, such as Machine Learning, which is indeed very
+modern.&lt;/p&gt;
+&lt;p&gt;The full text has been divided into multiple installments; this
+installment serves as the table of contents for the complete work.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Academic" scheme="https://rpche-6626.github.io/categories/Academic/"/>
+    
+    
+    <category term="Probability" scheme="https://rpche-6626.github.io/tags/Probability/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Discussion to Markov Properties</title>
+    <link href="https://rpche-6626.github.io/2026/07/01/AA/markov/"/>
+    <id>https://rpche-6626.github.io/2026/07/01/AA/markov/</id>
+    <published>2026-06-30T16:00:00.000Z</published>
+    <updated>2026-07-02T16:40:41.131Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;We know that Markov properties are used in extremely wide range of
+areas. But it has always been lack of understanding for me. Here we</summary>
+        
+      
+    
+    
+    
+    <category term="Academic" scheme="https://rpche-6626.github.io/categories/Academic/"/>
+    
+    
+    <category term="Reinforcement Learning" scheme="https://rpche-6626.github.io/tags/Reinforcement-Learning/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Discussion to Differetials and Derivatives</title>
     <link href="https://rpche-6626.github.io/2026/06/15/ML/dif/"/>
     <id>https://rpche-6626.github.io/2026/06/15/ML/dif/</id>
     <published>2026-06-14T16:00:00.000Z</published>
-    <updated>2026-06-18T18:55:51.029Z</updated>
+    <updated>2026-07-02T13:36:52.581Z</updated>
     
     
     <summary type="html">&lt;p&gt;我以前一直没怎么弄明白微分，而且现在越来越多的接触到矩阵微分，经常碰到定义上和计算上的问题，所以我们要在这里重新介绍微分那一套。特别的，比较严格的理论（主要是微分的某些内蕴性质）恐怕要在微分几何上才会遇到，因此我们暂时不会涉及这一部分。本文的主线是一般流形上的一阶微分，并以矩阵空间为例。&lt;/p&gt;</summary>
@@ -40,14 +111,13 @@
     <link href="https://rpche-6626.github.io/2026/06/12/RL/intro/"/>
     <id>https://rpche-6626.github.io/2026/06/12/RL/intro/</id>
     <published>2026-06-11T16:00:00.000Z</published>
-    <updated>2026-06-11T18:49:13.908Z</updated>
+    <updated>2026-07-02T16:40:11.696Z</updated>
     
     
-    <summary type="html">&lt;p&gt;I&#39;ve been interested in the topics in reinforcement learning, and the
-group I&#39;m in now focuses on reinforcement learning as well. So here I&#39;ll
-briedly note Stanford CS234 Spring 2024. And I know I&#39;ve opened quite a
-few notes that hasn&#39;t been written since the beginning of this year.
-I&#39;ll update them in the following a few months, I think.&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;I&#39;ve been interested in the topics in reinforcement learning. So here
+I&#39;ll briedly note Stanford CS234 Spring 2024.&lt;/p&gt;
+&lt;p&gt;The full text has been divided into multiple installments; this
+installment serves as the table of contents for the complete work.&lt;/p&gt;</summary>
     
     
     
@@ -63,7 +133,7 @@ I&#39;ll update them in the following a few months, I think.&lt;/p&gt;</summary>
     <link href="https://rpche-6626.github.io/2026/06/05/ML/cov/"/>
     <id>https://rpche-6626.github.io/2026/06/05/ML/cov/</id>
     <published>2026-06-04T16:00:00.000Z</published>
-    <updated>2026-06-14T18:41:27.929Z</updated>
+    <updated>2026-06-29T13:11:38.155Z</updated>
     
     
     <summary type="html">&lt;p&gt;由于本人只学过概率论，所以在这里简单的复习一点协方差的意义和性质。&lt;/p&gt;</summary>
@@ -370,71 +440,6 @@ Regression 。&lt;/p&gt;</summary>
     
     
     <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一些基础内容</title>
-    <link href="https://rpche-6626.github.io/2025/09/15/OPT/basic/"/>
-    <id>https://rpche-6626.github.io/2025/09/15/OPT/basic/</id>
-    <published>2025-09-14T16:00:00.000Z</published>
-    <updated>2025-09-30T05:09:25.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;这一节要讲的主要是向量值函数求导的记号与性质。由于篇幅不长，就当为未来的杂项预留了。&lt;/p&gt;
-&lt;!--more0--&gt;
-&lt;p&gt;&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot; display=&quot;true&quot;&gt;&lt;svg</summary>
-        
-      
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="最优化方法" scheme="https://rpche-6626.github.io/tags/%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Instance：Image Generators</title>
-    <link href="https://rpche-6626.github.io/2025/08/29/DG/imgen/"/>
-    <id>https://rpche-6626.github.io/2025/08/29/DG/imgen/</id>
-    <published>2025-08-28T16:00:00.000Z</published>
-    <updated>2025-08-30T17:52:35.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;通过先前的章节，我们已经基本清楚的介绍了流模型和扩散模型的理论框架。本文将侧重于生成模型在图像生成方面的应用，简要的介绍如何实现带有要求的指向（条件）生成，具体神经网络架构的设计，并分析几个现代的大型生成模型的实例。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Diffusion Models</title>
-    <link href="https://rpche-6626.github.io/2025/08/26/DG/diffusion/"/>
-    <id>https://rpche-6626.github.io/2025/08/26/DG/diffusion/</id>
-    <published>2025-08-25T16:00:00.000Z</published>
-    <updated>2026-02-26T09:47:43.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文通过之前的结果构建了广泛的扩散模型的范式，并详细介绍了扩散模型的框架，训练目标的构建，以及训练过程。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="MIT6.S184 Generative models" scheme="https://rpche-6626.github.io/tags/MIT6-S184-Generative-models/"/>
     
   </entry>
   
