@@ -6,7 +6,7 @@
   <link href="https://rpche-6626.github.io/atom.xml" rel="self"/>
   
   <link href="https://rpche-6626.github.io/"/>
-  <updated>2026-07-04T18:39:21.192Z</updated>
+  <updated>2026-08-02T16:46:32.555Z</updated>
   <id>https://rpche-6626.github.io/</id>
   
   <author>
@@ -17,11 +17,54 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Markov Decision Processes and Policy Evaluation</title>
+    <title></title>
+    <link href="https://rpche-6626.github.io/2026/08/02/RL/tab/"/>
+    <id>https://rpche-6626.github.io/2026/08/02/RL/tab/</id>
+    <published>2026-08-01T19:13:00.732Z</published>
+    <updated>2026-08-02T16:46:32.555Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;mjx-container class=&quot;MathJax&quot; jax=&quot;SVG&quot; display=&quot;true&quot;&gt;&lt;svg style=&quot;vertical-align: 0;&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Bellman Equations</title>
+    <link href="https://rpche-6626.github.io/2026/07/05/RL/bel/"/>
+    <id>https://rpche-6626.github.io/2026/07/05/RL/bel/</id>
+    <published>2026-07-04T16:00:00.000Z</published>
+    <updated>2026-08-02T18:03:56.478Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;Bellman Equations are basic tools to characterize MDPs and MRPs. Here
+we aim to lay theoritcal foundations for general MDPs. While sometimes
+it&#39;s necessary and convenience to impose certain constraints, e.g.
+polish space or discrete space, to ensure regularity.&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="Academic" scheme="https://rpche-6626.github.io/categories/Academic/"/>
+    
+    
+    <category term="Reinforcement Learning" scheme="https://rpche-6626.github.io/tags/Reinforcement-Learning/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markov Decision Processes, Policy Evaluation, and RL Terminologies</title>
     <link href="https://rpche-6626.github.io/2026/07/03/RL/MDP/"/>
     <id>https://rpche-6626.github.io/2026/07/03/RL/MDP/</id>
     <published>2026-07-02T16:00:00.000Z</published>
-    <updated>2026-07-04T18:39:21.192Z</updated>
+    <updated>2026-08-01T16:51:06.030Z</updated>
     
     
     <summary type="html">&lt;p&gt;Markov Decision Process is the threotical foundation of reincement
@@ -111,7 +154,7 @@ areas. But it has always been lack of understanding for me. Here we</summary>
     <link href="https://rpche-6626.github.io/2026/06/12/RL/intro/"/>
     <id>https://rpche-6626.github.io/2026/06/12/RL/intro/</id>
     <published>2026-06-11T16:00:00.000Z</published>
-    <updated>2026-07-02T16:40:11.696Z</updated>
+    <updated>2026-08-02T18:03:55.059Z</updated>
     
     
     <summary type="html">&lt;p&gt;I&#39;ve been interested in the topics in reinforcement learning. So here
@@ -393,46 +436,6 @@ Hard SVM 的对偶形式，并使用表示定理导出了 Soft SVM
     
     <summary type="html">&lt;p&gt;本文介绍了与先前的判别式算法不同的生成式算法，特别是 Gaussian
 Discriminant Analysis 和 Naive Bayes 。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Logistic Regression and Generalized Linear Models</title>
-    <link href="https://rpche-6626.github.io/2025/09/18/ML/logi/"/>
-    <id>https://rpche-6626.github.io/2025/09/18/ML/logi/</id>
-    <published>2025-09-17T16:00:00.000Z</published>
-    <updated>2026-06-27T15:38:39.196Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文继续介绍了 Logistic Regression 与 Generalized Linear Models
-。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="学术" scheme="https://rpche-6626.github.io/categories/%E5%AD%A6%E6%9C%AF/"/>
-    
-    
-    <category term="机器学习" scheme="https://rpche-6626.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linear Regression</title>
-    <link href="https://rpche-6626.github.io/2025/09/17/ML/linear/"/>
-    <id>https://rpche-6626.github.io/2025/09/17/ML/linear/</id>
-    <published>2025-09-16T16:00:00.000Z</published>
-    <updated>2025-10-11T03:35:42.000Z</updated>
-    
-    
-    <summary type="html">&lt;p&gt;本文介绍了一些基本的术语，以及线性回归与 Locally Weighted Linear
-Regression 。&lt;/p&gt;</summary>
     
     
     
